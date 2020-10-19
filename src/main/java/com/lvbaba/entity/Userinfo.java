@@ -54,4 +54,14 @@ public class Userinfo {
     this.phone = phone;
   }
 
+  @Override
+  public String toString() {
+    return "Userinfo{" +
+            "uiId=" + uiId +
+            ", uId=" + uId +
+            ", person='" + person + '\'' +
+            ", idcard='" + idcard + '\'' +
+            ", phone='" + phone + '\'' +
+            '}';
+  }
 }

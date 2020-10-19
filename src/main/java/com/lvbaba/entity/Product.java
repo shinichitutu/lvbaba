@@ -104,4 +104,19 @@ public class Product {
     this.pScore = pScore;
   }
 
+  @Override
+  public String toString() {
+    return "Product{" +
+            "pId=" + pId +
+            ", dAId=" + dAId +
+            ", aAreaId=" + aAreaId +
+            ", limLow=" + limLow +
+            ", limUp=" + limUp +
+            ", days=" + days +
+            ", rId=" + rId +
+            ", pName='" + pName + '\'' +
+            ", pFee='" + pFee + '\'' +
+            ", pScore=" + pScore +
+            '}';
+  }
 }

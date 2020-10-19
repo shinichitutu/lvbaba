@@ -54,4 +54,14 @@ public class Userorder {
     this.oStatus = oStatus;
   }
 
+  @Override
+  public String toString() {
+    return "Userorder{" +
+            "oId=" + oId +
+            ", uId=" + uId +
+            ", tId=" + tId +
+            ", oPrice=" + oPrice +
+            ", oStatus='" + oStatus + '\'' +
+            '}';
+  }
 }

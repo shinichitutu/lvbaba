@@ -54,4 +54,14 @@ public class Orderdatail {
     this.odPhone = odPhone;
   }
 
+  @Override
+  public String toString() {
+    return "Orderdatail{" +
+            "odId=" + odId +
+            ", oId=" + oId +
+            ", odPerson='" + odPerson + '\'' +
+            ", odIdcard='" + odIdcard + '\'' +
+            ", odPhone='" + odPhone + '\'' +
+            '}';
+  }
 }

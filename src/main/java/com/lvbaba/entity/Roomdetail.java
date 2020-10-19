@@ -54,4 +54,14 @@ public class Roomdetail {
     this.rdNumber = rdNumber;
   }
 
+  @Override
+  public String toString() {
+    return "Roomdetail{" +
+            "rdId=" + rdId +
+            ", rId=" + rId +
+            ", rDate='" + rDate + '\'' +
+            ", rdPrice=" + rdPrice +
+            ", rdNumber=" + rdNumber +
+            '}';
+  }
 }

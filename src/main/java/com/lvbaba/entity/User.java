@@ -63,4 +63,15 @@ public class User {
     this.balance = balance;
   }
 
+  @Override
+  public String toString() {
+    return "User{" +
+            "uId=" + uId +
+            ", uName='" + uName + '\'' +
+            ", uUsername='" + uUsername + '\'' +
+            ", uPassword='" + uPassword + '\'' +
+            ", uLevel=" + uLevel +
+            ", balance=" + balance +
+            '}';
+  }
 }

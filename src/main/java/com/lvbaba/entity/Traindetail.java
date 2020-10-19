@@ -44,4 +44,13 @@ public class Traindetail {
     this.tdTickets = tdTickets;
   }
 
+  @Override
+  public String toString() {
+    return "Traindetail{" +
+            "tdId=" + tdId +
+            ", trId=" + trId +
+            ", tdDate='" + tdDate + '\'' +
+            ", tdTickets=" + tdTickets +
+            '}';
+  }
 }
