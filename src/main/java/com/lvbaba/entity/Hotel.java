@@ -44,4 +44,13 @@ public class Hotel {
     this.hLevel = hLevel;
   }
 
+  @Override
+  public String toString() {
+    return "Hotel{" +
+            "hId=" + hId +
+            ", aId=" + aId +
+            ", hName='" + hName + '\'' +
+            ", hLevel=" + hLevel +
+            '}';
+  }
 }

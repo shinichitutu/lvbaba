@@ -74,4 +74,16 @@ public class Train {
     this.trPrice = trPrice;
   }
 
+  @Override
+  public String toString() {
+    return "Train{" +
+            "trId=" + trId +
+            ", trNumber='" + trNumber + '\'' +
+            ", trDTime='" + trDTime + '\'' +
+            ", dAId=" + dAId +
+            ", aAreaId=" + aAreaId +
+            ", trCapacity=" + trCapacity +
+            ", trPrice=" + trPrice +
+            '}';
+  }
 }

@@ -44,4 +44,13 @@ public class Room {
     this.pLimit = pLimit;
   }
 
+  @Override
+  public String toString() {
+    return "Room{" +
+            "rId=" + rId +
+            ", hId=" + hId +
+            ", rNumber=" + rNumber +
+            ", pLimit=" + pLimit +
+            '}';
+  }
 }

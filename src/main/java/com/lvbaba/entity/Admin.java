@@ -34,4 +34,12 @@ public class Admin {
     this.adPassword = adPassword;
   }
 
+  @Override
+  public String toString() {
+    return "Admin{" +
+            "adId=" + adId +
+            ", adName='" + adName + '\'' +
+            ", adPassword='" + adPassword + '\'' +
+            '}';
+  }
 }

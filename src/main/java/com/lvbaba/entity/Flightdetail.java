@@ -54,4 +54,14 @@ public class Flightdetail {
     this.ratio = ratio;
   }
 
+  @Override
+  public String toString() {
+    return "Flightdetail{" +
+            "fdId=" + fdId +
+            ", fId=" + fId +
+            ", fdDate='" + fdDate + '\'' +
+            ", fdTickets=" + fdTickets +
+            ", ratio=" + ratio +
+            '}';
+  }
 }

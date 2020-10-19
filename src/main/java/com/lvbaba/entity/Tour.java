@@ -93,4 +93,18 @@ public class Tour {
     this.tStatus = tStatus;
   }
 
+  @Override
+  public String toString() {
+    return "Tour{" +
+            "tId=" + tId +
+            ", pId=" + pId +
+            ", dDate='" + dDate + '\'' +
+            ", rDate='" + rDate + '\'' +
+            ", cType='" + cType + '\'' +
+            ", goId=" + goId +
+            ", returnId=" + returnId +
+            ", bookNum=" + bookNum +
+            ", tStatus='" + tStatus + '\'' +
+            '}';
+  }
 }
