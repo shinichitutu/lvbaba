@@ -6,47 +6,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8fa654a-04bb-4fcc-9692-3570e09eadb3" name="Default Changelist" comment="实体类的生成">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/lvbaba/dao/UserDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery-3.1.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lvbaba/dao/UserDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/dao/UserDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/service/Impl/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/service/UserService.class" afterDir="false" />
+    <list default="true" id="d8fa654a-04bb-4fcc-9692-3570e09eadb3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/lvbaba/service/impl/UserServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lvbaba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lvbaba.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Area.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Flight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Flightdetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Flightdetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Orderdatail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Orderdatail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Roomdetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Roomdetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Tour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Train.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Train.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Traindetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Traindetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Userinfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Userinfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Userorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lvbaba/entity/Userorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Area.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Area.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Flight.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Flight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Flightdetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Flightdetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Hotel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Orderdatail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Orderdatail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Roomdetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Roomdetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Tour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Train.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Train.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Traindetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Traindetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Userinfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Userinfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Userorder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lvbaba/entity/Userorder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,22 +87,23 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.lvbaba.service.impl" />
       <recent name="com.lvbaba.dao" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Work\idea\lvbaba\src\main\resources\com\lvbaba\dao" />
-      <recent name="D:\Work\idea\lvbaba\src\main\resources" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Work\idea\lvbaba\src\main\resources" />
       <recent name="D:\Work\idea\lvbaba\src\main\webapp\js" />
       <recent name="D:\Work\idea\lvbaba\src\main\webapp\WEB-INF\jsp" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Work\idea\lvbaba\src\main\resources\com\lvbaba\dao" />
+      <recent name="D:\Work\idea\lvbaba\src\main\resources" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserDaoTest.testLogin">
+  <component name="RunManager" selected="JUnit.UserServiceImplTest.test">
     <configuration name="UserDaoTest.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lvbaba" />
       <extension name="coverage">
@@ -134,6 +115,22 @@
       <option name="PACKAGE_NAME" value="com.lvbaba.dao" />
       <option name="MAIN_CLASS_NAME" value="com.lvbaba.dao.UserDaoTest" />
       <option name="METHOD_NAME" value="testLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceImplTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lvbaba" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lvbaba.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lvbaba.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.lvbaba.service.impl.UserServiceImplTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -214,9 +211,11 @@
     <list>
       <item itemvalue="JUnit.UserDaoTest.testLogin" />
       <item itemvalue="Tomcat Server.Tomcat 8.0.351" />
+      <item itemvalue="JUnit.UserServiceImplTest.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceImplTest.test" />
         <item itemvalue="JUnit.UserDaoTest.testLogin" />
       </list>
     </recent_temporary>
@@ -234,7 +233,7 @@
       <workItem from="1602661730334" duration="5121000" />
       <workItem from="1602752019063" duration="1620000" />
       <workItem from="1602835093872" duration="12984000" />
-      <workItem from="1603069611072" duration="593000" />
+      <workItem from="1603069611072" duration="960000" />
     </task>
     <task id="LOCAL-00001" summary="实体类的生成">
       <created>1602836064672</created>
@@ -271,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602838063881</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="测试了刀层的接口以及数据库语句">
+      <created>1603070340354</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603070340355</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,17 +285,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="实体类的生成" />
-    <option name="LAST_COMMIT_MESSAGE" value="实体类的生成" />
+    <MESSAGE value="测试了刀层的接口以及数据库语句" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试了刀层的接口以及数据库语句" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="94" key="#Project_Structure" timestamp="1602847000180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1602847000180" />
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602845674730">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603070494597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602845674730" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603070494597" />
     <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1603070182154">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -298,10 +305,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="820" y="142" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1602845626642" />
-    <state x="782" y="82" key="CommitChangelistDialog2" timestamp="1602845132754">
+    <state x="782" y="82" key="CommitChangelistDialog2" timestamp="1603070337732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="782" y="82" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602845132754" />
+    <state x="782" y="82" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1603070337732" />
     <state x="1061" y="257" key="FileChooserDialogImpl" timestamp="1602836947226">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -310,22 +317,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1021" y="421" width="256" height="297" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602836389011" />
-    <state width="1877" height="343" key="GridCell.Tab.0.bottom" timestamp="1603070045070">
+    <state width="1877" height="300" key="GridCell.Tab.0.bottom" timestamp="1603070565397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="343" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603070045070" />
-    <state width="1877" height="343" key="GridCell.Tab.0.center" timestamp="1603070045070">
+    <state width="1877" height="300" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603070565397" />
+    <state width="1877" height="300" key="GridCell.Tab.0.center" timestamp="1603070565397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="343" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603070045070" />
-    <state width="1877" height="343" key="GridCell.Tab.0.left" timestamp="1603070045070">
+    <state width="1877" height="300" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603070565397" />
+    <state width="1877" height="300" key="GridCell.Tab.0.left" timestamp="1603070565396">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="343" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603070045070" />
-    <state width="1877" height="343" key="GridCell.Tab.0.right" timestamp="1603070045070">
+    <state width="1877" height="300" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603070565396" />
+    <state width="1877" height="300" key="GridCell.Tab.0.right" timestamp="1603070565397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="343" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603070045070" />
+    <state width="1877" height="300" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603070565397" />
     <state width="1293" height="351" key="GridCell.Tab.1.bottom" timestamp="1602851425160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -382,10 +389,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="942" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602837664965" />
-    <state x="731" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1602846924904">
+    <state x="731" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1603070380228">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="731" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602846924904" />
+    <state x="731" y="314" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603070380228" />
     <state x="858" y="310" key="git4idea.merge.GitPullDialog" timestamp="1602837642331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
