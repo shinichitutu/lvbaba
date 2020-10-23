@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.FlightDao">
+
     <insert id="insertFlight" parameterType="Flight">
         insert into flight(f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price)
         values(#{fNumber},#{fCompany},#{fDTime},#{fATime},#{dAId},#{aAreaId},#{fCapacity},#{fPrice})
     </insert>
-        <update id="updateFlightById" parameterType="Flight">
-            update flight <set>
-            <if test="fNumber!=null and f_number!=''">f_numnber = #{fNumber},</if>
-            <if test="fCompany!=null and fCompany!=''">f_company = #{fCompany},</if>
-            <if test="fDTime!=null and fDTime!=''">f_d_time = #{fDTime},</if>
-            <if test="fATime!=null and fATime!=''">f_a_time = #{fATime},</if>
-            <if test="dAId!=null and dAId!=''">d_a_id = #{dAId},</if>
-            <if test="aAreaId!=null and aAreaId!=''">a_area_id = #{aAreaId},</if>
-            <if test="fCapacity!=null and fCapacity!=''">f_capacity = #{fCapacity},</if>
-            <if test="fPrice!=null and fPrice!=''">f_price = #{fPrice}</if>
-        </set> <where>
-            <if test="fId!=null and fId!=''">f_id = #{fId}</if>
-        </where>
+
+
+    <update id="updateFlightById" parameterType="Flight">
+        update flight <set>
+        <if test="fNumber!=null and f_number!=''">f_numnber = #{fNumber},</if>
+        <if test="fCompany!=null and fCompany!=''">f_company = #{fCompany},</if>
+        <if test="fDTime!=null and fDTime!=''">f_d_time = #{fDTime},</if>
+        <if test="fATime!=null and fATime!=''">f_a_time = #{fATime},</if>
+        <if test="dAId!=null and dAId!=''">d_a_id = #{dAId},</if>
+        <if test="aAreaId!=null and aAreaId!=''">a_area_id = #{aAreaId},</if>
+        <if test="fCapacity!=null and fCapacity!=''">f_capacity = #{fCapacity},</if>
+        <if test="fPrice!=null and fPrice!=''">f_price = #{fPrice}</if>
+    </set> <where>
+        <if test="fId!=null and fId!=''">f_id = #{fId}</if>
+    </where>
     </update>
+
+
     <delete id="deleteFlightById" parameterType="Flight">
         delete from flight where f_id = #{fId}
     </delete>
+
+
     <select id="queryFlightAndDatailBydAIdAndAAreaId" parameterType="Flight" resultMap="flightMap">
         select f.f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price,fd_id,fd_date,fd_tickets,ratio
         from flight f,flightdetail fd where d_a_id = #{dAId} and a_area_id = #{aAreaId} and f.f_id = fd.f_id
     </select>
+
+
     <resultMap id="flightMap" type="Flight">
         <id property="fId" column="f_id"/>
         <result property="fNumber" column="f_number"/>
