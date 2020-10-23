@@ -16,6 +16,8 @@ public class HotelServiceImpl implements HotelService {
     @Resource
     private HotelDao hotelDao;
 
+
+
     @Override
     public Hotel queryOne(Hotel hotel) {
         if (hotel == null) {
