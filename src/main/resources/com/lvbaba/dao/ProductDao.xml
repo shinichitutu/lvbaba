@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.ProductDao">
+    <sql id="all">p_id,a_area_id,lim_low,lim_up,days,r_id,p_name,p_fee,p_score</sql>
+    <sql id="condition">
+        <if test="pId!=null and pId!=''">p_id=#{pId}</if>
+        <if test="dAId!=null and dAId !=''">d_a_id=#{dAId}</if>
+        <if test="aAreaId!=null and aAreaId !=''">a_area_id=#{aAreaId}</if>
+        <if test="limLow!=null and limLow !=''">lim_low=#{limLow}</if>
+        <if test="limUp!=null and limUp !=''">lim_up=#{limUp}</if>
+        <if test="days!=null and days !=''">days=#{days}</if>
+        <if test="rId!=null and rId !=''">r_id=#{rId}</if>
+        <if test="pName!=null and pName !=''">p_name=#{pName}</if>
+        <if test="pFee!=null and pFee !=''">p_fee=#{pFee}</if>
+        <if test="pScore!=null and pScore !=''">p_score=#{pScore}</if>
+    </sql>
+    <insert id="insertProduct">
+        INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, r_id, p_name, p_fee, p_score) VALUE
+        (${dAId},${aAreaId},${limLow},${limUp},${days},${rId},${pName},${pFee},${pScore})
+    </insert>
+    <update id="updateProduct">
+        UPDATE product
+        <set>
+            <if test="dAId!=null and dAId !=''">d_a_id=#{dAId},</if>
+            <if test="aAreaId!=null and aAreaId !=''">a_area_id=#{aAreaId},</if>
+            <if test="limLow!=null and limLow !=''">lim_low=#{limLow},</if>
+            <if test="limUp!=null and limUp !=''">lim_up=#{limUp},</if>
+            <if test="days!=null and days !=''">days=#{days},</if>
+            <if test="rId!=null and rId !=''">r_id=#{rId},</if>
+            <if test="pName!=null and pName !=''">p_name=#{pName},</if>
+            <if test="pFee!=null and pFee !=''">p_fee=#{pFee},</if>
+            <if test="pScore!=null and pScore !=''">p_score=#{pScore},</if>
+        </set>
+    </update>
+    <delete id="removeProduct">
+        delete from product where p_id=#{pId}
+    </delete>
+    <select id="query" resultMap="productMap">
+        SELECT <include refid="all"/> from product
+        <where>
+            <include refid="condition"></include>
+        </where>
+    </select>
+    <select id="queryAll" resultMap="productMap">
+        select <include refid="all"/> from product;
+    </select>
+    <resultMap id="productMap" type="Product">
+        <id property="pId" column="p_id"></id>
+        <result property="dAId" column="d_a_id"/>
+        <result property="aAreaId" column="a_area_id"/>
+        <result property="limLow" column="lim_low"/>
+        <result property="limUp" column="lim_up"/>
+        <result property="days" column="days"/>
+        <result property="rId" column="r_id"/>
+        <result property="pName" column="p_name"/>
+        <result property="pFee" column="p_fee"/>
+        <result property="pScore" column="p_score"/>
+    </resultMap>
+</mapper>
