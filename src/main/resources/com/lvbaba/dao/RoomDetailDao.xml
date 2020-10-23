@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.RoomDetailDao">
+
+    <insert id="insertRoomDetail" parameterType="Roomdetail">
+        INSERT INTO roomdetail(r_id,r_date,rd_price,rd_number) VALUES (#{rId},#{rDate},#{rdPrice},#{rdNumber});
+    </insert>
+
+    <update id="updateRoomDetail" parameterType="Roomdetail">
+        UPDATE roomdetail SET
+        <if test="rId!=null and rId!=''">
+            r_id = #{rId},
+        </if>
+        <if test="rDate!=null and rDate!=''">
+            r_date = #{rDate},
+        </if>
+        <if test="rdPrice!=null and rdPrice!=''">
+            rd_price = #{rdPrice},
+        </if>
+        <if test="rdNumber!=null and rdNumber!=''">
+            rd_number =#{rdNumber}
+        </if>
+        where rdId =#{rdId}
+    </update>
+
+    <delete id="deleteRoomDetail" parameterType="Roomdetail">
+        DELETE FROM roomdetail WHERE rd_id = #{rdId};
+    </delete>
+
+    <select id="queryOne" parameterType="Roomdetail" resultMap="roomdetailMap">
+        SELECT rd_id,r_id,r_date,rd_price,rd_number FROM roomdetail WHERE rd_id= #{rdId};
+    </select>
+
+    <select id="query" resultMap="roomdetailMap" parameterType="Roomdetail">
+        SELECT rd_id,r_id,r_date,rd_price,rd_number FROM roomdetail
+        <where>
+            <if test="rdId!=null and rdId!=''">
+                rd_id =#{rdId}
+            </if>
+            <if test="rId!=null and rId!=''">
+                and r_id = #{rId}
+            </if>
+            <if test="rDate!=null and rDate!=''">
+                and r_date = #{rDate}
+            </if>
+            <if test="rdPrice!=null and rdPrice!=''">
+                and rd_price = #{rdPrice}
+            </if>
+            <if test="rdNumber!=null and rdNumber!=''">
+                and rd_number =#{rdNumber}
+            </if>
+        </where>
+    </select>
+
+
+    <resultMap id="roomdetailMap" type="Roomdetail">
+        <id property="rdId" column="rd_id"/>
+        <result property="rId" column="r_id"/>
+        <result property="rDate" column="r_date"/>
+        <result property="rdPrice" column="rd_price"/>
+        <result property="rdNumber" column="rd_number"/>
+    </resultMap>
+</mapper>
