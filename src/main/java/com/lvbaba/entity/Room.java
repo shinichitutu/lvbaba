@@ -9,38 +9,35 @@ public class Room {
   private long pLimit;
 
 
-  public long getRId() {
+  public long getrId() {
     return rId;
   }
 
-  public void setRId(long rId) {
+  public void setrId(long rId) {
     this.rId = rId;
   }
 
-
-  public long getHId() {
+  public long gethId() {
     return hId;
   }
 
-  public void setHId(long hId) {
+  public void sethId(long hId) {
     this.hId = hId;
   }
 
-
-  public long getRNumber() {
+  public long getrNumber() {
     return rNumber;
   }
 
-  public void setRNumber(long rNumber) {
+  public void setrNumber(long rNumber) {
     this.rNumber = rNumber;
   }
 
-
-  public long getPLimit() {
+  public long getpLimit() {
     return pLimit;
   }
 
-  public void setPLimit(long pLimit) {
+  public void setpLimit(long pLimit) {
     this.pLimit = pLimit;
   }
 

@@ -8,14 +8,13 @@ public class Area {
   private String city;
 
 
-  public long getAId() {
+  public long getaId() {
     return aId;
   }
 
-  public void setAId(long aId) {
+  public void setaId(long aId) {
     this.aId = aId;
   }
-
 
   public String getCountry() {
     return country;
@@ -24,7 +23,6 @@ public class Area {
   public void setCountry(String country) {
     this.country = country;
   }
-
 
   public String getCity() {
     return city;

@@ -20,7 +20,6 @@ public class Train {
     this.trId = trId;
   }
 
-
   public String getTrNumber() {
     return trNumber;
   }
@@ -28,7 +27,6 @@ public class Train {
   public void setTrNumber(String trNumber) {
     this.trNumber = trNumber;
   }
-
 
   public String getTrDTime() {
     return trDTime;
@@ -38,24 +36,21 @@ public class Train {
     this.trDTime = trDTime;
   }
 
-
-  public long getDAId() {
+  public long getdAId() {
     return dAId;
   }
 
-  public void setDAId(long dAId) {
+  public void setdAId(long dAId) {
     this.dAId = dAId;
   }
 
-
-  public long getAAreaId() {
+  public long getaAreaId() {
     return aAreaId;
   }
 
-  public void setAAreaId(long aAreaId) {
+  public void setaAreaId(long aAreaId) {
     this.aAreaId = aAreaId;
   }
-
 
   public long getTrCapacity() {
     return trCapacity;
@@ -64,7 +59,6 @@ public class Train {
   public void setTrCapacity(long trCapacity) {
     this.trCapacity = trCapacity;
   }
-
 
   public double getTrPrice() {
     return trPrice;

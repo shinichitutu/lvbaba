@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.TrainDao">
+    <insert id="insertTrain" parameterType="Train">
+        insert into train(tr_number,tr_d_time,d_a_id,a_area_id,tr_capacity,tr_price)
+        values(#{trNumber},#{trDTime},#{dAId},#{aAreaId},#{trCapacity},#{trPrice})
+    </insert>
+    <update id="updateTrainById" parameterType="Train">
+        update train <set>
+        <if test="trNumber!=null and trNumber!=''">tr_numnber = #{trNumber},</if>
+        <if test="trDTime!=null and trDTime!=''">tr_d_time = #{trDTime},</if>
+        <if test="dAId!=null and dAId!=''">d_a_id = #{dAId},</if>
+        <if test="aAreaId!=null and aAreaId!=''">a_area_id = #{aAreaId},</if>
+        <if test="trCapacity!=null and trCapacity!=''">tr_capacity = #{trCapacity},</if>
+        <if test="trPrice!=null and trPrice!=''">tr_price = #{trPrice}</if>
+    </set> <where>
+        <if test="trId!=null and trId!=''">tr_id = #{trId}</if>
+    </where>
+    </update>
+    <delete id="deleteTrainById" parameterType="Train">
+        delete from train where tr_id = #{trId}
+    </delete>
+    <select id="queryTrainAndDatailBydAIdAndAAreaId" parameterType="Train" resultMap="trainMap">
+        select tr.tr_id,tr_number,tr_d_time,d_a_id,a_area_id,tr_capacity,tr_price,td_id,td_date,td_tickets
+        from train tr,traindetail td where d_a_id = #{dAId} and a_area_id = #{aAreaId} and tr.tr_id = td.tr_id
+    </select>
+    <resultMap id="trainMap" type="Train">
+        <id property="trId" column="tr_id"/>
+        <result property="trNumber" column="tr_number"/>
+        <result property="trDTime" column="tr_d_time"/>
+        <result property="dAId" column="d_a_id"/>
+        <result property="aAreaId" column="a_area_id"/>
+        <result property="trCapacity" column="tr_capacity"/>
+        <result property="trPrice" column="tr_price"/>
+        <collection property="traindetailList" ofType="Traindetail">
+            <id property="tdId" column="td_id"/>
+            <result property="trId" column="tr_id"/>
+            <result property="tdDate" column="td_date"/>
+            <result property="tdTickets" column="td_tickets"/>
+        </collection>
+    </resultMap>
+</mapper>

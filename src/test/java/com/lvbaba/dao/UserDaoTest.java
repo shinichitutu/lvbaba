@@ -20,10 +20,10 @@ public class UserDaoTest {
     @Test
     public  void testLogin(){
         User user = new User();
-        user.setUUsername("wangerhu");
-        user.setUName("王二虎");
-        user.setUPassword("123");
-        user.setUId(3);
+        user.setuUsername("wangerhu");
+        user.setuName("王二虎");
+        user.setuPassword("123");
+        user.setuId(3);
         User user1 = userDao.queryByUserName(user);
         System.out.println(user1);
         assertNotNull(user1);

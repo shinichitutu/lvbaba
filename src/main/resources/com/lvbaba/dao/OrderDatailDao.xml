@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.OrderdatailDao">
+    <insert id="insertOrderDetail" parameterType="Orderdatail">
+        insert into orderdatail(o_id,od_person,od_idcard,od_phone)values(#{oId},#{odPerson},#{odIdcard},#{odPhone})
+    </insert>
+    <update id="updateOrderDatailById" parameterType="Orderdatail">
+        update orderdatail <set>
+        <if test="odPerson!=null and odPerson!=''">od_person = #{odPerson},</if>
+        <if test="odIdcard!=null and odIdcard!=''">od_idcard = #{odIdcard},</if>
+        <if test="odPhone!=null and odPhone!=''">od_phone = #{odPhone},</if>
+    </set> where od_id = #{odId}
+    </update>
+    <delete id="deleteOrderDatailById" parameterType="Orderdatail">
+        delete from orderdatail where od_id = #{odId}
+    </delete>
+    <select id="queryOrderDatailByOId" parameterType="Orderdatail" resultMap="ordMap">
+        select od_id,o_id,od_person,od_idcard,od_phone from orderdatail where o_id = #{oId}
+    </select>
+    <resultMap id="ordMap" type="Orderdatail">
+        <id property="odId" column="od_id"/>
+        <result property="oId" column="o_id"/>
+        <result property="odPerson" column="od_person"/>
+        <result property="odIdcard" column="od_idcard"/>
+        <result property="odPhone" column="od_phone"/>
+    </resultMap>
+</mapper>

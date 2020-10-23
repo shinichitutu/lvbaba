@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.CommentDao">
+    <insert id="insertCommentByUid" parameterType="Comment">
+        insert into comment(u_id,p_id,content,score)values(#{uId},#{pId},#{content},#{score})
+    </insert>
+    <update id="updateCommentById" parameterType="Comment">
+        update comment <set>
+        <if test="content!=null and content!=''">content = #{content},</if>
+        <if test="score!=null and score!=''">score = #{score}</if>
+    </set><where>
+        <if test="cId!=null and cId!=''">and c_id = #{cId}</if>
+    </where>
+    </update>
+    <delete id="deleteCommentById" parameterType="Comment">
+        delete from comment where c_id = #{cId}
+    </delete>
+    <select id="queryCommentByUidAndPid" parameterType="Comment" resultMap="comMap">
+        select c_id,u_id,p_id,content,score from comment <where>
+        <if test="u_id!=null and u_id!=''">u_id = #{uId}</if>
+        <if test="p_id!=null and p_id!=''">and p_id = #{pId}</if>
+        <if test="c_id!=null and c_id!=''">and c_id = #{cId}</if>
+    </where>
+    </select>
+    <resultMap id="comMap" type="Comment">
+        <id property="cId" column="c_id"/>
+        <result property="uId" column="u_id"/>
+        <result property="pId" column="p_id"/>
+        <result property="content" column="content"/>
+        <result property="score" column="score"/>
+    </resultMap>
+</mapper>
