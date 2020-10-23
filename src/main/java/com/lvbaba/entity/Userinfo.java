@@ -18,15 +18,13 @@ public class Userinfo {
     this.uiId = uiId;
   }
 
-
-  public long getUId() {
+  public long getuId() {
     return uId;
   }
 
-  public void setUId(long uId) {
+  public void setuId(long uId) {
     this.uId = uId;
   }
-
 
   public String getPerson() {
     return person;
@@ -36,7 +34,6 @@ public class Userinfo {
     this.person = person;
   }
 
-
   public String getIdcard() {
     return idcard;
   }
@@ -44,7 +41,6 @@ public class Userinfo {
   public void setIdcard(String idcard) {
     this.idcard = idcard;
   }
-
 
   public String getPhone() {
     return phone;

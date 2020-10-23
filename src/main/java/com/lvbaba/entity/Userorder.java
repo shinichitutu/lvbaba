@@ -9,48 +9,43 @@ public class Userorder {
   private double oPrice;
   private String oStatus;
 
-
-  public long getOId() {
+  public long getoId() {
     return oId;
   }
 
-  public void setOId(long oId) {
+  public void setoId(long oId) {
     this.oId = oId;
   }
 
-
-  public long getUId() {
+  public long getuId() {
     return uId;
   }
 
-  public void setUId(long uId) {
+  public void setuId(long uId) {
     this.uId = uId;
   }
 
-
-  public long getTId() {
+  public long gettId() {
     return tId;
   }
 
-  public void setTId(long tId) {
+  public void settId(long tId) {
     this.tId = tId;
   }
 
-
-  public double getOPrice() {
+  public double getoPrice() {
     return oPrice;
   }
 
-  public void setOPrice(double oPrice) {
+  public void setoPrice(double oPrice) {
     this.oPrice = oPrice;
   }
 
-
-  public String getOStatus() {
+  public String getoStatus() {
     return oStatus;
   }
 
-  public void setOStatus(String oStatus) {
+  public void setoStatus(String oStatus) {
     this.oStatus = oStatus;
   }
 

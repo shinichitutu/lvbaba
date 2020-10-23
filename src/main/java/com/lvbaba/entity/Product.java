@@ -14,33 +14,29 @@ public class Product {
   private String pFee;
   private double pScore;
 
-
-  public long getPId() {
+  public long getpId() {
     return pId;
   }
 
-  public void setPId(long pId) {
+  public void setpId(long pId) {
     this.pId = pId;
   }
 
-
-  public long getDAId() {
+  public long getdAId() {
     return dAId;
   }
 
-  public void setDAId(long dAId) {
+  public void setdAId(long dAId) {
     this.dAId = dAId;
   }
 
-
-  public long getAAreaId() {
+  public long getaAreaId() {
     return aAreaId;
   }
 
-  public void setAAreaId(long aAreaId) {
+  public void setaAreaId(long aAreaId) {
     this.aAreaId = aAreaId;
   }
-
 
   public long getLimLow() {
     return limLow;
@@ -50,7 +46,6 @@ public class Product {
     this.limLow = limLow;
   }
 
-
   public long getLimUp() {
     return limUp;
   }
@@ -58,7 +53,6 @@ public class Product {
   public void setLimUp(long limUp) {
     this.limUp = limUp;
   }
-
 
   public long getDays() {
     return days;
@@ -68,39 +62,35 @@ public class Product {
     this.days = days;
   }
 
-
-  public long getRId() {
+  public long getrId() {
     return rId;
   }
 
-  public void setRId(long rId) {
+  public void setrId(long rId) {
     this.rId = rId;
   }
 
-
-  public String getPName() {
+  public String getpName() {
     return pName;
   }
 
-  public void setPName(String pName) {
+  public void setpName(String pName) {
     this.pName = pName;
   }
 
-
-  public String getPFee() {
+  public String getpFee() {
     return pFee;
   }
 
-  public void setPFee(String pFee) {
+  public void setpFee(String pFee) {
     this.pFee = pFee;
   }
 
-
-  public double getPScore() {
+  public double getpScore() {
     return pScore;
   }
 
-  public void setPScore(double pScore) {
+  public void setpScore(double pScore) {
     this.pScore = pScore;
   }
 

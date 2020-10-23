@@ -16,7 +16,6 @@ public class Admin {
     this.adId = adId;
   }
 
-
   public String getAdName() {
     return adName;
   }
@@ -24,7 +23,6 @@ public class Admin {
   public void setAdName(String adName) {
     this.adName = adName;
   }
-
 
   public String getAdPassword() {
     return adPassword;
