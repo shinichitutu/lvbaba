@@ -276,5 +276,6 @@
         <button type="button" class="btn btn-primary" id="register_btn">注册</button>
     </form>
 </div>
+
 </body>
 </html>
