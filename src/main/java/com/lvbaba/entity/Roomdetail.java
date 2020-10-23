@@ -18,24 +18,21 @@ public class Roomdetail {
     this.rdId = rdId;
   }
 
-
-  public long getRId() {
+  public long getrId() {
     return rId;
   }
 
-  public void setRId(long rId) {
+  public void setrId(long rId) {
     this.rId = rId;
   }
 
-
-  public String getRDate() {
+  public String getrDate() {
     return rDate;
   }
 
-  public void setRDate(String rDate) {
+  public void setrDate(String rDate) {
     this.rDate = rDate;
   }
-
 
   public double getRdPrice() {
     return rdPrice;
@@ -44,7 +41,6 @@ public class Roomdetail {
   public void setRdPrice(double rdPrice) {
     this.rdPrice = rdPrice;
   }
-
 
   public long getRdNumber() {
     return rdNumber;

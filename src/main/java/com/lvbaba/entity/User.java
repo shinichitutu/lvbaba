@@ -9,51 +9,45 @@ public class User {
   private long uLevel;
   private double balance;
 
-
-  public long getUId() {
+  public long getuId() {
     return uId;
   }
 
-  public void setUId(long uId) {
+  public void setuId(long uId) {
     this.uId = uId;
   }
 
-
-  public String getUName() {
+  public String getuName() {
     return uName;
   }
 
-  public void setUName(String uName) {
+  public void setuName(String uName) {
     this.uName = uName;
   }
 
-
-  public String getUUsername() {
+  public String getuUsername() {
     return uUsername;
   }
 
-  public void setUUsername(String uUsername) {
+  public void setuUsername(String uUsername) {
     this.uUsername = uUsername;
   }
 
-
-  public String getUPassword() {
+  public String getuPassword() {
     return uPassword;
   }
 
-  public void setUPassword(String uPassword) {
+  public void setuPassword(String uPassword) {
     this.uPassword = uPassword;
   }
 
-
-  public long getULevel() {
+  public long getuLevel() {
     return uLevel;
   }
 
-  public void setULevel(long uLevel) {
+  public void setuLevel(long uLevel) {
     this.uLevel = uLevel;
   }
-
 
   public double getBalance() {
     return balance;

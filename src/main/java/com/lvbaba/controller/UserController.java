@@ -28,7 +28,7 @@ public class UserController {
     @ResponseBody
     public String testUserName(String userName){
         User user1 = new User();
-        user1.setUUsername(userName);
+        user1.setuUsername(userName);
         User user = userService.queryByUserName(user1);
         if (user==null){
             return "true";
@@ -38,11 +38,13 @@ public class UserController {
     }
 
     @RequestMapping("/login.do")
+    @ResponseBody
     public String login(User user, Model model, HttpSession session){
         User user1 = userService.queryByUserName(user);
-        if (user1.getUPassword().equals(user.getUPassword())){
+        System.out.println(user1);
+        if (user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);
-            return "forward:index.jsp";
+            return "redirect:index.jsp";
         }else{
             model.addAttribute("loginError","账号或密码有误");
             return "login";

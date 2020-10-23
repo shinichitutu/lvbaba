@@ -9,7 +9,6 @@ public class Flightdetail {
   private long fdTickets;
   private double ratio;
 
-
   public long getFdId() {
     return fdId;
   }
@@ -18,15 +17,13 @@ public class Flightdetail {
     this.fdId = fdId;
   }
 
-
-  public long getFId() {
+  public long getfId() {
     return fId;
   }
 
-  public void setFId(long fId) {
+  public void setfId(long fId) {
     this.fId = fId;
   }
-
 
   public String getFdDate() {
     return fdDate;
@@ -36,7 +33,6 @@ public class Flightdetail {
     this.fdDate = fdDate;
   }
 
-
   public long getFdTickets() {
     return fdTickets;
   }
@@ -44,7 +40,6 @@ public class Flightdetail {
   public void setFdTickets(long fdTickets) {
     this.fdTickets = fdTickets;
   }
-
 
   public double getRatio() {
     return ratio;

@@ -8,6 +8,7 @@ public class Hotel {
   private String hName;
   private long hLevel;
 
+
   public Hotel(long hId, long aId, String hName, long hLevel) {
     this.hId = hId;
     this.aId = aId;

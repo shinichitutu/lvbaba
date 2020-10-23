@@ -19,14 +19,14 @@ public interface FlightDao {
      * @param flight
      * @return
      */
-    boolean deleteFlight(Flight flight);
+    boolean deleteFlightById(Flight flight);
 
     /**
      * 更新航班信息
      * @param flight
      * @return
      */
-    boolean updateFlight(Flight flight);
+    boolean updateFlightById(Flight flight);
 
     /**
      * 通过航班的出发地和目的地ID查询对应航班信息

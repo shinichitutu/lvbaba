@@ -13,50 +13,45 @@ public class Tour {
   private String tStatus;
 
 
-  public long getTId() {
+  public long gettId() {
     return tId;
   }
 
-  public void setTId(long tId) {
+  public void settId(long tId) {
     this.tId = tId;
   }
 
-
-  public long getPId() {
+  public long getpId() {
     return pId;
   }
 
-  public void setPId(long pId) {
+  public void setpId(long pId) {
     this.pId = pId;
   }
 
-
-  public String getDDate() {
+  public String getdDate() {
     return dDate;
   }
 
-  public void setDDate(String dDate) {
+  public void setdDate(String dDate) {
     this.dDate = dDate;
   }
 
-
-  public String getRDate() {
+  public String getrDate() {
     return rDate;
   }
 
-  public void setRDate(String rDate) {
+  public void setrDate(String rDate) {
     this.rDate = rDate;
   }
 
-
-  public String getCType() {
+  public String getcType() {
     return cType;
   }
 
-  public void setCType(String cType) {
+  public void setcType(String cType) {
     this.cType = cType;
   }
-
 
   public long getGoId() {
     return goId;
@@ -66,7 +61,6 @@ public class Tour {
     this.goId = goId;
   }
 
-
   public long getReturnId() {
     return returnId;
   }
@@ -74,7 +68,6 @@ public class Tour {
   public void setReturnId(long returnId) {
     this.returnId = returnId;
   }
-
 
   public long getBookNum() {
     return bookNum;
@@ -84,12 +77,11 @@ public class Tour {
     this.bookNum = bookNum;
   }
 
-
-  public String getTStatus() {
+  public String gettStatus() {
     return tStatus;
   }
 
-  public void setTStatus(String tStatus) {
+  public void settStatus(String tStatus) {
     this.tStatus = tStatus;
   }
 

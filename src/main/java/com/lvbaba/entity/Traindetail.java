@@ -8,7 +8,6 @@ public class Traindetail {
   private String tdDate;
   private long tdTickets;
 
-
   public long getTdId() {
     return tdId;
   }
@@ -16,7 +15,6 @@ public class Traindetail {
   public void setTdId(long tdId) {
     this.tdId = tdId;
   }
-
 
   public long getTrId() {
     return trId;
@@ -26,7 +24,6 @@ public class Traindetail {
     this.trId = trId;
   }
 
-
   public String getTdDate() {
     return tdDate;
   }
@@ -34,7 +31,6 @@ public class Traindetail {
   public void setTdDate(String tdDate) {
     this.tdDate = tdDate;
   }
-
 
   public long getTdTickets() {
     return tdTickets;

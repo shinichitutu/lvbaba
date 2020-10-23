@@ -2,6 +2,8 @@ package com.lvbaba.service.impl;
 
 import com.lvbaba.dao.FlightDao;
 import com.lvbaba.dao.FlightDatailDao;
+import com.lvbaba.dao.TrainDao;
+import com.lvbaba.dao.TrainDetailDao;
 import com.lvbaba.entity.Flight;
 import com.lvbaba.entity.Flightdetail;
 import com.lvbaba.service.TransportationService;
@@ -20,39 +22,64 @@ public class TransportationServiceImpl implements TransportationService{
     private FlightDao flightDao;
     @Resource
     private FlightDatailDao flightDatailDao;
+    @Resource
+    private TrainDao trainDao;
+    @Resource
+    private TrainDetailDao trainDetailDao;
 
     @Override
     public boolean insertFlight(Flight flight) {
-        return false;
+        if (flight==null) {
+            return false;
+        }
+        return flightDao.insertFlight(flight);
     }
 
     @Override
     public boolean deleteFlight(Flight flight) {
-        return false;
+        if (flight==null) {
+            return false;
+        }
+        return flightDao.deleteFlightById(flight);
     }
 
     @Override
     public boolean updateFlight(Flight flight) {
-        return false;
+        if (flight==null) {
+            return false;
+        }
+        return flightDao.updateFlightById(flight);
     }
 
     @Override
     public List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight) {
-        return null;
+        if (flight==null) {
+            return null;
+        }
+        return flightDao.queryFlightAndDatailBydAIdAndAAreaId(flight);
     }
 
     @Override
     public boolean insertFlightDatail(Flightdetail flightdetail) {
-        return false;
+        if (flightdetail==null) {
+            return false;
+        }
+        return flightDatailDao.insertFlightDatail(flightdetail);
     }
 
     @Override
     public boolean updateFlightDatailById(Flightdetail flightdetail) {
-        return false;
+        if (flightdetail==null) {
+            return false;
+        }
+        return flightDatailDao.updateFlightDatailById(flightdetail);
     }
 
     @Override
     public boolean deleteFlightDatailById(Flightdetail flightdetail) {
-        return false;
+        if (flightdetail==null) {
+            return false;
+        }
+        return flightDatailDao.deleteFlightDatailById(flightdetail);
     }
 }

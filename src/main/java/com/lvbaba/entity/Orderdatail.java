@@ -9,7 +9,6 @@ public class Orderdatail {
   private String odIdcard;
   private String odPhone;
 
-
   public long getOdId() {
     return odId;
   }
@@ -18,15 +17,13 @@ public class Orderdatail {
     this.odId = odId;
   }
 
-
-  public long getOId() {
+  public long getoId() {
     return oId;
   }
 
-  public void setOId(long oId) {
+  public void setoId(long oId) {
     this.oId = oId;
   }
-
 
   public String getOdPerson() {
     return odPerson;
@@ -36,7 +33,6 @@ public class Orderdatail {
     this.odPerson = odPerson;
   }
 
-
   public String getOdIdcard() {
     return odIdcard;
   }
@@ -44,7 +40,6 @@ public class Orderdatail {
   public void setOdIdcard(String odIdcard) {
     this.odIdcard = odIdcard;
   }
-
 
   public String getOdPhone() {
     return odPhone;

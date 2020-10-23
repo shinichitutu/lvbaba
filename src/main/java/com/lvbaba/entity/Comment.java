@@ -9,33 +9,29 @@ public class Comment {
   private String content;
   private double score;
 
-
-  public long getCId() {
+  public long getcId() {
     return cId;
   }
 
-  public void setCId(long cId) {
+  public void setcId(long cId) {
     this.cId = cId;
   }
 
-
-  public long getUId() {
+  public long getuId() {
     return uId;
   }
 
-  public void setUId(long uId) {
+  public void setuId(long uId) {
     this.uId = uId;
   }
 
-
-  public long getPId() {
+  public long getpId() {
     return pId;
   }
 
-  public void setPId(long pId) {
+  public void setpId(long pId) {
     this.pId = pId;
   }
-
 
   public String getContent() {
     return content;
@@ -44,7 +40,6 @@ public class Comment {
   public void setContent(String content) {
     this.content = content;
   }
-
 
   public double getScore() {
     return score;
