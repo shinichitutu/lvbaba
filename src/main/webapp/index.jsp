@@ -22,7 +22,11 @@
     <script src="js/jquery-3.1.0.js"></script>
 </head>
 <body>
+
 <a href="toLoginView.do">登录</a><br/>
     ${sessionScope.user.uName}
+
+<a href="showHotels.do">查看酒店</a>
+
 </body>
 </html>

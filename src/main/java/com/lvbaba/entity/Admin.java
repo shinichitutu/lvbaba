@@ -8,6 +8,7 @@ public class Admin {
   private String adPassword;
 
 
+
   public long getAdId() {
     return adId;
   }
