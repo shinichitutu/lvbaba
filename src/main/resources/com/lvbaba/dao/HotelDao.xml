@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.HotelDao">
+
+    <insert id="insertHotel" parameterType="Hotel">
+        INSERT INTO hotel(a_id,h_name,h_level) VALUES (#{aId},#{hName},#{hLevel})
+    </insert>
+
+    <update id="updateHotel" parameterType="Hotel">
+        UPDATE hotel SET
+        <if test="aId!=null and aId!=''">
+            a_id = #{aId},
+        </if>
+        <if test="hName!=null and hName!=''">
+            h_name = #{hName},
+        </if>
+        <if test="hLevel!=null and hLevel!=''">
+            h_level =#{hLevel}
+        </if>
+        where h_id = #{hId}
+    </update>
+
+    <delete id="deleteHotel" parameterType="Hotel">
+        DELETE FROM hotel WHERE h_id = #{hId}
+    </delete>
+
+    <select id="queryOne" parameterType="Hotel" resultMap="hotelMap">
+      SELECT h_id,a_id,h_name,h_level FROM hotel WHERE h_id = #{hId}
+    </select>
+
+    <select id="query" parameterType="Hotel" resultMap="hotelMap">
+        SELECT h_id,a_id,h_name,h_level FROM hotel
+        <where>
+            <if test="hId!=null and hId!=''">
+                h_id = #{hId}
+            </if>
+            <if test="aId!=null and aId!=''">
+                and a_id = #{aId}
+            </if>
+            <if test="hName!=null and hName!=''">
+                and h_name = #{hName}
+            </if>
+            <if test="hLevel!=null and hLevel!=''">
+                and h_level =#{hLevel}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="hotelMap" type="Hotel">
+        <id property="hId" column="h_id"/>
+        <result property="aId" column="a_id"/>
+        <result property="hName" column="h_name"/>
+        <result property="hLevel" column="h_level"/>
+    </resultMap>
+
+</mapper>
