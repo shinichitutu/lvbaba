@@ -8,39 +8,45 @@ public class Hotel {
   private String hName;
   private long hLevel;
 
+  public Hotel(long hId, long aId, String hName, long hLevel) {
+    this.hId = hId;
+    this.aId = aId;
+    this.hName = hName;
+    this.hLevel = hLevel;
+  }
 
-  public long getHId() {
+  public Hotel() {
+  }
+
+  public long gethId() {
     return hId;
   }
 
-  public void setHId(long hId) {
+  public void sethId(long hId) {
     this.hId = hId;
   }
 
-
-  public long getAId() {
+  public long getaId() {
     return aId;
   }
 
-  public void setAId(long aId) {
+  public void setaId(long aId) {
     this.aId = aId;
   }
 
-
-  public String getHName() {
+  public String gethName() {
     return hName;
   }
 
-  public void setHName(String hName) {
+  public void sethName(String hName) {
     this.hName = hName;
   }
 
-
-  public long getHLevel() {
+  public long gethLevel() {
     return hLevel;
   }
 
-  public void setHLevel(long hLevel) {
+  public void sethLevel(long hLevel) {
     this.hLevel = hLevel;
   }
 

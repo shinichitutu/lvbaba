@@ -21,8 +21,11 @@ public class HotelController {
     @RequestMapping("/showHotels.do")
     public String showHotels(Model model){
         Hotel hotel = new Hotel();
-        List<Hotel> list = hotelService.query(hotel);
-        model.addAttribute("hotelList",list);
+        List<Hotel> hotelList = hotelService.query(hotel);
+        for (Hotel h:hotelList) {
+            System.out.println(h);
+        }
+        model.addAttribute("hotelList",hotelList);
         return "showHotels";
     }
 }

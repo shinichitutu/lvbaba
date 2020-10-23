@@ -23,5 +23,7 @@
 </head>
 <body>
 <a href="toLoginView.do">登录</a>
+
+<a href="showHotels.do">查看酒店</a>
 </body>
 </html>

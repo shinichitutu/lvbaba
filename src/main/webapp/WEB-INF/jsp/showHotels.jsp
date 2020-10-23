@@ -12,6 +12,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
+
 <head>
     <title>Title</title>
     <base href="<%=basePath%>"/>
@@ -21,6 +22,7 @@
 <table>
     <thead>
     <tr>
+        <th>序号</th>
         <th>酒店名称</th>
         <th>所在城市</th>
         <th>酒店等级</th>
@@ -28,16 +30,18 @@
         <th>编辑</th>
         <th>删除</th>
     </tr>
+
     </thead>
     <tbody>
     <c:forEach items="${requestScope.hotelList}" var="hotel" varStatus="status">
         <tr>
             <td>${status.count}</td>
-            <td>${goods.name}</td>
-            <td>${goods.price}</td>
-            <td>${goods.manufacturer}</td>
-
-            <td><a href="showGoodsDetail.do?goodsId=${goods.id}">查看详情</a></td>
+            <td>${hotel.hName}</td>
+            <td>${hotel.aId}</td>
+            <td>${hotel.hLevel}</td>
+            <td></td>
+            <td></td>
+            <td>查看详情</td>
         </tr>
     </c:forEach>
     </tbody>

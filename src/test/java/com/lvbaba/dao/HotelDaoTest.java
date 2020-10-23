@@ -23,7 +23,7 @@ public class HotelDaoTest {
     @Test
     public void test(){
         Hotel hotel = new Hotel();
-        hotel.setHId(1);
+        hotel.sethId(1);
         System.out.println(hotelDao.queryOne(hotel));
     }
 
