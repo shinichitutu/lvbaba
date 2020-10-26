@@ -38,4 +38,12 @@ public class AreaServiceImpl implements AreaService {
         }
         return areaDao.queryOne(area);
     }
+
+    @Override
+    public List<Area> query(Area area) {
+        if(area==null){
+            return null;
+        }
+        return areaDao.query(area);
+    }
 }

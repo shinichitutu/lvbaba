@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 public class HotelController {
+
     @Resource
     private HotelService hotelService;
 
@@ -39,20 +40,34 @@ public class HotelController {
         return "showHotels";
     }
 
-    @RequestMapping("/showRoms.do")
-    public String showRooms(Model model){
+    @RequestMapping("/showRooms.do")
+    public String showRooms(Model model,int hId){
         Room room = new Room();
+        room.sethId(hId);
         List<Room> list =roomService.query(room);
         model.addAttribute("roomList",list);
         return "showRooms";
     }
 
     @RequestMapping("/showRoomDetail.do")
-    public String showRoomDetail(Model model){
+    public String showRoomDetail(Model model,int rId){
+/*        System.out.println(rId);*/
         Roomdetail roomdetail = new Roomdetail();
+        roomdetail.setrId(rId);
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail",list);
         return "showRoomDetail";
+    }
+
+    @RequestMapping("/addHotel.do")
+    public String addHotel(Model model,String aId,String hLevel,String hName){
+        System.out.println(aId);
+        System.out.println(hLevel);
+        System.out.println(hName);
+        Hotel hotel =new Hotel(Long.valueOf(aId),hName,Long.valueOf(hLevel));
+        hotelService.insertHotel(hotel);
+        model.addAttribute("success","添加成功");
+        return "forward:showHotels.do";
     }
 
 }

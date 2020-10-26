@@ -23,4 +23,7 @@ public interface AreaDao {
 
     Area queryOne(Area area);
 
+    List<Area> query(Area area);
+
+
 }

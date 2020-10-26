@@ -11,4 +11,6 @@ public interface AreaService {
     List<Area> queryCityByCountry(Area area);
 
     Area queryOne(Area area);
+
+    List<Area> query(Area area);
 }
