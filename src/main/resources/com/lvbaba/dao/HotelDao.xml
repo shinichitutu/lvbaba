@@ -3,13 +3,13 @@
 <mapper namespace="com.lvbaba.dao.HotelDao">
 
     <insert id="insertHotel" parameterType="Hotel">
-        INSERT INTO hotel(a_id,h_name,h_level) VALUES (#{aId},#{hName},#{hLevel})
+        INSERT INTO hotel(a_id,h_name,h_level) VALUES (#{areaId},#{hName},#{hLevel})
     </insert>
 
     <update id="updateHotel" parameterType="Hotel">
         UPDATE hotel SET
-        <if test="aId!=null and aId!=''">
-            a_id = #{aId},
+        <if test="areaId!=null and areaId!=''">
+            a_id = #{areaId},
         </if>
         <if test="hName!=null and hName!=''">
             h_name = #{hName},
