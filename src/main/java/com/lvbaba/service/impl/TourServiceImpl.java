@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by YY on 2020/10/20.
  */
-@Service
+@Service("tourService")
 public class TourServiceImpl implements TourService {
     @Resource
     private TourDao tourDao;

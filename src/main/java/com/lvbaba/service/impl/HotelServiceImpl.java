@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by shinichi on 2020/10/23.
  */
-@Service
+@Service("hotelService")
 public class HotelServiceImpl implements HotelService {
     @Resource
     private HotelDao hotelDao;

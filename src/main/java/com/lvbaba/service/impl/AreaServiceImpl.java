@@ -12,7 +12,8 @@ import java.util.List;
  * @author DBY
  * @date 2020/10/23 14:15
  */
-@Service
+
+@Service("areaService")
 public class AreaServiceImpl implements AreaService {
     @Resource
     private AreaDao areaDao;

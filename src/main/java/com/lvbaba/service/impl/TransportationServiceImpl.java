@@ -16,7 +16,7 @@ import java.util.List;
  * @author DBY
  * @date 2020/10/20 16:23
  */
-@Service
+@Service("transportService")
 public class TransportationServiceImpl implements TransportationService{
     @Resource
     private FlightDao flightDao;
