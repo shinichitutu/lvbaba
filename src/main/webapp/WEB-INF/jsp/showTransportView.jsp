@@ -24,6 +24,7 @@
         table{
             /*border-collapse: collapse;*/
             border: 1px solid black;
+            text-align: center;
             /*width: 500px;*/
         }
         td,th{
@@ -31,12 +32,14 @@
         }
     </style>
     <script>
+        function modifyFlight() {
 
+        }
     </script>
 </head>
 <body>
 <div class="container">
-    <h2>交通工具管理</h2>
+    <h3>交通工具管理</h3>
     <br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
@@ -46,7 +49,7 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#trainInfo">火车班次信息</a>
         </li>
-        <li class="nav-item" onclick="location.href='showCountry.do'">
+        <li class="nav-item" onclick="location.href='addTransportView.do'">
             <a class="nav-link" data-toggle="tab" href="showCountry.do">新增交通工具</a>
         </li>
     </ul>
@@ -66,10 +69,12 @@
                         <th>到达时间</th>
                         <th>容量</th>
                         <th>机票价格</th>
+                        <th>修改航班信息</th>
+                        <th>添加详情</th>
                     </tr>
                 </thead>
                 <tbody>
-                <c:if test="${empty requestScope.flightList}"><tr><td colspan="9">暂时还没有航班信息</td></tr></c:if>
+                <c:if test="${empty requestScope.flightList}"><tr><td colspan="11">暂时还没有航班信息</td></tr></c:if>
                         <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
                         <tr>
                             <td>${i.count}</td>
@@ -81,6 +86,8 @@
                             <td>${flight.fATime}</td>
                             <td>${flight.fCapacity}</td>
                             <td>${flight.fPrice}</td>
+                            <td><input type="button" class="modifyFlight" value="修改" onclick="modifyFlight()"></td>
+                            <td><input type="button" class="addFlightDetail" value="增加详情"></td>
                         </c:forEach>
                     </tr>
                 </tbody>
@@ -98,10 +105,12 @@
                     <th>到达时间</th>
                     <th>火车容量</th>
                     <th>火车票价格</th>
+                    <th>修改列车信息</th>
+                    <th>添加详情</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:if test="${empty requestScope.trainList}"><tr><td colspan="8">暂时还没有火车班次信息</td></tr></c:if>
+                <c:if test="${empty requestScope.trainList}"><tr><td colspan="10">暂时还没有火车班次信息</td></tr></c:if>
                 <c:forEach items="${requestScope.trainList}" var="train" varStatus="i">
                 <tr>
                     <td>${i.count}</td>
@@ -112,6 +121,8 @@
                     <td>${train.trATime}</td>
                     <td>${train.trCapacity}</td>
                     <td>${train.trPrice}</td>
+                    <td><input type="button" class="modifyTrain" value="修改"></td>
+                    <td><input type="button" class="addTrainDetail" value="增加详情"></td>
                     </c:forEach>
                 </tr>
                 </tbody>

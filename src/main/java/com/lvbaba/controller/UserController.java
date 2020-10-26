@@ -41,6 +41,7 @@ public class UserController {
     @RequestMapping("/login.do")
     @ResponseBody
     public String login(User user, Model model, HttpSession session){
+        System.out.println(user);
         User user1 = userService.queryByUserName(user);
         System.out.println(user1);
         if (user1.getuPassword().equals(user.getuPassword())){
