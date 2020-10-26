@@ -55,7 +55,7 @@
                         dataType:"json",
                         success:function (obj) {
                             $.each(obj,function (index,item) {
-                                str += "<option value='"+item.aId+"'>"+item.city+"</option>";
+                                str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
                             })
                             $("#d_city").append(str);
                             $("#tr_d_city").append(str);
@@ -80,8 +80,8 @@
                             console.log(obj);
                             $.each(obj,function (index,item) {
                                 console.log(item);
-                                str += "<option value='"+item.aId+"'>"+item.city+"</option>";
-                                console.log(item.aId);
+                                str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
+                                console.log(item.areaId);
                             })
                             $("#a_city").append(str);
                             $("#tr_a_city").append(str);
@@ -96,7 +96,7 @@
                 var fCompany = $("input[name = 'fCompany']").val();
                 var fDTime = $("input[name = 'fDTime']").val();
                 var fATime = $("input[name = 'fATime']").val();
-                var daId = $("#d_city").find("option:selected").val();
+                var dareaId = $("#d_city").find("option:selected").val();
                 var aAreaId = $("#a_city").find("option:selected").val();
                 var fCapacity = $(".f_capacity").val();
                 var fPrice = $(".f_price").val();
