@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.ProductDao">
-    <sql id="all">p_id,a_area_id,lim_low,lim_up,days,r_id,p_name,p_fee,p_score</sql>
+    <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,r_id,p_name,p_fee,p_score</sql>
     <sql id="condition">
         <if test="pId!=null and pId!=''">p_id=#{pId}</if>
         <if test="dAId!=null and dAId !=''">d_a_id=#{dAId}</if>

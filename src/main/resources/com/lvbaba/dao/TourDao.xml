@@ -90,6 +90,6 @@
     </resultMap>
     <insert id="insertTour">
         insert INTO tour(p_id, d_date, r_date, c_type, go_id, return_id, book_num, t_status) VALUE
-        (#{pId},#{dDate},#{rDate},#{cType},#{goId},#{returnId},#{bookNum},#${tStatus})
+        (#{pId},#{dDate},#{rDate},#{cType},#{goId},#{returnId},#{bookNum},#{tStatus})
     </insert>
 </mapper>
