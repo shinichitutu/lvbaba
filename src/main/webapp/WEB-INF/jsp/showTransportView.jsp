@@ -74,13 +74,13 @@
                         <tr>
                             <td>${i.count}</td>
                             <td>${flight.flightNumber}</td>
-                            <td>${flight.fCompany}</td>
+                            <td>${flight.flightCompany}</td>
                             <td>${flight.d_area.country}-${flight.d_area.city}</td>
                             <td>${flight.a_area.country}-${flight.a_area.city}</td>
-                            <td>${flight.fDTime}</td>
-                            <td>${flight.fATime}</td>
-                            <td>${flight.fCapacity}</td>
-                            <td>${flight.fPrice}</td>
+                            <td>${flight.flightDTime}</td>
+                            <td>${flight.flightATime}</td>
+                            <td>${flight.flightCapacity}</td>
+                            <td>${flight.flightPrice}</td>
                         </c:forEach>
                     </tr>
                 </tbody>

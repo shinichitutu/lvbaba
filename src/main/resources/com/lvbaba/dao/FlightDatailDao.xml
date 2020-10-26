@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.FlightDatailDao">
     <insert id="insertFlightDatail" parameterType="Flightdetail">
-        insert into flightdetail(f_id,fd_date,fd_tickets,ratio)values(#{fId},#{fdDate},#{fdTickets},#{ratio})
+        insert into flightdetail(f_id,fd_date,fd_tickets,ratio)values(#{flightId},#{fdDate},#{fdTickets},#{ratio})
     </insert>
     <update id="updateFlightDatailById" parameterType="Flightdetail">
         update flightdetail <set>
-        <if test="fId!=null and fId!=''">f_id = #{fId},</if>
+        <if test="flightId!=null and flightId!=''">f_id = #{flightId},</if>
         <if test="fdDate!=null and fdDate!=''">fd_date = #{fdDate},</if>
         <if test="fdTickets!=null and fdTickets!=''">fd_tickets = #{fdTickets},</if>
         <if test="ratio!=null and ratio!=''">ratio = #{ratio}</if>

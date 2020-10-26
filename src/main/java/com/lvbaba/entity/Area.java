@@ -3,12 +3,12 @@ package com.lvbaba.entity;
 
 public class Area {
 
-  private long aId;
+  private long areaId;
   private String country;
   private String city;
 
-  public Area(long aId, String country, String city) {
-    this.aId = aId;
+  public Area(long areaId, String country, String city) {
+    this.areaId = areaId;
     this.country = country;
     this.city = city;
   }
@@ -16,16 +16,16 @@ public class Area {
   public Area() {
   }
 
-  public Area(long aId) {
-    this.aId = aId;
+  public Area(long areaId) {
+    this.areaId = areaId;
   }
 
-  public long getaId() {
-    return aId;
+  public long getAreaId() {
+    return areaId;
   }
 
-  public void setaId(long aId) {
-    this.aId = aId;
+  public void setAreaId(long areaId) {
+    this.areaId = areaId;
   }
 
   public String getCountry() {
@@ -47,7 +47,7 @@ public class Area {
   @Override
   public String toString() {
     return "Area{" +
-            "aId=" + aId +
+            "areaId=" + areaId +
             ", country='" + country + '\'' +
             ", city='" + city + '\'' +
             '}';

@@ -8,167 +8,108 @@ import java.util.List;
 
 public class Flight {
 
-  private long fId;
+  private long flightId;
   private String flightNumber;
-  private String fCompany;
-  private String fDTime;
-  private String fATime;
+  private String flightCompany;
+  private String flightDTime;
+  private String flightATime;
   private long daId;
-  private long aAreaId;
-  private long fCapacity;
-  private double fPrice;
+  private long arrAreaId;
+  private long flightCapacity;
+  private double flightPrice;
   private List<Flightdetail> flightdetails = new ArrayList<>();
   private Area d_area;
   private Area a_area;
 
-  public long getfId() {
-    return fId;
+  public Flight(long flightId, String flightNumber, String flightCompany, String flightDTime, String flightATime, long daId, long arrAreaId, long flightCapacity, double flightPrice, List<Flightdetail> flightdetails, Area d_area, Area a_area) {
+    this.flightId = flightId;
+    this.flightNumber = flightNumber;
+    this.flightCompany = flightCompany;
+    this.flightDTime = flightDTime;
+    this.flightATime = flightATime;
+    this.daId = daId;
+    this.arrAreaId = arrAreaId;
+    this.flightCapacity = flightCapacity;
+    this.flightPrice = flightPrice;
+    this.flightdetails = flightdetails;
+    this.d_area = d_area;
+    this.a_area = a_area;
   }
 
-  public void setfId(long fId) {
-    this.fId = fId;
+  public Flight() {
   }
 
-  public String getflightNumber() {
+  public long getFlightId() {
+    return flightId;
+  }
+
+  public void setFlightId(long flightId) {
+    this.flightId = flightId;
+  }
+
+  public String getFlightNumber() {
     return flightNumber;
   }
 
-  public void setflightNumber(String flightNumber) {
+  public void setFlightNumber(String flightNumber) {
     this.flightNumber = flightNumber;
   }
 
-  public String getfCompany() {
-    return fCompany;
+  public String getFlightCompany() {
+    return flightCompany;
   }
 
-  public void setfCompany(String fCompany) {
-    this.fCompany = fCompany;
+  public void setFlightCompany(String flightCompany) {
+    this.flightCompany = flightCompany;
   }
 
-  public String getfDTime() {
-    return fDTime;
+  public String getFlightDTime() {
+    return flightDTime;
   }
 
-  public void setfDTime(String fDTime) {
-    this.fDTime = fDTime;
+  public void setFlightDTime(String flightDTime) {
+    this.flightDTime = flightDTime;
   }
 
-  public String getfATime() {
-    return fATime;
+  public String getFlightATime() {
+    return flightATime;
   }
 
-  public void setfATime(String fATime) {
-    this.fATime = fATime;
+  public void setFlightATime(String flightATime) {
+    this.flightATime = flightATime;
   }
 
-  public long getdaId() {
+  public long getDaId() {
     return daId;
   }
 
-  public void setdaId(long daId) {
+  public void setDaId(long daId) {
     this.daId = daId;
   }
 
-  public long getaAreaId() {
-    return aAreaId;
+  public long getArrAreaId() {
+    return arrAreaId;
   }
 
-  public void setaAreaId(long aAreaId) {
-    this.aAreaId = aAreaId;
+  public void setArrAreaId(long arrAreaId) {
+    this.arrAreaId = arrAreaId;
   }
 
-  public long getfCapacity() {
-    return fCapacity;
+  public long getFlightCapacity() {
+    return flightCapacity;
   }
 
-  public void setfCapacity(long fCapacity) {
-    this.fCapacity = fCapacity;
+  public void setFlightCapacity(long flightCapacity) {
+    this.flightCapacity = flightCapacity;
   }
 
-  public double getfPrice() {
-    return fPrice;
+  public double getFlightPrice() {
+    return flightPrice;
   }
 
-  public void setfPrice(double fPrice) {
-    this.fPrice = fPrice;
+  public void setFlightPrice(double flightPrice) {
+    this.flightPrice = flightPrice;
   }
-  //  public long getFId() {
-//    return fId;
-//  }
-//
-//  public void setFId(long fId) {
-//    this.fId = fId;
-//  }
-//
-//  public String getflightNumber() {
-//    return flightNumber;
-//  }
-//
-//  public void setflightNumber(String flightNumber) {
-//    this.flightNumber = flightNumber;
-//  }
-//
-//
-//  public String getFCompany() {
-//    return fCompany;
-//  }
-//
-//  public void setFCompany(String fCompany) {
-//    this.fCompany = fCompany;
-//  }
-//
-//
-//  public String getFDTime() {
-//    return fDTime;
-//  }
-//
-//  public void setFDTime(String fDTime) {
-//    this.fDTime = fDTime;
-//  }
-//
-//
-//  public String getFATime() {
-//    return fATime;
-//  }
-//
-//  public void setFATime(String fATime) {
-//    this.fATime = fATime;
-//  }
-//
-//
-//  public long getDaId() {
-//    return daId;
-//  }
-//
-//  public void setDaId(long daId) {
-//    this.daId = daId;
-//  }
-//
-//
-//  public long getAAreaId() {
-//    return aAreaId;
-//  }
-//
-//  public void setAAreaId(long aAreaId) {
-//    this.aAreaId = aAreaId;
-//  }
-//
-//  public long getFCapacity() {
-//    return fCapacity;
-//  }
-//
-//  public void setFCapacity(long fCapacity) {
-//    this.fCapacity = fCapacity;
-//  }
-//
-//
-//  public double getFPrice() {
-//    return fPrice;
-//  }
-//
-//  public void setFPrice(double fPrice) {
-//    this.fPrice = fPrice;
-//  }
 
   public List<Flightdetail> getFlightdetails() {
     return flightdetails;
@@ -197,15 +138,15 @@ public class Flight {
   @Override
   public String toString() {
     return "Flight{" +
-            "fId=" + fId +
+            "flightId=" + flightId +
             ", flightNumber='" + flightNumber + '\'' +
-            ", fCompany='" + fCompany + '\'' +
-            ", fDTime='" + fDTime + '\'' +
-            ", fATime='" + fATime + '\'' +
+            ", flightCompany='" + flightCompany + '\'' +
+            ", flightDTime='" + flightDTime + '\'' +
+            ", flightATime='" + flightATime + '\'' +
             ", daId=" + daId +
-            ", aAreaId=" + aAreaId +
-            ", fCapacity=" + fCapacity +
-            ", fPrice=" + fPrice +
+            ", arrAreaId=" + arrAreaId +
+            ", flightCapacity=" + flightCapacity +
+            ", flightPrice=" + flightPrice +
             ", flightdetails=" + flightdetails +
             ", d_area=" + d_area +
             ", a_area=" + a_area +

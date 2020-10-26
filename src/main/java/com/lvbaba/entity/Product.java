@@ -5,7 +5,7 @@ public class Product {
 
   private long pId;
   private long daId;
-  private long aAreaId;
+  private long arrAreaId;
   private long limLow;
   private long limUp;
   private long days;
@@ -30,12 +30,12 @@ public class Product {
     this.daId = daId;
   }
 
-  public long getaAreaId() {
-    return aAreaId;
+  public long getarrAreaId() {
+    return arrAreaId;
   }
 
-  public void setaAreaId(long aAreaId) {
-    this.aAreaId = aAreaId;
+  public void setarrAreaId(long arrAreaId) {
+    this.arrAreaId = arrAreaId;
   }
 
   public long getLimLow() {
@@ -99,7 +99,7 @@ public class Product {
     return "Product{" +
             "pId=" + pId +
             ", daId=" + daId +
-            ", aAreaId=" + aAreaId +
+            ", arrAreaId=" + arrAreaId +
             ", limLow=" + limLow +
             ", limUp=" + limUp +
             ", days=" + days +

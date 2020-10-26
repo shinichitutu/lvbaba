@@ -11,14 +11,14 @@
     </select>
 
     <select id="queryOne" parameterType="Area" resultMap="areaMap">
-        select a_id,country,city from area where a_id = #{aId};
+        select a_id,country,city from area where a_id = #{areaId};
     </select>
 
     <select id="query" resultMap="areaMap" parameterType="Area">
         select a_id,country,city from area
         <where>
-            <if test="aId!=null and aId!=''">
-                a_id = #{aId}
+            <if test="areaId!=null and areaId!=''">
+                a_id = #{areaId}
             </if>
             <if test="country!=null and country!=''">
                 and country = #{country}
@@ -30,7 +30,7 @@
     </select>
 
     <resultMap id="areaMap" type="Area">
-        <id property="aId" column="a_id"/>
+        <id property="areaId" column="a_id"/>
         <result property="country" column="country"/>
         <result property="city" column="city"/>
     </resultMap>

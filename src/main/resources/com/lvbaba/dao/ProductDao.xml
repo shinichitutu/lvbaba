@@ -5,7 +5,7 @@
     <sql id="condition">
         <if test="pId!=null and pId!=''">p_id=#{pId}</if>
         <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
-        <if test="aAreaId!=null and aAreaId !=''">a_area_id=#{aAreaId}</if>
+        <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId}</if>
         <if test="limLow!=null and limLow !=''">lim_low=#{limLow}</if>
         <if test="limUp!=null and limUp !=''">lim_up=#{limUp}</if>
         <if test="days!=null and days !=''">days=#{days}</if>
@@ -16,13 +16,13 @@
     </sql>
     <insert id="insertProduct">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, r_id, p_name, p_fee, p_score) VALUE
-        (${daId},${aAreaId},${limLow},${limUp},${days},${rId},${pName},${pFee},${pScore})
+        (${daId},${arrAreaId},${limLow},${limUp},${days},${rId},${pName},${pFee},${pScore})
     </insert>
     <update id="updateProduct">
         UPDATE product
         <set>
             <if test="daId!=null and daId !=''">d_a_id=#{daId},</if>
-            <if test="aAreaId!=null and aAreaId !=''">a_area_id=#{aAreaId},</if>
+            <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId},</if>
             <if test="limLow!=null and limLow !=''">lim_low=#{limLow},</if>
             <if test="limUp!=null and limUp !=''">lim_up=#{limUp},</if>
             <if test="days!=null and days !=''">days=#{days},</if>
@@ -36,18 +36,18 @@
         delete from product where p_id=#{pId}
     </delete>
     <select id="query" resultMap="productMap">
-        SELECT <include refid="all"/> from product
+        SELECT <include reflightId="all"/> from product
         <where>
-            <include refid="condition"></include>
+            <include reflightId="condition"></include>
         </where>
     </select>
     <select id="queryAll" resultMap="productMap">
-        select <include refid="all"/> from product;
+        select <include reflightId="all"/> from product;
     </select>
     <resultMap id="productMap" type="Product">
         <id property="pId" column="p_id"></id>
         <result property="daId" column="d_a_id"/>
-        <result property="aAreaId" column="a_area_id"/>
+        <result property="arrAreaId" column="a_area_id"/>
         <result property="limLow" column="lim_low"/>
         <result property="limUp" column="lim_up"/>
         <result property="days" column="days"/>
