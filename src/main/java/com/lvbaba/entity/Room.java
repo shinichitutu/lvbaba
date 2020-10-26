@@ -8,6 +8,25 @@ public class Room {
   private long rNumber;
   private long pLimit;
 
+  public Room(long rId, long hId, long rNumber, long pLimit) {
+    this.rId = rId;
+    this.hId = hId;
+    this.rNumber = rNumber;
+    this.pLimit = pLimit;
+  }
+
+  public Room(long hId, long rNumber, long pLimit) {
+    this.hId = hId;
+    this.rNumber = rNumber;
+    this.pLimit = pLimit;
+  }
+
+  public Room() {
+  }
+
+  public Room(long rId) {
+    this.rId = rId;
+  }
 
   public long getrId() {
     return rId;
