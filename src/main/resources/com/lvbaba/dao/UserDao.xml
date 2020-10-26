@@ -5,7 +5,7 @@
         u_name,u_username,u_password,u_level,balance
     </sql>
     <insert id="insertUser" parameterType="User">
-        insert into user(<include refid="all_field"/>)values(#{uName},#{uUsername},#{uPassword},#{uLevel},#{balance})
+        insert into user(<include reflightId="all_field"/>)values(#{uName},#{uUsername},#{uPassword},#{uLevel},#{balance})
     </insert>
 
     <update id="updateUser" parameterType="User">
@@ -22,7 +22,7 @@
 
     <select id="queryByUserName" resultMap="userMap" parameterType="User">
         select u_id,
-        <include refid="all_field"/>
+        <include reflightId="all_field"/>
         from user where u_username = #{uUsername}
     </select>
     <resultMap id="userMap" type="User">

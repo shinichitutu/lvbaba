@@ -23,7 +23,7 @@
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
                     "酒店名称：<input type='text' name='hName'/><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='aId'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
                     "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
@@ -59,8 +59,8 @@
                     success:function (obj) {
                         var str ="";
                         $.each(obj,function (index,item) {
-                            console.log(item.aId);
-                            str += " <option value='"+item.aId+"'>"+item.city+"</option>";
+                            console.log(item.areaId);
+                            str += " <option value='"+item.areaId+"'>"+item.city+"</option>";
                         });
 
                         $("#city").append(str);

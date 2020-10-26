@@ -9,6 +9,17 @@ public class Comment {
   private String content;
   private double score;
 
+  public Comment(long cId, long uId, long pId, String content, double score) {
+    this.cId = cId;
+    this.uId = uId;
+    this.pId = pId;
+    this.content = content;
+    this.score = score;
+  }
+
+  public Comment() {
+  }
+
   public long getcId() {
     return cId;
   }

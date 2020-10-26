@@ -41,7 +41,7 @@ public class HotelServiceImpl implements HotelService {
         List<Hotel> list = hotelDao.query(hotel);
         List<Hotel> list1 =new ArrayList<>();
         for (Hotel hotel1:list) {
-            Area area = areaDao.queryOne(new Area(hotel1.getaId()));
+            Area area = areaDao.queryOne(new Area(hotel1.getAreaId()));
             hotel1.setArea(area);
             list1.add(hotel1);
         }

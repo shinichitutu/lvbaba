@@ -1,6 +1,7 @@
 package com.lvbaba.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Flight;
 import com.lvbaba.entity.Train;
@@ -30,8 +31,15 @@ public class OperateTransportController {
     private TransportationService transportationService;
 
     @RequestMapping("/addTransportView.do")
-    public String showCountry(){
+    public String showCountry() {
         return "addTransportView";
+}
+
+    @RequestMapping("/showCountry2.do")
+    @ResponseBody
+    public String showCountry2() {
+        List<Area> countryList = areaService.queryCountry();
+        return JSONObject.toJSONString(countryList);
     }
 
     @RequestMapping("/addFlight.do")

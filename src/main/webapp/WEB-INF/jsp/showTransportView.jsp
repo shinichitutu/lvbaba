@@ -78,16 +78,19 @@
                         <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
                         <tr>
                             <td>${i.count}</td>
-                            <td>${flight.fNumber}</td>
-                            <td>${flight.fCompany}</td>
+                            <td>${flight.flightNumber}</td>
+                            <td>${flight.flightCompany}</td>
                             <td>${flight.d_area.country}-${flight.d_area.city}</td>
                             <td>${flight.a_area.country}-${flight.a_area.city}</td>
-                            <td>${flight.fDTime}</td>
-                            <td>${flight.fATime}</td>
-                            <td>${flight.fCapacity}</td>
-                            <td>${flight.fPrice}</td>
+                            <td>${flight.flightDTime}</td>
+                            <td>${flight.flightATime}</td>
+                            <td>${flight.flightCapacity}</td>
+                            <td>${flight.flightPrice}</td>
+                          
                             <td><input type="button" class="modifyFlight" value="修改" onclick="modifyFlight()"></td>
                             <td><input type="button" class="addFlightDetail" value="增加详情"></td>
+
+
                         </c:forEach>
                     </tr>
                 </tbody>
