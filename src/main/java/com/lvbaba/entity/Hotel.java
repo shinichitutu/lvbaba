@@ -20,6 +20,12 @@ public class Hotel {
   public Hotel() {
   }
 
+  public Hotel(long aId, String hName, long hLevel) {
+    this.aId = aId;
+    this.hName = hName;
+    this.hLevel = hLevel;
+  }
+
   public long gethId() {
     return hId;
   }

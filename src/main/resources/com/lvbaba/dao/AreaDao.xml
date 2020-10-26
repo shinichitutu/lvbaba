@@ -14,6 +14,21 @@
         select a_id,country,city from area where a_id = #{aId};
     </select>
 
+    <select id="query" resultMap="areaMap" parameterType="Area">
+        select a_id,country,city from area
+        <where>
+            <if test="aId!=null and aId!=''">
+                a_id = #{aId}
+            </if>
+            <if test="country!=null and country!=''">
+                and country = #{country}
+            </if>
+            <if test="city!=null and city!=''">
+                and city =#{city}
+            </if>
+        </where>
+    </select>
+
     <resultMap id="areaMap" type="Area">
         <id property="aId" column="a_id"/>
         <result property="country" column="country"/>

@@ -208,7 +208,21 @@
                     }
                 })
             })
-
+            $("#d1").click(function () {
+                $("#d4").css("display","none")
+                $("#d3").css("display","block")
+                $("#d6").css("display","none")
+            })
+            $("#d2").click(function () {
+                $("#d3").css("display","none")
+                $("#d4").css("display","block")
+                $("#d6").css("display","none")
+            })
+            $("#d5").click(function () {
+                $("#d3").css("display","none")
+                $("#d6").css("display","block")
+                $("#d4").css("display","none")
+            })
             //取消注册按钮不能点击的方法
             function testSubmit(flag_name, flag_mm1, flag_mm2) {
                 if (flag_name && flag_mm1 && flag_mm2) {
@@ -231,50 +245,78 @@
 
 <div class="container">
     <h2 style="text-align: center">
-        <a style="margin-right: 20px;cursor: pointer" href="#login" class="click_login">登录</a>
-        <a style="cursor: pointer" href="#register" class="click_register">注册</a>
+        <a style="margin-right: 20px;cursor: pointer" href="#login" class="click_login" id="d1">登录</a>
+        <a style="cursor: pointer" href="#register" class="click_register" id="d2">注册</a>
+        <a style="cursor: pointer" href="#adminRegister" class="click_register" id="d5">后台登录</a>
     </h2>
     <%--    登录样式表单--%>
-    <form action="login.us" method="post" id="login">
-        <div class="form-group">
-            <label for="name_login">用户名:</label>
-            <input type="text" name="name" class="form-control" id="name_login" placeholder="请输入账号">
-        </div>
-        <div class="form-group">
-            <label for="pwd_login">密码:</label>
-            <input type="password" name="password" class="form-control" id="pwd_login" placeholder="请输入密码">
-        </div>
-        <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="true" id="remember"> 记住密码
-            </label>
-        </div>
-        <button type="button" class="btn btn-primary" id="login_btn">登录</button>
-    </form>
+
+    <div style="display: block;" id="d3">
+        <form action="login.do" method="post" id="login">
+            <div class="form-group">
+                <label for="name_login">用户名:</label>
+                <input type="text" name="name" class="form-control" id="name_login" placeholder="请输入账号">
+            </div>
+            <div class="form-group">
+                <label for="pwd_login">密码:</label>
+                <input type="password" name="password" class="form-control" id="pwd_login" placeholder="请输入密码">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="true" id="remember"> 记住密码
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="login_btn">登录</button>
+        </form>
+    </div>
+    <div>${requestScope.loginError}</div>
     <%--注册界面表单--%>
-    <form action="register.us" method="post" id="register">
-        <div class="form-group">
-            <label for="nc_register">昵称:</label>
-            <input type="text" name="name" class="form-control" id="nc_register" placeholder="请输入昵称">
-        </div>
-        <div class="form-group">
-            <label for="username_register">用户名:</label>
-            <input type="text" name="username" class="form-control" id="username_register"
-                   placeholder="请输入账号,账号是唯一不能重复的">
-            <span class="showUserNameInfo"></span>
-        </div>
-        <div class="form-group">
-            <label for="pwd_register1">密码:</label>
-            <input type="password" name="password" class="form-control" id="pwd_register1" placeholder="请输入密码">
-            <span class="showPasswordInfo"></span>
-        </div>
-        <div class="form-group">
-            <label for="pwd_register2">确认密码:</label>
-            <input type="password" name="password" class="form-control" id="pwd_register2" placeholder="请输入密码">
-            <span class="showAgainPasswordInfo"></span>
-        </div>
-        <button type="button" class="btn btn-primary" id="register_btn">注册</button>
-    </form>
+    <div style="display: none" id="d4">
+        <form action="register.do" method="post" id="register">
+            <div class="form-group">
+                <label for="nc_register">昵称:</label>
+                <input type="text" name="name" class="form-control" id="nc_register" placeholder="请输入昵称">
+            </div>
+            <div class="form-group">
+                <label for="username_register">用户名:</label>
+                <input type="text" name="username" class="form-control" id="username_register"
+                       placeholder="请输入账号,账号是唯一不能重复的">
+                <span class="showUserNameInfo"></span>
+            </div>
+            <div class="form-group">
+                <label for="pwd_register1">密码:</label>
+                <input type="password" name="password" class="form-control" id="pwd_register1" placeholder="请输入密码">
+                <span class="showPasswordInfo"></span>
+            </div>
+            <div class="form-group">
+                <label for="pwd_register2">确认密码:</label>
+                <input type="password" name="password" class="form-control" id="pwd_register2" placeholder="请输入密码">
+                <span class="showAgainPasswordInfo"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="register_btn">注册</button>
+        </form>
+    </div>
+    <%--管理员登录--%>
+    <div style="display: none" id="d6">
+        <form action="adminLogin.do" method="post">
+            <div class="form-group">
+                <label for="name_login">用户名:</label>
+                <input type="text" name="adName" class="form-control" placeholder="请输入管理员账号">
+            </div>
+            <div class="form-group">
+                <label for="pwd_login">密码:</label>
+                <input type="password" name="adPassword" class="form-control" placeholder="请输入管理员密码">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="true"> 记住密码
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">登录</button>
+        </form>
+    </div>
 </div>
+${requestScope.error}
+
 </body>
 </html>

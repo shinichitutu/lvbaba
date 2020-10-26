@@ -24,7 +24,7 @@
         <th>序号</th>
         <th>日期</th>
         <th>价格</th>
-        <th>预定数量</th>
+        <th>预定数量(已定/总数)</th>
         <th>编辑</th>
         <th>删除</th>
     </tr>
@@ -36,12 +36,14 @@
             <td>${status.count}</td>
             <td>${rd.rDate}</td>
             <td>${rd.rdPrice}</td>
-            <td><a href="#"?rid =${rd.rid}>查看详情</a></td>
+            <td>${rd.rdNumber}/${rd.room.rNumber}</td>
             <td></td>
             <td></td>
         </tr>
     </c:forEach>
     </tbody>
+
+
 </table>
 
 </body>

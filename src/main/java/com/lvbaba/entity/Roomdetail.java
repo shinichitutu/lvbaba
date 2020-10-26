@@ -32,14 +32,6 @@ public class Roomdetail {
     this.room = room;
   }
 
-  public Room getRoom() {
-    return room;
-  }
-
-  public void setRoom(Room room) {
-    this.room = room;
-  }
-
   public long getRdId() {
     return rdId;
   }
@@ -78,6 +70,14 @@ public class Roomdetail {
 
   public void setRdNumber(long rdNumber) {
     this.rdNumber = rdNumber;
+  }
+
+  public Room getRoom() {
+    return room;
+  }
+
+  public void setRoom(Room room) {
+    this.room = room;
   }
 
   @Override

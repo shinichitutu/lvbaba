@@ -21,7 +21,6 @@ public class HotelDaoTest {
     private HotelDao hotelDao;
 
 
-
     @Test
     public void test(){
         Hotel hotel = new Hotel();
