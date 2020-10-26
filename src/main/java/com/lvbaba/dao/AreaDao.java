@@ -20,7 +20,11 @@ public interface AreaDao {
      */
     List<Area> queryCityByCountry(Area area);
 
-
+    /**
+     * 通过地址Id返回对应的地址
+     * @param area
+     * @return
+     */
     Area queryOne(Area area);
 
     List<Area> query(Area area);

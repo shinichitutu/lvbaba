@@ -1,142 +1,214 @@
 package com.lvbaba.entity;
 
+import com.lvbaba.entity.Area;
+import com.lvbaba.entity.Flightdetail;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
 
-    private long fId;
-    private String fNumber;
-    private String fCompany;
-    private String fDTime;
-    private String fATime;
-    private long dAId;
-    private long aAreaId;
-    private long fCapacity;
-    private double fPrice;
-    private List<Flightdetail> flightdetails = new ArrayList<>();
+  private long fId;
+  private String fNumber;
+  private String fCompany;
+  private String fDTime;
+  private String fATime;
+  private long dAId;
+  private long aAreaId;
+  private long fCapacity;
+  private double fPrice;
+  private List<Flightdetail> flightdetails = new ArrayList<>();
+  private Area d_area;
+  private Area a_area;
 
-    public Flight() {
-    }
+  public long getfId() {
+    return fId;
+  }
 
-    public Flight(long fId, String fNumber, String fCompany, String fDTime, String fATime, long dAId, long aAreaId, long fCapacity, double fPrice, List<Flightdetail> flightdetails) {
-        this.fId = fId;
-        this.fNumber = fNumber;
-        this.fCompany = fCompany;
-        this.fDTime = fDTime;
-        this.fATime = fATime;
-        this.dAId = dAId;
-        this.aAreaId = aAreaId;
-        this.fCapacity = fCapacity;
-        this.fPrice = fPrice;
-        this.flightdetails = flightdetails;
-    }
+  public void setfId(long fId) {
+    this.fId = fId;
+  }
 
-    public Flight(String fNumber, String fCompany, String fDTime, String fATime, long dAId, long aAreaId, long fCapacity, double fPrice, List<Flightdetail> flightdetails) {
-        this.fNumber = fNumber;
-        this.fCompany = fCompany;
-        this.fDTime = fDTime;
-        this.fATime = fATime;
-        this.dAId = dAId;
-        this.aAreaId = aAreaId;
-        this.fCapacity = fCapacity;
-        this.fPrice = fPrice;
-        this.flightdetails = flightdetails;
-    }
+  public String getfNumber() {
+    return fNumber;
+  }
 
-    public long getfId() {
-        return fId;
-    }
+  public void setfNumber(String fNumber) {
+    this.fNumber = fNumber;
+  }
 
-    public void setfId(long fId) {
-        this.fId = fId;
-    }
+  public String getfCompany() {
+    return fCompany;
+  }
 
-    public String getfNumber() {
-        return fNumber;
-    }
+  public void setfCompany(String fCompany) {
+    this.fCompany = fCompany;
+  }
 
-    public void setfNumber(String fNumber) {
-        this.fNumber = fNumber;
-    }
+  public String getfDTime() {
+    return fDTime;
+  }
 
-    public String getfCompany() {
-        return fCompany;
-    }
+  public void setfDTime(String fDTime) {
+    this.fDTime = fDTime;
+  }
 
-    public void setfCompany(String fCompany) {
-        this.fCompany = fCompany;
-    }
+  public String getfATime() {
+    return fATime;
+  }
 
-    public String getfDTime() {
-        return fDTime;
-    }
+  public void setfATime(String fATime) {
+    this.fATime = fATime;
+  }
 
-    public void setfDTime(String fDTime) {
-        this.fDTime = fDTime;
-    }
+  public long getdAId() {
+    return dAId;
+  }
 
-    public String getfATime() {
-        return fATime;
-    }
+  public void setdAId(long dAId) {
+    this.dAId = dAId;
+  }
 
-    public void setfATime(String fATime) {
-        this.fATime = fATime;
-    }
+  public long getaAreaId() {
+    return aAreaId;
+  }
 
-    public long getdAId() {
-        return dAId;
-    }
+  public void setaAreaId(long aAreaId) {
+    this.aAreaId = aAreaId;
+  }
 
-    public void setdAId(long dAId) {
-        this.dAId = dAId;
-    }
+  public long getfCapacity() {
+    return fCapacity;
+  }
 
-    public long getaAreaId() {
-        return aAreaId;
-    }
+  public void setfCapacity(long fCapacity) {
+    this.fCapacity = fCapacity;
+  }
 
-    public void setaAreaId(long aAreaId) {
-        this.aAreaId = aAreaId;
-    }
+  public double getfPrice() {
+    return fPrice;
+  }
 
-    public long getfCapacity() {
-        return fCapacity;
-    }
+  public void setfPrice(double fPrice) {
+    this.fPrice = fPrice;
+  }
+  //  public long getFId() {
+//    return fId;
+//  }
+//
+//  public void setFId(long fId) {
+//    this.fId = fId;
+//  }
+//
+//  public String getFNumber() {
+//    return fNumber;
+//  }
+//
+//  public void setFNumber(String fNumber) {
+//    this.fNumber = fNumber;
+//  }
+//
+//
+//  public String getFCompany() {
+//    return fCompany;
+//  }
+//
+//  public void setFCompany(String fCompany) {
+//    this.fCompany = fCompany;
+//  }
+//
+//
+//  public String getFDTime() {
+//    return fDTime;
+//  }
+//
+//  public void setFDTime(String fDTime) {
+//    this.fDTime = fDTime;
+//  }
+//
+//
+//  public String getFATime() {
+//    return fATime;
+//  }
+//
+//  public void setFATime(String fATime) {
+//    this.fATime = fATime;
+//  }
+//
+//
+//  public long getDAId() {
+//    return dAId;
+//  }
+//
+//  public void setDAId(long dAId) {
+//    this.dAId = dAId;
+//  }
+//
+//
+//  public long getAAreaId() {
+//    return aAreaId;
+//  }
+//
+//  public void setAAreaId(long aAreaId) {
+//    this.aAreaId = aAreaId;
+//  }
+//
+//  public long getFCapacity() {
+//    return fCapacity;
+//  }
+//
+//  public void setFCapacity(long fCapacity) {
+//    this.fCapacity = fCapacity;
+//  }
+//
+//
+//  public double getFPrice() {
+//    return fPrice;
+//  }
+//
+//  public void setFPrice(double fPrice) {
+//    this.fPrice = fPrice;
+//  }
 
-    public void setfCapacity(long fCapacity) {
-        this.fCapacity = fCapacity;
-    }
+  public List<Flightdetail> getFlightdetails() {
+    return flightdetails;
+  }
 
-    public double getfPrice() {
-        return fPrice;
-    }
+  public void setFlightdetails(List<Flightdetail> flightdetails) {
+    this.flightdetails = flightdetails;
+  }
 
-    public void setfPrice(double fPrice) {
-        this.fPrice = fPrice;
-    }
+  public Area getD_area() {
+    return d_area;
+  }
 
-    public List<Flightdetail> getFlightdetails() {
-        return flightdetails;
-    }
+  public void setD_area(Area d_area) {
+    this.d_area = d_area;
+  }
 
-    public void setFlightdetails(List<Flightdetail> flightdetails) {
-        this.flightdetails = flightdetails;
-    }
+  public Area getA_area() {
+    return a_area;
+  }
 
-    @Override
-    public String toString() {
-        return "Flight{" +
-                "fId=" + fId +
-                ", fNumber='" + fNumber + '\'' +
-                ", fCompany='" + fCompany + '\'' +
-                ", fDTime='" + fDTime + '\'' +
-                ", fATime='" + fATime + '\'' +
-                ", dAId=" + dAId +
-                ", aAreaId=" + aAreaId +
-                ", fCapacity=" + fCapacity +
-                ", fPrice=" + fPrice +
-                '}';
-    }
+  public void setA_area(Area a_area) {
+    this.a_area = a_area;
+  }
+
+  @Override
+  public String toString() {
+    return "Flight{" +
+            "fId=" + fId +
+            ", fNumber='" + fNumber + '\'' +
+            ", fCompany='" + fCompany + '\'' +
+            ", fDTime='" + fDTime + '\'' +
+            ", fATime='" + fATime + '\'' +
+            ", dAId=" + dAId +
+            ", aAreaId=" + aAreaId +
+            ", fCapacity=" + fCapacity +
+            ", fPrice=" + fPrice +
+            ", flightdetails=" + flightdetails +
+            ", d_area=" + d_area +
+            ", a_area=" + a_area +
+            '}';
+  }
 }

@@ -29,15 +29,18 @@
     </delete>
 
 
-    <select id="queryFlightAndDatailBydAIdAndAAreaId" parameterType="Flight" resultMap="flightMap">
+    <select id="queryFlightAndDatailBydAIdAndAAreaId" parameterType="Flight" resultMap="flightAndDetailMap">
         select f.f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price,fd_id,fd_date,fd_tickets,ratio
         from flight f,flightdetail fd where d_a_id = #{dAId} and a_area_id = #{aAreaId} and f.f_id = fd.f_id
     </select>
 
     <select id="queryByFlightName" resultMap="flightMap">
-        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flght where f_number =#{fNumber}
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight where f_number =#{fNumber}
     </select>
 
+    <select id="queryAllFlight" resultMap="flightMap">
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight
+    </select>
 
     <resultMap id="flightMap" type="Flight">
         <id property="fId" column="f_id"/>
@@ -49,6 +52,9 @@
         <result property="aAreaId" column="a_area_id"/>
         <result property="fCapacity" column="f_capacity"/>
         <result property="fPrice" column="f_price"/>
+    </resultMap>
+
+    <resultMap id="flightAndDetailMap" type="Flight" extends="flightMap">
         <collection property="flightdetails" ofType="Flightdetail">
             <id property="fdId" column="fd_id"/>
             <result property="fId" column="f_id"/>
