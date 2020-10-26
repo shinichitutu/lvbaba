@@ -73,7 +73,7 @@
                         <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
                         <tr>
                             <td>${i.count}</td>
-                            <td>${flight.fNumber}</td>
+                            <td>${flight.flightNumber}</td>
                             <td>${flight.fCompany}</td>
                             <td>${flight.d_area.country}-${flight.d_area.city}</td>
                             <td>${flight.a_area.country}-${flight.a_area.city}</td>
