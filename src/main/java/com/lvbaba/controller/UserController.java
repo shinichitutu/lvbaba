@@ -1,5 +1,6 @@
 package com.lvbaba.controller;
 
+import com.lvbaba.entity.Admin;
 import com.lvbaba.entity.User;
 import com.lvbaba.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -50,6 +51,16 @@ public class UserController {
             return "login";
         }
     }
-
+    @RequestMapping("/adminLogin.do")
+    public String adminLogin(Admin admin, Model model, HttpSession session,String adPassword){
+        System.out.println(admin);
+        if (admin.getAdName().equals("admin")&&admin.getAdPassword().equals("admin")){
+            session.setAttribute("admin",admin);
+            return "admin";
+        }else {
+            model.addAttribute("error","账户或密码有误");
+            return "login";
+        }
+    }
 
 }
