@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by YY on 2020/10/20.
  */
-@Service
+@Service("productService")
 public class ProductServiceImpl implements ProductService {
     @Resource
     private ProductDao productDao;

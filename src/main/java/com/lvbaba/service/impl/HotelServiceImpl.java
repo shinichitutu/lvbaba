@@ -1,20 +1,27 @@
 package com.lvbaba.service.impl;
 
+import com.lvbaba.dao.AreaDao;
 import com.lvbaba.dao.HotelDao;
+import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Hotel;
 import com.lvbaba.service.HotelService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by shinichi on 2020/10/23.
  */
-@Service
+@Service("hotelService")
 public class HotelServiceImpl implements HotelService {
     @Resource
     private HotelDao hotelDao;
+
+    @Resource
+    private AreaDao areaDao;
+
 
     @Override
     public Hotel queryOne(Hotel hotel) {
@@ -27,15 +34,23 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List<Hotel> query(Hotel hotel) {
-        if(hotel == null){
+        if (hotel == null) {
             return null;
         }
-        return hotelDao.query(hotel);
+
+        List<Hotel> list = hotelDao.query(hotel);
+        List<Hotel> list1 =new ArrayList<>();
+        for (Hotel hotel1:list) {
+            Area area = areaDao.queryOne(new Area(hotel1.getaId()));
+            hotel1.setArea(area);
+            list1.add(hotel1);
+        }
+        return list1;
     }
 
     @Override
     public boolean insertHotel(Hotel hotel) {
-        if(hotel==null){
+        if (hotel == null) {
             return false;
         }
         return hotelDao.insertHotel(hotel);
@@ -43,7 +58,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public boolean deleteHotel(Hotel hotel) {
-        if(hotel==null){
+        if (hotel == null) {
             return false;
         }
         return hotelDao.deleteHotel(hotel);
@@ -51,10 +66,10 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public boolean updateHotel(Hotel hotel) {
-        if(hotel==null) {
+        if (hotel == null) {
             return false;
         }
-         return hotelDao.updateHotel(hotel);
+        return hotelDao.updateHotel(hotel);
     }
 
 }

@@ -34,6 +34,10 @@
         from flight f,flightdetail fd where d_a_id = #{dAId} and a_area_id = #{aAreaId} and f.f_id = fd.f_id
     </select>
 
+    <select id="queryByFlightName" resultMap="flightMap">
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flght where f_number =#{fNumber}
+    </select>
+
 
     <resultMap id="flightMap" type="Flight">
         <id property="fId" column="f_id"/>

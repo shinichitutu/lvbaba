@@ -7,6 +7,7 @@ public class Hotel {
   private long aId;
   private String hName;
   private long hLevel;
+  private Area area;
 
 
   public Hotel(long hId, long aId, String hName, long hLevel) {
@@ -17,6 +18,12 @@ public class Hotel {
   }
 
   public Hotel() {
+  }
+
+  public Hotel(long aId, String hName, long hLevel) {
+    this.aId = aId;
+    this.hName = hName;
+    this.hLevel = hLevel;
   }
 
   public long gethId() {
@@ -51,6 +58,14 @@ public class Hotel {
     this.hLevel = hLevel;
   }
 
+  public Area getArea() {
+    return area;
+  }
+
+  public void setArea(Area area) {
+    this.area = area;
+  }
+
   @Override
   public String toString() {
     return "Hotel{" +
@@ -58,6 +73,7 @@ public class Hotel {
             ", aId=" + aId +
             ", hName='" + hName + '\'' +
             ", hLevel=" + hLevel +
+            ", area=" + area +
             '}';
   }
 }

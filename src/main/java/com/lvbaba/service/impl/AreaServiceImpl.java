@@ -12,7 +12,8 @@ import java.util.List;
  * @author DBY
  * @date 2020/10/23 14:15
  */
-@Service
+
+@Service("areaService")
 public class AreaServiceImpl implements AreaService {
     @Resource
     private AreaDao areaDao;
@@ -28,5 +29,21 @@ public class AreaServiceImpl implements AreaService {
         return null;
         }
         return areaDao.queryCityByCountry(area);
+    }
+
+    @Override
+    public Area queryOne(Area area) {
+        if(area==null){
+            return null;
+        }
+        return areaDao.queryOne(area);
+    }
+
+    @Override
+    public List<Area> query(Area area) {
+        if(area==null){
+            return null;
+        }
+        return areaDao.query(area);
     }
 }

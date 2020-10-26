@@ -194,7 +194,7 @@
                 var check =$("#remember").val();
                 $.ajax({
                     type:"post",
-                    data:"uUsername="+name+"&uPassword="+pwd,
+                    data:"username="+name+"&password="+pwd+"&check="+check,
                     url:"login.do",
                     dataType:"text",
                     success:function (obj) {
@@ -203,7 +203,7 @@
                         }else if("true"==obj){
                             location.href="toIndex.do";
                         }else{
-                            location.href="index.jsp";
+                            location.href="toManagerView.do";
                         }
                     }
                 })
@@ -250,6 +250,7 @@
         <a style="cursor: pointer" href="#adminRegister" class="click_register" id="d5">后台登录</a>
     </h2>
     <%--    登录样式表单--%>
+
     <div style="display: block;" id="d3">
         <form action="login.do" method="post" id="login">
             <div class="form-group">
@@ -316,5 +317,6 @@
     </div>
 </div>
 ${requestScope.error}
+
 </body>
 </html>

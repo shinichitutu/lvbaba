@@ -1,6 +1,8 @@
 package com.lvbaba.entity;
 
 
+import java.util.List;
+
 public class Roomdetail {
 
   private long rdId;
@@ -8,7 +10,27 @@ public class Roomdetail {
   private String rDate;
   private double rdPrice;
   private long rdNumber;
+  private Room room;
 
+  public Roomdetail(long rdId, long rId, String rDate, double rdPrice, long rdNumber, Room room) {
+    this.rdId = rdId;
+    this.rId = rId;
+    this.rDate = rDate;
+    this.rdPrice = rdPrice;
+    this.rdNumber = rdNumber;
+    this.room = room;
+  }
+
+  public Roomdetail() {
+  }
+
+  public Roomdetail(long rId, String rDate, double rdPrice, long rdNumber, Room room) {
+    this.rId = rId;
+    this.rDate = rDate;
+    this.rdPrice = rdPrice;
+    this.rdNumber = rdNumber;
+    this.room = room;
+  }
 
   public long getRdId() {
     return rdId;
@@ -48,6 +70,14 @@ public class Roomdetail {
 
   public void setRdNumber(long rdNumber) {
     this.rdNumber = rdNumber;
+  }
+
+  public Room getRoom() {
+    return room;
+  }
+
+  public void setRoom(Room room) {
+    this.room = room;
   }
 
   @Override
