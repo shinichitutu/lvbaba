@@ -16,6 +16,59 @@
 <head>
     <title>Title</title>
     <base href="<%=basePath%>"/>
+    <script type="text/javascript" src="../../js/jquery-3.1.0.js"></script>
+
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                var str1 = "<form action='addHotel.do' method='post'>"+
+                    "酒店名称：<input type='text' name='hotelName'/><br/>"+
+                    "酒店地址：<select id='country' name='country'> <option value='0'>--请选择国家--</option></select><select id='city' name='city'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店等级：<input type='text' name='hotelLevel'/><br/>"+
+                    "<input type='submit' value='添加'/>"+
+                    "</form>";
+                $("#addHotel").html(str1);
+
+            $.ajax({
+                type:"post",
+                url:"showCountry2.do",
+                dataType:"json",
+                success:function (obj) {
+                    var str = "";
+                    $.each(obj,function (index,item) {
+                        str += " <option value='"+item.country+"'>"+item.country+"</option>";
+                    });
+                    $("#country").append(str);
+                }
+            });
+
+
+            $("#country").change(function () {
+                var country = $(this).val();
+                if(country==''){
+                    return;
+                }
+                $("#city option:gt(0)").remove();
+                $.ajax({
+                    type:"post",
+                    url:"showCity.do",
+                    data:"country="+country,
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.aId+"'>"+item.city+"</option>";
+                        });
+                        $("#city").append(str);
+
+                    }
+                })
+            })
+
+            })
+
+        })
+    </script>
 </head>
 <body>
 
@@ -48,6 +101,11 @@
     </c:forEach>
     </tbody>
 </table>
+
+<input type="button" id="btn" value="添加酒店" />
+
+<div id = "addHotel">
+</div>
 
 </body>
 </html>

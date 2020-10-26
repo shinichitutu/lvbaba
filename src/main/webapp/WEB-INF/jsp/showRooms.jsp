@@ -36,7 +36,7 @@
             <td>${status.count}</td>
             <td>${room.pLimit}</td>
             <td>${room.rNumber}</td>
-            <td><a href="showRoomDetail.do?rId =${room.rId}">查看详情</a></td>
+            <td><a href="showRoomDetail.do?rId=${room.rId}">查看详情</a></td>
             <td></td>
             <td></td>
         </tr>

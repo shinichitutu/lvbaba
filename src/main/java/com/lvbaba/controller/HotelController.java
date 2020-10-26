@@ -50,11 +50,14 @@ public class HotelController {
 
     @RequestMapping("/showRoomDetail.do")
     public String showRoomDetail(Model model,int rId){
+        System.out.println(rId);
         Roomdetail roomdetail = new Roomdetail();
         roomdetail.setrId(rId);
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail",list);
         return "showRoomDetail";
     }
+
+    public String addHotel()
 
 }

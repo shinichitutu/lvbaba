@@ -36,6 +36,13 @@ public class OperateTransportController {
         return new ModelAndView("addTransportView").addObject("countryList",countryList);
     }
 
+    @RequestMapping("/showCountry2.do")
+    @ResponseBody
+    public String showCountry2() {
+        List<Area> countryList = areaService.queryCountry();
+        return JSONObject.toJSONString(countryList);
+    }
+
     @RequestMapping("/showCity.do")
     @ResponseBody
     public String showCity(String country, HttpServletResponse response) throws IOException {
