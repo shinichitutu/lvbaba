@@ -6,12 +6,12 @@ import java.util.List;
 
 public class Flight {
 
-    private long flightId;
-    private String flightNumber;
-    private String flightCompany;
-    private String flightDTime;
-    private String flightATime;
-    private long deAId;
+    private long fId;
+    private String fNumber;
+    private String fCompany;
+    private String fDTime;
+    private String fATime;
+    private long dAId;
     private long aAreaId;
     private long fCapacity;
     private double fPrice;
@@ -20,8 +20,8 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(long flightId, String fNumber, String fCompany, String fDTime, String fATime, long dAId, long aAreaId, long fCapacity, double fPrice, List<Flightdetail> flightdetails) {
-        this.flightId = flightId;
+    public Flight(long fId, String fNumber, String fCompany, String fDTime, String fATime, long dAId, long aAreaId, long fCapacity, double fPrice, List<Flightdetail> flightdetails) {
+        this.fId = fId;
         this.fNumber = fNumber;
         this.fCompany = fCompany;
         this.fDTime = fDTime;
@@ -45,12 +45,12 @@ public class Flight {
         this.flightdetails = flightdetails;
     }
 
-    public long getflightId() {
-        return flightId;
+    public long getfId() {
+        return fId;
     }
 
-    public void setflightId(long flightId) {
-        this.flightId = flightId;
+    public void setfId(long fId) {
+        this.fId = fId;
     }
 
     public String getfNumber() {
@@ -128,7 +128,7 @@ public class Flight {
     @Override
     public String toString() {
         return "Flight{" +
-                "flightId=" + flightId +
+                "fId=" + fId +
                 ", fNumber='" + fNumber + '\'' +
                 ", fCompany='" + fCompany + '\'' +
                 ", fDTime='" + fDTime + '\'' +

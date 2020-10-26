@@ -19,13 +19,13 @@
         <if test="fCapacity!=null and fCapacity!=''">f_capacity = #{fCapacity},</if>
         <if test="fPrice!=null and fPrice!=''">f_price = #{fPrice}</if>
     </set> <where>
-        <if test="flightId!=null and flightId!=''">f_id = #{flightId}</if>
+        <if test="fId!=null and fId!=''">f_id = #{fId}</if>
     </where>
     </update>
 
 
     <delete id="deleteFlightById" parameterType="Flight">
-        delete from flight where f_id = #{flightId}
+        delete from flight where f_id = #{fId}
     </delete>
 
 
@@ -40,7 +40,7 @@
 
 
     <resultMap id="flightMap" type="Flight">
-        <id property="flightId" column="f_id"/>
+        <id property="fId" column="f_id"/>
         <result property="fNumber" column="f_number"/>
         <result property="fCompany" column="f_company"/>
         <result property="fDTime" column="f_d_time"/>
@@ -51,7 +51,7 @@
         <result property="fPrice" column="f_price"/>
         <collection property="flightdetails" ofType="Flightdetail">
             <id property="fdId" column="fd_id"/>
-            <result property="flightId" column="f_id"/>
+            <result property="fId" column="f_id"/>
             <result property="fdDate" column="fd_date"/>
             <result property="fdTickets" column="fd_tickets"/>
             <result property="ratio" column="ratio"/>

@@ -3,16 +3,16 @@ package com.lvbaba.entity;
 
 public class Comment {
 
-  private long commentId;
-  private long userId;
-  private long productId;
+  private long cId;
+  private long uId;
+  private long pId;
   private String content;
   private double score;
 
-  public Comment(long commentId, long userId, long productId, String content, double score) {
-    this.commentId = commentId;
-    this.userId = userId;
-    this.productId = productId;
+  public Comment(long cId, long uId, long pId, String content, double score) {
+    this.cId = cId;
+    this.uId = uId;
+    this.pId = pId;
     this.content = content;
     this.score = score;
   }
@@ -20,28 +20,28 @@ public class Comment {
   public Comment() {
   }
 
-  public long getCommentId() {
-    return commentId;
+  public long getcId() {
+    return cId;
   }
 
-  public void setCommentId(long commentId) {
-    this.commentId = commentId;
+  public void setcId(long cId) {
+    this.cId = cId;
   }
 
-  public long getUserId() {
-    return userId;
+  public long getuId() {
+    return uId;
   }
 
-  public void setUserId(long userId) {
-    this.userId = userId;
+  public void setuId(long uId) {
+    this.uId = uId;
   }
 
-  public long getProductId() {
-    return productId;
+  public long getpId() {
+    return pId;
   }
 
-  public void setProductId(long productId) {
-    this.productId = productId;
+  public void setpId(long pId) {
+    this.pId = pId;
   }
 
   public String getContent() {
@@ -58,5 +58,16 @@ public class Comment {
 
   public void setScore(double score) {
     this.score = score;
+  }
+
+  @Override
+  public String toString() {
+    return "Comment{" +
+            "cId=" + cId +
+            ", uId=" + uId +
+            ", pId=" + pId +
+            ", content='" + content + '\'' +
+            ", score=" + score +
+            '}';
   }
 }

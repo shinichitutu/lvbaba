@@ -60,21 +60,21 @@
         DELETE from tour where t_id=#{tId}
     </delete>
     <select id="query" resultMap="tourMap">
-        SELECT <include reflightId="all"/>from tour
+        SELECT <include refid="all"/>from tour
         <where>
-            <include reflightId="condition"></include>
+            <include refid="condition"></include>
         </where>
     </select>
     <select id="queryAll" resultMap="tourMap">
-        SELECT <include reflightId="all"/>FROM  tour
+        SELECT <include refid="all"/>FROM  tour
         <where>
-            <include reflightId="condition"/>
+            <include refid="condition"/>
         </where>
     </select>
     <select id="queryByPid" resultMap="tourMap">
-        SELECT <include reflightId="all"/>FROM tour
+        SELECT <include refid="all"/>FROM tour
         <where>
-            <include reflightId="condition"/>
+            <include refid="condition"/>
         </where>
     </select>
     <resultMap id="tourMap" type="Tour">

@@ -15,7 +15,7 @@
         <if test="phone!=null and phone!=''">#{phone}</if>
     </sql>
     <insert id="insertUserInfo" parameterType="Userinfo">
-        insert into userinfo(<include reflightId="all_filed"/>)values(<include reflightId="insertValues"/>)
+        insert into userinfo(<include refid="all_filed"/>)values(<include refid="insertValues"/>)
     </insert>
     <update id="updateUserInfoById" parameterType="Userinfo">
         update userinfo
@@ -26,18 +26,18 @@
             <if test="phone!=null and phone!=''">phone = #{phone}</if>
         </set>
         <where>
-            <include reflightId="condition"/>
+            <include refid="condition"/>
         </where>
     </update>
     <delete id="deleteUserInfoById" parameterType="Userinfo">
         delete from userinfo <where>
-        <include reflightId="condition"/>
+        <include refid="condition"/>
     </where>
     </delete>
     <select id="queryAllByUid" parameterType="Userinfo" resultMap="userInfoMap">
-        select ui_id,<include reflightId="all_filed"/> from userinfo
+        select ui_id,<include refid="all_filed"/> from userinfo
         <where>
-            <include reflightId="condition"/>
+            <include refid="condition"/>
         </where>
     </select>
     <resultMap id="userInfoMap" type="com.lvbaba.entity.Userinfo">
