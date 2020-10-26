@@ -41,7 +41,7 @@
             <td>${hotel.area.country}</td>
             <td>${hotel.area.city}</td>
             <td>${hotel.hLevel}</td>
-            <td><a href="#"?hid =${hotel.hId}>查看客房</a></td>
+            <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
             <td></td>
             <td></td>
         </tr>

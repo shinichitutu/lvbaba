@@ -39,17 +39,19 @@ public class HotelController {
         return "showHotels";
     }
 
-    @RequestMapping("/showRoms.do")
-    public String showRooms(Model model){
+    @RequestMapping("/showRooms.do")
+    public String showRooms(Model model,int hId){
         Room room = new Room();
+        room.sethId(hId);
         List<Room> list =roomService.query(room);
         model.addAttribute("roomList",list);
         return "showRooms";
     }
 
     @RequestMapping("/showRoomDetail.do")
-    public String showRoomDetail(Model model){
+    public String showRoomDetail(Model model,int rId){
         Roomdetail roomdetail = new Roomdetail();
+        roomdetail.setrId(rId);
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail",list);
         return "showRoomDetail";
