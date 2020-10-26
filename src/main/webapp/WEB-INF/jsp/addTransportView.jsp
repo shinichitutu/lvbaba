@@ -144,7 +144,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>新增交通工具</h2>
+    <h3><a href="showFlightAndTrain.do">交通工具管理</a></h3>
     <br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
