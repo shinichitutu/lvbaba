@@ -14,11 +14,11 @@ public class Area {
   public Area() {
   }
 
-  public long getaId() {
+  public long getAId() {
     return aId;
   }
 
-  public void setaId(long aId) {
+  public void setAId(long aId) {
     this.aId = aId;
   }
 

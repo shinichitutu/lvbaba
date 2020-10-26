@@ -22,9 +22,9 @@
         $(function () {
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hotelName'/><br/>"+
-                    "酒店地址：<select id='country' name='country'> <option value='0'>--请选择国家--</option></select><select id='city' name='city'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='text' name='hotelLevel'/><br/>"+
+                    "酒店名称：<input type='text' name='hName'/><br/>"+
+                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='aId'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
                 $("#addHotel").html(str1);
@@ -44,11 +44,13 @@
 
 
             $("#country").change(function () {
-                var country = $(this).val();
-                if(country==''){
-                    return;
-                }
                 $("#city option:gt(0)").remove();
+                var country = $(this).val();
+                console.log(country);
+    /*            if(country==''){
+                    return;
+                }*/
+
                 $.ajax({
                     type:"post",
                     url:"showCity.do",
@@ -57,8 +59,10 @@
                     success:function (obj) {
                         var str ="";
                         $.each(obj,function (index,item) {
+                            console.log(item.aId);
                             str += " <option value='"+item.aId+"'>"+item.city+"</option>";
                         });
+
                         $("#city").append(str);
 
                     }
@@ -95,7 +99,7 @@
             <td>${hotel.area.city}</td>
             <td>${hotel.hLevel}</td>
             <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
-            <td></td>
+            <td>${hotel.hId}</td>
             <td></td>
         </tr>
     </c:forEach>
@@ -106,6 +110,14 @@
 
 <div id = "addHotel">
 </div>
+
+<c:if test="${null != requestScope.error}">
+    <span style="color: red">${requestScope.error}</span>
+</c:if>
+
+<c:if test="${null != requestScope.success}">
+    <span style="color: red">${requestScope.success}</span>
+</c:if>
 
 </body>
 </html>
