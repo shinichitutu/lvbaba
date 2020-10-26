@@ -11,7 +11,7 @@ public class Train {
   private String trNumber;
   private String trDTime;
   private long daId;
-  private long aAreaId;
+  private long arrAreaId;
   private long trCapacity;
   private double trPrice;
   private String trATime;
@@ -51,12 +51,12 @@ public class Train {
     this.daId = daId;
   }
 
-  public long getaAreaId() {
-    return aAreaId;
+  public long getarrAreaId() {
+    return arrAreaId;
   }
 
-  public void setaAreaId(long aAreaId) {
-    this.aAreaId = aAreaId;
+  public void setarrAreaId(long arrAreaId) {
+    this.arrAreaId = arrAreaId;
   }
 
   public long getTrCapacity() {
@@ -119,12 +119,12 @@ public class Train {
 //  }
 //
 //
-//  public long getAAreaId() {
-//    return aAreaId;
+//  public long getarrAreaId() {
+//    return arrAreaId;
 //  }
 //
-//  public void setAAreaId(long aAreaId) {
-//    this.aAreaId = aAreaId;
+//  public void setarrAreaId(long arrAreaId) {
+//    this.arrAreaId = arrAreaId;
 //  }
 //
 //
@@ -185,7 +185,7 @@ public class Train {
             ", trNumber='" + trNumber + '\'' +
             ", trDTime='" + trDTime + '\'' +
             ", daId=" + daId +
-            ", aAreaId=" + aAreaId +
+            ", arrAreaId=" + arrAreaId +
             ", trCapacity=" + trCapacity +
             ", trPrice=" + trPrice +
             ", trATime='" + trATime + '\'' +

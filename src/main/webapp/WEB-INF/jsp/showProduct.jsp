@@ -51,7 +51,7 @@
             <tr>
                 <td>${i.index+1}</td>
                 <td>${product.dareaId}</td>
-                <td>${product.aAreaId}</td>
+                <td>${product.arrAreaId}</td>
                 <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
@@ -77,7 +77,7 @@
                 <option value="${areaId}">${area.contry}</option>
             </c:forEach>
         </select>
-        <select name="aAreaId">
+        <select name="arrAreaId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
                 <option value="${areaId}">${area.contry}</option>
             </c:forEach>

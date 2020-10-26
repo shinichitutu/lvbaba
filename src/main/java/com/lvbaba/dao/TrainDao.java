@@ -31,7 +31,7 @@ public interface TrainDao {
      * @param train
      * @return
      */
-    List<Train> queryTrainAndDatailBydaIdAndAAreaId(Train train);
+    List<Train> queryTrainAndDatailBydaIdAndarrAreaId(Train train);
 
     /**
      * 通过火车班次的名字查询结果，用于判重
