@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: shinichi
-  Date: 2020/10/23
-  Time: 14:23
+  Date: 2020/10/26
+  Time: 9:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,6 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
-
 <head>
     <title>Title</title>
     <base href="<%=basePath%>"/>
@@ -23,25 +22,21 @@
     <thead>
     <tr>
         <th>序号</th>
-        <th>酒店名称</th>
-        <th>国家</th>
-        <th>城市</th>
-        <th>酒店等级</th>
-        <th>查看客房</th>
+        <th>日期</th>
+        <th>价格</th>
+        <th>预定数量</th>
         <th>编辑</th>
         <th>删除</th>
     </tr>
 
     </thead>
     <tbody>
-    <c:forEach items="${requestScope.hotelList}" var="hotel" varStatus="status">
+    <c:forEach items="${requestScope.roomDetail}" var="rd" varStatus="status">
         <tr>
             <td>${status.count}</td>
-            <td>${hotel.hName}</td>
-            <td>${hotel.area.country}</td>
-            <td>${hotel.area.city}</td>
-            <td>${hotel.hLevel}</td>
-            <td><a href="#"?hid =${hotel.hId}>查看客房</a></td>
+            <td>${rd.rDate}</td>
+            <td>${rd.rdPrice}</td>
+            <td><a href="#"?rid =${rd.rid}>查看详情</a></td>
             <td></td>
             <td></td>
         </tr>

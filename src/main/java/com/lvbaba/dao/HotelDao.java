@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Created by shinichi on 2020/10/23.
  */
+
 public interface HotelDao {
 
     Hotel queryOne(Hotel hotel);

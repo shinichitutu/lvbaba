@@ -7,5 +7,8 @@ import java.util.List;
 public interface AreaService {
 
     List<Area> queryCountry();
+
     List<Area> queryCityByCountry(Area area);
+
+    Area queryOne(Area area);
 }
