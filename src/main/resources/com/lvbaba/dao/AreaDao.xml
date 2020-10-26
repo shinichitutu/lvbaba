@@ -10,6 +10,10 @@
         select distinct a_id,city from area where country = #{country}
     </select>
 
+    <select id="queryOne" parameterType="Area" resultMap="areaMap">
+        select a_id,country,city from area where a_id = #{aId};
+    </select>
+
     <resultMap id="areaMap" type="Area">
         <id property="aId" column="a_id"/>
         <result property="country" column="country"/>

@@ -20,4 +20,7 @@ public interface AreaDao {
      */
     List<Area> queryCityByCountry(Area area);
 
+
+    Area queryOne(Area area);
+
 }
