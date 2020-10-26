@@ -31,7 +31,7 @@ public class TransportationServiceImpl implements TransportationService {
         if (flight == null) {
             return false;
         }
-        Flight flight1 = flightDao.queryByFlightName(flight.getfNumber());
+        Flight flight1 = flightDao.queryByFlightName(flight.getflightNumber());
         if (flight1 != null) {
             return false;
         }

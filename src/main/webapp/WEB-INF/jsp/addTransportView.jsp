@@ -92,7 +92,7 @@
 
             //添加航班信息
             $(".addFlight").click(function () {
-                var fNumber = $("input[name = 'fNumber']").val();
+                var flightNumber = $("input[name = 'flightNumber']").val();
                 var fCompany = $("input[name = 'fCompany']").val();
                 var fDTime = $("input[name = 'fDTime']").val();
                 var fATime = $("input[name = 'fATime']").val();
@@ -100,10 +100,10 @@
                 var aAreaId = $("#a_city").find("option:selected").val();
                 var fCapacity = $(".f_capacity").val();
                 var fPrice = $(".f_price").val();
-                // console.log(fNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+daId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
+                // console.log(flightNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+daId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
                 $.ajax({
                     type:"post",
-                    data:{fNumber:fNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,daId:daId,aAreaId:aAreaId,fCapacity:fCapacity,fPrice:fPrice},
+                    data:{flightNumber:flightNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,daId:daId,aAreaId:aAreaId,fCapacity:fCapacity,fPrice:fPrice},
                     url:"addFlight.do",
                     dataType:"text",
                     success:function (obj) {
@@ -159,7 +159,7 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="flightInfo" class="container tab-pane active"><br>
-            <p>航班号：<input type="text" name="fNumber"/></p>
+            <p>航班号：<input type="text" name="flightNumber"/></p>
             <p>所属航空公司：<input type="text" name="fCompany"/></p>
             <p>出发日期：<input type="datetime-local" name="fDTime"/></p>
             <p>到达日期：<input type="datetime-local" name="fATime"/></p>

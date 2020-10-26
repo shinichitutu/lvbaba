@@ -4,13 +4,13 @@
 
     <insert id="insertFlight" parameterType="Flight">
         insert into flight(f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price)
-        values(#{fNumber},#{fCompany},#{fDTime},#{fATime},#{daId},#{aAreaId},#{fCapacity},#{fPrice})
+        values(#{flightNumber},#{fCompany},#{fDTime},#{fATime},#{daId},#{aAreaId},#{fCapacity},#{fPrice})
     </insert>
 
 
     <update id="updateFlightById" parameterType="Flight">
         update flight <set>
-        <if test="fNumber!=null and f_number!=''">f_numnber = #{fNumber},</if>
+        <if test="flightNumber!=null and f_number!=''">f_numnber = #{flightNumber},</if>
         <if test="fCompany!=null and fCompany!=''">f_company = #{fCompany},</if>
         <if test="fDTime!=null and fDTime!=''">f_d_time = #{fDTime},</if>
         <if test="fATime!=null and fATime!=''">f_a_time = #{fATime},</if>
@@ -35,7 +35,7 @@
     </select>
 
     <select id="queryByFlightName" resultMap="flightMap">
-        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight where f_number =#{fNumber}
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight where f_number =#{flightNumber}
     </select>
 
     <select id="queryAllFlight" resultMap="flightMap">
@@ -44,7 +44,7 @@
 
     <resultMap id="flightMap" type="Flight">
         <id property="fId" column="f_id"/>
-        <result property="fNumber" column="f_number"/>
+        <result property="flightNumber" column="f_number"/>
         <result property="fCompany" column="f_company"/>
         <result property="fDTime" column="f_d_time"/>
         <result property="fATime" column="f_a_time"/>

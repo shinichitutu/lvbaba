@@ -9,7 +9,7 @@ import java.util.List;
 public class Flight {
 
   private long fId;
-  private String fNumber;
+  private String flightNumber;
   private String fCompany;
   private String fDTime;
   private String fATime;
@@ -29,12 +29,12 @@ public class Flight {
     this.fId = fId;
   }
 
-  public String getfNumber() {
-    return fNumber;
+  public String getflightNumber() {
+    return flightNumber;
   }
 
-  public void setfNumber(String fNumber) {
-    this.fNumber = fNumber;
+  public void setflightNumber(String flightNumber) {
+    this.flightNumber = flightNumber;
   }
 
   public String getfCompany() {
@@ -100,12 +100,12 @@ public class Flight {
 //    this.fId = fId;
 //  }
 //
-//  public String getFNumber() {
-//    return fNumber;
+//  public String getflightNumber() {
+//    return flightNumber;
 //  }
 //
-//  public void setFNumber(String fNumber) {
-//    this.fNumber = fNumber;
+//  public void setflightNumber(String flightNumber) {
+//    this.flightNumber = flightNumber;
 //  }
 //
 //
@@ -198,7 +198,7 @@ public class Flight {
   public String toString() {
     return "Flight{" +
             "fId=" + fId +
-            ", fNumber='" + fNumber + '\'' +
+            ", flightNumber='" + flightNumber + '\'' +
             ", fCompany='" + fCompany + '\'' +
             ", fDTime='" + fDTime + '\'' +
             ", fATime='" + fATime + '\'' +

@@ -37,10 +37,10 @@ public interface FlightDao {
 
     /**
      * 通过传递的航班号判断数据库是否存在
-     * @param fNumber
+     * @param flightNumber
      * @return
      */
-    Flight queryByFlightName(String fNumber);
+    Flight queryByFlightName(String flightNumber);
 
     /**
      * 管理员查看所有航班信息
