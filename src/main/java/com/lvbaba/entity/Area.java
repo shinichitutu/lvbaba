@@ -7,11 +7,24 @@ public class Area {
   private String country;
   private String city;
 
-  public long getAId() {
+  public Area(long aId, String country, String city) {
+    this.aId = aId;
+    this.country = country;
+    this.city = city;
+  }
+
+  public Area() {
+  }
+
+  public Area(long aId) {
+    this.aId = aId;
+  }
+
+  public long getaId() {
     return aId;
   }
 
-  public void setAId(long aId) {
+  public void setaId(long aId) {
     this.aId = aId;
   }
 

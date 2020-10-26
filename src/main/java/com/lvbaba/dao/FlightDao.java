@@ -33,7 +33,7 @@ public interface FlightDao {
      * @param flight
      * @return
      */
-    List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight);
+    List<Flight> queryFlightAndDatailBydaIdAndAAreaId(Flight flight);
 
     /**
      * 通过传递的航班号判断数据库是否存在

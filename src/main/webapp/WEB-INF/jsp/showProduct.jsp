@@ -50,7 +50,7 @@
         <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${product.dAId}</td>
+                <td>${product.daId}</td>
                 <td>${product.aAreaId}</td>
                 <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
@@ -72,7 +72,7 @@
 </div>
 <div style="text-align: center;display: none;" id="d2">
     <form action="insertProduct.do" method="post">
-        <select name="dAId">
+        <select name="daId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
                 <option value="${aId}">${area.contry}</option>
             </c:forEach>

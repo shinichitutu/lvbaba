@@ -4,7 +4,7 @@ package com.lvbaba.entity;
 public class Product {
 
   private long pId;
-  private long dAId;
+  private long daId;
   private long aAreaId;
   private long limLow;
   private long limUp;
@@ -22,12 +22,12 @@ public class Product {
     this.pId = pId;
   }
 
-  public long getdAId() {
-    return dAId;
+  public long getdaId() {
+    return daId;
   }
 
-  public void setdAId(long dAId) {
-    this.dAId = dAId;
+  public void setdaId(long daId) {
+    this.daId = daId;
   }
 
   public long getaAreaId() {
@@ -98,7 +98,7 @@ public class Product {
   public String toString() {
     return "Product{" +
             "pId=" + pId +
-            ", dAId=" + dAId +
+            ", daId=" + daId +
             ", aAreaId=" + aAreaId +
             ", limLow=" + limLow +
             ", limUp=" + limUp +

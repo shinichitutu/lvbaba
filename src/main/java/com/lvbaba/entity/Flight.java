@@ -13,7 +13,7 @@ public class Flight {
   private String fCompany;
   private String fDTime;
   private String fATime;
-  private long dAId;
+  private long daId;
   private long aAreaId;
   private long fCapacity;
   private double fPrice;
@@ -61,12 +61,12 @@ public class Flight {
     this.fATime = fATime;
   }
 
-  public long getdAId() {
-    return dAId;
+  public long getdaId() {
+    return daId;
   }
 
-  public void setdAId(long dAId) {
-    this.dAId = dAId;
+  public void setdaId(long daId) {
+    this.daId = daId;
   }
 
   public long getaAreaId() {
@@ -136,12 +136,12 @@ public class Flight {
 //  }
 //
 //
-//  public long getDAId() {
-//    return dAId;
+//  public long getDaId() {
+//    return daId;
 //  }
 //
-//  public void setDAId(long dAId) {
-//    this.dAId = dAId;
+//  public void setDaId(long daId) {
+//    this.daId = daId;
 //  }
 //
 //
@@ -202,7 +202,7 @@ public class Flight {
             ", fCompany='" + fCompany + '\'' +
             ", fDTime='" + fDTime + '\'' +
             ", fATime='" + fATime + '\'' +
-            ", dAId=" + dAId +
+            ", daId=" + daId +
             ", aAreaId=" + aAreaId +
             ", fCapacity=" + fCapacity +
             ", fPrice=" + fPrice +

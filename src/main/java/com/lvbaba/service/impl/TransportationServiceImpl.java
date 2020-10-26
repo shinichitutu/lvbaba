@@ -55,11 +55,11 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
-    public List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight) {
+    public List<Flight> queryFlightAndDatailBydaIdAndAAreaId(Flight flight) {
         if (flight == null) {
             return null;
         }
-        return flightDao.queryFlightAndDatailBydAIdAndAAreaId(flight);
+        return flightDao.queryFlightAndDatailBydaIdAndAAreaId(flight);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class TransportationServiceImpl implements TransportationService {
         List<Flight> list = new ArrayList<>();
         if (null!=flightList && !flightList.isEmpty()){
             for (Flight f:flightList) {
-                f.setD_area(areaDao.queryOne(new Area(f.getdAId())));
+                f.setD_area(areaDao.queryOne(new Area(f.getdaId())));
                 f.setA_area(areaDao.queryOne(new Area(f.getaAreaId())));
                 list.add(f);
             }
@@ -129,11 +129,11 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
-    public List<Train> queryTrainAndDatailBydAIdAndAAreaId(Train train) {
+    public List<Train> queryTrainAndDatailBydaIdAndAAreaId(Train train) {
         if (train == null) {
             return null;
         }
-        return trainDao.queryTrainAndDatailBydAIdAndAAreaId(train);
+        return trainDao.queryTrainAndDatailBydaIdAndAAreaId(train);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class TransportationServiceImpl implements TransportationService {
         List<Train> list = new ArrayList<>();
         if (null!=trainList && !trainList.isEmpty()){
             for (Train t:trainList) {
-                t.setD_area(areaDao.queryOne(new Area(t.getdAId())));
+                t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
                 t.setA_area(areaDao.queryOne(new Area(t.getaAreaId())));
                 list.add(t);
             }
