@@ -22,6 +22,25 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function () {
+            //ajax请求国家列表
+            $.ajax({
+                type:"post",
+                url:"showCountry.do",
+                dataType:"json",
+                success:function (obj) {
+                    var str ="";
+                    console.log(obj)
+                    $.each(obj,function (index,item) {
+                        console.log(item.city);
+                        str += "<option value='"+item.country+"'>"+item.country+"</option>";
+                    })
+                    $("#a_country").append(str);
+                    $("#d_country").append(str);
+                    $("#tr_a_country").append(str);
+                    $("#tr_d_country").append(str);
+                }
+            })
+
             //飞机的选择地点与火车的地点公用
             $("#d_country,#tr_d_country").change(function () {
                 $("#d_city option:gt(0)").remove();
@@ -146,9 +165,6 @@
             <p>到达日期：<input type="datetime-local" name="fATime"/></p>
             <p>出发地：<select id="d_country">
                 <option value="0">--请选择--</option>
-                <c:forEach items="${requestScope.countryList}" var="country">
-                    <option value="${country.country}">${country.country}</option>
-                </c:forEach>
             </select>
             <select id="d_city">
                 <option value="0">--请选择--</option>
@@ -156,9 +172,6 @@
             </p>
             <p>目的地：<select id="a_country">
                 <option value="0">--请选择--</option>
-                <c:forEach items="${requestScope.countryList}" var="country">
-                    <option value="${country.country}">${country.country}</option>
-                </c:forEach>
             </select>
                 <select id="a_city">
                     <option value="0">--请选择--</option>
@@ -174,9 +187,6 @@
             <p>到达日期：<input type="datetime-local" name="trATime"/></p>
             <p>出发地：<select id="tr_d_country">
                 <option value="0">--请选择--</option>
-                <c:forEach items="${requestScope.countryList}" var="country">
-                    <option value="${country.country}">${country.country}</option>
-                </c:forEach>
             </select>
                 <select id="tr_d_city">
                     <option value="0">--请选择--</option>
@@ -184,9 +194,7 @@
             </p>
             <p>目的地：<select id="tr_a_country">
                 <option value="0">--请选择--</option>
-                <c:forEach items="${requestScope.countryList}" var="country">
-                    <option value="${country.country}">${country.country}</option>
-                </c:forEach>
+
             </select>
                 <select id="tr_a_city">
                     <option value="0">--请选择--</option>

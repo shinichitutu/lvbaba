@@ -29,19 +29,9 @@ public class OperateTransportController {
     @Resource
     private TransportationService transportationService;
 
-    @RequestMapping("/showCountry.do")
-    public ModelAndView showCountry(HttpSession session){
-        List<Area> countryList = areaService.queryCountry();
-        return new ModelAndView("addTransportView").addObject("countryList",countryList);
-    }
-
-    @RequestMapping("/showCity.do")
-    @ResponseBody
-    public String showCity(String country, HttpServletResponse response) throws IOException {
-        Area area = new Area();
-        area.setCountry(country);
-        List<Area> cityList = areaService.queryCityByCountry(area);
-        return JSON.toJSONString(cityList);
+    @RequestMapping("/addTransportView.do")
+    public String showCountry(){
+        return "addTransportView";
     }
 
     @RequestMapping("/addFlight.do")
