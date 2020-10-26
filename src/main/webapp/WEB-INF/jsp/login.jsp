@@ -194,7 +194,7 @@
                 var check =$("#remember").val();
                 $.ajax({
                     type:"post",
-                    data:"uUsername="+name+"&uPassword="+pwd,
+                    data:"username="+name+"&password="+pwd+"&check="+check,
                     url:"login.do",
                     dataType:"text",
                     success:function (obj) {
@@ -203,7 +203,7 @@
                         }else if("true"==obj){
                             location.href="toIndex.do";
                         }else{
-                            location.href="index.jsp";
+                            location.href="toManagerView.do";
                         }
                     }
                 })
@@ -235,7 +235,7 @@
         <a style="cursor: pointer" href="#register" class="click_register">注册</a>
     </h2>
     <%--    登录样式表单--%>
-    <form action="login.do" method="post" id="login">
+    <form action="login.us" method="post" id="login">
         <div class="form-group">
             <label for="name_login">用户名:</label>
             <input type="text" name="name" class="form-control" id="name_login" placeholder="请输入账号">
@@ -251,9 +251,8 @@
         </div>
         <button type="button" class="btn btn-primary" id="login_btn">登录</button>
     </form>
-    <div>${requestScope.loginError}</div>
     <%--注册界面表单--%>
-    <form action="register.do" method="post" id="register">
+    <form action="register.us" method="post" id="register">
         <div class="form-group">
             <label for="nc_register">昵称:</label>
             <input type="text" name="name" class="form-control" id="nc_register" placeholder="请输入昵称">
@@ -277,6 +276,5 @@
         <button type="button" class="btn btn-primary" id="register_btn">注册</button>
     </form>
 </div>
-
 </body>
 </html>

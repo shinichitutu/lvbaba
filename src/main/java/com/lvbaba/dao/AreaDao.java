@@ -22,4 +22,5 @@ public interface AreaDao {
 
 
     Area queryOne(Area area);
+
 }

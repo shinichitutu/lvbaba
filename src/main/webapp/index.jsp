@@ -26,7 +26,9 @@
 <a href="toLoginView.do">登录</a><br/>
     ${sessionScope.user.uName}
 
-<a href="showHotels.do">查看酒店</a>
+<a href="showHotels.do">查看酒店</a><br/>
+
+<a href="showCountry.do">新增交通工具</a><br/>
 
 </body>
 </html>
