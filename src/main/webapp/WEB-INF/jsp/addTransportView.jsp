@@ -53,10 +53,9 @@
                         dataType:"json",
                         success:function (obj) {
                             console.log(obj);
-                            var json = eval(obj);
-                            $.each(json,function (index,item) {
+                            $.each(obj,function (index,item) {
                                 console.log(item);
-                                str += "<option value='"+item.id+"'>"+item.city+"</option>";
+                                str += "<option value='"+item.aId+"'>"+item.city+"</option>";
                                 console.log(item.aId);
                             })
                             $("#a_city").append(str);
@@ -84,6 +83,19 @@
                 var fCapacity = $(".f_capacity").val();
                 var f_price = $(".f_price").val();
                 console.log(fNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+dAId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
+                $.ajax({
+                    type:"post",
+                    data:{fNumber:fNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,dAId:dAId,aAreaId:aAreaId,fCapacity:fCapacity,f_price:f_price},
+                    url:"addFlight.do",
+                    dataType:"text",
+                    success:function (obj) {
+                        if("false"==obj){
+                            alert("添加失败");
+                        }else{
+                            alert("添加成功");
+                        }
+                    }
+                })
             })
         })
     </script>

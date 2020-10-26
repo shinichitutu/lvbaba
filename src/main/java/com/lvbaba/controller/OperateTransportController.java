@@ -1,8 +1,11 @@
 package com.lvbaba.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lvbaba.entity.Area;
+import com.lvbaba.entity.Flight;
 import com.lvbaba.service.AreaService;
+import com.lvbaba.service.TransportationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +27,8 @@ import java.util.List;
 public class OperateTransportController {
     @Resource
     private AreaService areaService;
+    @Resource
+    private TransportationService transportationService;
 
     @RequestMapping("/showCountry.do")
     public ModelAndView showCountry(HttpSession session){
@@ -33,11 +38,17 @@ public class OperateTransportController {
 
     @RequestMapping("/showCity.do")
     @ResponseBody
-    public void showCity(String country, HttpServletResponse response) throws IOException {
+    public String showCity(String country, HttpServletResponse response) throws IOException {
         Area area = new Area();
         area.setCountry(country);
         List<Area> cityList = areaService.queryCityByCountry(area);
-        System.out.println("1111111111111111");
-        response.getWriter().write(JSONObject.toJSONString(cityList));
+        return JSON.toJSONString(cityList);
+    }
+
+    @RequestMapping("/addFlight.do")
+    @ResponseBody
+    public String addFlight(Flight flight){
+        boolean flag = transportationService.insertFlight(flight);
+        return ""+flag;
     }
 }
