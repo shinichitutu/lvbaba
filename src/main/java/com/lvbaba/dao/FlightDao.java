@@ -34,4 +34,11 @@ public interface FlightDao {
      * @return
      */
     List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight);
+
+    /**
+     * 通过传递的航班号判断数据库是否存在
+     * @param fNumber
+     * @return
+     */
+    Flight queryByFlightName(String fNumber);
 }

@@ -82,7 +82,7 @@
                 var aAreaId = $("#a_city").find("option:selected").val();
                 var fCapacity = $(".f_capacity").val();
                 var f_price = $(".f_price").val();
-                console.log(fNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+dAId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
+                // console.log(fNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+dAId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
                 $.ajax({
                     type:"post",
                     data:{fNumber:fNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,dAId:dAId,aAreaId:aAreaId,fCapacity:fCapacity,f_price:f_price},
