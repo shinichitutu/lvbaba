@@ -22,8 +22,10 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function () {
-            $("#d_country").change(function () {
+            //飞机的选择地点与火车的地点公用
+            $("#d_country,#tr_d_country").change(function () {
                 $("#d_city option:gt(0)").remove();
+                $("#tr_d_city option:gt(0)").remove();
                 var country = $(this).val();
                 var str = "";
                 if (country!='0'){
@@ -37,12 +39,16 @@
                                 str += "<option value='"+item.aId+"'>"+item.city+"</option>";
                             })
                             $("#d_city").append(str);
+                            $("#tr_d_city").append(str);
                         }
                     })
                 }
             })
-            $("#a_country").change(function () {
+
+            //飞机的选择地点与火车的地点公用
+            $("#a_country,tr_a_country").change(function () {
                 $("#a_city option:gt(0)").remove();
+                $("#tr_a_city option:gt(0)").remove();
                 var country = $(this).val();
                 var str = "";
                 if (country!='0'){
@@ -59,20 +65,13 @@
                                 console.log(item.aId);
                             })
                             $("#a_city").append(str);
+                            $("#tr_a_city").append(str);
                         }
                     })
                 }
             })
-            //
-            // var dAId = null;
-            // var aAreaId = null;
-            // $("#d_city").blur(function () {
-            //     dAId = $(this).find("option:selected").val();
-            // })
-            // $("#a_city").blur(function () {
-            //     dAId = $(this).find("option:selected").val();
-            // })
 
+            //添加航班信息
             $(".addFlight").click(function () {
                 var fNumber = $("input[name = 'fNumber']").val();
                 var fCompany = $("input[name = 'fCompany']").val();
@@ -81,16 +80,40 @@
                 var dAId = $("#d_city").find("option:selected").val();
                 var aAreaId = $("#a_city").find("option:selected").val();
                 var fCapacity = $(".f_capacity").val();
-                var f_price = $(".f_price").val();
+                var fPrice = $(".f_price").val();
                 // console.log(fNumber+"--"+fCompany+"---"+fDTime+"---"+fATime+"--"+dAId+"---"+aAreaId+"--"+fCapacity+"---"+f_price);
                 $.ajax({
                     type:"post",
-                    data:{fNumber:fNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,dAId:dAId,aAreaId:aAreaId,fCapacity:fCapacity,f_price:f_price},
+                    data:{fNumber:fNumber,fCompany:fCompany,fDTime:fDTime,fATime:fATime,dAId:dAId,aAreaId:aAreaId,fCapacity:fCapacity,fPrice:fPrice},
                     url:"addFlight.do",
                     dataType:"text",
                     success:function (obj) {
                         if("false"==obj){
-                            alert("添加失败");
+                            alert("添加失败,航班号相同了，请检查");
+                        }else{
+                            alert("添加成功");
+                        }
+                    }
+                })
+            })
+
+            //添加火车班次信息
+            $(".addTrain").click(function () {
+                var trNumber = $("input[name = 'trNumber']").val();
+                var trDTime = $("input[name = 'trDTime']").val();
+                var trATime = $("input[name = 'trATime']").val();
+                var trAId = $("#tr_d_city").find("option:selected").val();
+                var trAreaId = $("#tr_a_city").find("option:selected").val();
+                var trCapacity = $(".tr_capacity").val();
+                var trPrice = $(".tr_price").val();
+                $.ajax({
+                    type:"post",
+                    data:{trNumber:trNumber,trDTime:trDTime,trATime:trATime,trAId:trAId,trAreaId:trAreaId,trCapacity:trCapacity,trPrice:trPrice},
+                    url:"addTrain.do",
+                    dataType:"text",
+                    success:function (obj) {
+                        if("false"==obj){
+                            alert("添加失败，火车班次相同了，请检查");
                         }else{
                             alert("添加成功");
                         }
@@ -102,7 +125,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>添加交通工具</h2>
+    <h2>新增交通工具</h2>
     <br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
@@ -146,8 +169,32 @@
             <p><input type="button" value="添加" class="addFlight"/></p>
         </div>
         <div id="trainInfo" class="container tab-pane fade"><br>
-            <h3>添加火车信息</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>火车次号：<input type="text" name="trNumber"/></p>
+            <p>出发日期：<input type="datetime-local" name="trDTime"/></p>
+            <p>到达日期：<input type="datetime-local" name="trATime"/></p>
+            <p>出发地：<select id="tr_d_country">
+                <option value="0">--请选择--</option>
+                <c:forEach items="${requestScope.countryList}" var="country">
+                    <option value="${country.country}">${country.country}</option>
+                </c:forEach>
+            </select>
+                <select id="tr_d_city">
+                    <option value="0">--请选择--</option>
+                </select>
+            </p>
+            <p>目的地：<select id="tr_a_country">
+                <option value="0">--请选择--</option>
+                <c:forEach items="${requestScope.countryList}" var="country">
+                    <option value="${country.country}">${country.country}</option>
+                </c:forEach>
+            </select>
+                <select id="tr_a_city">
+                    <option value="0">--请选择--</option>
+                </select>
+            </p>
+            <p>容量：<input type="number" class="tr_capacity" min="1" step = "1" max="1000"/></p>
+            <p>价格：<input type="text" class="tr_price"/></p>
+            <p><input type="button" value="添加" class="addTrain"/></p>
         </div>
     </div>
 </div>

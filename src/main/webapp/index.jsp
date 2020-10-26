@@ -30,5 +30,7 @@
 
 <a href="showCountry.do">新增交通工具</a><br/>
 
+<a href="showFlightAndTrain.do">新增交通工具</a><br/>
+
 </body>
 </html>

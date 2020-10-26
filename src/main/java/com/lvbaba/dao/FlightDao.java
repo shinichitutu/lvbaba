@@ -41,4 +41,10 @@ public interface FlightDao {
      * @return
      */
     Flight queryByFlightName(String fNumber);
+
+    /**
+     * 管理员查看所有航班信息
+     * @return
+     */
+    List<Flight> queryAllFlight();
 }

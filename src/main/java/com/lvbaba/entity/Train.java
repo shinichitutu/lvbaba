@@ -1,5 +1,9 @@
 package com.lvbaba.entity;
 
+import com.lvbaba.entity.Area;
+import com.lvbaba.entity.Traindetail;
+
+import java.util.List;
 
 public class Train {
 
@@ -10,7 +14,10 @@ public class Train {
   private long aAreaId;
   private long trCapacity;
   private double trPrice;
-
+  private String trATime;
+  private List<Traindetail> traindetailList;
+  private Area d_area;
+  private Area a_area;
 
   public long getTrId() {
     return trId;
@@ -68,6 +75,109 @@ public class Train {
     this.trPrice = trPrice;
   }
 
+  public String getTrATime() {
+    return trATime;
+  }
+
+  public void setTrATime(String trATime) {
+    this.trATime = trATime;
+  }
+
+  //  public long getTrId() {
+//    return trId;
+//  }
+//
+//  public void setTrId(long trId) {
+//    this.trId = trId;
+//  }
+//
+//
+//  public String getTrNumber() {
+//    return trNumber;
+//  }
+//
+//  public void setTrNumber(String trNumber) {
+//    this.trNumber = trNumber;
+//  }
+//
+//
+//  public String getTrDTime() {
+//    return trDTime;
+//  }
+//
+//  public void setTrDTime(String trDTime) {
+//    this.trDTime = trDTime;
+//  }
+//
+//
+//  public long getDAId() {
+//    return dAId;
+//  }
+//
+//  public void setDAId(long dAId) {
+//    this.dAId = dAId;
+//  }
+//
+//
+//  public long getAAreaId() {
+//    return aAreaId;
+//  }
+//
+//  public void setAAreaId(long aAreaId) {
+//    this.aAreaId = aAreaId;
+//  }
+//
+//
+//  public long getTrCapacity() {
+//    return trCapacity;
+//  }
+//
+//  public void setTrCapacity(long trCapacity) {
+//    this.trCapacity = trCapacity;
+//  }
+//
+//
+//  public double getTrPrice() {
+//    return trPrice;
+//  }
+//
+//  public void setTrPrice(double trPrice) {
+//    this.trPrice = trPrice;
+//  }
+//
+//
+//  public String getTrATime() {
+//    return trATime;
+//  }
+//
+//  public void setTrATime(String trATime) {
+//    this.trATime = trATime;
+//  }
+//
+  public List<Traindetail> getTraindetailList() {
+    return traindetailList;
+  }
+
+  public void setTraindetailList(List<Traindetail> traindetailList) {
+    this.traindetailList = traindetailList;
+  }
+
+  public Area getD_area() {
+    return d_area;
+  }
+
+  public void setD_area(Area d_area) {
+    this.d_area = d_area;
+  }
+
+  public Area getA_area() {
+    return a_area;
+  }
+
+  public void setA_area(Area a_area) {
+    this.a_area = a_area;
+  }
+
   @Override
   public String toString() {
     return "Train{" +
@@ -78,6 +188,10 @@ public class Train {
             ", aAreaId=" + aAreaId +
             ", trCapacity=" + trCapacity +
             ", trPrice=" + trPrice +
+            ", trATime='" + trATime + '\'' +
+            ", traindetailList=" + traindetailList +
+            ", d_area=" + d_area +
+            ", a_area=" + a_area +
             '}';
   }
 }

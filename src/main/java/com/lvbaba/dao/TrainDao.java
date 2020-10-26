@@ -1,6 +1,5 @@
 package com.lvbaba.dao;
 
-import com.lvbaba.entity.Flight;
 import com.lvbaba.entity.Train;
 
 import java.util.List;
@@ -32,5 +31,18 @@ public interface TrainDao {
      * @param train
      * @return
      */
-    List<Flight> queryTrainAndDatailBydAIdAndAAreaId(Train train);
+    List<Train> queryTrainAndDatailBydAIdAndAAreaId(Train train);
+
+    /**
+     * 通过火车班次的名字查询结果，用于判重
+     * @param trainName
+     * @return
+     */
+    Train queryByTrainName(String trainName);
+
+    /**
+     * 管理员查看所有的火车班次信息
+     * @return
+     */
+    List<Train> queryAllTrain();
 }
