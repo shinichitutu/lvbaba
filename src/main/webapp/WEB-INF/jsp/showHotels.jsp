@@ -24,9 +24,10 @@
     <tr>
         <th>序号</th>
         <th>酒店名称</th>
-        <th>所在城市</th>
+        <th>国家</th>
+        <th>城市</th>
         <th>酒店等级</th>
-        <th>查看详情</th>
+        <th>查看客房</th>
         <th>编辑</th>
         <th>删除</th>
     </tr>
@@ -37,11 +38,12 @@
         <tr>
             <td>${status.count}</td>
             <td>${hotel.hName}</td>
-            <td>${hotel.aId}</td>
+            <td>${hotel.area.country}</td>
+            <td>${hotel.area.city}</td>
             <td>${hotel.hLevel}</td>
+            <td><a href="#"?hid =${hotel.hId}>查看客房</a></td>
             <td></td>
             <td></td>
-            <td>查看详情</td>
         </tr>
     </c:forEach>
     </tbody>

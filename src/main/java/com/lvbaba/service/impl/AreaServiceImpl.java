@@ -31,4 +31,12 @@ public class AreaServiceImpl implements AreaService {
         }
         return areaDao.queryCityByCountry(area);
     }
+
+    @Override
+    public Area queryOne(Area area) {
+        if(area==null){
+            return null;
+        }
+        return areaDao.queryOne(area);
+    }
 }
