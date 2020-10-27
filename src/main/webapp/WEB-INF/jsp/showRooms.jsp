@@ -20,16 +20,15 @@
         $(function () {
             $("#btn").click(function () {
                 var str1 = "<form action='addRoom.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hName'/><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
+                    "客房数量：<input type='number' name='number' min=1/><br/>"+
+                    "人数限制：<input type='number' name='limit' min='1' max='10'/><br/>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
-                $("#addHotel").html(str1);
+                $("#addRoom").html(str1);
             })
-
         })
     </script>
+
 </head>
 <body>
 
@@ -59,6 +58,21 @@
 
     </tbody>
 </table>
+
+<div style="text-align: center">
+    <input type="button" id="btn" value="添加客房" />
+</div>
+
+<div id = "addRoom" style="text-align: center">
+</div>
+
+<c:if test="${null != requestScope.error}">
+    <span style="color: red">${requestScope.error}</span>
+</c:if>
+
+<c:if test="${null != requestScope.success}">
+    <span style="color: red">${requestScope.success}</span>
+</c:if>
 
 </body>
 </html>

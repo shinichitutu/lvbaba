@@ -61,13 +61,16 @@ public class HotelController {
 
     @RequestMapping("/addHotel.do")
     public String addHotel(Model model,String areaId,String hLevel,String hName){
-        System.out.println(areaId);
-        System.out.println(hLevel);
-        System.out.println(hName);
         Hotel hotel =new Hotel(Long.valueOf(areaId),hName,Long.valueOf(hLevel));
-        hotelService.insertHotel(hotel);
-        model.addAttribute("success","添加成功");
+        boolean flag = hotelService.insertHotel(hotel);
+        if(flag){
+            model.addAttribute("success","添加成功");
+        }else {
+            model.addAttribute("error","添加失败");
+        }
         return "forward:showHotels.do";
     }
+
+
 
 }
