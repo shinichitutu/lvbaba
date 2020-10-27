@@ -158,11 +158,13 @@
     </div>
 </nav>
 
+
 <a href="showHotels.do">查看酒店</a><br/>
 
 <a href="addTransportView.do">新增交通工具</a><br/>
 
 <a href="showFlightAndTrain.do">交通工具管理</a><br/>
+
 
 
 <div class="container" style="margin-top:30px">

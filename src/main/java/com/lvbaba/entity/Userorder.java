@@ -75,6 +75,8 @@ public class Userorder {
             ", tId=" + tId +
             ", oPrice=" + oPrice +
             ", oStatus='" + oStatus + '\'' +
+            ", oTime='" + oTime + '\'' +
+            ", pTime='" + pTime + '\'' +
             '}';
   }
 }
