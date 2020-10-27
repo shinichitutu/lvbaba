@@ -74,11 +74,14 @@
     <form action="insertProduct.do" method="post">
         <select name="daId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
+
                 <option value="${areaId}">${area.contry}</option>
+
             </c:forEach>
         </select>
         <select name="arrAreaId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
+
                 <option value="${areaId}">${area.contry}</option>
             </c:forEach>
         </select>

@@ -14,10 +14,14 @@
 <html>
 
 <head>
-    <title>Title</title>
+    <title>查询酒店</title>
     <base href="<%=basePath%>"/>
     <script type="text/javascript" src="../../js/jquery-3.1.0.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $("#btn").click(function () {
@@ -75,40 +79,42 @@
     </script>
 </head>
 <body>
-
-<table>
-    <thead>
-    <tr>
-        <th>序号</th>
-        <th>酒店名称</th>
-        <th>国家</th>
-        <th>城市</th>
-        <th>酒店等级</th>
-        <th>查看客房</th>
-        <th>编辑</th>
-        <th>删除</th>
-    </tr>
-
-    </thead>
-    <tbody>
-    <c:forEach items="${requestScope.hotelList}" var="hotel" varStatus="status">
+<div class="container">
+    <table class="table table-hover">
+        <thead>
         <tr>
-            <td>${status.count}</td>
-            <td>${hotel.hName}</td>
-            <td>${hotel.area.country}</td>
-            <td>${hotel.area.city}</td>
-            <td>${hotel.hLevel}</td>
-            <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
-            <td>${hotel.hId}</td>
-            <td></td>
+            <th>序号</th>
+            <th>酒店名称</th>
+            <th>国家</th>
+            <th>城市</th>
+            <th>酒店等级</th>
+            <th>查看客房</th>
+            <th>编辑</th>
+            <th>删除</th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
 
-<input type="button" id="btn" value="添加酒店" />
+        </thead>
+        <tbody>
+        <c:forEach items="${requestScope.hotelList}" var="hotel" varStatus="status">
+            <tr>
+                <td>${status.count}</td>
+                <td>${hotel.hName}</td>
+                <td>${hotel.area.country}</td>
+                <td>${hotel.area.city}</td>
+                <td>${hotel.hLevel}</td>
+                <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
+                <td>${hotel.hId}</td>
+                <td></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+<div style="text-align: center">
+    <input type="button" id="btn" value="添加酒店" />
+</div>
 
-<div id = "addHotel">
+<div id = "addHotel" style="text-align: center">
 </div>
 
 <c:if test="${null != requestScope.error}">

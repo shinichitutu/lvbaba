@@ -12,7 +12,7 @@
 %>
 <html>
 <head>
-    <title>管理员</title>
+    <title>用户</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1 id="go_top">欢迎${sessionScope.admin.adName}登录</h1>
+    <h1 id="go_top">欢迎${sessionScope.user.uName}登录</h1>
     <p></p>
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
@@ -40,7 +40,7 @@
         <ul class="navbar-nav" >
             <li class="nav-item" style="margin-left: 50px">
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询产品" style="background-color: orange">
-                    <a href="showProduct.do" target="_blank">查询产品</a>
+                    <a href="showProduct.do">查询产品</a>
                 </button>
             </li>
             <li class="nav-item" style="margin-left:50px">
