@@ -88,6 +88,9 @@ public class HotelController {
 
     @RequestMapping("addRoomDetail.do")
     public String addRoomDetail(Model model, String rId, String price, String date) {
+        System.out.println(rId);
+        System.out.println(price);
+        System.out.println(date);
         Roomdetail roomdetail = new Roomdetail(Long.valueOf(rId), date, Double.valueOf(price));
         boolean flag = roomDetailService.insertRoomDetail(roomdetail);
         if (flag) {
