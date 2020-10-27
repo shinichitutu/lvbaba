@@ -15,6 +15,21 @@
 <head>
     <title>Title</title>
     <base href="<%=basePath%>"/>
+
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                var str1 = "<form action='addRoom.do' method='post'>"+
+                    "酒店名称：<input type='text' name='hName'/><br/>"+
+                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
+                    "<input type='submit' value='添加'/>"+
+                    "</form>";
+                $("#addHotel").html(str1);
+            })
+
+        })
+    </script>
 </head>
 <body>
 
@@ -41,6 +56,7 @@
             <td></td>
         </tr>
     </c:forEach>
+
     </tbody>
 </table>
 

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.ProductDao">
+
     <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,r_id,p_name,p_fee,p_score</sql>
+
     <sql id="condition">
+
         <if test="pId!=null and pId!=''">p_id=#{pId}</if>
         <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
         <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId}</if>
@@ -14,10 +17,12 @@
         <if test="pFee!=null and pFee !=''">p_fee=#{pFee}</if>
         <if test="pScore!=null and pScore !=''">p_score=#{pScore}</if>
     </sql>
+
     <insert id="insertProduct">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, r_id, p_name, p_fee, p_score) VALUE
         (${daId},${arrAreaId},${limLow},${limUp},${days},${rId},${pName},${pFee},${pScore})
     </insert>
+
     <update id="updateProduct">
         UPDATE product
         <set>
@@ -32,18 +37,22 @@
             <if test="pScore!=null and pScore !=''">p_score=#{pScore},</if>
         </set>
     </update>
+
     <delete id="removeProduct">
         delete from product where p_id=#{pId}
     </delete>
+
     <select id="query" resultMap="productMap">
-        SELECT <include reflightId="all"/> from product
+        SELECT <include refid="all"/> from product
         <where>
-            <include reflightId="condition"></include>
+            <include refid="condition"></include>
         </where>
     </select>
+
     <select id="queryAll" resultMap="productMap">
-        select <include reflightId="all"/> from product;
+        select <include refid="all"/> from product;
     </select>
+
     <resultMap id="productMap" type="Product">
         <id property="pId" column="p_id"></id>
         <result property="daId" column="d_a_id"/>
@@ -56,4 +65,6 @@
         <result property="pFee" column="p_fee"/>
         <result property="pScore" column="p_score"/>
     </resultMap>
+
+
 </mapper>
