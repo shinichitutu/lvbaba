@@ -8,6 +8,7 @@ import com.lvbaba.entity.Train;
 import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TransportationService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,5 +65,28 @@ public class OperateTransportController {
         mv.addObject("flightList",flightList);
         mv.addObject("trainList",trainList);
         return mv;
+    }
+
+    @RequestMapping("/updateFlight.do")
+    @ResponseBody
+    public String updateFlight(Flight flight){
+        boolean flag = transportationService.updateFlight(flight);
+        return ""+flag;
+    }
+
+    @RequestMapping("/updateTrain.do")
+    @ResponseBody
+    public String updateTrain(Train train){
+        boolean flag = transportationService.updateTrainById(train);
+        return ""+flag;
+    }
+
+    @RequestMapping("/showTrainInfo.do")
+    public String showTrainInfo(Model model){
+        List<Flight> flightList = transportationService.queryAllFlight();
+        List<Train> trainList = transportationService.queryAllTrain();
+        model.addAttribute("flightList",flightList);
+        model.addAttribute("trainList",trainList);
+        return "forward:/WEB-INF/jsp/showTransportView.jsp?#trainInfo";
     }
 }
