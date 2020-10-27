@@ -31,7 +31,7 @@ public class TransportationServiceImpl implements TransportationService {
         if (flight == null) {
             return false;
         }
-        Flight flight1 = flightDao.queryByFlightName(flight.getflightNumber());
+        Flight flight1 = flightDao.queryByFlightName(flight.getFlightNumber());
         if (flight1 != null) {
             return false;
         }
@@ -68,8 +68,8 @@ public class TransportationServiceImpl implements TransportationService {
         List<Flight> list = new ArrayList<>();
         if (null!=flightList && !flightList.isEmpty()){
             for (Flight f:flightList) {
-                f.setD_area(areaDao.queryOne(new Area(f.getdaId())));
-                f.setA_area(areaDao.queryOne(new Area(f.getarrAreaId())));
+                f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
+                f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
                 list.add(f);
             }
         }

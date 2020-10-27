@@ -32,8 +32,29 @@
         }
     </style>
     <script>
-        function modifyFlight() {
-
+        function modifyFlight(obj,flightId,flightNumber,flightCompany,d_country,d_city,a_country,a_city,flightDTime,flightATime,flightCapacity,flightPrice) {
+            var str = "<tr><form action='' method='post'>" +
+                "<td>航班号：<input type='text' value='"+flightNumber+"'/></td>" +
+                "<td>航空公司：<input type='text' value='"+flightCompany+"'/></td>" +
+                "<td>出发地：<select id='d_country'>" +
+                "<option value='0'>"+d_country+"</option>" +
+                "</select>" +
+                "<select id='d_city'>" +
+                "<option value='0'>"+d_city+"</option>" +
+                "</select></td>" +
+                "<td>目的地：<select id='a_country'>" +
+                "<option value='0'>"+a_country+"</option>" +
+                "</select>" +
+                "<select id='a_city'>" +
+                "<option value='0'>"+a_city+"</option>" +
+                "</select></td>" +
+                "<td>出发日期：<input type='datetime-local' name='flightDTime' value='"+flightDTime+"'/></td>" +
+                "<td>到达日期：<input type='datetime-local' name='flightATime' value='"+flightATime+"'/></td>" +
+                "<td>容量：<input type='number' class='f_capacity' min='1' max='1000' value='"+flightCapacity+"'/></td>" +
+                "<td>价格：<input type='text' class='f_price' value='"+flightPrice+"'/></td>" +
+                "<td><input type='submit' class='modifyFlight’ value='提交'/></td>" +
+                "</form></tr>";
+            $(obj).append(str);
         }
     </script>
 </head>
@@ -75,7 +96,7 @@
                 </thead>
                 <tbody>
                 <c:if test="${empty requestScope.flightList}"><tr><td colspan="11">暂时还没有航班信息</td></tr></c:if>
-                        <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
+                    <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
                         <tr>
                             <td>${i.count}</td>
                             <td>${flight.flightNumber}</td>
@@ -87,12 +108,14 @@
                             <td>${flight.flightCapacity}</td>
                             <td>${flight.flightPrice}</td>
                           
-                            <td><input type="button" class="modifyFlight" value="修改" onclick="modifyFlight()"></td>
+                            <td><input type="button" class="modifyFlight" value="修改" onclick="
+                            modifyFlight(this,${flight.flightId},${flight.flightNumber},${flight.flightCompany},${flight.d_area.country},${flight.d_area.city},
+                                ${flight.a_area.country},${flight.a_area.city},${flight.flightDTime},${flight.flightATime},${flight.flightCapacity},
+                                ${flight.flightPrice} )"></td>
                             <td><input type="button" class="addFlightDetail" value="增加详情"></td>
 
-
-                        </c:forEach>
-                    </tr>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

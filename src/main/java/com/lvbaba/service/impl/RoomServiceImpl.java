@@ -12,7 +12,7 @@ import java.util.List;
  * Created by shinichi on 2020/10/26.
  */
 
-@Service
+@Service("roomService")
 public class RoomServiceImpl implements RoomService {
     @Resource
     private RoomDao roomDao;

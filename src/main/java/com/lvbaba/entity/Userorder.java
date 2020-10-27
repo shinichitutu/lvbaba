@@ -8,6 +8,8 @@ public class Userorder {
   private long tId;
   private double oPrice;
   private String oStatus;
+  private String oTime;
+  private String pTime;
 
   public long getoId() {
     return oId;
@@ -47,6 +49,22 @@ public class Userorder {
 
   public void setoStatus(String oStatus) {
     this.oStatus = oStatus;
+  }
+
+  public String getoTime() {
+    return oTime;
+  }
+
+  public void setoTime(String oTime) {
+    this.oTime = oTime;
+  }
+
+  public String getpTime() {
+    return pTime;
+  }
+
+  public void setpTime(String pTime) {
+    this.pTime = pTime;
   }
 
   @Override

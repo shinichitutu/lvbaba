@@ -36,13 +36,13 @@
         delete from product where p_id=#{pId}
     </delete>
     <select id="query" resultMap="productMap">
-        SELECT <include reflightId="all"/> from product
+        SELECT <include refid="all"/> from product
         <where>
-            <include reflightId="condition"></include>
+            <include refid="condition"></include>
         </where>
     </select>
     <select id="queryAll" resultMap="productMap">
-        select <include reflightId="all"/> from product;
+        select <include refid="all"/> from product;
     </select>
     <resultMap id="productMap" type="Product">
         <id property="pId" column="p_id"></id>
