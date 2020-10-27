@@ -49,7 +49,12 @@ public class RoomDetailServiceImpl implements RoomDetailService {
         if(roomdetail==null){
             return false;
         }
-        return roomDetailDao.insertRoomDetail(roomdetail);
+        Roomdetail roomdetail1 =new Roomdetail();
+        roomdetail1.setrDate(roomdetail.getrDate());
+        if(query(roomdetail1).size()==0||query(roomdetail1)==null){
+            return roomDetailDao.insertRoomDetail(roomdetail);
+        }
+        return false;
     }
 
     @Override
