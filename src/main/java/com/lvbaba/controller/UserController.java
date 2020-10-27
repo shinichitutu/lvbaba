@@ -39,15 +39,25 @@ public class UserController {
     }
 
     @RequestMapping("/login.do")
-    @ResponseBody
     public String login(User user, Model model, HttpSession session){
+        System.out.println(user);
         User user1 = userService.queryByUserName(user);
-        System.out.println(user1);
-        if (user1.getuPassword().equals(user.getuPassword())){
+        if (null!=user1.getuPassword()&&user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);
-            return "redirect:index.jsp";
+            return "userMain";
         }else{
             model.addAttribute("loginError","账号或密码有误");
+            return "login";
+        }
+    }
+    @RequestMapping("/register.do")
+    public String register(User user, Model model, HttpSession session){
+        if (userService.registerUser(user)){
+            User user1=userService.queryByUserName(user);
+            session.setAttribute("user",user1);
+            return "userMain";
+        }else{
+            model.addAttribute("loginError","注册失败");
             return "login";
         }
     }
@@ -62,5 +72,8 @@ public class UserController {
             return "login";
         }
     }
-
+    @RequestMapping("/userMain.do")
+    public String userMain(){
+        return "userMain";
+    }
 }

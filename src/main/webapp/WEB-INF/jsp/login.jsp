@@ -12,7 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Bootstrap 实例</title>
+    <title>登录页面</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -136,7 +136,7 @@
                 var password = $("#pwd_register1").val();
                 $.ajax({
                     type: "post",
-                    data: "name=" + name + "&username=" + userName + "&password=" + password,
+                    data: "uUsername=" + userName + "&uPassword=" + password,
                     url: "register.do",
                     dataType: "text",
                     success: function (obj) {
@@ -194,7 +194,7 @@
                 var check =$("#remember").val();
                 $.ajax({
                     type:"post",
-                    data:"username="+name+"&password="+pwd+"&check="+check,
+                    data:"uUsername="+name+"&uPassword="+pwd+"&check="+check,
                     url:"login.do",
                     dataType:"text",
                     success:function (obj) {
@@ -203,7 +203,7 @@
                         }else if("true"==obj){
                             location.href="toIndex.do";
                         }else{
-                            location.href="toManagerView.do";
+                            location.href="userMain.do";
                         }
                     }
                 })
@@ -245,9 +245,9 @@
 
 <div class="container">
     <h2 style="text-align: center">
-        <a style="margin-right: 20px;cursor: pointer" href="#login" class="click_login" id="d1">登录</a>
+        <a style="margin-right: 20px;cursor: pointer" href="#login" class="click_login" id="d1">登录</a>&nbsp;
         <a style="cursor: pointer" href="#register" class="click_register" id="d2">注册</a>
-        <a style="cursor: pointer" href="#adminRegister" class="click_register" id="d5">后台登录</a>
+        <a style="cursor: pointer;margin-left: 20px" href="#adminRegister" class="click_register" id="d5">后台登录</a>
     </h2>
     <%--    登录样式表单--%>
 
@@ -255,11 +255,11 @@
         <form action="login.do" method="post" id="login">
             <div class="form-group">
                 <label for="name_login">用户名:</label>
-                <input type="text" name="name" class="form-control" id="name_login" placeholder="请输入账号">
+                <input type="text" name="uUsername" class="form-control" id="name_login" placeholder="请输入账号">
             </div>
             <div class="form-group">
                 <label for="pwd_login">密码:</label>
-                <input type="password" name="password" class="form-control" id="pwd_login" placeholder="请输入密码">
+                <input type="password" name="uPassword" class="form-control" id="pwd_login" placeholder="请输入密码">
             </div>
             <div class="form-check">
                 <label class="form-check-label">
@@ -275,22 +275,22 @@
         <form action="register.do" method="post" id="register">
             <div class="form-group">
                 <label for="nc_register">昵称:</label>
-                <input type="text" name="name" class="form-control" id="nc_register" placeholder="请输入昵称">
+                <input type="text" name="uName" class="form-control" id="nc_register" placeholder="请输入昵称">
             </div>
             <div class="form-group">
                 <label for="username_register">用户名:</label>
-                <input type="text" name="username" class="form-control" id="username_register"
+                <input type="text" name="uUsername" class="form-control" id="username_register"
                        placeholder="请输入账号,账号是唯一不能重复的">
                 <span class="showUserNameInfo"></span>
             </div>
             <div class="form-group">
                 <label for="pwd_register1">密码:</label>
-                <input type="password" name="password" class="form-control" id="pwd_register1" placeholder="请输入密码">
+                <input type="password" name="uPassword" class="form-control" id="pwd_register1" placeholder="请输入密码">
                 <span class="showPasswordInfo"></span>
             </div>
             <div class="form-group">
                 <label for="pwd_register2">确认密码:</label>
-                <input type="password" name="password" class="form-control" id="pwd_register2" placeholder="请输入密码">
+                <input type="password" name="uPassword" class="form-control" id="pwd_register2" placeholder="请输入密码">
                 <span class="showAgainPasswordInfo"></span>
             </div>
             <button type="submit" class="btn btn-primary" id="register_btn">注册</button>

@@ -74,12 +74,12 @@
     <form action="insertProduct.do" method="post">
         <select name="dAId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
-                <option value="${aId}">${area.contry}</option>
+                <option value="${aId}">${area.country}</option>
             </c:forEach>
         </select>
         <select name="aAreaId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
-                <option value="${aId}">${area.contry}</option>
+                <option value="${aId}">${area.country}</option>
             </c:forEach>
         </select>
         <input type="number" min="1" max="5" step="1" name="limLow" placeholder="请选择人数下限"><br/>
