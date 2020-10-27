@@ -9,7 +9,7 @@
 
     <update id="updateTrainById" parameterType="Train">
         update train <set>
-        <if test="trNumber!=null and trNumber!=''">tr_numnber = #{trNumber},</if>
+        <if test="trNumber!=null and trNumber!=''">tr_number = #{trNumber},</if>
         <if test="trDTime!=null and trDTime!=''">tr_d_time = #{trDTime},</if>
         <if test="trATime!=null and trATime!=''">tr_a_time = #{trATime},</if>
         <if test="daId!=null and daId!=''">d_a_id = #{daId},</if>
