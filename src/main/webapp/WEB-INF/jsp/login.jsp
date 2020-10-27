@@ -200,8 +200,6 @@
                     success:function (obj) {
                         if ("false"==obj){
                             alert("账号或密码有误，请重新登录");
-                        }else if("true"==obj){
-                            location.href="toIndex.do";
                         }else{
                             location.href="userMain.do";
                         }

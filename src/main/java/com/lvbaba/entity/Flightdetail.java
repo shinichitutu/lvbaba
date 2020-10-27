@@ -4,7 +4,7 @@ package com.lvbaba.entity;
 public class Flightdetail {
 
   private long fdId;
-  private long fId;
+  private long flightId;
   private String fdDate;
   private long fdTickets;
   private double ratio;
@@ -17,12 +17,12 @@ public class Flightdetail {
     this.fdId = fdId;
   }
 
-  public long getfId() {
-    return fId;
+  public long getflightId() {
+    return flightId;
   }
 
-  public void setfId(long fId) {
-    this.fId = fId;
+  public void setflightId(long flightId) {
+    this.flightId = flightId;
   }
 
   public String getFdDate() {
@@ -53,7 +53,7 @@ public class Flightdetail {
   public String toString() {
     return "Flightdetail{" +
             "fdId=" + fdId +
-            ", fId=" + fId +
+            ", flightId=" + flightId +
             ", fdDate='" + fdDate + '\'' +
             ", fdTickets=" + fdTickets +
             ", ratio=" + ratio +

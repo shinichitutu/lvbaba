@@ -31,7 +31,7 @@ public class TransportationServiceImpl implements TransportationService {
         if (flight == null) {
             return false;
         }
-        Flight flight1 = flightDao.queryByFlightName(flight.getfNumber());
+        Flight flight1 = flightDao.queryByFlightName(flight.getflightNumber());
         if (flight1 != null) {
             return false;
         }
@@ -55,11 +55,11 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
-    public List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight) {
+    public List<Flight> queryFlightAndDatailBydaIdAndarrAreaId(Flight flight) {
         if (flight == null) {
             return null;
         }
-        return flightDao.queryFlightAndDatailBydAIdAndAAreaId(flight);
+        return flightDao.queryFlightAndDatailBydaIdAndarrAreaId(flight);
     }
 
     @Override
@@ -68,8 +68,8 @@ public class TransportationServiceImpl implements TransportationService {
         List<Flight> list = new ArrayList<>();
         if (null!=flightList && !flightList.isEmpty()){
             for (Flight f:flightList) {
-                f.setD_area(areaDao.queryOne(new Area(f.getdAId())));
-                f.setA_area(areaDao.queryOne(new Area(f.getaAreaId())));
+                f.setD_area(areaDao.queryOne(new Area(f.getdaId())));
+                f.setA_area(areaDao.queryOne(new Area(f.getarrAreaId())));
                 list.add(f);
             }
         }
@@ -129,11 +129,11 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
-    public List<Train> queryTrainAndDatailBydAIdAndAAreaId(Train train) {
+    public List<Train> queryTrainAndDatailBydaIdAndarrAreaId(Train train) {
         if (train == null) {
             return null;
         }
-        return trainDao.queryTrainAndDatailBydAIdAndAAreaId(train);
+        return trainDao.queryTrainAndDatailBydaIdAndarrAreaId(train);
     }
 
     @Override
@@ -142,8 +142,8 @@ public class TransportationServiceImpl implements TransportationService {
         List<Train> list = new ArrayList<>();
         if (null!=trainList && !trainList.isEmpty()){
             for (Train t:trainList) {
-                t.setD_area(areaDao.queryOne(new Area(t.getdAId())));
-                t.setA_area(areaDao.queryOne(new Area(t.getaAreaId())));
+                t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
+                t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
                 list.add(t);
             }
         }

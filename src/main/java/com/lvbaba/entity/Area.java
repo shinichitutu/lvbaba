@@ -3,23 +3,29 @@ package com.lvbaba.entity;
 
 public class Area {
 
-  private long aId;
+  private long areaId;
   private String country;
   private String city;
 
-  public Area(long aId) {
-    this.aId = aId;
+  public Area(long areaId, String country, String city) {
+    this.areaId = areaId;
+    this.country = country;
+    this.city = city;
   }
 
   public Area() {
   }
 
-  public long getAId() {
-    return aId;
+  public Area(long areaId) {
+    this.areaId = areaId;
   }
 
-  public void setAId(long aId) {
-    this.aId = aId;
+  public long getAreaId() {
+    return areaId;
+  }
+
+  public void setAreaId(long areaId) {
+    this.areaId = areaId;
   }
 
   public String getCountry() {
@@ -41,7 +47,7 @@ public class Area {
   @Override
   public String toString() {
     return "Area{" +
-            "aId=" + aId +
+            "areaId=" + areaId +
             ", country='" + country + '\'' +
             ", city='" + city + '\'' +
             '}';

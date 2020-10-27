@@ -30,11 +30,11 @@ public class OperateTransportController {
     @Resource
     private TransportationService transportationService;
 
-
     @RequestMapping("/addTransportView.do")
     public String showCountry() {
         return "addTransportView";
     }
+
     @RequestMapping("/showCountry2.do")
     @ResponseBody
     public String showCountry2() {

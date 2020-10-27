@@ -10,8 +10,8 @@ public class Train {
   private long trId;
   private String trNumber;
   private String trDTime;
-  private long dAId;
-  private long aAreaId;
+  private long daId;
+  private long arrAreaId;
   private long trCapacity;
   private double trPrice;
   private String trATime;
@@ -43,20 +43,20 @@ public class Train {
     this.trDTime = trDTime;
   }
 
-  public long getdAId() {
-    return dAId;
+  public long getdaId() {
+    return daId;
   }
 
-  public void setdAId(long dAId) {
-    this.dAId = dAId;
+  public void setdaId(long daId) {
+    this.daId = daId;
   }
 
-  public long getaAreaId() {
-    return aAreaId;
+  public long getarrAreaId() {
+    return arrAreaId;
   }
 
-  public void setaAreaId(long aAreaId) {
-    this.aAreaId = aAreaId;
+  public void setarrAreaId(long arrAreaId) {
+    this.arrAreaId = arrAreaId;
   }
 
   public long getTrCapacity() {
@@ -110,21 +110,21 @@ public class Train {
 //  }
 //
 //
-//  public long getDAId() {
-//    return dAId;
+//  public long getDaId() {
+//    return daId;
 //  }
 //
-//  public void setDAId(long dAId) {
-//    this.dAId = dAId;
+//  public void setDaId(long daId) {
+//    this.daId = daId;
 //  }
 //
 //
-//  public long getAAreaId() {
-//    return aAreaId;
+//  public long getarrAreaId() {
+//    return arrAreaId;
 //  }
 //
-//  public void setAAreaId(long aAreaId) {
-//    this.aAreaId = aAreaId;
+//  public void setarrAreaId(long arrAreaId) {
+//    this.arrAreaId = arrAreaId;
 //  }
 //
 //
@@ -184,8 +184,8 @@ public class Train {
             "trId=" + trId +
             ", trNumber='" + trNumber + '\'' +
             ", trDTime='" + trDTime + '\'' +
-            ", dAId=" + dAId +
-            ", aAreaId=" + aAreaId +
+            ", daId=" + daId +
+            ", arrAreaId=" + arrAreaId +
             ", trCapacity=" + trCapacity +
             ", trPrice=" + trPrice +
             ", trATime='" + trATime + '\'' +

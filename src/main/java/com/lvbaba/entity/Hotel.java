@@ -4,15 +4,15 @@ package com.lvbaba.entity;
 public class Hotel {
 
   private long hId;
-  private long aId;
+  private long areaId;
   private String hName;
   private long hLevel;
   private Area area;
 
 
-  public Hotel(long hId, long aId, String hName, long hLevel) {
+  public Hotel(long hId, long areaId, String hName, long hLevel) {
     this.hId = hId;
-    this.aId = aId;
+    this.areaId = areaId;
     this.hName = hName;
     this.hLevel = hLevel;
   }
@@ -20,8 +20,12 @@ public class Hotel {
   public Hotel() {
   }
 
-  public Hotel(long aId, String hName, long hLevel) {
-    this.aId = aId;
+  public Hotel(long hId) {
+    this.hId = hId;
+  }
+
+  public Hotel(long areaId, String hName, long hLevel) {
+    this.areaId = areaId;
     this.hName = hName;
     this.hLevel = hLevel;
   }
@@ -34,12 +38,12 @@ public class Hotel {
     this.hId = hId;
   }
 
-  public long getaId() {
-    return aId;
+  public long getAreaId() {
+    return areaId;
   }
 
-  public void setaId(long aId) {
-    this.aId = aId;
+  public void setAreaId(long areaId) {
+    this.areaId = areaId;
   }
 
   public String gethName() {
@@ -70,7 +74,7 @@ public class Hotel {
   public String toString() {
     return "Hotel{" +
             "hId=" + hId +
-            ", aId=" + aId +
+            ", areaId=" + areaId +
             ", hName='" + hName + '\'' +
             ", hLevel=" + hLevel +
             ", area=" + area +

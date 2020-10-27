@@ -50,8 +50,8 @@
         <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${product.dAId}</td>
-                <td>${product.aAreaId}</td>
+                <td>${product.dareaId}</td>
+                <td>${product.arrAreaId}</td>
                 <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
@@ -72,14 +72,17 @@
 </div>
 <div style="text-align: center;display: none;" id="d2">
     <form action="insertProduct.do" method="post">
-        <select name="dAId">
+        <select name="daId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
-                <option value="${aId}">${area.country}</option>
+
+                <option value="${areaId}">${area.contry}</option>
+
             </c:forEach>
         </select>
-        <select name="aAreaId">
+        <select name="arrAreaId">
             <c:forEach items="${requestScope.areas}" varStatus="i" var="area">
-                <option value="${aId}">${area.country}</option>
+
+                <option value="${areaId}">${area.contry}</option>
             </c:forEach>
         </select>
         <input type="number" min="1" max="5" step="1" name="limLow" placeholder="请选择人数下限"><br/>

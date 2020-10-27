@@ -34,7 +34,7 @@ public interface TransportationService {
      * @param flight
      * @return
      */
-    List<Flight> queryFlightAndDatailBydAIdAndAAreaId(Flight flight);
+    List<Flight> queryFlightAndDatailBydaIdAndarrAreaId(Flight flight);
 
     /**
      * 管理员查看所有的航班信息
@@ -91,7 +91,7 @@ public interface TransportationService {
      * @param train
      * @return List<Flight>集合
      */
-    List<Train> queryTrainAndDatailBydAIdAndAAreaId(Train train);
+    List<Train> queryTrainAndDatailBydaIdAndarrAreaId(Train train);
 
     /**
      * 管理员查看所有的火车班次信息
