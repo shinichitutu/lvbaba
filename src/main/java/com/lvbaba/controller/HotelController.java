@@ -86,11 +86,9 @@ public class HotelController {
         return "forward:showRooms.do";
     }
 
-    @RequestMapping("addRoomDetail.do")
+    @RequestMapping("/addRoomDetail.do")
     public String addRoomDetail(Model model, String rId, String price, String date) {
-        System.out.println(rId);
-        System.out.println(price);
-        System.out.println(date);
+
         Roomdetail roomdetail = new Roomdetail(Long.valueOf(rId), date, Double.valueOf(price));
         boolean flag = roomDetailService.insertRoomDetail(roomdetail);
         if (flag) {
@@ -100,6 +98,19 @@ public class HotelController {
         }
         model.addAttribute("rId", rId);
         return "forward:showRoomDetail.do";
+    }
+
+    @RequestMapping("/updateHotel.do")
+    public String updateHotel(Model model, String areaId, String hLevel, String hName, String hId) {
+        Hotel hotel = new Hotel(Long.valueOf(hId), Long.valueOf(areaId), hName, Long.valueOf(hLevel));
+        boolean flag = hotelService.updateHotel(hotel);
+        if (flag) {
+            model.addAttribute("success", "修改成功");
+        } else {
+            model.addAttribute("error", "修改失败");
+        }
+        return "forward:showHotels.do";
+
     }
 
 
