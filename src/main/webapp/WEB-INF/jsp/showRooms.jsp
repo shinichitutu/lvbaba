@@ -15,13 +15,14 @@
 <head>
     <title>Title</title>
     <base href="<%=basePath%>"/>
-
+    <script type="text/javascript" src="../../js/jquery-3.1.0.js"></script>
     <script>
         $(function () {
             $("#btn").click(function () {
                 var str1 = "<form action='addRoom.do' method='post'>"+
                     "客房数量：<input type='number' name='number' min=1/><br/>"+
                     "人数限制：<input type='number' name='limit' min='1' max='10'/><br/>"+
+                        "<input type='hidden' name='hId' value='${requestScope.hId}'>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
                 $("#addRoom").html(str1);

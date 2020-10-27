@@ -38,9 +38,11 @@ public class RoomServiceImpl implements RoomService {
         if (room == null) {
             return false;
         }
-        if (query(room) == null) {
+
+        if (query(room).size()==0||query(room)==null) {
             return roomDao.insertRoom(room);
         }
+
         return false;
     }
 
