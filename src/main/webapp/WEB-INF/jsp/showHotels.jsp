@@ -53,9 +53,48 @@
                         success:function (obj) {
                             var str ="";
                             $.each(obj,function (index,item) {
-                                console.log(item.areaId);
                                 str += " <option value='"+item.areaId+"'>"+item.city+"</option>";
                             });
+                            $("#city").append(str);
+
+                        }
+                    })
+                })
+            }
+
+            function updateArea() {
+                $.ajax({
+                    type:"post",
+                    url:"showCountry2.do",
+                    dataType:"json",
+                    success:function (obj) {
+                        var str = "";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.country+"'>"+item.country+"</option>";
+                        });
+                        $("#country").empty();
+                        $("#country").append(str);
+                    }
+                });
+
+
+
+
+                $("#country").change(function () {
+                    $("#city option:gt(0)").remove();
+                    var country = $(this).val();
+                    $.ajax({
+                        type:"post",
+                        url:"showCity.do",
+                        data:"country="+country,
+                        dataType:"json",
+                        success:function (obj) {
+                            var str ="";
+             /*               str += "<option value='0'>--请选择城市--</option>";*/
+                            $.each(obj,function (index,item) {
+                                str += " <option value='"+item.areaId+"'>"+item.city+"</option>";
+                            });
+                            $("#city").empty();
                             $("#city").append(str);
 
                         }
@@ -84,7 +123,8 @@
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";
                 $("#updateHotel").html(str);
-                chooseArea();
+
+                updateArea();
             })
         })
     </script>
