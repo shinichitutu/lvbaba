@@ -10,7 +10,7 @@
 
     <update id="updateFlightById" parameterType="Flight">
         update flight <set>
-        <if test="flightNumber!=null and f_number!=''">f_numnber = #{flightNumber},</if>
+        <if test="flightNumber!=null and flightNumber!=''">f_number = #{flightNumber},</if>
         <if test="flightCompany!=null and flightCompany!=''">f_company = #{flightCompany},</if>
         <if test="flightDTime!=null and flightDTime!=''">f_d_time = #{flightDTime},</if>
         <if test="flightATime!=null and flightATime!=''">f_a_time = #{flightATime},</if>
