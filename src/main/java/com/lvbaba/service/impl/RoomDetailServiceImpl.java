@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by shinichi on 2020/10/26.
  */
-@Service
+@Service("roomDetailService")
 public class RoomDetailServiceImpl implements RoomDetailService {
     @Resource
     private RoomDetailDao roomDetailDao;
