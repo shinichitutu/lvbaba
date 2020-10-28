@@ -32,7 +32,7 @@ public class HotelTest {
     @Test
     public void testHotel(){
         Area area =new Area();
-        area.setAreaId(2);
+        area.setCountry("中国");
         System.out.println(areaService.query(area));
     }
 @Test
@@ -41,4 +41,7 @@ public class HotelTest {
         roomdetail.setRdId(1);
         System.out.println(roomDetailService.deleteRoomDetail(roomdetail));
     }
+
+
+
 }

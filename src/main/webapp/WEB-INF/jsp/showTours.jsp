@@ -55,15 +55,27 @@
                 })
             })
 
-            $(function () {
-                $(".choice").click(function () {
-                    $(".choice").each(function () {
-                        if($(this).prop("checked")){
-                            $("#address").val($(this).next().val());
-                        }
-                    })
-                })
+            <%-- 去程<input type="text" name="goId">
+  返程<input type="text" name="returnId">--%>
+
+            $(".choice").click(function () {
+                var str1 = "去程";
+                var str2 ="返程";
+                if($("#f").prop("checked")){
+                    $("#trans").html(str1);
+                }
+                if($("#t").prop("checked")){
+                    $("#trans").html(str2);
+                }
             })
+
+
+
+
+
+
+
+
         })
     </script>
     <base href="<%=basePath%>"/>
@@ -127,21 +139,22 @@
         </ul>
     </div>
 </nav>
+
 <div style="display: none" id="d2">
     <form action="insertTour.do" method="post">
         <input type="hidden" name="pId" value="${requestScope.pId}">
         出发日期<input type="date" name="dDate"><br/>
         返回日期<input type="text" name="rDate"><br/>
-        交通类型：<br/>
-        飞机<input type="radio" name="cType" class="choice" value="flight">
-        火车<input type="radio" name="cType" class="choice" value="flight">
-
-
-        去程<input type="text" name="goId">
-        返程<input type="text" name="returnId">
+        交通类型：<div id="reDate"></div>
+        飞机<input type="radio" name="train" class="choice" value="f" id="f">
+        火车<input type="radio" name="flight" class="choice" value="t" id="t">
+        <div id="trans"></div>
+       <%-- 去程<input type="text" name="goId">
+        返程<input type="text" name="returnId">--%>
         <input type="submit" value="点击添加">
     </form>
 </div>
+
 <div class="container">
     <table class="table table-hover">
         <thead>

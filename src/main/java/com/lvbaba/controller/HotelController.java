@@ -45,6 +45,7 @@ public class HotelController {
         return "showHotels";
     }
 
+
     @RequestMapping("/showRooms.do")
     public String showRooms(Model model, String hId) {
         Room room = new Room();
