@@ -85,6 +85,12 @@
         </ul>
     </div>
 </nav>
-
+<div style="text-align: center;">
+    <form action="searchProducts.do">
+        出发地:<input type="text" name="daId">
+        目的地:<input type="text" name="arrAreaId">
+        <input type="submit" value="点击搜索">
+    </form>
+</div>
 </body>
 </html>

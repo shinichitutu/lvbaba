@@ -1,14 +1,17 @@
 package com.lvbaba.service.impl;
 
+import com.lvbaba.dao.AreaDao;
 import com.lvbaba.dao.HotelDao;
+import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Hotel;
-import com.lvbaba.util.CountNum;
+import com.lvbaba.service.AreaService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by YY on 2020/10/27.
@@ -18,8 +21,17 @@ import javax.annotation.Resource;
 public class HotelTest {
     @Resource
     private HotelDao hotelDao;
+    @Resource
+    private AreaService areaService;
+
+    @Resource
+    private AreaDao areaDao;
     @Test
     public void testHotel(){
-        
+        Area area1=new Area();
+        area1.setCountry("中国");
+
+        List<Area> areas=areaDao.query(area1);
+        areas.forEach(System.out::println);
     }
 }
