@@ -157,8 +157,6 @@ public class HotelController {
             model.addAttribute("error", "删除失败");
         }
         return "forward:showRooms.do";
-
     }
-
 
 }
