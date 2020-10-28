@@ -69,7 +69,25 @@
                 }
             })
 
+            
+            $("#deDate").blur(function () {
+                var deDate = $(this).val();
+                console.log(deDate);
+                if(deDate!=''){
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+1)));
+                }
+                $("#reDate").html(date);
+            });
 
+
+            function timeStampString(time){
+                var datetime = new Date();
+                datetime.setTime(time);
+                var year = datetime.getFullYear();
+                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 7;
+                var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                return year + "-" + month + "-" + date;
+            }
 
 
 
@@ -143,11 +161,11 @@
 <div style="display: none" id="d2">
     <form action="insertTour.do" method="post">
         <input type="hidden" name="pId" value="${requestScope.pId}">
-        出发日期<input type="date" name="dDate"><br/>
-        返回日期<input type="text" name="rDate"><br/>
-        交通类型：<div id="reDate"></div>
-        飞机<input type="radio" name="train" class="choice" value="f" id="f">
-        火车<input type="radio" name="flight" class="choice" value="t" id="t">
+        出发日期<input type="date" name="dDate" id="deDate"><br/>
+        返回日期<div id="reDate"></div><br/>
+        交通类型：
+        飞机<input type="radio" name="tran" class="choice" value="f" id="f">
+        火车<input type="radio" name="tran" class="choice" value="t" id="t">
         <div id="trans"></div>
        <%-- 去程<input type="text" name="goId">
         返程<input type="text" name="returnId">--%>
