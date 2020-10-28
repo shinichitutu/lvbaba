@@ -418,6 +418,64 @@
     </script>
 </head>
 <body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1 id="go_top">欢迎${sessionScope.admin.adName}登录</h1>
+    <p></p>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
+    <a class="navbar-brand" href="adminMain.do" style="margin-left: 50px">驴爸爸旅行</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div   class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav" >
+            <li class="nav-item" style="margin-left: 50px">
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询产品" style="background-color: orange">
+                    <a href="showProduct.do">查询产品</a>
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left:50px">
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询旅行团" style="background-color: orange">
+                    <a href="showTour.do">查询旅行团</a><br/>
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left: 50px">
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="国内 港澳台  海外酒店" style="background-color: orange">
+                    <a href="showHotels.do">酒店</a>
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left: 50px">
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查看订单" style="background-color: orange">
+                    <a href="showFlightAndTrain.do">添加交通工具</a>
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left: 50px">
+                <!--<a class="nav-link" href="#">度假</a>-->
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="跟团游  自助游" style="background-color: orange">
+                    查询火车
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left:50px">
+                <!--<a class="nav-link" href="#">门票</a>-->
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="门票查询" style="background-color: orange">
+                    门票
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left:50px">
+                <!-- <a class="nav-link" href="#">火车票</a>-->
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="火车票查询" style="background-color: orange">
+                    火车票
+                </button>
+            </li>
+            <li class="nav-item" style="margin-left:50px">
+                <!--<a class="nav-link" href="#">邮轮</a>-->
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="游轮查询" style="background-color: orange">
+                    游轮
+                </button>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <h3>交通工具管理</h3>
     <br>
@@ -436,6 +494,7 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
+
         <div id="flightInfo" class="container tab-pane active"><br>
             <table class="tb">
                 <thead>
@@ -479,8 +538,8 @@
             </table>
             <div class="modifyFlightInfo" style="margin-top: 30px;"></div>
         </div>
-        <div id="trainInfo" class="container tab-pane fade"><br>
-            <table>
+        <div id="trainInfo" class="container tab-pane fade container"><br>
+            <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>序号</th>

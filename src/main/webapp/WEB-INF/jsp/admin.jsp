@@ -40,7 +40,7 @@
         <ul class="navbar-nav" >
             <li class="nav-item" style="margin-left: 50px">
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询产品" style="background-color: orange">
-                    <a href="showProduct.do" target="_blank">查询产品</a>
+                    <a href="showProduct.do">查询产品</a>
                 </button>
             </li>
             <li class="nav-item" style="margin-left:50px">
@@ -55,7 +55,7 @@
             </li>
             <li class="nav-item" style="margin-left: 50px">
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查看订单" style="background-color: orange">
-                    查看订单
+                    <a href="showFlightAndTrain.do">添加交通工具</a>
                 </button>
             </li>
             <li class="nav-item" style="margin-left: 50px">
@@ -85,6 +85,9 @@
         </ul>
     </div>
 </nav>
+<div style="height: 200px;text-align: center">
+    <img src="../../img/614686256f53224bfc246efa307c984.jpg" style="width: 50%">
+</div>
 
 </body>
 </html>

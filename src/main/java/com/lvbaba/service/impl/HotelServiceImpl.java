@@ -1,5 +1,7 @@
 package com.lvbaba.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.dao.AreaDao;
 import com.lvbaba.dao.HotelDao;
 import com.lvbaba.entity.Area;
@@ -46,6 +48,22 @@ public class HotelServiceImpl implements HotelService {
             list1.add(hotel1);
         }
         return list1;
+    }
+
+    @Override
+    public PageInfo<Hotel> queryAll(Integer size) {
+        PageHelper.startPage(size,10);
+        List<Hotel> query = hotelDao.query(new Hotel());
+        PageInfo<Hotel> hotelPageInfo = new PageInfo<>(query);
+        List<Hotel> list = hotelPageInfo.getList();
+        List<Hotel> list1 =new ArrayList<>();
+        for (Hotel hotel1:list) {
+            Area area = areaDao.queryOne(new Area(hotel1.getAreaId()));
+            hotel1.setArea(area);
+            list1.add(hotel1);
+        }
+        hotelPageInfo.setList(list1);
+        return hotelPageInfo;
     }
 
     @Override

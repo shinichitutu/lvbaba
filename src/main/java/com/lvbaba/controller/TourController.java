@@ -1,5 +1,8 @@
 package com.lvbaba.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Tour;
 import com.lvbaba.service.TourService;
 import org.springframework.stereotype.Controller;
@@ -21,11 +24,18 @@ public class TourController {
     private TourService tourService;
 
     @RequestMapping("/showTour.do")
-    public String showTour(Model model,Tour tour){
+    public String showTour(Model model,Tour tour,String page){
         if (tour==null){
             tour.setpId(1);
         }
+        if (page==null){
+            page="1";
+        }
+        PageHelper.startPage(Integer.valueOf(page),5);
         List<Tour> tours1=tourService.queryByPid(tour);
+        PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
+        model.addAttribute("page",Integer.valueOf(page));
+        model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
         return "showTours";
     }

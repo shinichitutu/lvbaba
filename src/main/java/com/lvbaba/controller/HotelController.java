@@ -1,8 +1,11 @@
 package com.lvbaba.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Hotel;
 import com.lvbaba.entity.Room;
 import com.lvbaba.entity.Roomdetail;
+import com.lvbaba.entity.Tour;
 import com.lvbaba.service.HotelService;
 import com.lvbaba.service.RoomDetailService;
 import com.lvbaba.service.RoomService;
@@ -30,13 +33,15 @@ public class HotelController {
     private RoomDetailService roomDetailService;
 
     @RequestMapping("/showHotels.do")
-    public String showHotels(Model model) {
-        Hotel hotel = new Hotel();
-        List<Hotel> hotelList = hotelService.query(hotel);
-/*        for (Hotel h:hotelList) {
-            System.out.println(h);
-        }*/
-        model.addAttribute("hotelList", hotelList);
+
+    public String showHotels(Model model,String page){
+        if (page==null){
+            page="1";
+        }
+        PageInfo<Hotel> hotelPageInfo = hotelService.queryAll(Integer.valueOf(page));
+        model.addAttribute("page",Integer.valueOf(page));
+        model.addAttribute("pages",hotelPageInfo.getPages());
+        model.addAttribute("hotelList",hotelPageInfo.getList());
         return "showHotels";
     }
 

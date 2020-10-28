@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface HotelDao {
 
+
+
     Hotel queryOne(Hotel hotel);
 
     List<Hotel> query(Hotel hotel);

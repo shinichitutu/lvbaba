@@ -50,7 +50,7 @@
     </select>
 
     <select id="queryAll" resultMap="productMap">
-        select <include refid="all"/> from product;
+        select <include refid="all"/> from product
     </select>
 
     <resultMap id="productMap" type="Product">

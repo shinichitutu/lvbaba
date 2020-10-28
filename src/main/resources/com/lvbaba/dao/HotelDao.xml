@@ -44,6 +44,7 @@
                 and h_level =#{hLevel}
             </if>
         </where>
+
     </select>
 
     <resultMap id="hotelMap" type="Hotel">
