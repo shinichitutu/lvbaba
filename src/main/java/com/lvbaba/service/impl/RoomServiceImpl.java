@@ -19,7 +19,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public Room queryOne(Room room) {
-        if(room==null){
+        if (room == null) {
             return null;
         }
         return roomDao.queryOne(room);
@@ -27,7 +27,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<Room> query(Room room) {
-        if(room==null){
+        if (room == null) {
             return null;
         }
         return roomDao.query(room);
@@ -35,15 +35,20 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean insertRoom(Room room) {
-        if(room==null){
+        if (room == null) {
             return false;
         }
-        return roomDao.insertRoom(room);
+
+        if (query(room).size()==0||query(room)==null) {
+            return roomDao.insertRoom(room);
+        }
+
+        return false;
     }
 
     @Override
     public boolean deleteRoom(Room room) {
-        if(room==null){
+        if (room == null) {
             return false;
         }
         return roomDao.deleteRoom(room);
@@ -51,7 +56,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public boolean updateRoom(Room room) {
-        if(room==null){
+        if (room == null) {
             return false;
         }
         return roomDao.updateRoom(room);

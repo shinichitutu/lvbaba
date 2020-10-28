@@ -15,28 +15,31 @@
 <head>
     <title>房间</title>
     <base href="<%=basePath%>"/>
+
+    <script type="text/javascript" src="../../js/jquery-3.1.0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="../../js/jquery-3.1.0.js"></script>
+
     <script>
         $(function () {
             $("#btn").click(function () {
                 var str1 = "<form action='addRoom.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hName'/><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
+                    "客房数量：<input type='number' name='number' min=1/><br/>"+
+                    "人数限制：<input type='number' name='limit' min='1' max='10'/><br/>"+
+                        "<input type='hidden' name='hId' value='${requestScope.hId}'>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
-                $("#addHotel").html(str1);
+                $("#addRoom").html(str1);
             })
-
         })
     </script>
+
 </head>
 <body>
+
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1 id="go_top">欢迎${sessionScope.admin.adName}登录</h1>
     <p></p>
@@ -95,22 +98,24 @@
         </ul>
     </div>
 </nav>
+
 <div class="container">
     <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>序号</th>
-            <th>人数限制</th>
-            <th>客房数量</th>
-            <th>查看详情</th>
-            <th>编辑</th>
-            <th>删除</th>
-        </tr>
 
-        </thead>
-        <tbody>
-        <c:forEach items="${requestScope.roomList}" var="room" varStatus="status">
-            <tr>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>人数限制</th>
+        <th>客房数量</th>
+        <th>查看详情</th>
+        <th>编辑</th>
+        <th>删除</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <c:forEach items="${requestScope.roomList}" var="room" varStatus="status">
+      <tr>
                 <td>${status.count}</td>
                 <td>${room.pLimit}</td>
                 <td>${room.rNumber}</td>
@@ -118,10 +123,26 @@
                 <td><input type="button" value="点击编辑" class="update"></td>
                 <td><input type="button" value="点击删除" class="remove"></td>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    </c:forEach>
+
+    </tbody>
+</table>
 </div>
+<div style="text-align: center">
+    <input type="button" id="btn" value="添加客房" />
+</div>
+
+<div id = "addRoom" style="text-align: center">
+</div>
+
+<c:if test="${null != requestScope.error}">
+    <span style="color: red">${requestScope.error}</span>
+</c:if>
+
+<c:if test="${null != requestScope.success}">
+    <span style="color: red">${requestScope.success}</span>
+</c:if>
+
 <div style="text-align: center">
     <a href="showHotels.do">返回上级</a>
 </div>

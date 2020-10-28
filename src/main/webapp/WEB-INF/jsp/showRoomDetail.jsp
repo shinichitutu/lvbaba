@@ -21,8 +21,29 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
     <base href="<%=basePath%>"/>
+
+    <script type="text/javascript" src="../../js/jquery-3.1.0.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                var str1 = "<form action='addRoomDetail.do' method='post'>"+
+                    "日期：<input type='date' name='date'/><br/>"+
+                    "价格：<input type='number' name='price' min='1'/><br/>"+
+                    "<input type='hidden' name='rId' value='${requestScope.rId}'>"+
+                    "<input type='submit' value='添加'/>"+
+                    "</form>";
+                $("#addRoom").html(str1);
+            })
+        })
+    </script>
 </head>
 <body>
+
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1 id="go_top">欢迎${sessionScope.admin.adName}登录</h1>
     <p></p>
@@ -81,6 +102,7 @@
         </ul>
     </div>
 </nav>
+
 <div class="container">
     <table class="table table-hover">
     <thead>
@@ -106,12 +128,25 @@
         </tr>
     </c:forEach>
     </tbody>
-
-
 </table>
 </div>
+
 <div style="text-align: center">
-    <a href="showRooms.do?hId=1">返回上级</a>
+    <input type="button" id="btn" value="添加客房详情" />
+
+
 </div>
+
+<div id = "addRoom" style="text-align: center">
+</div>
+
+<c:if test="${null != requestScope.error}">
+    <span style="color: red">${requestScope.error}</span>
+</c:if>
+
+<c:if test="${null != requestScope.success}">
+    <span style="color: red">${requestScope.success}</span>
+</c:if>
+
 </body>
 </html>
