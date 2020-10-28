@@ -34,6 +34,16 @@
                     "</form>";
                 $("#addRoom").html(str1);
             })
+
+            $(".update").click(function () {
+                var str1 = "<form action='updateRoom.do' method='post'>"+
+                    "客房数量：<input type='number' name='number' min=1 value='"+$(this).parent().parent().find("td").eq(3).text()+"'><br/>"+
+                    "人数限制：<input type='number' name='limit' min='1' max='10' value='"+$(this).parent().parent().find("td").eq(2).text()+"'><br/>"+
+                    "<input type='hidden' name='rId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
+                    "<input type='submit' value='确认修改'/>"+
+                    "</form>";
+                $("#updateRoom").html(str1);
+            })
         })
     </script>
 
@@ -105,6 +115,7 @@
     <thead>
     <tr>
         <th>序号</th>
+        <th>客房编号</th>
         <th>人数限制</th>
         <th>客房数量</th>
         <th>查看详情</th>
@@ -116,23 +127,28 @@
     <tbody>
     <c:forEach items="${requestScope.roomList}" var="room" varStatus="status">
       <tr>
-                <td>${status.count}</td>
-                <td>${room.pLimit}</td>
-                <td>${room.rNumber}</td>
-                <td><a href="showRoomDetail.do?rId=${room.rId}">查看详情</a></td>
-                <td><input type="button" value="点击编辑" class="update"></td>
-                <td><input type="button" value="点击删除" class="remove"></td>
-            </tr>
+          <td>${status.count}</td>
+          <td>${room.rId}</td>
+          <td>${room.pLimit}</td>
+          <td>${room.rNumber}</td>
+          <td><a href="showRoomDetail.do?rId=${room.rId}">查看详情</a></td>
+          <td><input type="button" value="编辑" class="update"></td>
+          <td><a href="deleteRoom.do?rId=${room.rIf}"><input type="button" value="删除" class="remove"></a></td>
+      </tr>
     </c:forEach>
 
     </tbody>
 </table>
 </div>
+
 <div style="text-align: center">
     <input type="button" id="btn" value="添加客房" />
 </div>
 
 <div id = "addRoom" style="text-align: center">
+</div>
+
+<div id = "updateRoom" style="text-align: center">
 </div>
 
 <c:if test="${null != requestScope.error}">

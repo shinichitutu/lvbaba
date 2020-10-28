@@ -21,4 +21,6 @@ public interface HotelService {
     boolean deleteHotel(Hotel hotel);
 
     boolean updateHotel(Hotel hotel);
+
+    boolean updateNewHotel(Hotel hotel);
 }

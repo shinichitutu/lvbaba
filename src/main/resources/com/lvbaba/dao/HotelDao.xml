@@ -8,7 +8,7 @@
 
     <update id="updateHotel" parameterType="Hotel">
         UPDATE hotel SET
-        <if test="areaId!=null and areaId!=''">
+        <if test="areaId!=null and areaId!='' and areaId!='0' ">
             a_id = #{areaId},
         </if>
         <if test="hName!=null and hName!=''">

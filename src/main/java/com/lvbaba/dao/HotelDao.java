@@ -21,4 +21,5 @@ public interface HotelDao {
     boolean deleteHotel(Hotel hotel);
 
     boolean updateHotel(Hotel hotel);
+
 }

@@ -118,5 +118,47 @@ public class HotelController {
 
     }
 
+    @RequestMapping("/updateRoom.do")
+    public String updateRoom(Model model,String rId,String number,String limit){
+        Room room =new Room();
+        room.setrId(Long.valueOf(rId));
+        room.setpLimit(Long.valueOf(limit));
+        room.setrNumber(Long.valueOf(number));
+        boolean flag = roomService.updateRoom(room);
+        if (flag) {
+            model.addAttribute("success", "修改成功");
+        } else {
+            model.addAttribute("error", "修改失败");
+        }
+        return "forward:showRooms.do";
+    }
+
+    @RequestMapping("/deleteHotel.do")
+    public String deleteHotel(Model model,String hId){
+        Hotel hotel =new Hotel();
+        hotel.sethId(Long.valueOf(hId));
+        boolean flag = hotelService.deleteHotel(hotel);
+        if (flag) {
+            model.addAttribute("success", "删除成功");
+        } else {
+            model.addAttribute("error", "删除失败");
+        }
+        return "forward:showHotels.do";
+    }
+
+    @RequestMapping("/deleteRoom.do")
+    public String deleteRoom(Model model,String rId){
+        Room room =new Room();
+        room.setrId(Long.valueOf(rId));
+        boolean flag = roomService.deleteRoom(room);
+        if (flag) {
+            model.addAttribute("success", "删除成功");
+        } else {
+            model.addAttribute("error", "删除失败");
+        }
+        return "forward:showRooms.do";
+
+    }
+
 
 }

@@ -77,9 +77,6 @@
                     }
                 });
 
-
-
-
                 $("#country").change(function () {
                     $("#city option:gt(0)").remove();
                     var country = $(this).val();
@@ -90,7 +87,6 @@
                         dataType:"json",
                         success:function (obj) {
                             var str ="";
-             /*               str += "<option value='0'>--请选择城市--</option>";*/
                             $.each(obj,function (index,item) {
                                 str += " <option value='"+item.areaId+"'>"+item.city+"</option>";
                             });
@@ -100,8 +96,27 @@
                         }
                     })
                 })
-            }
 
+                $("#city").mousemove(function () {
+                    var country = $(this).prev().val();
+                    $.ajax({
+                        type:"post",
+                        url:"showCity.do",
+                        data:"country="+country,
+                        dataType:"json",
+                        success:function (obj) {
+                            var str ="";
+                            $.each(obj,function (index,item) {
+                                str += " <option value='"+item.areaId+"'>"+item.city+"</option>";
+                            });
+                            $("#city").empty();
+                            $("#city").append(str);
+
+                        }
+                    })
+                })
+
+            }
 
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
@@ -117,14 +132,14 @@
             $(".update").click(function () {
                 var str = "<form action='updateHotel.do' method='post'>"+
                     "酒店名称：<input type='text' name='hName' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>"+$(this).parent().parent().find("td").eq(3).text()+"</option></select><select id='city' name='areaId'><option value='0'>"+$(this).parent().parent().find("td").eq(4).text()+"</option></select><br/>"+
+                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
                     "酒店等级：<input type='number' name='hLevel' min='1' max='5' value="+$(this).parent().parent().find("td").eq(5).text()+"><br/>"+
                         "<input type='hidden' name='hId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";
                 $("#updateHotel").html(str);
 
-                updateArea();
+                chooseArea();
             })
         })
     </script>
@@ -215,7 +230,7 @@
                 <td>${hotel.hLevel}</td>
                 <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
                 <td><input type="button" class="update" value="修改"></td>
-                <td><a href="#hId=${hotel.hId}">删除</a></td>
+                <td><a href="deleteHotel.do?hId=${hotel.hId}">删除</a></td>
 
             </tr>
         </c:forEach>
@@ -243,10 +258,6 @@
 </div>
 
 
-
-<c:if test="${null != requestScope.success}">
-    <span style="color: red">${requestScope.success}</span>
-</c:if>
 <div style="text-align: center">
     <c:if test="${requestScope.page>1}">
         <a href="showHotels.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>

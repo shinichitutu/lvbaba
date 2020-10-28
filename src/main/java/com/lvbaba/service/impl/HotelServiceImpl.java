@@ -104,4 +104,9 @@ public class HotelServiceImpl implements HotelService {
 
     }
 
+    @Override
+    public boolean updateNewHotel(Hotel hotel) {
+        return false;
+    }
+
 }
