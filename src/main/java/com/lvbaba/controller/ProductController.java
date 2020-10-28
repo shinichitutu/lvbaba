@@ -1,5 +1,7 @@
 package com.lvbaba.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Product;
 import com.lvbaba.service.AreaService;
@@ -22,9 +24,16 @@ public class ProductController {
     @Resource
     private AreaService areaService;
     @RequestMapping("/showProduct.do")
-    public String showProduct(Model model){
+    public String showProduct(Model model,String page){
+        if (page==null){
+            page="1";
+        }
+        PageHelper.startPage(Integer.valueOf(page),5);
         List<Product> products=productService.queryAll();
+        PageInfo<Product> tourPageInfo = new PageInfo<>(products);
         List<Area> areas=areaService.queryCountry();
+        model.addAttribute("pages",tourPageInfo.getPages());
+        model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("areas",areas);
         model.addAttribute("products",products);
         return "showProduct";
@@ -36,6 +45,6 @@ public class ProductController {
        }else {
            model.addAttribute("error","增加失败");
        }
-        return showProduct(model);
+       return "forward:showProduct.do";
     }
 }

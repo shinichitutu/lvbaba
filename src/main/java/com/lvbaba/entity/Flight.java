@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
-
   private long flightId;
   private String flightNumber;
   private String flightCompany;

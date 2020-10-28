@@ -1,5 +1,6 @@
 package com.lvbaba.service;
 
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Hotel;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface HotelService {
     Hotel queryOne(Hotel hotel);
 
     List<Hotel> query(Hotel hotel);
+
+    PageInfo<Hotel> queryAll(Integer size);
 
     boolean insertHotel(Hotel hotel);
 
