@@ -39,6 +39,7 @@
                     }
                 })
             })
+
             $(".update").click(function () {
                 var tId=$(this).next().val()
                 console.log(tId)
@@ -51,6 +52,16 @@
                         console.log(obj)
                         window.location.href="showTour.do";
                     }
+                })
+            })
+
+            $(function () {
+                $(".choice").click(function () {
+                    $(".choice").each(function () {
+                        if($(this).prop("checked")){
+                            $("#address").val($(this).next().val());
+                        }
+                    })
                 })
             })
         })
@@ -118,14 +129,16 @@
 </nav>
 <div style="display: none" id="d2">
     <form action="insertTour.do" method="post">
-        <input type="text" name="pId">
-        <input type="text" name="dDate">
-        <input type="text" name="rDate">
-        <input type="text" name="cType">
-        <input type="text" name="goId">
-        <input type="text" name="returnId">
-        <input type="text" name="bookNum">
-        <input type="text" name="tStatus">
+        <input type="hidden" name="pId" value="${requestScope.pId}">
+        出发日期<input type="date" name="dDate"><br/>
+        返回日期<input type="text" name="rDate"><br/>
+        交通类型：<br/>
+        飞机<input type="radio" name="cType" class="choice" value="flight">
+        火车<input type="radio" name="cType" class="choice" value="flight">
+
+
+        去程<input type="text" name="goId">
+        返程<input type="text" name="returnId">
         <input type="submit" value="点击添加">
     </form>
 </div>

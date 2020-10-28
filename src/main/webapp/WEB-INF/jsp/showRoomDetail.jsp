@@ -43,8 +43,8 @@
 
             $(".update").click(function () {
                 var str1 = "<form action='updateRoomDetail.do' method='post'>"+
-                    "日期：<input type='date' name='date' value=''><br/>"+
-                    "价格：<input type='number' name='price' min='1' value=''><br/>"+
+                    "日期：<input type='date' name='date' value="+$(this).parent().parent().find("td").eq(1).text()+"><br/>"+
+                    "价格：<input type='number' name='price' min='1' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
                     "<input type='hidden' name='rId' value='${requestScope.rId}'>"+
                         "<input type='hidden' name='rdId' value="+$(this).next().val()+">"+
                     "<input type='submit' value='确认修改'/>"+
