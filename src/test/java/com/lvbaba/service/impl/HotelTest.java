@@ -1,7 +1,9 @@
 package com.lvbaba.service.impl;
 
 import com.lvbaba.dao.HotelDao;
+import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Hotel;
+import com.lvbaba.service.AreaService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,8 +19,14 @@ import javax.annotation.Resource;
 public class HotelTest {
     @Resource
     private HotelDao hotelDao;
+
+    @Resource
+    private AreaService areaService;
+
     @Test
     public void testHotel(){
-        
+        Area area =new Area();
+        area.setAreaId(2);
+        System.out.println(areaService.query(area));
     }
 }

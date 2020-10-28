@@ -40,6 +40,7 @@
                     "客房数量：<input type='number' name='number' min=1 value='"+$(this).parent().parent().find("td").eq(3).text()+"'><br/>"+
                     "人数限制：<input type='number' name='limit' min='1' max='10' value='"+$(this).parent().parent().find("td").eq(2).text()+"'><br/>"+
                     "<input type='hidden' name='rId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
+                    "<input type='hidden' name='hId' value='${requestScope.hId}'>"+
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";
                 $("#updateRoom").html(str1);
@@ -133,7 +134,7 @@
           <td>${room.rNumber}</td>
           <td><a href="showRoomDetail.do?rId=${room.rId}">查看详情</a></td>
           <td><input type="button" value="编辑" class="update"></td>
-          <td><a href="deleteRoom.do?rId=${room.rIf}"><input type="button" value="删除" class="remove"></a></td>
+          <td><a href="deleteRoom.do?rId=${room.rId}&hId=${room.hId}"><input type="button" value="删除" class="remove"></a></td>
       </tr>
     </c:forEach>
 
