@@ -5,7 +5,7 @@
     <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,h_id,p_name,p_fee,p_score</sql>
 
     <sql id="condition">
-        <if test="pId!=null and pId!=''">p_id=#{pId}</if>
+        <if test="productId!=null and productId!=''">p_id=#{productId}</if>
 
         <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
         <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId}</if>
@@ -13,14 +13,14 @@
         <if test="limUp!=null and limUp !=''">lim_up=#{limUp}</if>
         <if test="days!=null and days !=''">days=#{days}</if>
         <if test="hotelId!=null and hotelId !=''">h_id=#{hotelId}</if>
-        <if test="pName!=null and pName !=''">p_name=#{pName}</if>
-        <if test="pFee!=null and pFee !=''">p_fee=#{pFee}</if>
-        <if test="pScore!=null and pScore !=''">p_score=#{pScore}</if>
+        <if test="productName!=null and productName !=''">p_name=#{productName}</if>
+        <if test="productFee!=null and productFee !=''">p_fee=#{productFee}</if>
+        <if test="productScore!=null and productScore !=''">p_score=#{productScore}</if>
     </sql>
 
     <insert id="insertProduct">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUE
-        (${daId},${arrAreaId},${limLow},${limUp},${days},${rId},${pName},${pFee},${pScore})
+        (${daId},${arrAreaId},${limLow},${limUp},${days},${roomId},${productName},${productFee},${productScore})
     </insert>
 
     <update id="updateProduct">
@@ -32,14 +32,14 @@
             <if test="limUp!=null and limUp !=''">lim_up=#{limUp},</if>
             <if test="days!=null and days !=''">days=#{days},</if>
             <if test="hotelId!=null and hotelId !=''">h_id=#{hotelId},</if>
-            <if test="pName!=null and pName !=''">p_name=#{pName},</if>
-            <if test="pFee!=null and pFee !=''">p_fee=#{pFee},</if>
-            <if test="pScore!=null and pScore !=''">p_score=#{pScore},</if>
+            <if test="productName!=null and productName !=''">p_name=#{productName},</if>
+            <if test="productFee!=null and productFee !=''">p_fee=#{productFee},</if>
+            <if test="productScore!=null and productScore !=''">p_score=#{productScore},</if>
         </set>
     </update>
 
     <delete id="removeProduct">
-        delete from product where p_id=#{pId}
+        delete from product where p_id=#{productId}
     </delete>
 
     <select id="query" resultMap="productMap">
@@ -61,16 +61,16 @@
     </select>
 
     <resultMap id="productMap" type="Product">
-        <id property="pId" column="p_id"></id>
+        <id property="productId" column="p_id"></id>
         <result property="daId" column="d_a_id"/>
         <result property="arrAreaId" column="a_area_id"/>
         <result property="limLow" column="lim_low"/>
         <result property="limUp" column="lim_up"/>
         <result property="days" column="days"/>
         <result property="hotelId" column="h_id"/>
-        <result property="pName" column="p_name"/>
-        <result property="pFee" column="p_fee"/>
-        <result property="pScore" column="p_score"/>
+        <result property="productName" column="p_name"/>
+        <result property="productFee" column="p_fee"/>
+        <result property="productScore" column="p_score"/>
     </resultMap>
 
 

@@ -97,7 +97,7 @@
                         console.log(obj);
                         var str = "";
                         $.each(obj,function (index,item) {
-                            str += "<option value='"+item.hId+"'>"+item.hName+"--"+item.hLevel+"</option>";
+                            str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--"+item.hotelLevel+"</option>";
                         })
                         $(".hotelId").append(str);
                     }
@@ -105,8 +105,8 @@
             })
 
             $(".addProduct").click(function () {
-                var pName=$(".pName").val();
-                if (pName==null || pName==''){
+                var productName=$(".productName").val();
+                if (productName==null || productName==''){
                     alert("产品名称不能为空");
                     return;
                 }
@@ -139,8 +139,8 @@
                     alert("入住酒店不能为空");
                     return;
                 }
-                var pFee=$(".pFee").val();
-                if (pFee==null || pFee==''){
+                var productFee=$(".productFee").val();
+                if (productFee==null || productFee==''){
                     alert("团费不能为空");
                     return;
                 }
@@ -239,10 +239,10 @@
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
                 <td>${product.hotelId}</td>
-                <td>${product.pName}</td>
-                <td>${product.pFee}</td>
-                <td>${product.pScore}</td>
-                <td><a href="showTour.do?pId=${product.pId}">查询旅行团</a></td>
+                <td>${product.productName}</td>
+                <td>${product.productFee}</td>
+                <td>${product.productScore}</td>
+                <td><a href="showTour.do?productId=${product.productId}">查询旅行团</a></td>
                 <td><input type="button" value="删除产品" class="remove"></td>
                 <td><input type="button" value="修改产品" class="update"></td>
             </tr>
@@ -267,7 +267,7 @@
 </div>
 <div style="margin-left: 50px;display: none;" id="d2">
     <form action="insertProduct.do" method="post">
-        <p>产品名称：<input type="text" class="pName" placeholder="请输入产品名称"></p>
+        <p>产品名称：<input type="text" class="productName" placeholder="请输入产品名称"></p>
         <p>出发地：<select class="d_country">
             <option value="0">--请选择--</option>
         </select>
@@ -286,7 +286,7 @@
         <p>入住酒店：<select class="hotelId">
             <option value="0">--请选择--</option>
         </select><span>选择了目的地之后，才能看到酒店</span></p>
-        <p>基础团费：<input type="number" min="500" max="10000" step="500" class="pFee" placeholder="请输入基本团费"></p>
+        <p>基础团费：<input type="number" min="500" max="10000" step="500" class="productFee" placeholder="请输入基本团费"></p>
         <p><input type="button" value="点击添加" class="addProduct"></p>
     </form>
 </div>

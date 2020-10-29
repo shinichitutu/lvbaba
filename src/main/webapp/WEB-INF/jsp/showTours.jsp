@@ -26,11 +26,11 @@
                 $("#d2").css("display","block")
             })
             $(".remove").click(function () {
-                var tId=$(this).next().val()
-                console.log(tId)
+                var tourId=$(this).next().val()
+                console.log(tourId)
                 $.ajax({
                     type:"post",
-                    data:{tId:tId},
+                    data:{tourId:tourId},
                     dataType:"text",
                     url:"removeTour.do",
                     success:function (obj) {
@@ -41,11 +41,11 @@
             })
 
             $(".update").click(function () {
-                var tId=$(this).next().val()
-                console.log(tId)
+                var tourId=$(this).next().val()
+                console.log(tourId)
                 $.ajax({
                     type:"post",
-                    data:{tId:tId},
+                    data:{tourId:tourId},
                     dataType:"json",
                     url:"updateTour.do",
                     success:function (obj) {
@@ -160,7 +160,7 @@
 
 <div style="display: none" id="d2">
     <form action="insertTour.do" method="post">
-        <input type="hidden" name="pId" value="${requestScope.pId}">
+        <input type="hidden" name="productId" value="${requestScope.productId}">
         出发日期<input type="date" name="dDate" id="deDate"><br/>
         返回日期<div id="reDate"></div><br/>
         交通类型：
@@ -192,22 +192,22 @@
         <c:forEach items="${requestScope.tours}" var="tour" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${tour.pId}</td>
+                <td>${tour.productId}</td>
                 <td>${tour.dDate}</td>
-                <td>${tour.rDate}</td>
-                <td>${tour.cType}</td>
+                <td>${tour.roomDate}</td>
+                <td>${tour.transType}</td>
                 <td>${tour.goId}</td>
                 <td>${tour.returnId}</td>
                 <td>${tour.bookNum}</td>
-                <td><c:if test="${tour.tStatus eq 1}">
+                <td><c:if test="${tour.tourStatus eq 1}">
                     已成团
                 </c:if>
-                    <c:if test="${tour.tStatus eq 2}">
+                    <c:if test="${tour.tourStatus eq 2}">
                         未成团
                     </c:if>
                 </td>
-                <td><input type="button" value="修改产品" class="update"><input type="hidden" value="${tour.tId}"></td>
-                <td><input type="button" value="删除产品" class="remove"><input type="hidden" value="${tour.tId}"></td>
+                <td><input type="button" value="修改产品" class="update"><input type="hidden" value="${tour.tourId}"></td>
+                <td><input type="button" value="删除产品" class="remove"><input type="hidden" value="${tour.tourId}"></td>
             </tr>
         </c:forEach>
         </tbody>

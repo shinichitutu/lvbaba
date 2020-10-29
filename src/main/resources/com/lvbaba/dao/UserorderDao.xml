@@ -3,73 +3,73 @@
 <mapper namespace="com.lvbaba.dao.UserorderDao">
 
     <insert id="insertUserorder" parameterType="Userorder">
-        INSERT INTO userorder(u_id,t_id,o_price,o_status,o_time,p_time) VALUES (#{uId},#{tId},#{oPrice},#{oStatus},#{oTime},#{pTime});
+        INSERT INTO userorder(u_id,t_id,o_price,o_status,o_time,p_time) VALUES (#{uId},#{tourId},#{orderPrice},#{orderStatus},#{orderTime},#{payTime});
     </insert>
     <update id="updateUserorder" parameterType="Userorder">
         UPDATE userorder SET
         <if test="uId!=null and uId!=''">
             u_id =#{uId},
         </if>
-        <if test="tId!=null and uId!=''">
-            t_id = #{tId},
+        <if test="tourId!=null and uId!=''">
+            t_id = #{tourId},
         </if>
-        <if test="oPrice!=null and oPrice!=''">
-            o_price = #{oPrice},
+        <if test="orderPrice!=null and orderPrice!=''">
+            o_price = #{orderPrice},
         </if>
-        <if test="oStatus!=null and oStatus!=''">
-            o_status = #{oStatus},
+        <if test="orderStatus!=null and orderStatus!=''">
+            o_status = #{orderStatus},
         </if>
-        <if test="oTime!=null and oTime!=''">
-            o_time = #{oTime},
+        <if test="orderTime!=null and orderTime!=''">
+            o_time = #{orderTime},
         </if>
-        <if test="pTime!-null and pTime!=''">
-            p_time =#{pTime}
+        <if test="payTime!-null and payTime!=''">
+            p_time =#{payTime}
         </if>
-        where o_id = #{oId}
+        where o_id = #{orderId}
     </update>
 
     <delete id="deleteUserorder" parameterType="Userorder">
-        DELETE FROM userorder where o_id = #{oId};
+        DELETE FROM userorder where o_id = #{orderId};
     </delete>
 
     <select id="queryOne" parameterType="Userorder" resultMap="userorderMap">
-      SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder WHERE o_id = #{oId};
+      SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder WHERE o_id = #{orderId};
     </select>
 
     <select id="query" resultMap="userorderMap" parameterType="Userorder">
         SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder
         <where>
-            <if test="oId!=null and oId!=''">
-                o_id = #{oId}
+            <if test="orderId!=null and orderId!=''">
+                o_id = #{orderId}
             </if>
             <if test="uId!=null and uId!=''">
                 and u_id =#{uId}
             </if>
-            <if test="tId!=null and uId!=''">
-                and t_id = #{tId}
+            <if test="tourId!=null and uId!=''">
+                and t_id = #{tourId}
             </if>
-            <if test="oPrice!=null and oPrice!=''">
-                and o_price = #{oPrice}
+            <if test="orderPrice!=null and orderPrice!=''">
+                and o_price = #{orderPrice}
             </if>
-            <if test="oStatus!=null and oStatus!=''">
-                and o_status = #{oStatus}
+            <if test="orderStatus!=null and orderStatus!=''">
+                and o_status = #{orderStatus}
             </if>
-            <if test="oTime!=null and oTime!=''">
-                and o_time = #{oTime}
+            <if test="orderTime!=null and orderTime!=''">
+                and o_time = #{orderTime}
             </if>
-            <if test="pTime!-null and pTime!=''">
-                and p_time =#{pTime}
+            <if test="payTime!-null and payTime!=''">
+                and p_time =#{payTime}
             </if>
         </where>
     </select>
 
     <resultMap id="userorderMap" type="Userorder">
-        <id property="oId" column="o_id"/>
+        <id property="orderId" column="o_id"/>
         <result property="uId" column="u_id"/>
-        <result property="tId" column="t_id"/>
-        <result property="oPrice" column="o_price"/>
-        <result property="oStatus" column="o_status"/>
-        <result property="oTime" column="o_time"/>
-        <result property="pTime" column="p_time"/>
+        <result property="tourId" column="t_id"/>
+        <result property="orderPrice" column="o_price"/>
+        <result property="orderStatus" column="o_status"/>
+        <result property="orderTime" column="o_time"/>
+        <result property="payTime" column="p_time"/>
     </resultMap>
 </mapper>

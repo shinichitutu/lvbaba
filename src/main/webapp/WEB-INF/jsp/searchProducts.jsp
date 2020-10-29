@@ -112,11 +112,11 @@
                 <td>${productArea.product.limLow}</td>
                 <td>${productArea.product.limUp}</td>
                 <td>${productArea.product.days}</td>
-                <td>${productArea.hotel.hName}</td>
-                <td>${productArea.product.pName}</td>
-                <td>${productArea.product.pFee}</td>
-                <td>${productArea.product.pScore}</td>
-                <td><a href="showTour.do?pId=${productArea.product.pId}">查询旅行团</a></td>
+                <td>${productArea.hotel.hotelName}</td>
+                <td>${productArea.product.productName}</td>
+                <td>${productArea.product.productFee}</td>
+                <td>${productArea.product.productScore}</td>
+                <td><a href="showTour.do?productId=${productArea.product.productId}">查询旅行团</a></td>
             </tr>
         </c:forEach>
         </tbody>

@@ -52,29 +52,29 @@ public class HotelController {
 
 
     @RequestMapping("/showRooms.do")
-    public String showRooms(Model model, String hId) {
+    public String showRooms(Model model, String hotelId) {
         Room room = new Room();
-        room.sethId(Long.valueOf(hId));
+        room.sethId(Long.valueOf(hotelId));
         List<Room> list = roomService.query(room);
         model.addAttribute("roomList", list);
-        model.addAttribute("hId", hId);
+        model.addAttribute("hotelId", hotelId);
         return "showRooms";
     }
 
     @RequestMapping("/showRoomDetail.do")
-    public String showRoomDetail(Model model, String rId) {
-/*        System.out.println(rId);*/
+    public String showRoomDetail(Model model, String roomId) {
+/*        System.out.println(roomId);*/
         Roomdetail roomdetail = new Roomdetail();
-        roomdetail.setrId(Long.valueOf(rId));
+        roomdetail.setrId(Long.valueOf(roomId));
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail", list);
-        model.addAttribute("rId", rId);
+        model.addAttribute("roomId", roomId);
         return "showRoomDetail";
     }
 
     @RequestMapping("/addHotel.do")
-    public String addHotel(Model model, String areaId, String hLevel, String hName) {
-        Hotel hotel = new Hotel(Long.valueOf(areaId), hName, Long.valueOf(hLevel));
+    public String addHotel(Model model, String areaId, String hotelLevel, String hotelName) {
+        Hotel hotel = new Hotel(Long.valueOf(areaId), hotelName, Long.valueOf(hotelLevel));
         boolean flag = hotelService.insertHotel(hotel);
         if (flag) {
             model.addAttribute("success", "添加成功");
@@ -85,35 +85,35 @@ public class HotelController {
     }
 
     @RequestMapping("/addRoom.do")
-    public String addRoom(Model model, String hId, String number, String limit) {
-        Room room = new Room(Long.valueOf(hId), Long.valueOf(number), Long.valueOf(limit));
+    public String addRoom(Model model, String hotelId, String number, String limit) {
+        Room room = new Room(Long.valueOf(hotelId), Long.valueOf(number), Long.valueOf(limit));
         boolean flag = roomService.insertRoom(room);
         if (flag) {
             model.addAttribute("success", "添加成功");
         } else {
             model.addAttribute("error", "添加失败");
         }
-        model.addAttribute("hId", hId);
+        model.addAttribute("hotelId", hotelId);
         return "forward:showRooms.do";
     }
 
     @RequestMapping("/addRoomDetail.do")
-    public String addRoomDetail(Model model, String rId, String price, String date) {
+    public String addRoomDetail(Model model, String roomId, String price, String date) {
 
-        Roomdetail roomdetail = new Roomdetail(Long.valueOf(rId), date, Double.valueOf(price));
+        Roomdetail roomdetail = new Roomdetail(Long.valueOf(roomId), date, Double.valueOf(price));
         boolean flag = roomDetailService.insertRoomDetail(roomdetail);
         if (flag) {
             model.addAttribute("success", "添加成功");
         } else {
             model.addAttribute("error", "添加失败");
         }
-        model.addAttribute("rId", rId);
+        model.addAttribute("roomId", roomId);
         return "forward:showRoomDetail.do";
     }
 
     @RequestMapping("/updateHotel.do")
-    public String updateHotel(Model model, String areaId, String hLevel, String hName, String hId) {
-        Hotel hotel = new Hotel(Long.valueOf(hId), Long.valueOf(areaId), hName, Long.valueOf(hLevel));
+    public String updateHotel(Model model, String areaId, String hotelLevel, String hotelName, String hotelId) {
+        Hotel hotel = new Hotel(Long.valueOf(hotelId), Long.valueOf(areaId), hotelName, Long.valueOf(hotelLevel));
         boolean flag = hotelService.updateHotel(hotel);
         if (flag) {
             model.addAttribute("success", "修改成功");
@@ -134,9 +134,9 @@ public class HotelController {
     }
 
     @RequestMapping("/updateRoom.do")
-    public String updateRoom(Model model,String rId,String number,String limit,String hId){
+    public String updateRoom(Model model,String roomId,String number,String limit,String hotelId){
         Room room =new Room();
-        room.setrId(Long.valueOf(rId));
+        room.setrId(Long.valueOf(roomId));
         room.setpLimit(Long.valueOf(limit));
         room.setrNumber(Long.valueOf(number));
         boolean flag = roomService.updateRoom(room);
@@ -145,14 +145,14 @@ public class HotelController {
         } else {
             model.addAttribute("error", "修改失败");
         }
-        model.addAttribute("hId",hId);
+        model.addAttribute("hotelId",hotelId);
         return "forward:showRooms.do";
     }
 
     @RequestMapping("/updateRoomDetail.do")
-    public String updateRoomDetail(Model model,String rdId, String price, String date,String rId){
+    public String updateRoomDetail(Model model,String rdId, String price, String date,String roomId){
         Roomdetail roomdetail =new Roomdetail();
-        roomdetail.setrId(Long.valueOf(rId));
+        roomdetail.setrId(Long.valueOf(roomId));
         roomdetail.setRdId(Long.valueOf(rdId));
         roomdetail.setrDate(date);
         roomdetail.setRdPrice(Double.valueOf(price));
@@ -162,14 +162,14 @@ public class HotelController {
         } else {
             model.addAttribute("error", "修改失败");
         }
-        model.addAttribute("rId",rId);
+        model.addAttribute("roomId",roomId);
         return "forward:showRoomDetail.do";
     }
 
     @RequestMapping("/deleteHotel.do")
-    public String deleteHotel(Model model,String hId){
+    public String deleteHotel(Model model,String hotelId){
         Hotel hotel =new Hotel();
-        hotel.sethId(Long.valueOf(hId));
+        hotel.sethId(Long.valueOf(hotelId));
         boolean flag = hotelService.deleteHotel(hotel);
         if (flag) {
             model.addAttribute("success", "删除成功");
@@ -180,21 +180,21 @@ public class HotelController {
     }
 
     @RequestMapping("/deleteRoom.do")
-    public String deleteRoom(Model model,String rId,String hId){
+    public String deleteRoom(Model model,String roomId,String hotelId){
         Room room =new Room();
-        room.setrId(Long.valueOf(rId));
+        room.setrId(Long.valueOf(roomId));
         boolean flag = roomService.deleteRoom(room);
         if (flag) {
             model.addAttribute("success", "删除成功");
         } else {
             model.addAttribute("error", "删除失败");
         }
-        model.addAttribute("hId",hId);
+        model.addAttribute("hotelId",hotelId);
         return "forward:showRooms.do";
     }
 
     @RequestMapping("/deleteRoomDetail.do")
-    public String deleteRoomDetail(Model model,String rId,String rdId){
+    public String deleteRoomDetail(Model model,String roomId,String rdId){
         Roomdetail roomdetail = new Roomdetail();
         roomdetail.setRdId(Long.valueOf(rdId));
         boolean flag = roomDetailService.deleteRoomDetail(roomdetail);
@@ -203,7 +203,7 @@ public class HotelController {
         } else {
             model.addAttribute("error", "删除失败");
         }
-        model.addAttribute("rId",rId);
+        model.addAttribute("roomId",roomId);
         return "forward:showRoomDetail.do";
     }
 

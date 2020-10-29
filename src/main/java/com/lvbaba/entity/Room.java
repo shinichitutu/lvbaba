@@ -3,70 +3,49 @@ package com.lvbaba.entity;
 
 public class Room {
 
-  private long rId;
-  private long hId;
-  private long rNumber;
-  private long pLimit;
+  private long roomId;
+  private long hotelId;
+  private long roomNumber;
+  private long personLimit;
 
-  public Room(long rId, long hId, long rNumber, long pLimit) {
-    this.rId = rId;
-    this.hId = hId;
-    this.rNumber = rNumber;
-    this.pLimit = pLimit;
-  }
-
-  public Room(long hId, long rNumber, long pLimit) {
-    this.hId = hId;
-    this.rNumber = rNumber;
-    this.pLimit = pLimit;
+  public Room(long hotelId, long roomNumber, long personLimit) {
+    this.hotelId = hotelId;
+    this.roomNumber = roomNumber;
+    this.personLimit = personLimit;
   }
 
   public Room() {
   }
 
-  public Room(long rId) {
-    this.rId = rId;
+  public long getRoomId() {
+    return roomId;
   }
 
-  public long getrId() {
-    return rId;
+  public void setRoomId(long roomId) {
+    this.roomId = roomId;
   }
 
-  public void setrId(long rId) {
-    this.rId = rId;
+  public long getHotelId() {
+    return hotelId;
   }
 
-  public long gethId() {
-    return hId;
+  public void setHotelId(long hotelId) {
+    this.hotelId = hotelId;
   }
 
-  public void sethId(long hId) {
-    this.hId = hId;
+  public long getRoomNumber() {
+    return roomNumber;
   }
 
-  public long getrNumber() {
-    return rNumber;
+  public void setRoomNumber(long roomNumber) {
+    this.roomNumber = roomNumber;
   }
 
-  public void setrNumber(long rNumber) {
-    this.rNumber = rNumber;
+  public long getPersonLimit() {
+    return personLimit;
   }
 
-  public long getpLimit() {
-    return pLimit;
-  }
-
-  public void setpLimit(long pLimit) {
-    this.pLimit = pLimit;
-  }
-
-  @Override
-  public String toString() {
-    return "Room{" +
-            "rId=" + rId +
-            ", hId=" + hId +
-            ", rNumber=" + rNumber +
-            ", pLimit=" + pLimit +
-            '}';
+  public void setPersonLimit(long personLimit) {
+    this.personLimit = personLimit;
   }
 }

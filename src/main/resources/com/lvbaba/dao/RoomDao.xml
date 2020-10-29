@@ -3,55 +3,55 @@
 <mapper namespace="com.lvbaba.dao.RoomDao">
 
     <insert id="insertRoom" parameterType="Room">
-        INSERT INTO room(h_id,r_number,p_limit) VALUES (#{hId},#{rNumber},#{pLimit});
+        INSERT INTO room(h_id,r_number,p_limit) VALUES (#{hotelId},#{roomNumber},#{personLimit});
     </insert>
 
     <update id="updateRoom" parameterType="Room">
         UPDATE room
         <set>
-            <if test="hId!=null and hId!=''">
-                h_id = #{hId},
+            <if test="hotelId!=null and hotelId!=''">
+                h_id = #{hotelId},
             </if>
-            <if test="rNumber!=null and rNumber!=''">
-                r_number = #{rNumber},
+            <if test="roomNumber!=null and roomNumber!=''">
+                r_number = #{roomNumber},
             </if>
-            <if test="pLimit!=null and pLimit!=''">
-                p_limit = #{pLimit}
+            <if test="personLimit!=null and personLimit!=''">
+                p_limit = #{personLimit}
             </if>
         </set>
-        where r_id = #{rId}
+        where r_id = #{roomId}
     </update>
 
     <delete id="deleteRoom" parameterType="Room">
-        DELETE FROM room WHERE r_id = #{rId};
+        DELETE FROM room WHERE r_id = #{roomId};
     </delete>
 
     <select id="queryOne" parameterType="Room" resultMap="roomMap">
-        SELECT r_id,h_id,r_number,p_limit FROM room WHERE r_id = #{rId};
+        SELECT r_id,h_id,r_number,p_limit FROM room WHERE r_id = #{roomId};
     </select>
 
     <select id="query" parameterType="Room" resultMap="roomMap">
         SELECT r_id,h_id,r_number,p_limit FROM room
         <where>
-            <if test="rId!=null and rId!=''">
-                r_id = #{rId}
+            <if test="roomId!=null and roomId!=''">
+                r_id = #{roomId}
             </if>
-            <if test="hId!=null and hId!=''">
-                and h_id = #{hId}
+            <if test="hotelId!=null and hotelId!=''">
+                and h_id = #{hotelId}
             </if>
-            <if test="rNumber!=null and rNumber!=''">
-                and r_number = #{rNumber}
+            <if test="roomNumber!=null and roomNumber!=''">
+                and r_number = #{roomNumber}
             </if>
-            <if test="pLimit!=null and pLimit!=''">
-                and p_limit = #{pLimit}
+            <if test="personLimit!=null and personLimit!=''">
+                and p_limit = #{personLimit}
             </if>
         </where>
     </select>
 
     <resultMap id="roomMap" type="Room">
-        <id property="rId" column="r_id"/>
-        <result property="hId" column="h_id"/>
-        <result property="rNumber" column="r_number"/>
-        <result property="pLimit" column="p_limit"/>
+        <id property="roomId" column="r_id"/>
+        <result property="hotelId" column="h_id"/>
+        <result property="roomNumber" column="r_number"/>
+        <result property="personLimit" column="p_limit"/>
     </resultMap>
 </mapper>
