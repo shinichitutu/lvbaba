@@ -62,7 +62,7 @@
             <if test="flightDTime!=null and flightDTime!=''">
                 and f_d_time = #{flightDTime}
             </if>
-            <if test="flightATime!=null flightATime!=''">
+            <if test="flightATime!=null and flightATime!=''">
                 and f_a_time = #{flightATime}
             </if>
             <if test="daId!=null and daId!=''">

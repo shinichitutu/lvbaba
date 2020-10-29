@@ -57,7 +57,6 @@
                 })
             });
 
-
             $(".choice").click(function () {
                 var str1 = "去程";
                 var str2 ="返程";
@@ -69,7 +68,7 @@
                 }
             });
 
-  /*          daId, long arrAreaId*/
+
             $("#deDate").blur(function () {
                 var deDate = $(this).val();
                 var daId = ${requestScope.product.daId};
@@ -84,7 +83,7 @@
                 $.ajax({
                     type:"post",
                     url:"searchFlight.do",
-                    data:{Date:date,DaId:daId,ArrAreaId:arrAreaId},
+                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
                     dataType:"json",
                     success:function (obj) {
                         var str ="";
@@ -111,13 +110,13 @@
 
                 $("#deDate").change(function () {
                     $("#flight option:gt(0)").remove();
-                    var Date = $(this).val();
+                    var date = $(this).val();
                     var daId = ${requestScope.product.daId};
                     var arrAreaId =${requestScope.product.arrAreaId};
                     $.ajax({
                         type:"post",
                         url:"searchFlight.do",
-                        data:{Date:Date,DaId:daId,ArrAreaId:arrAreaId},
+                        data:{date:date,daId:daId,arrAreaId:arrAreaId},
                         dataType:"json",
                         success:function (obj) {
                             var str ="";
@@ -125,12 +124,9 @@
                                 str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
                             });
                             $("#flight").append(str);
-
                         }
                     })
                 });
-
-
         })
 
     </script>
@@ -205,8 +201,13 @@
         交通类型：
         飞机<input type="radio" name="tran" class="choice" value="f" id="f">
         火车<input type="radio" name="tran" class="choice" value="t" id="t">
+
         选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
     `   选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
+
+        选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>
+        选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>
+
         <div id="trans"></div>
         <input type="submit" value="点击添加">
     </form>
