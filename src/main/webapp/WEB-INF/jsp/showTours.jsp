@@ -20,43 +20,42 @@
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
+
     <script>
         $(function () {
             $("#d1").click(function () {
                 $("#d2").css("display","block")
-            })
+            });
+
             $(".remove").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
+                var tourId=$(this).next().val();
+                console.log(tourId);
                 $.ajax({
                     type:"post",
                     data:{tourId:tourId},
                     dataType:"text",
                     url:"removeTour.do",
                     success:function (obj) {
-                        console.log(obj)
+                        console.log(obj);
                         window.location.href="showTour.do";
                     }
                 })
-            })
+            });
 
             $(".update").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
+                var tourId=$(this).next().val();
+                console.log(tourId);
                 $.ajax({
                     type:"post",
                     data:{tourId:tourId},
                     dataType:"json",
                     url:"updateTour.do",
                     success:function (obj) {
-                        console.log(obj)
+                        console.log(obj);
                         window.location.href="showTour.do";
                     }
                 })
-            })
-
-            <%-- 去程<input type="text" name="goId">
-  返程<input type="text" name="returnId">--%>
+            });
 
             $(".choice").click(function () {
                 var str1 = "去程";
@@ -67,16 +66,35 @@
                 if($("#t").prop("checked")){
                     $("#trans").html(str2);
                 }
-            })
+            });
 
-            
+
             $("#deDate").blur(function () {
                 var deDate = $(this).val();
-                console.log(deDate);
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
                 if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+1)));
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
                 }
-                $("#reDate").html(date);
+                $("#reDate").val(date);
+
+                $("#flight2 option:gt(0)").remove();
+                console.log("返程"+date);
+                $.ajax({
+                    type:"post",
+                    url:"searchFlight.do",
+                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                        });
+                        $("#flight2").append(str);
+
+                    }
+                })
+
             });
 
 
@@ -84,18 +102,35 @@
                 var datetime = new Date();
                 datetime.setTime(time);
                 var year = datetime.getFullYear();
-                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 7;
+                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
                 var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
                 return year + "-" + month + "-" + date;
             }
 
 
-
-
-
-
+                $("#deDate").change(function () {
+                    $("#flight option:gt(0)").remove();
+                    var date = $(this).val();
+                    var daId = ${requestScope.product.daId};
+                    var arrAreaId =${requestScope.product.arrAreaId};
+                    $.ajax({
+                        type:"post",
+                        url:"searchFlight.do",
+                        data:{date:date,daId:daId,arrAreaId:arrAreaId},
+                        dataType:"json",
+                        success:function (obj) {
+                            var str ="";
+                            $.each(obj,function (index,item) {
+                                str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                            });
+                            $("#flight").append(str);
+                        }
+                    })
+                });
         })
+
     </script>
+
     <base href="<%=basePath%>"/>
 </head>
 <body>
@@ -162,13 +197,18 @@
     <form action="insertTour.do" method="post">
         <input type="hidden" name="productId" value="${requestScope.productId}">
         出发日期<input type="date" name="dDate" id="deDate"><br/>
-        返回日期<div id="reDate"></div><br/>
+        返回日期<input type="date" name="rDate" id="reDate"><br/>
         交通类型：
         飞机<input type="radio" name="tran" class="choice" value="f" id="f">
         火车<input type="radio" name="tran" class="choice" value="t" id="t">
+
+        选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
+    `   选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
+
+        选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>
+        选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>
+
         <div id="trans"></div>
-       <%-- 去程<input type="text" name="goId">
-        返程<input type="text" name="returnId">--%>
         <input type="submit" value="点击添加">
     </form>
 </div>
@@ -213,6 +253,8 @@
         </tbody>
     </table>
 </div>
+
+
 <div style="text-align: center">
     <%--增加产品--%>
     <input type="button" value="增加产品" id="d1"><br/>
@@ -224,11 +266,17 @@
         </c:forEach>
         <c:if test="${requestScope.page < requestScope.pages}">
             <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
-        </c:if></div>
+        </c:if>
 </div>
-<div id="update">
 
+<div id="update">
 </div>
+
+${"测试"}
+
+${requestScope.product.days}
+
+
 <p style="color: green">${requestScope.success}</p>
 <p style="color: red">${requestScope.error}</p>
 </body>

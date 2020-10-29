@@ -6,7 +6,6 @@
 
     <sql id="condition">
         <if test="productId!=null and productId!=''">p_id=#{productId}</if>
-
         <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
         <if test="arrAreaId!=null and arrAreaId !=''">and a_area_id=#{arrAreaId}</if>
         <if test="limLow!=null and limLow !=''">and lim_low=#{limLow}</if>
@@ -17,6 +16,7 @@
         <if test="productFee!=null and productFee !=''">and p_fee=#{productFee}</if>
         <if test="productScore!=null and productScore !=''">and p_score=#{productScore}</if>
     </sql>
+
 
     <insert id="insertProduct" parameterType="Product">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUES

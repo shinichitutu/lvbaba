@@ -51,4 +51,6 @@ public interface ProductDao {
      * @return
      */
     List<Product> queryByOthers(Product product);
+
+
 }

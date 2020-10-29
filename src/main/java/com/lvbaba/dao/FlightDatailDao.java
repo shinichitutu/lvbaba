@@ -3,6 +3,8 @@ package com.lvbaba.dao;
 import com.lvbaba.entity.Flightdetail;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface FlightDatailDao {
     /**
@@ -26,4 +28,6 @@ public interface FlightDatailDao {
      * @return
      */
     boolean deleteFlightDatailById(Flightdetail flightdetail);
+
+    List<Flightdetail> query(Flightdetail flightdetail);
 }

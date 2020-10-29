@@ -46,6 +46,43 @@
         select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight
     </select>
 
+    <select id="query" resultMap="flightMap" parameterType="Flight">
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight
+        <where>
+            <if test="flightId!=null and flightId!=''">
+                f_id = #{flightId}
+            </if>
+            <if test="flightNumber!=null and flightNumber!=''">
+                and f_number = #{flightNumber}
+            </if>
+            <if test="flightCompany!=null and flightCompany!=''">
+                and f_company = #{flightCompany}
+            </if>
+
+            <if test="flightDTime!=null and flightDTime!=''">
+                and f_d_time = #{flightDTime}
+            </if>
+            <if test="flightATime!=null and flightATime!=''">
+                and f_a_time = #{flightATime}
+            </if>
+            <if test="daId!=null and daId!=''">
+                and d_a_id =#{daId}
+            </if>
+            <if test="arrAreaId!=null and arrAreaId!=''">
+                and a_area_id = #{arrAreaId}
+            </if>
+            <if test="flightCapacity!=null and flightCapacity!=''">
+                and f_capacity = #{flightCapacity}
+            </if>
+            <if test="flightPrice!=null and flightPrice!=''">
+                and f_price = #{flightPrice}
+            </if>
+        </where>
+    </select>
+    <select id="queryOne" parameterType="Flight" resultMap="flightMap">
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight WHERE f_id= #{flightId}
+    </select>
+
     <resultMap id="flightMap" type="Flight">
         <id property="flightId" column="f_id"/>
         <result property="flightNumber" column="f_number"/>

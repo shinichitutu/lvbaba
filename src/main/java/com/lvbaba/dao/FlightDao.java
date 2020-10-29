@@ -47,4 +47,8 @@ public interface FlightDao {
      * @return
      */
     List<Flight> queryAllFlight();
+
+    List<Flight> query(Flight flight);
+
+    Flight queryOne(Flight flight);
 }
