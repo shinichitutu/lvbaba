@@ -92,31 +92,31 @@
         <thead>
         <tr>
             <td>产品</td>
+            <td>产品名称</td>
             <td>出发地</td>
             <td>目的地</td>
             <td>人数下限</td>
             <td>人数上限</td>
             <td>行程天数</td>
             <td>酒店名称</td>
-            <td>产品名称</td>
             <td>基本团费</td>
             <td>评分</td>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.products}" var="productArea" varStatus="i">
+        <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
-                <td>${i.index+1}</td>
-                <td>${productArea.departArea}</td>
-                <td>${productArea.destinationArea}</td>
-                <td>${productArea.product.limLow}</td>
-                <td>${productArea.product.limUp}</td>
-                <td>${productArea.product.days}</td>
-                <td>${productArea.hotel.hotelName}</td>
-                <td>${productArea.product.productName}</td>
-                <td>${productArea.product.productFee}</td>
-                <td>${productArea.product.productScore}</td>
-                <td><a href="showTour.do?productId=${productArea.product.productId}">查询旅行团</a></td>
+                <td>${i.count}</td>
+                <td>${product.productName}</td>
+                <td>${product.d_area.country}-${product.d_area.city}</td>
+                <td>${product.a_area.country}-${product.a_area.city}</td>
+                <td>${product.limLow}</td>
+                <td>${product.limUp}</td>
+                <td>${product.days}</td>
+                <td>${product.hotel.hotelName}</td>
+                <td>${product.productFee}</td>
+                <td>${product.productScore}</td>
+                <td><a href="showTour.do?productId=${product.productId}">查询旅行团</a></td>
             </tr>
         </c:forEach>
         </tbody>
