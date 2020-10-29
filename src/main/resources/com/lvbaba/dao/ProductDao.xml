@@ -17,12 +17,13 @@
         <if test="productScore!=null and productScore !=''">and p_score=#{productScore}</if>
     </sql>
 
-    <insert id="insertProduct">
+
+    <insert id="insertProduct" parameterType="Product">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUES
         (#{daId},#{arrAreaId},#{limLow},#{limUp},#{days},#{hotelId},#{productName},#{productFee},#{productScore})
     </insert>
 
-    <update id="updateProduct">
+    <update id="updateProduct" parameterType="Product">
         UPDATE product
         <set>
             <if test="daId!=null and daId !=''">d_a_id=#{daId},</if>
@@ -37,22 +38,22 @@
         </set>
     </update>
 
-    <delete id="removeProduct">
+    <delete id="removeProduct" parameterType="Product">
         delete from product where p_id=#{productId}
     </delete>
 
-    <select id="query" resultMap="productMap">
+    <select id="query" resultMap="productMap" parameterType="Product">
         SELECT <include refid="all"/> from product
         <where>
             <include refid="condition"></include>
         </where>
     </select>
 
-    <select id="queryAll" resultMap="productMap">
+    <select id="queryAll" resultMap="productMap" parameterType="Product">
         select <include refid="all"/> from product
     </select>
 
-    <select id="queryByOthers" resultMap="productMap">
+    <select id="queryByOthers" resultMap="productMap" parameterType="Product">
         SELECT <include refid="all"/> from product
         <where>
             <include refid="condition"></include>
