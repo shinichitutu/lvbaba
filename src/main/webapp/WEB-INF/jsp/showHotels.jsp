@@ -121,9 +121,9 @@
 
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hName'/><br/>"+
+                    "酒店名称：<input type='text' name='hotelName'/><br/>"+
                     "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hLevel' min='1' max='5'/><br/>"+
+                    "酒店等级：<input type='number' name='hotelLevel' min='1' max='5'/><br/>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
                 $("#addHotel").html(str1);
@@ -132,10 +132,10 @@
 
             $(".update").click(function () {
                 var str = "<form action='updateHotel.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hName' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
+                    "酒店名称：<input type='text' name='hotelName' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
                     "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hLevel' min='1' max='5' value="+$(this).parent().parent().find("td").eq(5).text()+"><br/>"+
-                        "<input type='hidden' name='hId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
+                    "酒店等级：<input type='number' name='hotelLevel' min='1' max='5' value="+$(this).parent().parent().find("td").eq(5).text()+"><br/>"+
+                        "<input type='hidden' name='hotelId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";
                 $("#updateHotel").html(str);
@@ -224,14 +224,14 @@
         <c:forEach items="${requestScope.hotelList}" var="hotel" varStatus="status">
             <tr>
                 <td>${status.count}</td>
-                <td>${hotel.hId}</td>
-                <td>${hotel.hName}</td>
+                <td>${hotel.hotelId}</td>
+                <td>${hotel.hotelName}</td>
                 <td>${hotel.area.country}</td>
                 <td>${hotel.area.city}</td>
-                <td>${hotel.hLevel}</td>
-                <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
+                <td>${hotel.hotelLevel}</td>
+                <td><a href="showRooms.do?hotelId=${hotel.hotelId}">查看客房</a></td>
                 <td><input type="button" class="update" value="修改"></td>
-                <td><a href="deleteHotel.do?hId=${hotel.hId}">删除</a></td>
+                <td><a href="deleteHotel.do?hotelId=${hotel.hotelId}">删除</a></td>
 
             </tr>
         </c:forEach>

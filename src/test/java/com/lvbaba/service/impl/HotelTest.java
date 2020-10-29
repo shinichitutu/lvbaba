@@ -42,7 +42,7 @@ public class HotelTest {
     public void testDelete(){
         Roomdetail roomdetail =new Roomdetail();
         roomdetail.setRdId(1);
-        System.out.println(roomDetailService.deleteRoomDetail(roomdetail));
+        System.out.println(roomDetailService.deleteRoomDetail(roomdetail));}
 
 
 

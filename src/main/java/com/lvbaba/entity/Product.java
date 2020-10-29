@@ -3,38 +3,54 @@ package com.lvbaba.entity;
 
 public class Product {
 
-  private long pId;
+  private long productId;
   private long daId;
   private long arrAreaId;
   private long limLow;
   private long limUp;
   private long days;
   private long hotelId;
-  private String pName;
-  private String pFee;
-  private double pScore;
+  private String productName;
+  private String productFee;
+  private double productScore;
 
-  public long getpId() {
-    return pId;
+  public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore) {
+    this.productId = productId;
+    this.daId = daId;
+    this.arrAreaId = arrAreaId;
+    this.limLow = limLow;
+    this.limUp = limUp;
+    this.days = days;
+    this.hotelId = hotelId;
+    this.productName = productName;
+    this.productFee = productFee;
+    this.productScore = productScore;
   }
 
-  public void setpId(long pId) {
-    this.pId = pId;
+  public Product() {
   }
 
-  public long getdaId() {
+  public long getProductId() {
+    return productId;
+  }
+
+  public void setProductId(long productId) {
+    this.productId = productId;
+  }
+
+  public long getDaId() {
     return daId;
   }
 
-  public void setdaId(long daId) {
+  public void setDaId(long daId) {
     this.daId = daId;
   }
 
-  public long getarrAreaId() {
+  public long getArrAreaId() {
     return arrAreaId;
   }
 
-  public void setarrAreaId(long arrAreaId) {
+  public void setArrAreaId(long arrAreaId) {
     this.arrAreaId = arrAreaId;
   }
 
@@ -70,43 +86,43 @@ public class Product {
     this.hotelId = hotelId;
   }
 
-  public String getpName() {
-    return pName;
+  public String getProductName() {
+    return productName;
   }
 
-  public void setpName(String pName) {
-    this.pName = pName;
+  public void setProductName(String productName) {
+    this.productName = productName;
   }
 
-  public String getpFee() {
-    return pFee;
+  public String getProductFee() {
+    return productFee;
   }
 
-  public void setpFee(String pFee) {
-    this.pFee = pFee;
+  public void setProductFee(String productFee) {
+    this.productFee = productFee;
   }
 
-  public double getpScore() {
-    return pScore;
+  public double getProductScore() {
+    return productScore;
   }
 
-  public void setpScore(double pScore) {
-    this.pScore = pScore;
+  public void setProductScore(double productScore) {
+    this.productScore = productScore;
   }
 
   @Override
   public String toString() {
     return "Product{" +
-            "pId=" + pId +
+            "productId=" + productId +
             ", daId=" + daId +
             ", arrAreaId=" + arrAreaId +
             ", limLow=" + limLow +
             ", limUp=" + limUp +
             ", days=" + days +
             ", hotelId=" + hotelId +
-            ", pName='" + pName + '\'' +
-            ", pFee='" + pFee + '\'' +
-            ", pScore=" + pScore +
+            ", productName='" + productName + '\'' +
+            ", productFee='" + productFee + '\'' +
+            ", productScore=" + productScore +
             '}';
   }
 }

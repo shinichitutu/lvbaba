@@ -38,7 +38,7 @@ public class RoomDetailServiceImpl implements RoomDetailService {
         List<Roomdetail> list = roomDetailDao.query(roomdetail);
         List<Roomdetail> list1 = new ArrayList<>();
         for (Roomdetail r:list){
-            r.setRoom(roomDao.queryOne(new Room(r.getrId())));
+            r.setRoom(roomDao.queryOne(new Room(r.getRoomId())));
             list1.add(r);
         }
         return list1;
@@ -50,7 +50,7 @@ public class RoomDetailServiceImpl implements RoomDetailService {
             return false;
         }
         Roomdetail roomdetail1 =new Roomdetail();
-        roomdetail1.setrDate(roomdetail.getrDate());
+        roomdetail1.setRoomDate(roomdetail.getRoomDate());
         if(query(roomdetail1).size()==0||query(roomdetail1)==null){
             return roomDetailDao.insertRoomDetail(roomdetail);
         }

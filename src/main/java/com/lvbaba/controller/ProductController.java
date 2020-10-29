@@ -72,28 +72,29 @@ public class ProductController {
         List<Product> list=productService.querByOthers(product);
         Area area=new Area();
         //出发地
-        area.setAreaId(product.getarrAreaId());
+        area.setAreaId(product.getArrAreaId());
         Area departArea=areaService.queryOne(area);
         //目的地
-        area.setAreaId(product.getdaId());
+        area.setAreaId(product.getDaId());
         Area destinationArea=areaService.queryOne(area);
         PageInfo<Product> tourPageInfo = new PageInfo<>(list);
         List<ProductArea> productAreas=new ArrayList<>();
-        for (Product p:tourPageInfo.getList()) {
+        /*for (Product p:tourPageInfo.getList()) {
             Room room=new Room();
-            room.setrId(p.getrId());
+            room.setRoomId(p.get());//改一下
             Hotel hotel=new Hotel();
-            hotel.sethId(roomService.queryOne(room).gethId());
+            hotel.setHotelId(roomService.queryOne(room).getHotelId());
             ProductArea productArea=new ProductArea(p,destinationArea.getCity(),
                     departArea.getCity(),hotelService.queryOne(hotel));
             productAreas.add(productArea);
-        }
+        }*/
+
         List<Area> arealis=areaService.queryCountry();
         List<Area> country=areaService.queryCountry();
         model.addAttribute("country",country);
         model.addAttribute("arealis",arealis);
-        model.addAttribute("daId",product.getdaId());
-        model.addAttribute("arrAreaId",product.getarrAreaId());
+        model.addAttribute("daId",product.getDaId());
+        model.addAttribute("arrAreaId",product.getArrAreaId());
         model.addAttribute("products",productAreas);
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
