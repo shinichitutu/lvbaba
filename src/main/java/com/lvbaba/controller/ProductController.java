@@ -81,7 +81,7 @@ public class ProductController {
         List<ProductArea> productAreas=new ArrayList<>();
         for (Product p:tourPageInfo.getList()) {
             Room room=new Room();
-            room.setrId(p.getrId());
+            room.setrId(p.getHotelId());
             Hotel hotel=new Hotel();
             hotel.sethId(roomService.queryOne(room).gethId());
             ProductArea productArea=new ProductArea(p,destinationArea.getCity(),

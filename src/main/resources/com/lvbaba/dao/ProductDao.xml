@@ -6,16 +6,15 @@
 
     <sql id="condition">
         <if test="pId!=null and pId!=''">p_id=#{pId}</if>
-
-        <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
-        <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId}</if>
-        <if test="limLow!=null and limLow !=''">lim_low=#{limLow}</if>
-        <if test="limUp!=null and limUp !=''">lim_up=#{limUp}</if>
-        <if test="days!=null and days !=''">days=#{days}</if>
-        <if test="hotelId!=null and hotelId !=''">h_id=#{hotelId}</if>
-        <if test="pName!=null and pName !=''">p_name=#{pName}</if>
-        <if test="pFee!=null and pFee !=''">p_fee=#{pFee}</if>
-        <if test="pScore!=null and pScore !=''">p_score=#{pScore}</if>
+        <if test="daId!=null and daId !=''">and d_a_id=#{daId}</if>
+        <if test="arrAreaId!=null and arrAreaId !=''">and a_area_id=#{arrAreaId}</if>
+        <if test="limLow!=null and limLow !=''">and lim_low=#{limLow}</if>
+        <if test="limUp!=null and limUp !=''">and lim_up=#{limUp}</if>
+        <if test="days!=null and days !=''">and days=#{days}</if>
+        <if test="hotelId!=null and hotelId !=''">and h_id=#{hotelId}</if>
+        <if test="pName!=null and pName !=''">and p_name=#{pName}</if>
+        <if test="pFee!=null and pFee !=''">and p_fee=#{pFee}</if>
+        <if test="pScore!=null and pScore !=''">and p_score=#{pScore}</if>
     </sql>
 
     <insert id="insertProduct">
