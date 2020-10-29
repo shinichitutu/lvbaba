@@ -7,16 +7,19 @@
     </insert>
 
     <update id="updateHotel" parameterType="Hotel">
-        UPDATE hotel SET
-        <if test="areaId!=null and areaId!=''">
-            a_id = #{areaId},
-        </if>
-        <if test="hName!=null and hName!=''">
-            h_name = #{hName},
-        </if>
-        <if test="hLevel!=null and hLevel!=''">
-            h_level =#{hLevel}
-        </if>
+        UPDATE hotel
+        <set>
+            <if test="areaId!=null and areaId!='' and areaId!='0' ">
+                a_id = #{areaId},
+            </if>
+            <if test="hName!=null and hName!=''">
+                h_name = #{hName},
+            </if>
+            <if test="hLevel!=null and hLevel!=''">
+                h_level =#{hLevel}
+            </if>
+        </set>
+
         where h_id = #{hId}
     </update>
 

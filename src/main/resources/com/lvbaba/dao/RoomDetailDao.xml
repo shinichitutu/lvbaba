@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.RoomDetailDao">
-
     <insert id="insertRoomDetail" parameterType="Roomdetail">
-        INSERT INTO roomdetail(r_id,r_date,rd_price,rd_number) VALUES (#{rId},#{rDate},#{rdPrice},#{rdNumber});
+        INSERT INTO roomdetail(r_id,r_date,rd_price,rd_number) VALUES (#{rId},#{rDate},#{rdPrice},#{rdNumber})
     </insert>
 
     <update id="updateRoomDetail" parameterType="Roomdetail">
-        UPDATE roomdetail SET
-        <if test="rId!=null and rId!=''">
-            r_id = #{rId},
-        </if>
-        <if test="rDate!=null and rDate!=''">
-            r_date = #{rDate},
-        </if>
-        <if test="rdPrice!=null and rdPrice!=''">
-            rd_price = #{rdPrice},
-        </if>
-        <if test="rdNumber!=null and rdNumber!=''">
-            rd_number =#{rdNumber}
-        </if>
-        where rdId =#{rdId}
+        UPDATE roomdetail
+        <set>
+            <if test="rId!=null and rId!=''">
+                r_id = #{rId},
+            </if>
+            <if test="rDate!=null and rDate!=''">
+                r_date = #{rDate},
+            </if>
+            <if test="rdPrice!=null and rdPrice!=''">
+                rd_price = #{rdPrice},
+            </if>
+            <if test="rdNumber!=null and rdNumber!=''">
+                rd_number =#{rdNumber}
+            </if>
+        </set>
+        where rd_id =#{rdId}
     </update>
 
     <delete id="deleteRoomDetail" parameterType="Roomdetail">
-        DELETE FROM roomdetail WHERE rd_id = #{rdId};
+        DELETE FROM roomdetail WHERE rd_id = #{rdId}
     </delete>
 
     <select id="queryOne" parameterType="Roomdetail" resultMap="roomdetailMap">
-        SELECT rd_id,r_id,r_date,rd_price,rd_number FROM roomdetail WHERE rd_id= #{rdId};
+        SELECT rd_id,r_id,r_date,rd_price,rd_number FROM roomdetail WHERE rd_id= #{rdId}
     </select>
 
     <select id="query" resultMap="roomdetailMap" parameterType="Roomdetail">
@@ -51,7 +52,6 @@
             </if>
         </where>
     </select>
-
 
     <resultMap id="roomdetailMap" type="Roomdetail">
         <id property="rdId" column="rd_id"/>

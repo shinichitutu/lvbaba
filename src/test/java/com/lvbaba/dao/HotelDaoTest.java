@@ -1,6 +1,7 @@
 package com.lvbaba.dao;
 
 import com.lvbaba.entity.Hotel;
+import com.lvbaba.entity.Roomdetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +21,10 @@ public class HotelDaoTest {
     @Resource
     private HotelDao hotelDao;
 
+    @Resource
+    private RoomDetailDao roomDetailDao;
+
+
 
     @Test
     public void test(){
@@ -35,6 +40,15 @@ public class HotelDaoTest {
         for (Hotel h:list) {
             System.out.println(h);
         }
+    }
+
+    @Test
+    public void testRoom(){
+        Roomdetail roomdetail =new Roomdetail();
+        roomdetail.setRdId(1);
+        roomdetail.setRdPrice(500);
+/*        roomdetail.setRdNumber(10);*/
+        System.out.println(roomDetailDao.updateRoomDetail(roomdetail));
     }
 
 }
