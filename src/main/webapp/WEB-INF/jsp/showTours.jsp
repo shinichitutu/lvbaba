@@ -20,40 +20,42 @@
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
+
     <script>
         $(function () {
             $("#d1").click(function () {
                 $("#d2").css("display","block")
-            })
+            });
+
             $(".remove").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
+                var tourId=$(this).next().val();
+                console.log(tourId);
                 $.ajax({
                     type:"post",
                     data:{tourId:tourId},
                     dataType:"text",
                     url:"removeTour.do",
                     success:function (obj) {
-                        console.log(obj)
+                        console.log(obj);
                         window.location.href="showTour.do";
                     }
                 })
-            })
+            });
 
             $(".update").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
+                var tourId=$(this).next().val();
+                console.log(tourId);
                 $.ajax({
                     type:"post",
                     data:{tourId:tourId},
                     dataType:"json",
                     url:"updateTour.do",
                     success:function (obj) {
-                        console.log(obj)
+                        console.log(obj);
                         window.location.href="showTour.do";
                     }
                 })
-            })
+            });
 
             <%-- 去程<input type="text" name="goId">
   返程<input type="text" name="returnId">--%>
@@ -67,7 +69,7 @@
                 if($("#t").prop("checked")){
                     $("#trans").html(str2);
                 }
-            })
+            });
 
             
             $("#deDate").blur(function () {
@@ -88,14 +90,10 @@
                 var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
                 return year + "-" + month + "-" + date;
             }
-
-
-
-
-
-
         })
+
     </script>
+
     <base href="<%=basePath%>"/>
 </head>
 <body>
@@ -166,9 +164,8 @@
         交通类型：
         飞机<input type="radio" name="tran" class="choice" value="f" id="f">
         火车<input type="radio" name="tran" class="choice" value="t" id="t">
+
         <div id="trans"></div>
-       <%-- 去程<input type="text" name="goId">
-        返程<input type="text" name="returnId">--%>
         <input type="submit" value="点击添加">
     </form>
 </div>
@@ -213,6 +210,8 @@
         </tbody>
     </table>
 </div>
+
+
 <div style="text-align: center">
     <%--增加产品--%>
     <input type="button" value="增加产品" id="d1"><br/>
@@ -224,11 +223,13 @@
         </c:forEach>
         <c:if test="${requestScope.page < requestScope.pages}">
             <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
-        </c:if></div>
+        </c:if>
 </div>
-<div id="update">
 
+<div id="update">
 </div>
+
+
 <p style="color: green">${requestScope.success}</p>
 <p style="color: red">${requestScope.error}</p>
 </body>

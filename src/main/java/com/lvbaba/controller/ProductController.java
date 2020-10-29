@@ -29,6 +29,8 @@ import java.util.List;
  * Created by YY on 2020/10/26.
  * 产品
  */
+
+
 @Controller
 public class ProductController {
     @Resource
@@ -39,6 +41,7 @@ public class ProductController {
     private RoomService roomService;
     @Resource
     private HotelService hotelService;
+
     @RequestMapping("/showProduct.do")
     public String showProduct(Model model,String page){
         if (page==null){
