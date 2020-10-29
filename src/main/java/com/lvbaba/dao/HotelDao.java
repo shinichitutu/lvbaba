@@ -1,6 +1,7 @@
 package com.lvbaba.dao;
 
 import com.lvbaba.entity.Hotel;
+import com.lvbaba.entity.Room;
 
 import java.util.List;
 

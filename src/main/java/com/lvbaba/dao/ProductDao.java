@@ -44,4 +44,11 @@ public interface ProductDao {
      * @return
      */
     List<Product> queryAll();
+
+    /**
+     * 根据其他条件查询商品 返回产品集合
+     * @param product
+     * @return
+     */
+    List<Product> queryByOthers(Product product);
 }

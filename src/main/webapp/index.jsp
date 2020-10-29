@@ -84,15 +84,16 @@
             })
         })
     </script>
+
 </head>
-<body style="background-color: azure" >
+<body style="background-color: #343a40;">
 
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1 id="go_top">驴爸爸</h1>
     <p></p>
 </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark background" >
     <a class="navbar-brand" href="#" style="margin-left: 50px">驴爸爸旅行</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -156,8 +157,16 @@
             </li>
         </ul>
     </div>
-</nav>
+</nav outputStylesheet>
+<hr>
 
+<div style="text-align: center;">
+    <form action="searchProducts.do">
+        <input type="text" name="daId" placeholder="请输入出发地"><br/>
+        <input type="text" name="arrAreaId" placeholder="请输入目的地" style="margin-top: 20px"><br/>
+        <input type="submit" value="点击查询旅行团" style="margin-top: 20px">
+    </form>
+</div>
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-4"  style="background-color: azure" >
