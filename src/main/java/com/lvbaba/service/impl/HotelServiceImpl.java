@@ -72,7 +72,7 @@ public class HotelServiceImpl implements HotelService {
             return false;
         }
         Hotel hotel1 = new Hotel();
-        hotel1.sethName(hotel.gethName());
+        hotel1.setHotelName(hotel.getHotelName());
         hotel1.setAreaId(hotel.getAreaId());
         if(query(hotel1)==null||query(hotel1).size()==0){
             return hotelDao.insertHotel(hotel);
@@ -96,7 +96,7 @@ public class HotelServiceImpl implements HotelService {
         if (hotel == null) {
             return false;
         }
-        Hotel hotel1 =new Hotel(hotel.getAreaId(),hotel.gethName(),hotel.gethLevel());
+        Hotel hotel1 =new Hotel(hotel.getAreaId(),hotel.getHotelName(),hotel.getHotelLevel());
         if(hotelDao.query(hotel1).size()==0||hotelDao.query(hotel1)==null){
             return hotelDao.updateHotel(hotel);
         }

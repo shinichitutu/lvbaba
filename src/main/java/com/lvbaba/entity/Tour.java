@@ -2,31 +2,30 @@ package com.lvbaba.entity;
 
 public class Tour {
 
-  private long tId;
-  private long pId;
+  private long tourId;
+  private long productId;
   private String dDate;
-  private String rDate;
-  private String cType;
+  private String roomDate;
+  private String transType;
   private long goId;
   private long returnId;
   private long bookNum;
-  private String tStatus;
+  private String tourStatus;
 
-
-  public long gettId() {
-    return tId;
+  public long getTourId() {
+    return tourId;
   }
 
-  public void settId(long tId) {
-    this.tId = tId;
+  public void setTourId(long tourId) {
+    this.tourId = tourId;
   }
 
-  public long getpId() {
-    return pId;
+  public long getProductId() {
+    return productId;
   }
 
-  public void setpId(long pId) {
-    this.pId = pId;
+  public void setProductId(long productId) {
+    this.productId = productId;
   }
 
   public String getdDate() {
@@ -37,20 +36,20 @@ public class Tour {
     this.dDate = dDate;
   }
 
-  public String getrDate() {
-    return rDate;
+  public String getRoomDate() {
+    return roomDate;
   }
 
-  public void setrDate(String rDate) {
-    this.rDate = rDate;
+  public void setRoomDate(String roomDate) {
+    this.roomDate = roomDate;
   }
 
-  public String getcType() {
-    return cType;
+  public String getTransType() {
+    return transType;
   }
 
-  public void setcType(String cType) {
-    this.cType = cType;
+  public void setTransType(String transType) {
+    this.transType = transType;
   }
 
   public long getGoId() {
@@ -77,26 +76,26 @@ public class Tour {
     this.bookNum = bookNum;
   }
 
-  public String gettStatus() {
-    return tStatus;
+  public String getTourStatus() {
+    return tourStatus;
   }
 
-  public void settStatus(String tStatus) {
-    this.tStatus = tStatus;
+  public void setTourStatus(String tourStatus) {
+    this.tourStatus = tourStatus;
   }
 
   @Override
   public String toString() {
     return "Tour{" +
-            "tId=" + tId +
-            ", pId=" + pId +
+            "tourId=" + tourId +
+            ", productId=" + productId +
             ", dDate='" + dDate + '\'' +
-            ", rDate='" + rDate + '\'' +
-            ", cType='" + cType + '\'' +
+            ", roomDate='" + roomDate + '\'' +
+            ", transType='" + transType + '\'' +
             ", goId=" + goId +
             ", returnId=" + returnId +
             ", bookNum=" + bookNum +
-            ", tStatus='" + tStatus + '\'' +
+            ", tourStatus='" + tourStatus + '\'' +
             '}';
   }
 }

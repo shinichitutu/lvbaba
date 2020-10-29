@@ -3,7 +3,7 @@
 <mapper namespace="com.lvbaba.dao.HotelDao">
 
     <insert id="insertHotel" parameterType="Hotel">
-        INSERT INTO hotel(a_id,h_name,h_level) VALUES (#{areaId},#{hName},#{hLevel})
+        INSERT INTO hotel(a_id,h_name,h_level) VALUES (#{areaId},#{hotelName},#{hotelLevel})
     </insert>
 
     <update id="updateHotel" parameterType="Hotel">
@@ -13,38 +13,38 @@
             <if test="areaId!=null and areaId!='' and areaId!='0' ">
                 a_id = #{areaId},
             </if>
-            <if test="hName!=null and hName!=''">
-                h_name = #{hName},
+            <if test="hotelName!=null and hotelName!=''">
+                h_name = #{hotelName},
             </if>
-            <if test="hLevel!=null and hLevel!=''">
-                h_level =#{hLevel}
+            <if test="hotelLevel!=null and hotelLevel!=''">
+                h_level =#{hotelLevel}
             </if>
         </set>
-        where h_id = #{hId}
+        where h_id = #{hotelId}
     </update>
 
     <delete id="deleteHotel" parameterType="Hotel">
-        DELETE FROM hotel WHERE h_id = #{hId}
+        DELETE FROM hotel WHERE h_id = #{hotelId}
     </delete>
 
     <select id="queryOne" parameterType="Hotel" resultMap="hotelMap">
-      SELECT h_id,a_id,h_name,h_level FROM hotel WHERE h_id = #{hId}
+      SELECT h_id,a_id,h_name,h_level FROM hotel WHERE h_id = #{hotelId}
     </select>
 
     <select id="query" parameterType="Hotel" resultMap="hotelMap">
         SELECT h_id,a_id,h_name,h_level FROM hotel
         <where>
-            <if test="hId!=null and hId!=''">
-                h_id = #{hId}
+            <if test="hotelId!=null and hotelId!=''">
+                h_id = #{hotelId}
             </if>
             <if test="areaId!=null and areaId!=''">
                 and a_id = #{areaId}
             </if>
-            <if test="hName!=null and hName!=''">
-                and h_name = #{hName}
+            <if test="hotelName!=null and hotelName!=''">
+                and h_name = #{hotelName}
             </if>
-            <if test="hLevel!=null and hLevel!=''">
-                and h_level =#{hLevel}
+            <if test="hotelLevel!=null and hotelLevel!=''">
+                and h_level =#{hotelLevel}
             </if>
         </where>
 
@@ -55,10 +55,10 @@
     </select>
 
     <resultMap id="hotelMap" type="Hotel">
-        <id property="hId" column="h_id"/>
+        <id property="hotelId" column="h_id"/>
         <result property="areaId" column="a_id"/>
-        <result property="hName" column="h_name"/>
-        <result property="hLevel" column="h_level"/>
+        <result property="hotelName" column="h_name"/>
+        <result property="hotelLevel" column="h_level"/>
     </resultMap>
 
 </mapper>

@@ -3,20 +3,20 @@ package com.lvbaba.entity;
 
 public class Userorder {
 
-  private long oId;
+  private long orderId;
   private long uId;
-  private long tId;
-  private double oPrice;
-  private String oStatus;
-  private String oTime;
-  private String pTime;
+  private long tourId;
+  private double orderPrice;
+  private String orderStatus;
+  private String orderTime;
+  private String payTime;
 
-  public long getoId() {
-    return oId;
+  public long getOrderId() {
+    return orderId;
   }
 
-  public void setoId(long oId) {
-    this.oId = oId;
+  public void setOrderId(long orderId) {
+    this.orderId = orderId;
   }
 
   public long getuId() {
@@ -27,56 +27,56 @@ public class Userorder {
     this.uId = uId;
   }
 
-  public long gettId() {
-    return tId;
+  public long getTourId() {
+    return tourId;
   }
 
-  public void settId(long tId) {
-    this.tId = tId;
+  public void setTourId(long tourId) {
+    this.tourId = tourId;
   }
 
-  public double getoPrice() {
-    return oPrice;
+  public double getOrderPrice() {
+    return orderPrice;
   }
 
-  public void setoPrice(double oPrice) {
-    this.oPrice = oPrice;
+  public void setOrderPrice(double orderPrice) {
+    this.orderPrice = orderPrice;
   }
 
-  public String getoStatus() {
-    return oStatus;
+  public String getOrderStatus() {
+    return orderStatus;
   }
 
-  public void setoStatus(String oStatus) {
-    this.oStatus = oStatus;
+  public void setOrderStatus(String orderStatus) {
+    this.orderStatus = orderStatus;
   }
 
-  public String getoTime() {
-    return oTime;
+  public String getOrderTime() {
+    return orderTime;
   }
 
-  public void setoTime(String oTime) {
-    this.oTime = oTime;
+  public void setOrderTime(String orderTime) {
+    this.orderTime = orderTime;
   }
 
-  public String getpTime() {
-    return pTime;
+  public String getPayTime() {
+    return payTime;
   }
 
-  public void setpTime(String pTime) {
-    this.pTime = pTime;
+  public void setPayTime(String payTime) {
+    this.payTime = payTime;
   }
 
   @Override
   public String toString() {
     return "Userorder{" +
-            "oId=" + oId +
+            "orderId=" + orderId +
             ", uId=" + uId +
-            ", tId=" + tId +
-            ", oPrice=" + oPrice +
-            ", oStatus='" + oStatus + '\'' +
-            ", oTime='" + oTime + '\'' +
-            ", pTime='" + pTime + '\'' +
+            ", tourId=" + tourId +
+            ", orderPrice=" + orderPrice +
+            ", orderStatus='" + orderStatus + '\'' +
+            ", orderTime='" + orderTime + '\'' +
+            ", payTime='" + payTime + '\'' +
             '}';
   }
 }

@@ -3,39 +3,43 @@ package com.lvbaba.entity;
 
 public class Hotel {
 
-  private long hId;
+  private long hotelId;
   private long areaId;
-  private String hName;
-  private long hLevel;
+  private String hotelName;
+  private long hotelLevel;
   private Area area;
 
 
-  public Hotel(long hId, long areaId, String hName, long hLevel) {
-    this.hId = hId;
+  public Hotel(long hotelId, long areaId, String hotelName, long hotelLevel, Area area) {
+    this.hotelId = hotelId;
     this.areaId = areaId;
-    this.hName = hName;
-    this.hLevel = hLevel;
+    this.hotelName = hotelName;
+    this.hotelLevel = hotelLevel;
+    this.area = area;
   }
 
   public Hotel() {
   }
 
-  public Hotel(long hId) {
-    this.hId = hId;
-  }
-
-  public Hotel(long areaId, String hName, long hLevel) {
+  public Hotel(long areaId, String hotelName, long hotelLevel) {
     this.areaId = areaId;
-    this.hName = hName;
-    this.hLevel = hLevel;
+    this.hotelName = hotelName;
+    this.hotelLevel = hotelLevel;
   }
 
-  public long gethId() {
-    return hId;
+  public Hotel(long hotelId, long areaId, String hotelName, long hotelLevel) {
+    this.hotelId = hotelId;
+    this.areaId = areaId;
+    this.hotelName = hotelName;
+    this.hotelLevel = hotelLevel;
   }
 
-  public void sethId(long hId) {
-    this.hId = hId;
+  public long getHotelId() {
+    return hotelId;
+  }
+
+  public void setHotelId(long hotelId) {
+    this.hotelId = hotelId;
   }
 
   public long getAreaId() {
@@ -46,20 +50,20 @@ public class Hotel {
     this.areaId = areaId;
   }
 
-  public String gethName() {
-    return hName;
+  public String getHotelName() {
+    return hotelName;
   }
 
-  public void sethName(String hName) {
-    this.hName = hName;
+  public void setHotelName(String hotelName) {
+    this.hotelName = hotelName;
   }
 
-  public long gethLevel() {
-    return hLevel;
+  public long getHotelLevel() {
+    return hotelLevel;
   }
 
-  public void sethLevel(long hLevel) {
-    this.hLevel = hLevel;
+  public void setHotelLevel(long hotelLevel) {
+    this.hotelLevel = hotelLevel;
   }
 
   public Area getArea() {
@@ -73,10 +77,10 @@ public class Hotel {
   @Override
   public String toString() {
     return "Hotel{" +
-            "hId=" + hId +
+            "hotelId=" + hotelId +
             ", areaId=" + areaId +
-            ", hName='" + hName + '\'' +
-            ", hLevel=" + hLevel +
+            ", hotelName='" + hotelName + '\'' +
+            ", hotelLevel=" + hotelLevel +
             ", area=" + area +
             '}';
   }

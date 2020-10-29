@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.RoomDetailDao">
     <insert id="insertRoomDetail" parameterType="Roomdetail">
-        INSERT INTO roomdetail(r_id,r_date,rd_price,rd_number) VALUES (#{rId},#{rDate},#{rdPrice},#{rdNumber})
+        INSERT INTO roomdetail(r_id,r_date,rd_price,rd_number) VALUES (#{roomId},#{roomDate},#{rdPrice},#{rdNumber})
     </insert>
 
     <update id="updateRoomDetail" parameterType="Roomdetail">
         UPDATE roomdetail
         <set>
-            <if test="rId!=null and rId!=''">
-                r_id = #{rId},
+            <if test="roomId!=null and roomId!=''">
+                r_id = #{roomId},
             </if>
-            <if test="rDate!=null and rDate!=''">
-                r_date = #{rDate},
+            <if test="roomDate!=null and roomDate!=''">
+                r_date = #{roomDate},
             </if>
             <if test="rdPrice!=null and rdPrice!=''">
                 rd_price = #{rdPrice},
@@ -38,11 +38,11 @@
             <if test="rdId!=null and rdId!=''">
                 rd_id =#{rdId}
             </if>
-            <if test="rId!=null and rId!=''">
-                and r_id = #{rId}
+            <if test="roomId!=null and roomId!=''">
+                and r_id = #{roomId}
             </if>
-            <if test="rDate!=null and rDate!=''">
-                and r_date = #{rDate}
+            <if test="roomDate!=null and roomDate!=''">
+                and r_date = #{roomDate}
             </if>
             <if test="rdPrice!=null and rdPrice!=''">
                 and rd_price = #{rdPrice}
@@ -55,8 +55,8 @@
 
     <resultMap id="roomdetailMap" type="Roomdetail">
         <id property="rdId" column="rd_id"/>
-        <result property="rId" column="r_id"/>
-        <result property="rDate" column="r_date"/>
+        <result property="roomId" column="r_id"/>
+        <result property="roomDate" column="r_date"/>
         <result property="rdPrice" column="rd_price"/>
         <result property="rdNumber" column="rd_number"/>
     </resultMap>
