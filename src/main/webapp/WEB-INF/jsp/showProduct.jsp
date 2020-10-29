@@ -233,13 +233,13 @@
         <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${product.daId}</td>
+                <td>${product.productName}</td>
                 <td>${product.arrAreaId}</td>
                 <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
                 <td>${product.hotelId}</td>
-                <td>${product.productName}</td>
+                <td>${product.daId}</td>
                 <td>${product.productFee}</td>
                 <td>${product.productScore}</td>
                 <td><a href="showTour.do?productId=${product.productId}">查询旅行团</a></td>
@@ -248,6 +248,7 @@
             </tr>
         </c:forEach>
         </tbody>
+
     </table>
     <div style="text-align: center">
         <c:if test="${requestScope.page>1}">
@@ -260,11 +261,47 @@
             <a href="showProduct.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
         </c:if></div>
 </div>
+
 <div style="text-align: center">
     <input type="button" value="增加产品" id="d1">
     <p style="color: green">${requestScope.success}</p>
     <p style="color: red">${requestScope.error}</p>
 </div>
+<table class="table table-hover">
+
+    <c:forEach items="${requestScope.products}" var="product" varStatus="i">
+        <tr>
+            <td>
+            <div class="container">
+                <div style="height:300px">
+                    <div style="float:left;height: 100%;width: 30%">
+                        <img src="../../img/4.png" style="height: 100%;width: 100%">
+                    </div>
+                    <div style="width:70%;float:left;height: 40%;font-size: 20px">
+                        <button style="background-color: gold">优选</button>${product.productName}
+                    </div>
+                    <div style="width:70%;float:left;height:40%;font-size: 20px">
+                        <div style="width:60%;float:left;height:100%;font-size: 20px;">
+                            <p style="font-size: 30px;text-align: center;margin-top: 30px">供应商:驴爸爸</p>
+                        </div>
+                        <div style="width:20%;float:left;height:100%;font-size: 10px;">
+                            <p style="font-size: 30px;text-align: center;margin-top: 30px">评分:${product.productScore}</p>
+                        </div>
+                        <div style="width:20%;float:left;height:100%;">
+                            <p style="font-size: 30px;text-align: center;color:red;margin-top: 30px">${product.productFee}元</p>
+                        </div>
+
+                    </div>
+                    <div style="width:70%;float:left;height: 20%;text-align: center">
+                        <p style="font-size: 30px;text-align: center">供应商:驴爸爸</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
 <div style="margin-left: 50px;display: none;" id="d2">
     <form action="insertProduct.do" method="post">
         <p>产品名称：<input type="text" class="productName" placeholder="请输入产品名称"></p>
@@ -287,21 +324,9 @@
             <option value="0">--请选择--</option>
         </select><span>选择了目的地之后，才能看到酒店</span></p>
         <p>基础团费：<input type="number" min="500" max="10000" step="500" class="productFee" placeholder="请输入基本团费"></p>
-        <p><input type="button" value="点击添加" class="addProduct"></p>
+        <p><input type="submit" value="点击添加" class="addProduct"></p>
     </form>
 </div>
-
-<div style="text-align: center">
-    <c:if test="${requestScope.page>1}">
-        <a href="showProduct.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
-    </c:if>
-    <c:forEach begin="1" end="${requestScope.pages}" step="1" var="i">
-        <a href="showProduct.do?page=${i}">${i}</a>
-    </c:forEach>
-    <c:if test="${requestScope.page < requestScope.pages}">
-        <a href="showProduct.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
-    </c:if>
-</div>
-
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

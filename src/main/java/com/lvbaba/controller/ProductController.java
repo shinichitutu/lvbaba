@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.java2d.pipe.AAShapePipe;
 
 import javax.annotation.Resource;
 import java.io.FileOutputStream;
@@ -78,17 +79,18 @@ public class ProductController {
         area.setAreaId(product.getDaId());
         Area destinationArea=areaService.queryOne(area);
         PageInfo<Product> tourPageInfo = new PageInfo<>(list);
+
         List<ProductArea> productAreas=new ArrayList<>();
-        /*for (Product p:tourPageInfo.getList()) {
+
+        for (Product p:tourPageInfo.getList()) {
             Room room=new Room();
-            room.setRoomId(p.get());//改一下
+            room.setRoomId(p.getHotelId());
             Hotel hotel=new Hotel();
             hotel.setHotelId(roomService.queryOne(room).getHotelId());
             ProductArea productArea=new ProductArea(p,destinationArea.getCity(),
                     departArea.getCity(),hotelService.queryOne(hotel));
             productAreas.add(productArea);
-        }*/
-
+        }
         List<Area> arealis=areaService.queryCountry();
         List<Area> country=areaService.queryCountry();
         model.addAttribute("country",country);
@@ -98,6 +100,12 @@ public class ProductController {
         model.addAttribute("products",productAreas);
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
-         return "searchProducts";
+        return "searchProducts";
+    }
+    @RequestMapping("productOne.do")
+    public String productOne(Product product,Model model){
+        model.addAttribute("product",product);
+        System.out.println(product);
+        return "productOne";
     }
 }
