@@ -18,6 +18,7 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
     <style>
         .fakeimg {
             height: 200px;
@@ -87,11 +88,13 @@
     </div>
 </nav>
 <div style="text-align: center;">
-    <form action="searchProducts.do">
-        出发地:<input type="text" name="daId">
-        目的地:<input type="text" name="arrAreaId">
-        <input type="submit" value="点击搜索">
-    </form>
+    <div style="text-align: center;">
+        <form action="searchProducts.do">
+            <input type="text" name="daId" placeholder="请输入出发地"><br/>
+            <input type="text" name="arrAreaId" placeholder="请输入目的地" style="margin-top: 20px"><br/>
+            <input type="submit" value="点击查询旅行团" style="margin-top: 20px">
+        </form>
+    </div>
 </div>
 </body>
 </html>

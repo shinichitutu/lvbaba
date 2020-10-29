@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: YY
   Date: 2020/10/29
-  Time: 14:33
+  Time: 17:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,10 +12,11 @@
 %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>用户查看产品详情</title>
     <base href="<%=basePath%>"/>
 </head>
 <body>
-$END$
+<p style="font-size: 100px">看这里
+    ${requestScope.product.productId}</p>
 </body>
 </html>

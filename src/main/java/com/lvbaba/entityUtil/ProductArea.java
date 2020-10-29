@@ -9,8 +9,8 @@ import com.lvbaba.entity.Product;
  */
 public class ProductArea {
     private Product product;
-    private String departArea;
-    private String destinationArea;
+    private String departArea;//出发地名称
+    private String destinationArea;//目的地名称
     private Hotel hotel;
     public ProductArea(Product product, String departArea, String destinationArea) {
         this.product = product;

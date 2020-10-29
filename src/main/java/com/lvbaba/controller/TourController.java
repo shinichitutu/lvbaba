@@ -49,6 +49,22 @@ public class TourController {
         return "showTours";
     }
 
+    @RequestMapping("/userShowTour.do")
+    public String userShowTour(Model model,Tour tour,String page){
+        if (tour==null){
+            tour.setProductId(1);
+        }
+        if (page==null){
+            page="1";
+        }
+        PageHelper.startPage(Integer.valueOf(page),5);
+        List<Tour> tours1=tourService.queryByPid(tour);
+        PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
+        model.addAttribute("page",Integer.valueOf(page));
+        model.addAttribute("pages",tourPageInfo.getPages());
+        model.addAttribute("tours",tours1);
+        return "userShowTours";
+    }
 
     @RequestMapping("/insertTour.do")
     public String insertTour(Tour tour,Model model){

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.java2d.pipe.AAShapePipe;
 
 import javax.annotation.Resource;
 import java.io.FileOutputStream;
@@ -64,12 +65,45 @@ public class ProductController {
             page="1";
         }
         PageHelper.startPage(Integer.valueOf(page),5);
-        List<Product> productList=productService.querByOthers(product);
-        PageInfo<Product> tourPageInfo = new PageInfo<>(productList);
-        model.addAttribute("products",productList);
+
+        List<Product> list=productService.querByOthers(product);
+        Area area=new Area();
+        //出发地
+        area.setAreaId(product.getArrAreaId());
+        Area departArea=areaService.queryOne(area);
+        //目的地
+        area.setAreaId(product.getDaId());
+        Area destinationArea=areaService.queryOne(area);
+        PageInfo<Product> tourPageInfo = new PageInfo<>(list);
+
+        List<ProductArea> productAreas=new ArrayList<>();
+
+        for (Product p:tourPageInfo.getList()) {
+            Room room=new Room();
+            room.setRoomId(p.getHotelId());
+            Hotel hotel=new Hotel();
+            hotel.setHotelId(roomService.queryOne(room).getHotelId());
+            ProductArea productArea=new ProductArea(p,destinationArea.getCity(),
+                    departArea.getCity(),hotelService.queryOne(hotel));
+            productAreas.add(productArea);
+        }
+        List<Area> arealis=areaService.queryCountry();
+        List<Area> country=areaService.queryCountry();
+        model.addAttribute("country",country);
+        model.addAttribute("arealis",arealis);
+        model.addAttribute("daId",product.getDaId());
+        model.addAttribute("arrAreaId",product.getArrAreaId());
+        model.addAttribute("products",productAreas);
+
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
-         return "searchProducts";
+        return "searchProducts";
+    }
+    @RequestMapping("productOne.do")
+    public String productOne(Product product,Model model){
+        model.addAttribute("product",product);
+        System.out.println(product);
+        return "productOne";
     }
 
     @RequestMapping("/addProductInfo.do")

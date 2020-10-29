@@ -18,6 +18,7 @@
     </sql>
 
 
+
     <insert id="insertProduct" parameterType="Product">
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUES
         (#{daId},#{arrAreaId},#{limLow},#{limUp},#{days},#{hotelId},#{productName},#{productFee},#{productScore})

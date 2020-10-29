@@ -20,82 +20,6 @@
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
-    <script>
-        $(function () {
-            $("#d1").click(function () {
-                $("#d2").css("display","block")
-            })
-            $(".remove").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
-                $.ajax({
-                    type:"post",
-                    data:{tourId:tourId},
-                    dataType:"text",
-                    url:"removeTour.do",
-                    success:function (obj) {
-                        console.log(obj)
-                        window.location.href="showTour.do";
-                    }
-                })
-            })
-
-            $(".update").click(function () {
-                var tourId=$(this).next().val()
-                console.log(tourId)
-                $.ajax({
-                    type:"post",
-                    data:{tourId:tourId},
-                    dataType:"json",
-                    url:"updateTour.do",
-                    success:function (obj) {
-                        console.log(obj)
-                        window.location.href="showTour.do";
-                    }
-                })
-            })
-
-            <%-- 去程<input type="text" name="goId">
-  返程<input type="text" name="returnId">--%>
-
-            $(".choice").click(function () {
-                var str1 = "去程";
-                var str2 ="返程";
-                if($("#f").prop("checked")){
-                    $("#trans").html(str1);
-                }
-                if($("#t").prop("checked")){
-                    $("#trans").html(str2);
-                }
-            })
-
-            
-            $("#deDate").blur(function () {
-                var deDate = $(this).val();
-                console.log(deDate);
-                if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+1)));
-                }
-                $("#reDate").html(date);
-            });
-
-
-            function timeStampString(time){
-                var datetime = new Date();
-                datetime.setTime(time);
-                var year = datetime.getFullYear();
-                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 7;
-                var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                return year + "-" + month + "-" + date;
-            }
-
-
-
-
-
-
-        })
-    </script>
     <base href="<%=basePath%>"/>
 </head>
 <body>
@@ -206,30 +130,22 @@
                         未成团
                     </c:if>
                 </td>
-                <td><input type="button" value="修改产品" class="update"><input type="hidden" value="${tour.tourId}"></td>
-                <td><input type="button" value="删除产品" class="remove"><input type="hidden" value="${tour.tourId}"></td>
-            </tr>
+             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
 <div style="text-align: center">
-    <%--增加产品--%>
-    <input type="button" value="增加产品" id="d1"><br/>
         <c:if test="${requestScope.page>1}">
-            <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
+            <a href="userShowTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
         </c:if>
         <c:forEach begin="1" end="${requestScope.pages}" step="1" var="i">
-            <a href="showTour.do?page=${i}">${i}</a>
+            <a href="userShowTour.do?page=${i}">${i}</a>
         </c:forEach>
         <c:if test="${requestScope.page < requestScope.pages}">
-            <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
+            <a href="userShowTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
         </c:if></div>
 </div>
-<div id="update">
 
-</div>
-<p style="color: green">${requestScope.success}</p>
-<p style="color: red">${requestScope.error}</p>
 </body>
 </html>

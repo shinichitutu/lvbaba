@@ -47,6 +47,9 @@
                         dataType:"json",
                         success:function (obj) {
                             $.each(obj,function (index,item) {
+
+                                console.log(item.areaId)
+
                                 str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
                             })
                             $("#d_city").append(str);
@@ -71,6 +74,9 @@
                         dataType:"json",
                         success:function (obj) {
                             $.each(obj,function (index,item) {
+
+                                console.log(item,item)
+
                                 str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
                             })
                             $("#a_city").append(str);
@@ -84,7 +90,7 @@
     </script>
 
 </head>
-<body style="background-color: #343a40;">
+<body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1 id="go_top">驴爸爸</h1>
@@ -158,13 +164,7 @@
 </nav outputStylesheet>
 <hr>
 
-<div style="text-align: center;">
-    <form action="searchProducts.do">
-        <input type="text" name="daId" placeholder="请输入出发地"><br/>
-        <input type="text" name="arrAreaId" placeholder="请输入目的地" style="margin-top: 20px"><br/>
-        <input type="submit" value="点击查询旅行团" style="margin-top: 20px">
-    </form>
-</div>
+
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-4"  style="background-color: azure" >
@@ -173,7 +173,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#airTickets">机票</a>
+                            <a class="nav-link active" data-toggle="tab" href="#airTickets">产品</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#hotel">酒店</a>
@@ -184,26 +184,26 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content" style="background-color: white;border: solid black 1px;">
-                        <div id="airTickets" class="container tab-pane active" style="font-size: 10px;width: 100%"><br>
-                            <form action="#" method="post">
+                        <div id="airTickets" class="container tab-pane active" style="font-size: 10px;width: 100%;text-align: center"><br>
+                            <form action="searchProducts.do" method="post">
                                 出发城市:<select id="d_country">
                                         <option value="0">--请选择--</option>
                                     </select>
-                                    <select id="d_city">
+                                    <select id="d_city" name="daId">
                                         <option value="0">--请选择--<</option>
                                     </select>
                                 <br/>
                                 到达城市:<select id="a_country">
                                         <option value="0">--请选择--</option>
                                     </select>
-                                    <select id="a_city">
+                                    <select id="a_city" name="arrAreaId">
                                         <option value="0">--请选择--<</option>
                                     </select>
                                     <br/>
-                                航程类型:<input type="radio" name="hang">单程<input type="radio" name="hang">返程<br/>
+                                <%--航程类型:<input type="radio" name="hang">单程<input type="radio" name="hang">返程<br/>
                                 出发日期:<input type="datetime"><br/>
-                                返回日期:<input type="datetime"><br/>
-                                <input type="submit" value="搜索机票">
+                                返回日期:<input type="datetime"><br/>--%>
+                                <input type="submit" value="搜索产品" style="text-align: center">
                             </form>
                         </div>
                         <div id="hotel" class="container tab-pane fade" style="font-size: 10px;width: 100%"><br>
@@ -221,15 +221,15 @@
                                 <input type="submit" value="搜索机票">
                             </form></div>
                         <div id="vacation" class="container tab-pane fade" style="font-size: 10px;"><br>
-                            <form>
-                                出发城市:<select id="v_d_country">
+                            <form action="searchProducts.do" method="post">
+                                出发城市:<select id="v_d_country" name="daId">
                                 <option value="0">--请选择--</option>
                             </select>
                                 <select id="v_d_city">
                                     <option value="0">--请选择--<</option>
                                 </select>
                                 <br/>
-                                到达城市:<select id="v_a_country">
+                                到达城市:<select id="v_a_country" name="arrAreaId">
                                 <option value="0">--请选择--</option>
                             </select>
                                 <select id="v_a_city">
@@ -274,8 +274,6 @@
         </div>
     </div>
 </div>
-
-
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
