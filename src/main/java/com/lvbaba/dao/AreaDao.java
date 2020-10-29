@@ -1,6 +1,8 @@
 package com.lvbaba.dao;
 
 import com.lvbaba.entity.Area;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,6 +30,5 @@ public interface AreaDao {
     Area queryOne(Area area);
 
     List<Area> query(Area area);
-
 
 }
