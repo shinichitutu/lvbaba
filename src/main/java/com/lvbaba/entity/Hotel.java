@@ -9,6 +9,9 @@ public class Hotel {
   private long hotelLevel;
   private Area area;
 
+  public Hotel(long hotelId) {
+    this.hotelId = hotelId;
+  }
 
   public Hotel(long hotelId, long areaId, String hotelName, long hotelLevel, Area area) {
     this.hotelId = hotelId;

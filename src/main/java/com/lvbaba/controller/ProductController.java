@@ -30,6 +30,8 @@ import java.util.List;
  * Created by YY on 2020/10/26.
  * 产品
  */
+
+
 @Controller
 public class ProductController {
     @Resource
@@ -40,6 +42,7 @@ public class ProductController {
     private RoomService roomService;
     @Resource
     private HotelService hotelService;
+
     @RequestMapping("/showProduct.do")
     public String showProduct(Model model,String page){
         if (page==null){
@@ -47,29 +50,22 @@ public class ProductController {
         }
         PageHelper.startPage(Integer.valueOf(page),5);
         List<Product> products=productService.queryAll();
+        System.out.println("-----------------------------------------------------------");
+        products.forEach(System.out::println);
         PageInfo<Product> tourPageInfo = new PageInfo<>(products);
-        List<Area> areas=areaService.queryCountry();
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
-        model.addAttribute("areas",areas);
         model.addAttribute("products",products);
         return "showProduct";
     }
-    @RequestMapping("/insertProduct.do")
-    public String insertProduct(Product product,Model model){
-       if (productService.insertProduct(product)){
-           model.addAttribute("success","增加成功");
-       }else {
-           model.addAttribute("error","增加失败");
-       }
-       return "forward:showProduct.do";
-    }
+
     @RequestMapping("searchProducts.do")
     public String searchProducts(Product product,String page,Model model){
         if (page==null){
             page="1";
         }
         PageHelper.startPage(Integer.valueOf(page),5);
+
         List<Product> list=productService.querByOthers(product);
         Area area=new Area();
         //出发地
@@ -98,6 +94,7 @@ public class ProductController {
         model.addAttribute("daId",product.getDaId());
         model.addAttribute("arrAreaId",product.getArrAreaId());
         model.addAttribute("products",productAreas);
+
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
         return "searchProducts";
@@ -107,5 +104,32 @@ public class ProductController {
         model.addAttribute("product",product);
         System.out.println(product);
         return "productOne";
+    }
+
+    @RequestMapping("/addProductInfo.do")
+    @ResponseBody
+    public String addProductInfo(Product product){
+        System.out.println(product);
+        boolean flag = productService.insertProduct(product);
+        return ""+flag;
+    }
+
+    @RequestMapping("/deleteProduct.do")
+    public String deleteProduct(Product product,Model model){
+        boolean flag = productService.removeProduct(product);
+        if (flag){
+            model.addAttribute("delProductInfo","删除成功");
+        }else{
+            model.addAttribute("delProductInfo","删除失败");
+        }
+        return "forward:showProduct.do";
+    }
+
+    @RequestMapping("/updateProductInfo.do")
+    @ResponseBody
+    public String modifyProduct(Product product){
+        System.out.println(product);
+        boolean flag = productService.updateProduct(product);
+        return ""+flag;
     }
 }

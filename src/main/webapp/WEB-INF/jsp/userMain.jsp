@@ -26,6 +26,7 @@
         }
     </style>
     <base href="<%=basePath%>"/>
+
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">

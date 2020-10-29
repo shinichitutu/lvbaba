@@ -3,7 +3,9 @@ package com.lvbaba.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lvbaba.entity.Product;
 import com.lvbaba.entity.Tour;
+import com.lvbaba.service.ProductService;
 import com.lvbaba.service.TourService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,22 +25,30 @@ public class TourController {
     @Resource
     private TourService tourService;
 
+    @Resource
+    private ProductService productService;
+
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page){
         if (tour==null){
             tour.setProductId(1);
         }
+
         if (page==null){
             page="1";
         }
+
         PageHelper.startPage(Integer.valueOf(page),5);
         List<Tour> tours1=tourService.queryByPid(tour);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
+        Product product = productService.query(new Product(tour.getProductId()));
+        model.addAttribute("product",product);
         return "showTours";
     }
+
     @RequestMapping("/userShowTour.do")
     public String userShowTour(Model model,Tour tour,String page){
         if (tour==null){
@@ -55,6 +65,7 @@ public class TourController {
         model.addAttribute("tours",tours1);
         return "userShowTours";
     }
+
     @RequestMapping("/insertTour.do")
     public String insertTour(Tour tour,Model model){
         if (tourService.insertTour(tour)){

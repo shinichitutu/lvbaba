@@ -8,6 +8,7 @@ public class Flightdetail {
   private String fdDate;
   private long fdTickets;
   private double ratio;
+  private Flight flight;
 
   public long getFdId() {
     return fdId;
@@ -17,11 +18,11 @@ public class Flightdetail {
     this.fdId = fdId;
   }
 
-  public long getflightId() {
+  public long getFlightId() {
     return flightId;
   }
 
-  public void setflightId(long flightId) {
+  public void setFlightId(long flightId) {
     this.flightId = flightId;
   }
 
@@ -49,6 +50,14 @@ public class Flightdetail {
     this.ratio = ratio;
   }
 
+  public Flight getFlight() {
+    return flight;
+  }
+
+  public void setFlight(Flight flight) {
+    this.flight = flight;
+  }
+
   @Override
   public String toString() {
     return "Flightdetail{" +
@@ -57,6 +66,7 @@ public class Flightdetail {
             ", fdDate='" + fdDate + '\'' +
             ", fdTickets=" + fdTickets +
             ", ratio=" + ratio +
+            ", flight=" + flight +
             '}';
   }
 }

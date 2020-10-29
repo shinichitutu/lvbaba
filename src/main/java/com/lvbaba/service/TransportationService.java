@@ -121,4 +121,11 @@ public interface TransportationService {
      * @return
      */
     boolean deleteTraindetailById(Traindetail traindetail);
+
+    List<Flightdetail> query(Flightdetail flightdetail);
+
+    List<Flight> query(Flight flight);
+
+    Flight queryOne(Flight flight);
+
 }

@@ -85,19 +85,19 @@
         <thead>
         <tr>
             <td>产品</td>
+            <td>产品名称</td>
             <td>出发地</td>
             <td>目的地</td>
             <td>人数下限</td>
             <td>人数上限</td>
             <td>行程天数</td>
             <td>酒店名称</td>
-            <td>产品名称</td>
             <td>基本团费</td>
             <td>评分</td>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.products}" var="productArea" varStatus="i">
+        <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
                 <td>${productArea.departArea}</td>

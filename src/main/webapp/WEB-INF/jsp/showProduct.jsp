@@ -13,6 +13,7 @@
 %>
 <html>
 <head>
+    <base href="<%=basePath%>"/>
     <title>产品</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -23,7 +24,8 @@
     <script>
         $(function () {
             $("#d1").click(function () {
-                $("#d2").css("display","block")
+                $("#d2").css("display","block");
+                $("#d3").css("display","none");
             })
 
             //ajax请求国家列表
@@ -33,7 +35,6 @@
                 dataType:"json",
                 success:function (obj) {
                     var str ="";
-                    console.log(obj)
                     $.each(obj,function (index,item) {
                         str += "<option value='"+item.country+"'>"+item.country+"</option>";
                     })
@@ -85,19 +86,18 @@
             })
 
             //当目的地失焦之后，通过目的地Id获取对应地方的酒店列表
-            $(".a_city").blur(function () {
+            $(".a_city").change(function () {
                 var arrAreaId = $(".a_city option:selected").val();
-                console.log(arrAreaId);
+                $(".hotelId option:gt(0)").remove();
                 $.ajax({
                     type:"post",
                     data:{areaId:arrAreaId},
                     url:"showHotelInfo.do",
                     dataType:"json",
                     success:function (obj) {
-                        console.log(obj);
                         var str = "";
                         $.each(obj,function (index,item) {
-                            str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--"+item.hotelLevel+"</option>";
+                            str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"星</span></option>";
                         })
                         $(".hotelId").append(str);
                     }
@@ -110,46 +110,158 @@
                     alert("产品名称不能为空");
                     return;
                 }
+
                 var daId=$(".d_city option:selected").val();
                 if (daId==null || daId==''){
                     alert("出发地不能为空");
                     return;
                 }
+
                 var arrAreaId=$(".a_city option:selected").val();
                 if (arrAreaId==null || arrAreaId==''){
                     alert("目的地不能为空");
                     return;
                 }
+
                 var limLow=$(".limLow").val();
                 if (limLow==null || limLow==''){
                     alert("人数下限不能为空");
                     return;
-                }var limUp=$(".limUp").val();
+                }
+
+                var limUp=$(".limUp").val();
                 if (limUp==null || limUp==''){
                     alert("人数上限不能为空");
                     return;
                 }
+
                 var days=$(".days").val();
                 if (days==null || days==''){
-                    alert("形成天数不能为空");
+                    alert("行程天数不能为空");
                     return;
                 }
+
                 var hotelId=$(".hotelId option:selected").val();
                 if (hotelId==null || hotelId==''){
                     alert("入住酒店不能为空");
                     return;
                 }
+
                 var productFee=$(".productFee").val();
                 if (productFee==null || productFee==''){
                     alert("团费不能为空");
                     return;
                 }
 
+                $.ajax({
+                    type:"post",
+                    data:{productName:productName,daId:daId,arrAreaId:arrAreaId,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
+                    dataType:"text",
+                    url:"addProductInfo.do",
+                    success:function (obj) {
+                        if("false"==obj){
+                            alert("新增失败");
+                        }else{
+                            alert("新增成功");
+                            location.href="showProduct.do";
+                        }
+                    }
+                })
+            })
+
+            if (${not empty requestScope.delProductInfo}){
+                alert("${requestScope.delProductInfo}");
+            }
+
+            $("#d3").on("click",".modifyProductInfo",function () {
+                var productName=$("#u_productName").val();
+                if (productName==null || productName==''){
+                    alert("产品名称不能为空");
+                    return;
+                }
+
+                var limLow=$("#u_limLow").val();
+                if (limLow==null || limLow==''){
+                    alert("人数下限不能为空");
+                    return;
+                }
+
+                var limUp=$("#u_limUp").val();
+                if (limUp==null || limUp==''){
+                    alert("人数上限不能为空");
+                    return;
+                }
+
+                var days=$("#u_days").val();
+                if (days==null || days==''){
+                    alert("行程天数不能为空");
+                    return;
+                }
+
+                var hotelId=$("#u_hotelId option:selected").val();
+                if (hotelId==null || hotelId==''){
+                    alert("入住酒店不能为空");
+                    return;
+                }
+
+                var productFee=$("#u_productFee").val();
+                if (productFee==null || productFee==''){
+                    alert("团费不能为空");
+                    return;
+                }
+
+                $.ajax({
+                    type:"post",
+                    data:{productName:productName,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
+                    dataType:"text",
+                    url:"updateProductInfo.do",
+                    success:function (obj) {
+                        if("false"==obj){
+                            alert("更新失败");
+                        }else{
+                            alert("更新成功");
+                            location.href="showProduct.do";
+                        }
+                    }
+                })
             })
         })
+        function updateProduct(productId,productName,d_area,a_area,limLow,limUp,days,hotelId,productFee,arrAreaId) {
+            $("#d2").css("display","none");
+            $("#d3").css("display","block");
+            // $(".hotelId option:gt(0)").remove();
+            var str = "";
+            $.ajax({
+                type:"post",
+                data:{areaId:arrAreaId},
+                url:"showHotelInfo.do",
+                dataType:"json",
+                success:function (obj) {
+                    $.each(obj,function (index,item) {
+                        str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"星</span></option>";
+                    })
+                    var form ="<form action='#' method='post'/>" +
+                        "<p>产品名称：<input type='text' id='u_productName' value='"+productName+"'/></p>" +
+                        "<p><input type='hidden' id='u_productId' value='"+productId+"'/></p>" +
+                        "<p>出发地："+d_area+"</p>" +
+                        "<p>出发地："+a_area+"</p>" +
+                        "<p>人数下限：<input type='number' min='1' max='5' id='u_limLow' value='"+limLow+"' ></p>" +
+                        "<p>人数上限：<input type='number' min='5' max='30' id='u_limUp' value='"+limUp+"' ></p>" +
+                        "<p>行程天数：<input type='number' min='1' max='10' id='u_days' value='"+days+"' /></p>" +
+                        "<p>入住酒店：<select id='u_hotelId'>" +
+                        "<option value='0'>--请选择--</option>" +str+
+                        "</select><span>选择了目的地之后，才能看到酒店</span></p>" +
+                        "<p>基础团费：<input type='number' min='500' max='10000' step='500' id='u_productFee' value='"+productFee+"'/></p>" +
+                        "<p><input type='button' value='提交修改' class='modifyProductInfo'/></p></form>";
+
+                    $("#d3").html("");
+                    $("#d3").html(form);
+                }
+            })
+        }
 
     </script>
-    <base href="<%=basePath%>"/>
+
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -221,7 +333,7 @@
             <td>人数下限</td>
             <td>人数上限</td>
             <td>行程天数</td>
-            <td>客房</td>
+            <td>入住酒店</td>
             <td>基本团费</td>
             <td>评分</td>
             <td>查询旅行团</td>
@@ -232,19 +344,22 @@
         <tbody>
         <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
-                <td>${i.index+1}</td>
+                <td>${i.count}</td>
                 <td>${product.productName}</td>
-                <td>${product.arrAreaId}</td>
+                <td>${product.d_area.country}-${product.d_area.city}</td>
+                <td>${product.a_area.country}-${product.a_area.city}</td>
                 <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
-                <td>${product.hotelId}</td>
-                <td>${product.daId}</td>
+                <td>${product.hotel.hotelName}-${product.hotel.hotelLevel}☆</td>
                 <td>${product.productFee}</td>
                 <td>${product.productScore}</td>
                 <td><a href="showTour.do?productId=${product.productId}">查询旅行团</a></td>
-                <td><input type="button" value="删除产品" class="remove"></td>
-                <td><input type="button" value="修改产品" class="update"></td>
+                <td><input type="button" value="删除产品" onclick="location.href='deleteProduct.do?productId=${product.productId}'"/></td>
+                <td><input type="button" value="修改产品" onclick="updateProduct('${product.productId}','${product.productName}',
+                        '${product.d_area.country}-${product.d_area.city}','${product.a_area.country}-${product.a_area.city}','${product.limLow}',
+                        '${product.limUp}','${product.days}','${product.hotelId}','${product.productFee}','${product.arrAreaId}')"/></td>
+
             </tr>
         </c:forEach>
         </tbody>
@@ -303,7 +418,7 @@
     </c:forEach>
 </table>
 <div style="margin-left: 50px;display: none;" id="d2">
-    <form action="insertProduct.do" method="post">
+    <form action="#" method="post">
         <p>产品名称：<input type="text" class="productName" placeholder="请输入产品名称"></p>
         <p>出发地：<select class="d_country">
             <option value="0">--请选择--</option>
@@ -318,8 +433,8 @@
                 <option value="0">--请选择--</option>
             </select></p>
         <p>人数下限：<input type="number" min="1" max="5" step="1" class="limLow" placeholder="请选择人数下限"></p>
-        <p>人数上限：<input type="number" min="1" max="5" step="1" class="limUp" placeholder="请选择人数上限"></p>
-        <p>行程天数：<input type="number" min="1" max="5" step="1" class="days" placeholder="请选择行程天数"></p>
+        <p>人数上限：<input type="number" min="5" max="30" step="1" class="limUp" placeholder="请选择人数上限"></p>
+        <p>行程天数：<input type="number" min="1" max="10" step="1" class="days" placeholder="请选择行程天数"></p>
         <p>入住酒店：<select class="hotelId">
             <option value="0">--请选择--</option>
         </select><span>选择了目的地之后，才能看到酒店</span></p>
@@ -327,6 +442,10 @@
         <p><input type="submit" value="点击添加" class="addProduct"></p>
     </form>
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<div style="margin-left: 50px;display: none;" id="d3">
+
+</div></div>
+
 </body>
 </html>

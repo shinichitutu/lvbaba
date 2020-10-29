@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -150,4 +151,36 @@ public class OperateTransportController {
         mv.addObject("trainDetailList", trainList);
         return mv;
     }
+
+    @RequestMapping("/searchFlight.do")
+    @ResponseBody
+    public String searchFlight(String date,String daId,String arrAreaId){
+        System.out.println("日期"+date);
+        System.out.println("出发id"+daId);
+        System.out.println("到达id"+arrAreaId);
+        Flight flight =new Flight();
+        flight.setDaId(Long.valueOf(daId));
+        flight.setArrAreaId(Long.valueOf(arrAreaId));
+        List<Flight> flightList = transportationService.query(flight);
+        System.out.println("航班表"+flightList);
+
+        Flightdetail flightdetail =new Flightdetail();
+        flightdetail.setFdDate(date);
+        List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
+        System.out.println("明细表1"+flightdetailList);
+        List<Flightdetail> flightdetailList1 = new ArrayList<>();
+
+        for (Flight f:flightList) {
+            for (Flightdetail fd:flightdetailList) {
+                if(f.getFlightId()==fd.getFlightId()){
+                    flightdetailList1.add(fd);
+                }
+            }
+        }
+
+        System.out.println("明细表"+flightdetailList1);
+
+        return JSON.toJSONString(flightdetailList1);
+    }
+
 }
