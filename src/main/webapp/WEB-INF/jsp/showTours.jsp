@@ -39,6 +39,7 @@
                     }
                 })
             })
+
             $(".update").click(function () {
                 var tId=$(this).next().val()
                 console.log(tId)
@@ -53,6 +54,46 @@
                     }
                 })
             })
+
+            <%-- 去程<input type="text" name="goId">
+  返程<input type="text" name="returnId">--%>
+
+            $(".choice").click(function () {
+                var str1 = "去程";
+                var str2 ="返程";
+                if($("#f").prop("checked")){
+                    $("#trans").html(str1);
+                }
+                if($("#t").prop("checked")){
+                    $("#trans").html(str2);
+                }
+            })
+
+            
+            $("#deDate").blur(function () {
+                var deDate = $(this).val();
+                console.log(deDate);
+                if(deDate!=''){
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+1)));
+                }
+                $("#reDate").html(date);
+            });
+
+
+            function timeStampString(time){
+                var datetime = new Date();
+                datetime.setTime(time);
+                var year = datetime.getFullYear();
+                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 7;
+                var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+                return year + "-" + month + "-" + date;
+            }
+
+
+
+
+
+
         })
     </script>
     <base href="<%=basePath%>"/>
@@ -116,19 +157,22 @@
         </ul>
     </div>
 </nav>
+
 <div style="display: none" id="d2">
     <form action="insertTour.do" method="post">
-        <input type="text" name="pId">
-        <input type="text" name="dDate">
-        <input type="text" name="rDate">
-        <input type="text" name="cType">
-        <input type="text" name="goId">
-        <input type="text" name="returnId">
-        <input type="text" name="bookNum">
-        <input type="text" name="tStatus">
+        <input type="hidden" name="pId" value="${requestScope.pId}">
+        出发日期<input type="date" name="dDate" id="deDate"><br/>
+        返回日期<div id="reDate"></div><br/>
+        交通类型：
+        飞机<input type="radio" name="tran" class="choice" value="f" id="f">
+        火车<input type="radio" name="tran" class="choice" value="t" id="t">
+        <div id="trans"></div>
+       <%-- 去程<input type="text" name="goId">
+        返程<input type="text" name="returnId">--%>
         <input type="submit" value="点击添加">
     </form>
 </div>
+
 <div class="container">
     <table class="table table-hover">
         <thead>

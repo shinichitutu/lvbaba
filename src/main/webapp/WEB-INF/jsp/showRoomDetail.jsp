@@ -39,6 +39,18 @@
                     "</form>";
                 $("#addRoom").html(str1);
             })
+
+
+            $(".update").click(function () {
+                var str1 = "<form action='updateRoomDetail.do' method='post'>"+
+                    "日期：<input type='date' name='date' value="+$(this).parent().parent().find("td").eq(1).text()+"><br/>"+
+                    "价格：<input type='number' name='price' min='1' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
+                    "<input type='hidden' name='rId' value='${requestScope.rId}'>"+
+                        "<input type='hidden' name='rdId' value="+$(this).next().val()+">"+
+                    "<input type='submit' value='确认修改'/>"+
+                    "</form>";
+                $("#updateRoom").html(str1);
+            })
         })
     </script>
 </head>
@@ -123,8 +135,10 @@
             <td>${rd.rDate}</td>
             <td>${rd.rdPrice}</td>
             <td>${rd.rdNumber}/${rd.room.rNumber}</td>
-            <td><input type="button" value="点击编辑" class="update"></td>
-            <td><input type="button" value="点击删除" class="remove"></td>
+            <td><input type="button" value="编辑" class="update">
+                <input type="hidden" value="${rd.rdId}" name="rdId">
+            </td>
+            <td><a href="deleteRoomDetail.do?rdId=${rd.rdId}&rId=${rd.rId}"><input type="button" value="删除" class="remove"></a></td>
         </tr>
     </c:forEach>
     </tbody>
@@ -139,6 +153,10 @@
 
 <div id = "addRoom" style="text-align: center">
 </div>
+
+<div id = "updateRoom" style="text-align: center">
+</div>
+
 
 <c:if test="${null != requestScope.error}">
     <span style="color: red">${requestScope.error}</span>

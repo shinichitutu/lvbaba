@@ -42,4 +42,6 @@ public interface ProductService {
      * @return
      */
     List<Product> queryAll();
+
+    List<Product> querByOthers(Product product);
 }

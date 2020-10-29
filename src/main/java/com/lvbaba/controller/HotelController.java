@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+
 import javax.json.Json;
+import javax.print.DocFlavor;
+
 import java.util.List;
 
 /**
@@ -36,7 +39,6 @@ public class HotelController {
     private RoomDetailService roomDetailService;
 
     @RequestMapping("/showHotels.do")
-
     public String showHotels(Model model,String page){
         if (page==null){
             page="1";
@@ -48,10 +50,11 @@ public class HotelController {
         return "showHotels";
     }
 
+
     @RequestMapping("/showRooms.do")
-    public String showRooms(Model model, int hId) {
+    public String showRooms(Model model, String hId) {
         Room room = new Room();
-        room.sethId(hId);
+        room.sethId(Long.valueOf(hId));
         List<Room> list = roomService.query(room);
         model.addAttribute("roomList", list);
         model.addAttribute("hId", hId);
@@ -59,10 +62,10 @@ public class HotelController {
     }
 
     @RequestMapping("/showRoomDetail.do")
-    public String showRoomDetail(Model model, int rId) {
+    public String showRoomDetail(Model model, String rId) {
 /*        System.out.println(rId);*/
         Roomdetail roomdetail = new Roomdetail();
-        roomdetail.setrId(rId);
+        roomdetail.setrId(Long.valueOf(rId));
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail", list);
         model.addAttribute("rId", rId);
@@ -129,5 +132,82 @@ public class HotelController {
         hotels.forEach(System.out::println);
         return JSON.toJSONString(hotels);
     }
+
+    @RequestMapping("/updateRoom.do")
+    public String updateRoom(Model model,String rId,String number,String limit,String hId){
+        Room room =new Room();
+        room.setrId(Long.valueOf(rId));
+        room.setpLimit(Long.valueOf(limit));
+        room.setrNumber(Long.valueOf(number));
+        boolean flag = roomService.updateRoom(room);
+        if (flag) {
+            model.addAttribute("success", "修改成功");
+        } else {
+            model.addAttribute("error", "修改失败");
+        }
+        model.addAttribute("hId",hId);
+        return "forward:showRooms.do";
+    }
+
+    @RequestMapping("/updateRoomDetail.do")
+    public String updateRoomDetail(Model model,String rdId, String price, String date,String rId){
+        Roomdetail roomdetail =new Roomdetail();
+        roomdetail.setrId(Long.valueOf(rId));
+        roomdetail.setRdId(Long.valueOf(rdId));
+        roomdetail.setrDate(date);
+        roomdetail.setRdPrice(Double.valueOf(price));
+        boolean flag = roomDetailService.updateRoomDetail(roomdetail);
+        if (flag) {
+            model.addAttribute("success", "修改成功");
+        } else {
+            model.addAttribute("error", "修改失败");
+        }
+        model.addAttribute("rId",rId);
+        return "forward:showRoomDetail.do";
+    }
+
+    @RequestMapping("/deleteHotel.do")
+    public String deleteHotel(Model model,String hId){
+        Hotel hotel =new Hotel();
+        hotel.sethId(Long.valueOf(hId));
+        boolean flag = hotelService.deleteHotel(hotel);
+        if (flag) {
+            model.addAttribute("success", "删除成功");
+        } else {
+            model.addAttribute("error", "删除失败");
+        }
+        return "forward:showHotels.do";
+    }
+
+    @RequestMapping("/deleteRoom.do")
+    public String deleteRoom(Model model,String rId,String hId){
+        Room room =new Room();
+        room.setrId(Long.valueOf(rId));
+        boolean flag = roomService.deleteRoom(room);
+        if (flag) {
+            model.addAttribute("success", "删除成功");
+        } else {
+            model.addAttribute("error", "删除失败");
+        }
+        model.addAttribute("hId",hId);
+        return "forward:showRooms.do";
+    }
+
+    @RequestMapping("/deleteRoomDetail.do")
+    public String deleteRoomDetail(Model model,String rId,String rdId){
+        Roomdetail roomdetail = new Roomdetail();
+        roomdetail.setRdId(Long.valueOf(rdId));
+        boolean flag = roomDetailService.deleteRoomDetail(roomdetail);
+        if (flag) {
+            model.addAttribute("success", "删除成功");
+        } else {
+            model.addAttribute("error", "删除失败");
+        }
+        model.addAttribute("rId",rId);
+        return "forward:showRoomDetail.do";
+    }
+
+
+
 
 }

@@ -40,4 +40,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> queryAll() {
         return productDao.queryAll();
     }
+
+    @Override
+    public List<Product> querByOthers(Product product) {
+        return productDao.queryByOthers(product);
+    }
 }

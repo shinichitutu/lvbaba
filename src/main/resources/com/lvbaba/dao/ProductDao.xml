@@ -5,8 +5,8 @@
     <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,h_id,p_name,p_fee,p_score</sql>
 
     <sql id="condition">
-
         <if test="pId!=null and pId!=''">p_id=#{pId}</if>
+
         <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
         <if test="arrAreaId!=null and arrAreaId !=''">a_area_id=#{arrAreaId}</if>
         <if test="limLow!=null and limLow !=''">lim_low=#{limLow}</if>
@@ -51,6 +51,13 @@
 
     <select id="queryAll" resultMap="productMap">
         select <include refid="all"/> from product
+    </select>
+
+    <select id="queryByOthers" resultMap="productMap">
+        SELECT <include refid="all"/> from product
+        <where>
+            <include refid="condition"></include>
+        </where>
     </select>
 
     <resultMap id="productMap" type="Product">

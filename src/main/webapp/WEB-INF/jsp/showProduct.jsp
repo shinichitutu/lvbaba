@@ -291,5 +291,17 @@
     </form>
 </div>
 
+<div style="text-align: center">
+    <c:if test="${requestScope.page>1}">
+        <a href="showProduct.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
+    </c:if>
+    <c:forEach begin="1" end="${requestScope.pages}" step="1" var="i">
+        <a href="showProduct.do?page=${i}">${i}</a>
+    </c:forEach>
+    <c:if test="${requestScope.page < requestScope.pages}">
+        <a href="showProduct.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
+    </c:if>
+</div>
+
 </body>
 </html>

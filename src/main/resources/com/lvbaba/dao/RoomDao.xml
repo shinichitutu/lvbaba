@@ -7,16 +7,18 @@
     </insert>
 
     <update id="updateRoom" parameterType="Room">
-        UPDATE room SET
-        <if test="hId!=null and hId!=''">
-            h_id = #{hId},
-        </if>
-        <if test="rNumber!=null and rNumber!=''">
-            r_number = #{rNumber},
-        </if>
-        <if test="pLimit!=null and pLimit!=''">
-            p_limit = #{pLimit}
-        </if>
+        UPDATE room
+        <set>
+            <if test="hId!=null and hId!=''">
+                h_id = #{hId},
+            </if>
+            <if test="rNumber!=null and rNumber!=''">
+                r_number = #{rNumber},
+            </if>
+            <if test="pLimit!=null and pLimit!=''">
+                p_limit = #{pLimit}
+            </if>
+        </set>
         where r_id = #{rId}
     </update>
 

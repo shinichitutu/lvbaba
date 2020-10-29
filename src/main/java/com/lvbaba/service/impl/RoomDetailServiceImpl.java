@@ -62,7 +62,7 @@ public class RoomDetailServiceImpl implements RoomDetailService {
         if(roomdetail==null){
             return false;
         }
-        return roomDetailDao.insertRoomDetail(roomdetail);
+        return roomDetailDao.deleteRoomDetail(roomdetail);
     }
 
     @Override

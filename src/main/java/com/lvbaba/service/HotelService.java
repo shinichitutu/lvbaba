@@ -29,4 +29,5 @@ public interface HotelService {
      * @return
      */
     List<Hotel> queryAllByAreaId(Hotel hotel);
+
 }

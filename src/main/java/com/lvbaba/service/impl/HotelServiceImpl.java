@@ -109,6 +109,7 @@ public class HotelServiceImpl implements HotelService {
         return false;
     }
 
+
     @Override
     public List<Hotel> queryAllByAreaId(Hotel hotel) {
         if (hotel==null){
@@ -116,5 +117,6 @@ public class HotelServiceImpl implements HotelService {
         }
         return hotelDao.queryAllByAreaId(hotel);
     }
+
 
 }

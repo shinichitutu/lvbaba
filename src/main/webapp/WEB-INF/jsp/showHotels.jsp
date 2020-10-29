@@ -97,6 +97,7 @@
                     })
                 })
 
+
                 $("#city").mousemove(function () {
                     var country = $(this).prev().val();
                     $.ajax({
@@ -117,7 +118,6 @@
                 })
 
             }
-
 
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
@@ -231,7 +231,7 @@
                 <td>${hotel.hLevel}</td>
                 <td><a href="showRooms.do?hId=${hotel.hId}">查看客房</a></td>
                 <td><input type="button" class="update" value="修改"></td>
-                <td><a href="#hId=${hotel.hId}">删除</a></td>
+                <td><a href="deleteHotel.do?hId=${hotel.hId}">删除</a></td>
 
             </tr>
         </c:forEach>
