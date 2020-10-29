@@ -54,7 +54,7 @@ public class HotelController {
     @RequestMapping("/showRooms.do")
     public String showRooms(Model model, String hotelId) {
         Room room = new Room();
-        room.sethId(Long.valueOf(hotelId));
+        room.setHotelId(Long.valueOf(hotelId));
         List<Room> list = roomService.query(room);
         model.addAttribute("roomList", list);
         model.addAttribute("hotelId", hotelId);
@@ -65,7 +65,7 @@ public class HotelController {
     public String showRoomDetail(Model model, String roomId) {
 /*        System.out.println(roomId);*/
         Roomdetail roomdetail = new Roomdetail();
-        roomdetail.setrId(Long.valueOf(roomId));
+        roomdetail.setRoomId(Long.valueOf(roomId));
         List<Roomdetail> list = roomDetailService.query(roomdetail);
         model.addAttribute("roomDetail", list);
         model.addAttribute("roomId", roomId);
@@ -136,9 +136,9 @@ public class HotelController {
     @RequestMapping("/updateRoom.do")
     public String updateRoom(Model model,String roomId,String number,String limit,String hotelId){
         Room room =new Room();
-        room.setrId(Long.valueOf(roomId));
-        room.setpLimit(Long.valueOf(limit));
-        room.setrNumber(Long.valueOf(number));
+        room.setRoomId(Long.valueOf(roomId));
+        room.setPersonLimit(Long.valueOf(limit));
+        room.setRoomNumber(Long.valueOf(number));
         boolean flag = roomService.updateRoom(room);
         if (flag) {
             model.addAttribute("success", "修改成功");
@@ -152,9 +152,9 @@ public class HotelController {
     @RequestMapping("/updateRoomDetail.do")
     public String updateRoomDetail(Model model,String rdId, String price, String date,String roomId){
         Roomdetail roomdetail =new Roomdetail();
-        roomdetail.setrId(Long.valueOf(roomId));
+        roomdetail.setRoomId(Long.valueOf(roomId));
         roomdetail.setRdId(Long.valueOf(rdId));
-        roomdetail.setrDate(date);
+        roomdetail.setRoomDate(date);
         roomdetail.setRdPrice(Double.valueOf(price));
         boolean flag = roomDetailService.updateRoomDetail(roomdetail);
         if (flag) {
@@ -169,7 +169,7 @@ public class HotelController {
     @RequestMapping("/deleteHotel.do")
     public String deleteHotel(Model model,String hotelId){
         Hotel hotel =new Hotel();
-        hotel.sethId(Long.valueOf(hotelId));
+        hotel.setHotelId(Long.valueOf(hotelId));
         boolean flag = hotelService.deleteHotel(hotel);
         if (flag) {
             model.addAttribute("success", "删除成功");
@@ -182,7 +182,7 @@ public class HotelController {
     @RequestMapping("/deleteRoom.do")
     public String deleteRoom(Model model,String roomId,String hotelId){
         Room room =new Room();
-        room.setrId(Long.valueOf(roomId));
+        room.setRoomId(Long.valueOf(roomId));
         boolean flag = roomService.deleteRoom(room);
         if (flag) {
             model.addAttribute("success", "删除成功");

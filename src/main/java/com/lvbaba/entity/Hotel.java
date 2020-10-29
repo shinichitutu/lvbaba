@@ -21,6 +21,19 @@ public class Hotel {
   public Hotel() {
   }
 
+  public Hotel(long areaId, String hotelName, long hotelLevel) {
+    this.areaId = areaId;
+    this.hotelName = hotelName;
+    this.hotelLevel = hotelLevel;
+  }
+
+  public Hotel(long hotelId, long areaId, String hotelName, long hotelLevel) {
+    this.hotelId = hotelId;
+    this.areaId = areaId;
+    this.hotelName = hotelName;
+    this.hotelLevel = hotelLevel;
+  }
+
   public long getHotelId() {
     return hotelId;
   }

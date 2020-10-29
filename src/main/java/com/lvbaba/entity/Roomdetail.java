@@ -32,6 +32,12 @@ public class Roomdetail {
   public Roomdetail() {
   }
 
+  public Roomdetail(long roomId, String roomDate, double rdPrice) {
+    this.roomId = roomId;
+    this.roomDate = roomDate;
+    this.rdPrice = rdPrice;
+  }
+
   public Roomdetail(long roomId, String roomDate, double rdPrice, long rdNumber) {
     this.roomId = roomId;
     this.roomDate = roomDate;
