@@ -150,4 +150,16 @@ public class OperateTransportController {
         mv.addObject("trainDetailList", trainList);
         return mv;
     }
+
+
+    @RequestMapping("/searchFlight.do")
+    @ResponseBody
+    public String searchFlight(String deDate){
+        Flightdetail flightdetail =new Flightdetail();
+        flightdetail.setFdDate(deDate);
+        List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
+
+        return JSON.toJSONString(flightdetailList);
+    }
+
 }

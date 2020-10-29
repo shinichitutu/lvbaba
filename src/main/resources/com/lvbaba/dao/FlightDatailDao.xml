@@ -15,7 +15,37 @@
         <if test="fdId!=null and fdId!=''">and fd_id = #{fdId}</if>
     </where>
     </update>
+
     <delete id="deleteFlightDatailById" parameterType="Flightdetail">
         delete from flightdetail where fd_id = #{fdId}
     </delete>
+
+    <select id="query" resultMap="flightDetailMap">
+        SELECT fd_id,f_id,fd_date,fd_tickets,ratio FROM flightDetail
+        <where>
+            <if test="fdId!=null and fdId!=''">
+                fd_id = #{fdId}
+            </if>
+            <if test="flightId!=null and flightId!=''">
+                and f_id = #{flightId}
+            </if>
+            <if test="fdDate!=null and fdDate!=''">
+                and fd_date = #{fdDate}
+            </if>
+            <if test="fdTickets!=null and fdTickets!=''">
+                and fd_tickets = #{fdTickets}
+            </if>
+            <if test="ratio!=null and ratio!=''">
+                and ratio = #{ratio}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="flightDetailMap" type="Flightdetail">
+        <id property="fdId" column="fd_id"/>
+        <result property="flightId" column="f_id"/>
+        <result property="fdDate" column="fd_date"/>
+        <result property="fdTickets" column="fd_tickets"/>
+        <result property="ratio" column="ratio"/>
+    </resultMap>
 </mapper>

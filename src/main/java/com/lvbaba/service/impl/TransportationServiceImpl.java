@@ -187,4 +187,14 @@ public class TransportationServiceImpl implements TransportationService {
         }
         return trainDetailDao.deleteTraindetailById(traindetail);
     }
+
+    @Override
+    public List<Flightdetail> query(Flightdetail flightdetail) {
+        if(flightdetail==null){
+            return null;
+        }
+
+        List<Flightdetail> list = flightDatailDao.query(flightdetail);
+        return list;
+    }
 }

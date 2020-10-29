@@ -76,9 +76,10 @@
                 var deDate = $(this).val();
                 console.log(deDate);
                 if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+1)));
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+7)));
                 }
                 $("#reDate").html(date);
+
             });
 
 
@@ -86,10 +87,32 @@
                 var datetime = new Date();
                 datetime.setTime(time);
                 var year = datetime.getFullYear();
-                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 7;
+                var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
                 var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
                 return year + "-" + month + "-" + date;
             }
+
+
+                $("#deDate").change(function () {
+                    $("#flight option:gt(0)").remove()
+                    var deDate = $(this).val();
+                    console.log(deDate);
+                    $.ajax({
+                        type:"post",
+                        url:"searchFlight.do",
+                        data:"deDate="+deDate,
+                        dataType:"json",
+                        success:function (obj) {
+                            var str ="";
+                            $.each(obj,function (index,item) {
+                                str += " <option value='"+item.fdId+"'>"+item.flightId+"</option>";
+                            });
+                            $("#flight").append(str);
+
+                        }
+                    })
+                })
+
         })
 
     </script>
@@ -164,6 +187,7 @@
         交通类型：
         飞机<input type="radio" name="tran" class="choice" value="f" id="f">
         火车<input type="radio" name="tran" class="choice" value="t" id="t">
+        选择航班<select id='flight'><option value='0'>--请选择航班--</option></select>
 
         <div id="trans"></div>
         <input type="submit" value="点击添加">
