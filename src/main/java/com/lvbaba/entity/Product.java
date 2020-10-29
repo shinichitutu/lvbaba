@@ -13,6 +13,9 @@ public class Product {
   private String productName;
   private String productFee;
   private double productScore;
+  private Area d_area;
+  private Area a_area;
+  private Hotel hotel;
 
   public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore) {
     this.productId = productId;
@@ -108,6 +111,30 @@ public class Product {
 
   public void setProductScore(double productScore) {
     this.productScore = productScore;
+  }
+
+  public Area getD_area() {
+    return d_area;
+  }
+
+  public void setD_area(Area d_area) {
+    this.d_area = d_area;
+  }
+
+  public Area getA_area() {
+    return a_area;
+  }
+
+  public void setA_area(Area a_area) {
+    this.a_area = a_area;
+  }
+
+  public Hotel getHotel() {
+    return hotel;
+  }
+
+  public void setHotel(Hotel hotel) {
+    this.hotel = hotel;
   }
 
   @Override
