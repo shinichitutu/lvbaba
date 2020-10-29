@@ -22,7 +22,7 @@ public class TransportationServiceImpl implements TransportationService {
     @Resource
     private TrainDao trainDao;
     @Resource
-    private TrainDetailDao trainDetailDao;
+    private TraindetailDao trainDetailDao;
     @Resource
     private AreaDao areaDao;
 
@@ -59,7 +59,14 @@ public class TransportationServiceImpl implements TransportationService {
         if (flight == null) {
             return null;
         }
-        return flightDao.queryFlightAndDatailBydaIdAndarrAreaId(flight);
+        List<Flight> flightList = flightDao.queryFlightAndDatailBydaIdAndarrAreaId(flight);
+        if (flightList!=null && flightList.size()>0){
+            for (Flight f:flightList) {
+                f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
+                f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
+            }
+        }
+        return flightList;
     }
 
     @Override
@@ -133,7 +140,14 @@ public class TransportationServiceImpl implements TransportationService {
         if (train == null) {
             return null;
         }
-        return trainDao.queryTrainAndDatailBydaIdAndarrAreaId(train);
+        List<Train> trainList = trainDao.queryTrainAndDatailBydaIdAndarrAreaId(train);
+        if (trainList!=null && trainList.size()>0){
+            for (Train t:trainList) {
+                t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
+                t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
+            }
+        }
+        return trainList;
     }
 
     @Override

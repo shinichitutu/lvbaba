@@ -1,5 +1,6 @@
 package com.lvbaba.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Hotel;
@@ -12,8 +13,10 @@ import com.lvbaba.service.RoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.json.Json;
 import java.util.List;
 
 /**
@@ -118,5 +121,13 @@ public class HotelController {
 
     }
 
+    @RequestMapping("/showHotelInfo.do")
+    @ResponseBody
+    public String showHotelInfo(Hotel hotel){
+        System.out.println(hotel+"-----------------");
+        List<Hotel> hotels = hotelService.queryAllByAreaId(hotel);
+        hotels.forEach(System.out::println);
+        return JSON.toJSONString(hotels);
+    }
 
 }

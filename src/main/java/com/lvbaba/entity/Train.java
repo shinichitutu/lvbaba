@@ -1,8 +1,5 @@
 package com.lvbaba.entity;
 
-import com.lvbaba.entity.Area;
-import com.lvbaba.entity.Traindetail;
-
 import java.util.List;
 
 public class Train {

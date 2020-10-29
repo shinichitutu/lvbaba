@@ -2,7 +2,6 @@ package com.lvbaba.service.impl;
 
 import com.lvbaba.dao.HotelDao;
 import com.lvbaba.entity.Hotel;
-import com.lvbaba.util.CountNum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

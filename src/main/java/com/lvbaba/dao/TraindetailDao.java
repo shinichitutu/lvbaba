@@ -5,7 +5,7 @@ import com.lvbaba.entity.Traindetail;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TrainDetailDao {
+public interface TraindetailDao {
     /**
      * 向traindetail表中插入数据
      * @param traindetail

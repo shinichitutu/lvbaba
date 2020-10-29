@@ -31,10 +31,9 @@
             border-top: 1px solid black;
         }
     </style>
+
+    <%--  这个script的内容全是针对航班信息的  --%>
     <script>
-        /**
-         *这个script的内容全是针对航班信息的
-         */
         function modifyFlight(obj,flightId,flightNumber,flightCompany,d_country,d_city,a_country,a_city,flightDTime,flightATime,flightCapacity,flightPrice,daId,arrAreaId) {
             // 在点击的当前行的后面添加修改的所需的参数
             /*var str = "<tr style='border: 1px solid #FFE0C6C6;height: 50px;background-color: lightgreen'><form action='' method='post'>" +
@@ -198,7 +197,7 @@
                 }
             });
 
-            //放我们点击提交按钮是，触发点击事件，当我们的出发时间和到达时间其中为空的话，就直接返回不提交。
+            //当我们点击提交按钮是，触发点击事件，当我们的出发时间和到达时间其中为空的话，就直接返回不提交。
             $(".modifyFlightInfo").on("click","#modifyFlight",function () {
                 var flightDTime = $("input[name='flightDTime']").val();
                 var flightATime = $("input[name='flightATime']").val();
@@ -235,9 +234,11 @@
                         }
                     }
                 })
-            });
+            })
         })
+
     </script>
+    <%--  这个script的内容全是针对火车信息的  --%>
     <script>
         /**
          *这个script的内容全是针对火车班次的
@@ -282,7 +283,7 @@
 
         $(function () {
             //获取出发地的城市列表选项
-            $(".modifyTrainInfo").on("change","#d_country",function () {
+            $(".modifyTrainInfo").on("change", "#d_country", function () {
                 var country = $(this).val();
                 console.log(country);
                 $("#d_city option").remove();
@@ -302,7 +303,7 @@
             })
 
             //获取目的地的城市列表选项
-            $(".modifyTrainInfo").on("change","#a_country",function () {
+            $(".modifyTrainInfo").on("change", "#a_country", function () {
                 var country = $(this).val();
                 console.log(country);
                 $("#a_city option").remove();
@@ -321,8 +322,8 @@
                 })
             })
 
-            $(".modifyTrainInfo").on("focus","#d_city",function (){
-                var country=$("#d_country").val();
+            $(".modifyTrainInfo").on("focus", "#d_city", function () {
+                var country = $("#d_country").val();
                 console.log(country);
                 $("#d_city option").remove();
                 var option = "<option value='0'>--请选择--</option>";
@@ -340,8 +341,8 @@
                 })
             })
 
-            $(".modifyTrainInfo").on("focus","#a_city",function (){
-                var country=$("#a_country").val();
+            $(".modifyTrainInfo").on("focus", "#a_city", function () {
+                var country = $("#a_country").val();
                 console.log(country);
                 $("#a_city option").remove();
                 var option = "<option value='0'>--请选择--</option>";
@@ -360,34 +361,34 @@
             })
 
             //当出发时间失焦时，判断是否为空，为空的话提示
-            $(".modifyTrainInfo").on("blur",".d_time",function () {
-                if ($(this).val()==''){
-                    $(".d_time").css("border","1px solid red");
-                }else{
-                    $("input[name='trDTime']").css("border","");
+            $(".modifyTrainInfo").on("blur", ".d_time", function () {
+                if ($(this).val() == '') {
+                    $(".d_time").css("border", "1px solid red");
+                } else {
+                    $("input[name='trDTime']").css("border", "");
                 }
             });
 
             //当到达时间失焦时，判断是否为空，为空的话提示
-            $(".modifyTrainInfo").on("blur",".a_time",function () {
-                if ($(this).val()==''){
-                    $("input[name='trATime']").css("border","1px solid red");
-                }else{
-                    $("input[name='trATime']").css("border","");
+            $(".modifyTrainInfo").on("blur", ".a_time", function () {
+                if ($(this).val() == '') {
+                    $("input[name='trATime']").css("border", "1px solid red");
+                } else {
+                    $("input[name='trATime']").css("border", "");
                 }
             });
 
             //放我们点击提交按钮是，触发点击事件，当我们的出发时间和到达时间其中为空的话，就直接返回不提交。
-            $(".modifyTrainInfo").on("click","#modifyTrain",function () {
+            $(".modifyTrainInfo").on("click", "#modifyTrain", function () {
                 var trDTime = $("input[name='trDTime']").val();
                 var trATime = $("input[name='trATime']").val();
-                if (trDTime==''){
-                    $("input[name='trDTime']").css("border","1px solid red");
+                if (trDTime == '') {
+                    $("input[name='trDTime']").css("border", "1px solid red");
                     alert("出发时间不能为空");
                     return;
                 }
-                if (trATime==''){
-                    $("input[name='trATime']").css("border","1px solid red");
+                if (trATime == '') {
+                    $("input[name='trATime']").css("border", "1px solid red");
                     alert("到达时间不能为空");
                     return;
                 }
@@ -399,22 +400,159 @@
                 var trPrice = $("[name='trPrice']").val();
 
                 $.ajax({
-                    type:"post",
-                    data:{trId:trId,trNumber:trNumber,trDTime:trDTime, trATime:trATime,daId:daId,
-                        arrAreaId:arrAreaId,trCapacity:trCapacity,trPrice:trPrice},
-                    url:"updateTrain.do",
-                    dataType:"text",
-                    success:function (obj) {
-                        if("false"==obj){
+                    type: "post",
+                    data: {
+                        trId: trId, trNumber: trNumber, trDTime: trDTime, trATime: trATime, daId: daId,
+                        arrAreaId: arrAreaId, trCapacity: trCapacity, trPrice: trPrice
+                    },
+                    url: "updateTrain.do",
+                    dataType: "text",
+                    success: function (obj) {
+                        if ("false" == obj) {
                             alert("修改失败");
-                        }else{
+                        } else {
                             alert("修改成功");
-                            location.href="showTrainInfo.do";
+                            location.href = "showTrainInfo.do";
                         }
                     }
                 })
-            });
+            })
         })
+    </script>
+
+    <%--  这个script的内容全是针对航班和列车集体信息的（FlightDetail he TrainDetail）  --%>
+    <script>
+        /**
+         * 添加航班详细信息
+         */
+        function addFlightDetail(obj,flightId,flightNumber) {
+            var str ="<form action='#' method='post'>" +
+                "<p><input type='hidden' class='f_id' value='"+flightId+"'/></p>"+
+                "<p>航班号："+flightNumber+"</p>"+
+                "<p>日期：<input type='date' class='fdDate'/></p>"+
+                "<p>票价系数：<input type='number' placeholder='数值在0-1之间' min='0' max='1' step='0.1' class='ratio' style='width: 150px;'/></p>"+
+                "<p><input type='button' id='addFDInfo' value='提交'/>"+
+                "</form>";
+            $(".modifyFlightInfo").html("");
+            $(".modifyFlightInfo").html(str);
+        }
+
+        /**
+         * 添加列车详细信息
+         */
+        function addTrainDetail(trId,trNumber) {
+            var str ="<form action='#' method='post'>" +
+                "<p><input type='hidden' class='trId' value='"+trId+"'/></p>"+
+                "<p>列车号："+trNumber+"</p>"+
+                "<p>日期：<input type='date' class='tdDate'/></p>"+
+                "<p><input type='button' id='addTDInfo' value='提交'/>"+
+                "</form>";
+            $(".modifyTrainInfo").html("");
+            $(".modifyTrainInfo").html(str);
+        }
+
+        $(function (){
+            // 当添加航班具体信息的时间是失焦事件处理
+            $(".modifyFlightInfo").on("blur",".fdDate",function () {
+                if (''==$(".fdDate").val()){
+                    $(".fdDate").css("border","1px solid red");
+                }else{
+                    $(".fdDate").css("border","");
+                }
+            })
+            // 当添加航班具体信息的票价系数的失焦事件处理
+            $(".modifyFlightInfo").on("blur",".ratio",function () {
+                var ratio = $(".ratio").val();
+                if (''==ratio){
+                    $(".ratio").css("border","1px solid red");
+                }else{
+                    $(".ratio").css("border","");
+                    if (parseFloat(ratio)<0.1 || parseFloat(ratio)>1.0){
+                        alert("票价系数不在范围内，请重新输入");
+                        $(".ratio").css("border","1px solid red");
+                        return;
+                    }
+                }
+            })
+            // 当添加列车具体信息的时间是失焦事件处理
+            $(".modifyTrainInfo").on("blur",".tdDate",function () {
+                if (''==$(".tdDate").val()){
+                    $(".tdDate").css("border","1px solid red");
+                }else{
+                    $(".tdDate").css("border","");
+                }
+            })
+
+            //当点击提交航班详情的时候，判断里面内容是否为空
+            $(".modifyFlightInfo").on("click","#addFDInfo",function () {
+                var fdDate = $(".fdDate").val();
+                if (fdDate==null || fdDate==''){
+                    $(".fdDate").css("border","1px solid red");
+                    return;
+                }
+                var ratio = $(".ratio").val();
+                if (ratio==null || ratio==''){
+                    $(".ratio").css("border","1px solid red");
+                    return;
+                }
+                var flightID = $(".f_id").val();
+                console.log(flightID);
+                $.ajax({
+                    type:"post",
+                    data:{flightID:flightID,fdDate:fdDate,ratio:ratio},
+                    url:"addFlightDetail.do",
+                    dataType:"text",
+                    success:function (obj) {
+                        if ('false'==obj){
+                            alert("添加失败");
+                        }else{
+                            alert("添加成功");
+                        }
+                    }
+                })
+            })
+
+            //当点击提交列车详情的时候，判断里面内容是否为空
+            $(".modifyTrainInfo").on("click","#addTDInfo",function () {
+                var tdDate = $(".tdDate").val();
+                if (tdDate==null || tdDate==''){
+                    $(".tdDate").css("border","1px solid red");
+                    return;
+                }
+                var trId = $(".trId").val();
+                console.log(trId);
+                $.ajax({
+                    type:"post",
+                    data:{trId:trId,tdDate:tdDate},
+                    url:"addTrainDetail.do",
+                    dataType:"text",
+                    success:function (obj) {
+                        if ('false'==obj){
+                            alert("添加失败");
+                        }else{
+                            alert("添加成功");
+                        }
+                    }
+                })
+            })
+
+            //判断新增的两个detail信息是否成功
+            if ('false'==${not empty requestScope.addFDInfo}){
+                alert("新增失败");
+            }else if('true'==${not empty requestScope.addFDInfo}){
+                alert("新增成功")
+            }
+
+            if ('false'==${not empty requestScope.addTDInfo}){
+                alert("新增失败");
+            }else if('true'==${not empty requestScope.addTDInfo}){
+                alert("新增成功")
+            }
+        })
+    </script>
+
+    <%--  处理航班详情的请求  --%>
+    <script>
     </script>
 </head>
 <body>
@@ -510,10 +648,12 @@
                         <th>机票价格</th>
                         <th>修改航班信息</th>
                         <th>添加详情</th>
+                        <th>查看详情</th>
+                        <th>删除该航班</th>
                     </tr>
                 </thead>
                 <tbody>
-                <c:if test="${empty requestScope.flightList}"><tr><td colspan="11">暂时还没有航班信息</td></tr></c:if>
+                <c:if test="${empty requestScope.flightList}"><tr><td colspan="13">暂时还没有航班信息</td></tr></c:if>
                     <c:forEach items="${requestScope.flightList}" var="flight" varStatus="i">
                         <tr>
                             <td style='width: 30px;'>${i.count}</td>
@@ -530,12 +670,14 @@
                             modifyFlight(this,'${flight.flightId}','${flight.flightNumber}','${flight.flightCompany}','${flight.d_area.country}','${flight.d_area.city}',
                                 '${flight.a_area.country}','${flight.a_area.city}','${flight.flightDTime}','${flight.flightATime}','${flight.flightCapacity}',
                                 '${flight.flightPrice}','${flight.daId}','${flight.arrAreaId}')"></td>
-                            <td><input type="button" class="addFlightDetail" value="增加详情"></td>
-
+                            <td><input type="button" onclick="addFlightDetail(this,'${flight.flightId}','${flight.flightNumber}')" class="addFlightDetail" value="增加详情"></td>
+                            <td><input type="button" onclick="location.href='showFlightDetailView.do?flightId=${flight.flightId}'" value="查看详情"></td>
+                            <td><input type="button" onclick="location.href='deleteFlight.do?flightId=${flight.flightId}'" value="删除"></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+            <p style="height: 3px;margin-top: 15px;background-color: black;"></p>
             <div class="modifyFlightInfo" style="margin-top: 30px;"></div>
         </div>
         <div id="trainInfo" class="container tab-pane fade container"><br>
@@ -552,10 +694,12 @@
                     <th>火车票价格</th>
                     <th>修改列车信息</th>
                     <th>添加详情</th>
+                    <th>查看详情</th>
+                    <th>删除该航班</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:if test="${empty requestScope.trainList}"><tr><td colspan="10">暂时还没有火车班次信息</td></tr></c:if>
+                <c:if test="${empty requestScope.trainList}"><tr><td colspan="12">暂时还没有火车班次信息</td></tr></c:if>
                 <c:forEach items="${requestScope.trainList}" var="train" varStatus="i">
                 <tr>
                     <td>${i.count}</td>
@@ -569,13 +713,16 @@
                     <td><input type="button" class="modifyTrain" value="修改" onclick="modifyTrain(this,'${train.trId}','${train.trNumber}','${train.d_area.country}',
                             '${train.d_area.city}','${train.a_area.country}','${train.a_area.city}','${train.trDTime}','${train.trATime}',
                             '${train.trCapacity}', '${train.trPrice}','${train.daId}','${train.arrAreaId}' )"></td>
-                    <td><input type="button" class="addTrainDetail" value="增加详情"></td>
-                    </c:forEach>
+                    <td><input type="button" onclick="addTrainDetail('${train.trId}','${train.trNumber}')" class="addTrainDetail" value="增加详情"></td>
+                    <td><input type="button" onclick="location.href='showTrainDetailView.do?trId=${train.trId}'" value="查看详情"></td>
+                    <td><input type="button" onclick="location.href='deleteTrain.do?trId=${train.trId}'" value="删除"></td>
+                </c:forEach>
                 </tr>
                 </tbody>
             </table>
+            <p style="height: 3px;margin-top: 15px;background-color: black;"></p>
+            <div class="modifyTrainInfo" style="margin-top: 30px;"></div>
         </div>
-        <div class="modifyTrainInfo" style="margin-top: 30px;"></div>
     </div>
 </div>
 </body>

@@ -120,14 +120,15 @@
                 <td>${room.pLimit}</td>
                 <td>${room.rNumber}</td>
                 <td><a href="showRoomDetail.do?rId=${room.rId}">查看详情</a></td>
-                <td><input type="button" value="点击编辑" class="update"></td>
-                <td><input type="button" value="点击删除" class="remove"></td>
+                <td><input type="button" value="编辑" class="update"></td>
+                <td><input type="button" value="删除" class="remove"></td>
             </tr>
     </c:forEach>
 
     </tbody>
 </table>
 </div>
+
 <div style="text-align: center">
     <input type="button" id="btn" value="添加客房" />
 </div>

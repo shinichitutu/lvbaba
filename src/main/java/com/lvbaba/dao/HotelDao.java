@@ -21,4 +21,11 @@ public interface HotelDao {
     boolean deleteHotel(Hotel hotel);
 
     boolean updateHotel(Hotel hotel);
+
+    /**
+     * 根据目的地Id返回对应目的地的酒店列表，json数据
+     * @return
+     */
+    List<Hotel> queryAllByAreaId(Hotel hotel);
+
 }
