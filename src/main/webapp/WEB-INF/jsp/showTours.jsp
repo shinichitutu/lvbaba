@@ -105,7 +105,7 @@
                         success:function (obj) {
                             var str ="";
                             $.each(obj,function (index,item) {
-                                str += " <option value='"+item.fdId+"'>"+item.flightId+"</option>";
+                                str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
                             });
                             $("#flight").append(str);
 

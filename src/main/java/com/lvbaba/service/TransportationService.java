@@ -123,4 +123,7 @@ public interface TransportationService {
     boolean deleteTraindetailById(Traindetail traindetail);
 
     List<Flightdetail> query(Flightdetail flightdetail);
+
+    List<Flight> query(Flight flight);
+
 }

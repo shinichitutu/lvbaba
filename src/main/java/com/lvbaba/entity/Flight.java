@@ -35,6 +35,10 @@ public class Flight {
     this.a_area = a_area;
   }
 
+  public Flight(long flightId) {
+    this.flightId = flightId;
+  }
+
   public Flight() {
   }
 

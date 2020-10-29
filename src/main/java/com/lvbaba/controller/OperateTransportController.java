@@ -158,7 +158,6 @@ public class OperateTransportController {
         Flightdetail flightdetail =new Flightdetail();
         flightdetail.setFdDate(deDate);
         List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
-
         return JSON.toJSONString(flightdetailList);
     }
 

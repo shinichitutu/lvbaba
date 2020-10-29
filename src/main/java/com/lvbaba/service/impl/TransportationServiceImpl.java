@@ -193,8 +193,24 @@ public class TransportationServiceImpl implements TransportationService {
         if(flightdetail==null){
             return null;
         }
+        List<Flightdetail> flightdetails = flightDatailDao.query(flightdetail);
 
-        List<Flightdetail> list = flightDatailDao.query(flightdetail);
-        return list;
+        List<Flightdetail> flightdetails1 = new ArrayList<>();
+
+        for (Flightdetail f: flightdetails) {
+            Flight flight =new Flight(f.getFlightId());
+            f.setFlight(flight);
+            flightdetails1.add(f);
+        }
+
+        return flightdetails1;
+    }
+
+    @Override
+    public List<Flight> query(Flight flight) {
+        if(flight==null){
+            return null;
+        }
+        return flightDao.query(flight);
     }
 }
