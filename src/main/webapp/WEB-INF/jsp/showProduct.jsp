@@ -355,10 +355,11 @@
                 <td>${product.productFee}</td>
                 <td>${product.productScore}</td>
                 <td><a href="showTour.do?productId=${product.productId}">查询旅行团</a></td>
-                <td><input type="button" value="删除产品" onclick="location.href='deleteProduct.do?productId=${product.productId}'"></td>
+                <td><input type="button" value="删除产品" onclick="location.href='deleteProduct.do?productId=${product.productId}'"/></td>
                 <td><input type="button" value="修改产品" onclick="updateProduct('${product.productId}','${product.productName}',
                         '${product.d_area.country}-${product.d_area.city}','${product.a_area.country}-${product.a_area.city}','${product.limLow}',
-                        '${product.limUp}','${product.days}','${product.hotelId}','${product.productFee}','${product.arrAreaId}')"></td>
+                        '${product.limUp}','${product.days}','${product.hotelId}','${product.productFee}','${product.arrAreaId}')"/></td>
+
             </tr>
         </c:forEach>
         </tbody>

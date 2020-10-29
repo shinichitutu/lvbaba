@@ -22,9 +22,7 @@
                 dataType:"json",
                 success:function (obj) {
                     var str ="";
-                    console.log(obj)
                     $.each(obj,function (index,item) {
-                        console.log(item.city);
                         str += "<option value='"+item.country+"'>"+item.country+"</option>";
                     })
                     $("#a_country").append(str);
@@ -49,7 +47,7 @@
                         dataType:"json",
                         success:function (obj) {
                             $.each(obj,function (index,item) {
-                                str += "<option value='"+item.aId+"'>"+item.city+"</option>";
+                                str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
                             })
                             $("#d_city").append(str);
                             $("#v_d_city").append(str);
@@ -73,7 +71,7 @@
                         dataType:"json",
                         success:function (obj) {
                             $.each(obj,function (index,item) {
-                                str += "<option value='"+item.aId+"'>"+item.city+"</option>";
+                                str += "<option value='"+item.areaId+"'>"+item.city+"</option>";
                             })
                             $("#a_city").append(str);
                             $("#h_a_city").append(str);
