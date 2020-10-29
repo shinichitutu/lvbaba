@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -151,14 +152,29 @@ public class OperateTransportController {
         return mv;
     }
 
-
     @RequestMapping("/searchFlight.do")
     @ResponseBody
-    public String searchFlight(String deDate){
+    public String searchFlight(String Date,String daId,String arrAreaId){
+        Flight flight =new Flight();
+        flight.setDaId(Long.valueOf(daId));
+        flight.setArrAreaId(Long.valueOf(arrAreaId));
+        List<Flight> flightList = transportationService.query(flight);
+
         Flightdetail flightdetail =new Flightdetail();
-        flightdetail.setFdDate(deDate);
+        flightdetail.setFdDate(Date);
         List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
-        return JSON.toJSONString(flightdetailList);
+
+        List<Flightdetail> flightdetailList1 = new ArrayList<>();
+
+        for (Flight f:flightList) {
+            for (Flightdetail fd:flightdetailList) {
+                if(f.getFlightId()==fd.getFlightId()){
+                    flightdetailList1.add(fd);
+                }
+            }
+        }
+
+        return JSON.toJSONString(flightdetailList1);
     }
 
 }

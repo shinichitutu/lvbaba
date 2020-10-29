@@ -126,4 +126,6 @@ public interface TransportationService {
 
     List<Flight> query(Flight flight);
 
+    Flight queryOne(Flight flight);
+
 }

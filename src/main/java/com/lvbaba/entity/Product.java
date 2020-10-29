@@ -30,6 +30,10 @@ public class Product {
   public Product() {
   }
 
+  public Product(long productId) {
+    this.productId = productId;
+  }
+
   public long getProductId() {
     return productId;
   }

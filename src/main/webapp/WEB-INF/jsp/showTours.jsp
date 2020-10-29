@@ -57,8 +57,6 @@
                 })
             });
 
-            <%-- 去程<input type="text" name="goId">
-  返程<input type="text" name="returnId">--%>
 
             $(".choice").click(function () {
                 var str1 = "去程";
@@ -71,14 +69,32 @@
                 }
             });
 
-            
+  /*          daId, long arrAreaId*/
             $("#deDate").blur(function () {
                 var deDate = $(this).val();
-                console.log(deDate);
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
                 if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+7)));
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
                 }
-                $("#reDate").html(date);
+                $("#reDate").val(date);
+
+                $("#flight2 option:gt(0)").remove();
+                console.log("返程"+date);
+                $.ajax({
+                    type:"post",
+                    url:"searchFlight.do",
+                    data:{Date:date,DaId:daId,ArrAreaId:arrAreaId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                        });
+                        $("#flight2").append(str);
+
+                    }
+                })
 
             });
 
@@ -94,13 +110,14 @@
 
 
                 $("#deDate").change(function () {
-                    $("#flight option:gt(0)").remove()
-                    var deDate = $(this).val();
-                    console.log(deDate);
+                    $("#flight option:gt(0)").remove();
+                    var Date = $(this).val();
+                    var daId = ${requestScope.product.daId};
+                    var arrAreaId =${requestScope.product.arrAreaId};
                     $.ajax({
                         type:"post",
                         url:"searchFlight.do",
-                        data:"deDate="+deDate,
+                        data:{Date:Date,DaId:daId,ArrAreaId:arrAreaId},
                         dataType:"json",
                         success:function (obj) {
                             var str ="";
@@ -111,7 +128,8 @@
 
                         }
                     })
-                })
+                });
+
 
         })
 
@@ -183,12 +201,12 @@
     <form action="insertTour.do" method="post">
         <input type="hidden" name="productId" value="${requestScope.productId}">
         出发日期<input type="date" name="dDate" id="deDate"><br/>
-        返回日期<div id="reDate"></div><br/>
+        返回日期<input type="date" name="rDate" id="reDate"><br/>
         交通类型：
         飞机<input type="radio" name="tran" class="choice" value="f" id="f">
         火车<input type="radio" name="tran" class="choice" value="t" id="t">
-        选择航班<select id='flight'><option value='0'>--请选择航班--</option></select>
-
+        选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
+    `   选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
         <div id="trans"></div>
         <input type="submit" value="点击添加">
     </form>
@@ -252,6 +270,10 @@
 
 <div id="update">
 </div>
+
+${"测试"}
+
+${requestScope.product.days}
 
 
 <p style="color: green">${requestScope.success}</p>

@@ -49,4 +49,6 @@ public interface FlightDao {
     List<Flight> queryAllFlight();
 
     List<Flight> query(Flight flight);
+
+    Flight queryOne(Flight flight);
 }

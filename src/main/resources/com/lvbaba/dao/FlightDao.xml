@@ -79,6 +79,9 @@
             </if>
         </where>
     </select>
+    <select id="queryOne" parameterType="Flight" resultMap="flightMap">
+        select f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price from flight WHERE f_id= #{flightId}
+    </select>
 
     <resultMap id="flightMap" type="Flight">
         <id property="flightId" column="f_id"/>

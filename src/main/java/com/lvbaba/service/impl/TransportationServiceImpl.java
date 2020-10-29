@@ -190,18 +190,22 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public List<Flightdetail> query(Flightdetail flightdetail) {
+
         if(flightdetail==null){
             return null;
         }
+
         List<Flightdetail> flightdetails = flightDatailDao.query(flightdetail);
 
         List<Flightdetail> flightdetails1 = new ArrayList<>();
 
         for (Flightdetail f: flightdetails) {
             Flight flight =new Flight(f.getFlightId());
-            f.setFlight(flight);
+            f.setFlight(flightDao.queryOne(flight));
             flightdetails1.add(f);
         }
+
+        System.out.println(flightdetails);
 
         return flightdetails1;
     }
@@ -212,5 +216,13 @@ public class TransportationServiceImpl implements TransportationService {
             return null;
         }
         return flightDao.query(flight);
+    }
+
+    @Override
+    public Flight queryOne(Flight flight) {
+        if(flight==null){
+            return null;
+        }
+        return flightDao.queryOne(flight);
     }
 }
