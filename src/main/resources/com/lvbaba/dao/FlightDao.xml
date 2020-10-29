@@ -31,7 +31,11 @@
 
     <select id="queryFlightAndDatailBydaIdAndarrAreaId" parameterType="Flight" resultMap="flightAndDetailMap">
         select f.f_id,f_number,f_company,f_d_time,f_a_time,d_a_id,a_area_id,f_capacity,f_price,fd_id,fd_date,fd_tickets,ratio
-        from flight f,flightdetail fd where d_a_id = #{daId} and a_area_id = #{arrAreaId} and f.f_id = fd.f_id
+        from flight f,flightdetail fd,area a <where> f.f_id = fd.f_id
+        <if test="daId!=null and daId!=''">and d_a_id = #{daId}</if>
+        <if test="arrAreaId!=null and arrAreaId!=''">and a_area_id = #{arrAreaId}</if>
+        <if test="flightId!=null and flightId!=''">and f.f_id = #{flightId}</if>
+        </where>
     </select>
 
     <select id="queryByFlightName" resultMap="flightMap">

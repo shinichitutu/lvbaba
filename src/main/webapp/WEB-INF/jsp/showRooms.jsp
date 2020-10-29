@@ -136,6 +136,7 @@
           <td><input type="button" value="编辑" class="update"></td>
           <td><a href="deleteRoom.do?rId=${room.rId}&hId=${room.hId}"><input type="button" value="删除" class="remove"></a></td>
       </tr>
+
     </c:forEach>
 
     </tbody>

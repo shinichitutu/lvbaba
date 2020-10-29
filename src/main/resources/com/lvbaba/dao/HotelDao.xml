@@ -7,6 +7,7 @@
     </insert>
 
     <update id="updateHotel" parameterType="Hotel">
+
         UPDATE hotel
         <set>
             <if test="areaId!=null and areaId!='' and areaId!='0' ">
@@ -19,7 +20,6 @@
                 h_level =#{hLevel}
             </if>
         </set>
-
         where h_id = #{hId}
     </update>
 
@@ -48,6 +48,10 @@
             </if>
         </where>
 
+    </select>
+
+    <select id="queryAllByAreaId" parameterType="Hotel" resultMap="hotelMap">
+        select h_id,h_name,h_level from hotel where a_id = #{areaId}
     </select>
 
     <resultMap id="hotelMap" type="Hotel">

@@ -97,6 +97,7 @@
                     })
                 })
 
+
                 $("#city").mousemove(function () {
                     var country = $(this).prev().val();
                     $.ajax({

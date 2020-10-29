@@ -9,7 +9,7 @@ public class Product {
   private long limLow;
   private long limUp;
   private long days;
-  private long rId;
+  private long hotelId;
   private String pName;
   private String pFee;
   private double pScore;
@@ -62,12 +62,12 @@ public class Product {
     this.days = days;
   }
 
-  public long getrId() {
-    return rId;
+  public long getHotelId() {
+    return hotelId;
   }
 
-  public void setrId(long rId) {
-    this.rId = rId;
+  public void setHotelId(long hotelId) {
+    this.hotelId = hotelId;
   }
 
   public String getpName() {
@@ -103,7 +103,7 @@ public class Product {
             ", limLow=" + limLow +
             ", limUp=" + limUp +
             ", days=" + days +
-            ", rId=" + rId +
+            ", hotelId=" + hotelId +
             ", pName='" + pName + '\'' +
             ", pFee='" + pFee + '\'' +
             ", pScore=" + pScore +

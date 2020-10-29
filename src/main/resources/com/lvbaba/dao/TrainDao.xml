@@ -53,15 +53,7 @@
         <result property="trPrice" column="tr_price"/>
     </resultMap>
 
-    <resultMap id="trainAndDetailMap" type="Train">
-        <id property="trId" column="tr_id"/>
-        <result property="trNumber" column="tr_number"/>
-        <result property="trDTime" column="tr_d_time"/>
-        <result property="trATime" column="tr_a_time"/>
-        <result property="daId" column="d_a_id"/>
-        <result property="arrAreaId" column="a_area_id"/>
-        <result property="trCapacity" column="tr_capacity"/>
-        <result property="trPrice" column="tr_price"/>
+    <resultMap id="trainAndDetailMap" type="Train" extends="trainMap">
         <collection property="traindetailList" ofType="Traindetail">
             <id property="tdId" column="td_id"/>
             <result property="trId" column="tr_id"/>

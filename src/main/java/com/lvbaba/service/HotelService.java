@@ -23,4 +23,11 @@ public interface HotelService {
     boolean updateHotel(Hotel hotel);
 
     boolean updateNewHotel(Hotel hotel);
+
+    /**
+     * 根据目的地Id返回对应目的地的酒店列表，json数据
+     * @return
+     */
+    List<Hotel> queryAllByAreaId(Hotel hotel);
+
 }

@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lvbaba.dao.TrainDetailDao">
+<mapper namespace="com.lvbaba.dao.TraindetailDao">
+
     <insert id="insertTraindetail" parameterType="Traindetail">
         insert into traindetail(tr_id,td_date,td_tickets)values(#{trId},#{tdDate},#{tdTickets})
     </insert>
+
     <update id="updateTraindetailById" parameterType="Traindetail">
-        update traindetail <set>
-        <if test="trId!=null and trId!=''">tr_id = #{trId},</if>
-        <if test="tdDate!=null and tdDate!=''">td_date = #{tdDate},</if>
-        <if test="tdTickets!=null and tdTickets!=''">td_tickets = #{tdTickets},</if>
-    </set><where>
-        true
-        <if test="tdId!=null and tdId!=''">and td_id = #{tdId}</if>
-    </where>
+        update traindetail
+        <set>
+            <if test="trId!=null and trId!=''">tr_id = #{trId},</if>
+            <if test="tdDate!=null and tdDate!=''">td_date = #{tdDate},</if>
+            <if test="tdTickets!=null and tdTickets!=''">td_tickets = #{tdTickets}</if>
+        </set>
+        <where>
+            true
+            <if test="tdId!=null and tdId!=''">and td_id = #{tdId}</if>
+        </where>
     </update>
+
     <delete id="deleteTraindetailById" parameterType="Traindetail">
          delete from traindetail where td_id = #{tdId}
     </delete>

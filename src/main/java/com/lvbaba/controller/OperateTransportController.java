@@ -2,9 +2,7 @@ package com.lvbaba.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.lvbaba.entity.Area;
-import com.lvbaba.entity.Flight;
-import com.lvbaba.entity.Train;
+import com.lvbaba.entity.*;
 import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TransportationService;
 import org.springframework.stereotype.Controller;
@@ -45,48 +43,111 @@ public class OperateTransportController {
 
     @RequestMapping("/addFlight.do")
     @ResponseBody
-    public String addFlight(Flight flight){
+    public String addFlight(Flight flight) {
         boolean flag = transportationService.insertFlight(flight);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/addTrain.do")
     @ResponseBody
-    public String addTrain(Train train){
+    public String addTrain(Train train) {
         boolean flag = transportationService.insertTrain(train);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/showFlightAndTrain.do")
-    public ModelAndView showFlightAndTrain(){
+    public ModelAndView showFlightAndTrain() {
         List<Flight> flightList = transportationService.queryAllFlight();
         List<Train> trainList = transportationService.queryAllTrain();
         ModelAndView mv = new ModelAndView("showTransportView");
-        mv.addObject("flightList",flightList);
-        mv.addObject("trainList",trainList);
+        mv.addObject("flightList", flightList);
+        mv.addObject("trainList", trainList);
         return mv;
     }
 
     @RequestMapping("/updateFlight.do")
     @ResponseBody
-    public String updateFlight(Flight flight){
+    public String updateFlight(Flight flight) {
         boolean flag = transportationService.updateFlight(flight);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/updateTrain.do")
     @ResponseBody
-    public String updateTrain(Train train){
+    public String updateTrain(Train train) {
         boolean flag = transportationService.updateTrainById(train);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/showTrainInfo.do")
-    public String showTrainInfo(Model model){
+    public String showTrainInfo(Model model) {
         List<Flight> flightList = transportationService.queryAllFlight();
         List<Train> trainList = transportationService.queryAllTrain();
-        model.addAttribute("flightList",flightList);
-        model.addAttribute("trainList",trainList);
+        model.addAttribute("flightList", flightList);
+        model.addAttribute("trainList", trainList);
         return "forward:/WEB-INF/jsp/showTransportView.jsp?#trainInfo";
+    }
+
+    @RequestMapping("/addFlightDetail.do")
+    @ResponseBody
+    public String addFlightDetail(Flightdetail flightdetail, Model model) {
+        System.out.println(flightdetail);
+        boolean flag = transportationService.insertFlightDatail(flightdetail);
+        return ""+flag;
+    }
+
+    @RequestMapping("/addTrainDetail.do")
+    @ResponseBody
+    public String addTrainDetail(Traindetail traindetail, Model model) {
+        System.out.println(traindetail);
+        boolean flag = transportationService.insertTraindetail(traindetail);
+        model.addAttribute("addTDInfo", flag);
+        return ""+flag;
+    }
+
+    @RequestMapping("/deleteFlight.do")
+    public String deleteFlight(String flightId, Model model) {
+        Flight flight = new Flight();
+        flight.setFlightId(Long.parseLong(flightId));
+        boolean flag = transportationService.deleteFlight(flight);
+        if (flag) {
+            model.addAttribute("delFlightInfo", "删除成功");
+        } else {
+            model.addAttribute("delFlightInfo", "删除失败");
+        }
+        return "forward:showFlightAndTrain.do";
+    }
+
+    @RequestMapping("/showFlightDetailView.do")
+    public ModelAndView showFlightDetailView(String flightId) {
+        Flight flight = new Flight();
+        flight.setFlightId(Long.parseLong(flightId));
+        List<Flight> flightList = transportationService.queryFlightAndDatailBydaIdAndarrAreaId(flight);
+        ModelAndView mv = new ModelAndView("showFlightDetail");
+        mv.addObject("flightDetailList", flightList);
+        return mv;
+    }
+
+    @RequestMapping("/deleteTrain.do")
+    public String deleteTrain(String trId, Model model) {
+        Train train = new Train();
+        train.setTrId(Long.parseLong(trId));
+        boolean flag = transportationService.deleteTrainById(train);
+        if (flag) {
+            model.addAttribute("delTrainInfo", "删除成功");
+        } else {
+            model.addAttribute("delTrainInfo", "删除失败");
+        }
+        return "forward:/WEB-INF/jsp/showTransportView.jsp?#trainInfo";
+    }
+
+    @RequestMapping("/showTrainDetailView.do")
+    public ModelAndView showTrainDetailView(String trId) {
+        Train train = new Train();
+        train.setTrId(Long.parseLong(trId));
+        List<Train> trainList = transportationService.queryTrainAndDatailBydaIdAndarrAreaId(train);
+        ModelAndView mv = new ModelAndView("showTrainDetail");
+        mv.addObject("trainDetailList", trainList);
+        return mv;
     }
 }
