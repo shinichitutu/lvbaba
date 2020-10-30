@@ -6,7 +6,7 @@
 
     <sql id="condition">
         <if test="productId!=null and productId!=''">p_id=#{productId}</if>
-        <if test="daId!=null and daId !=''">d_a_id=#{daId}</if>
+        <if test="daId!=null and daId !=''">and d_a_id=#{daId}</if>
         <if test="arrAreaId!=null and arrAreaId !=''">and a_area_id=#{arrAreaId}</if>
         <if test="limLow!=null and limLow !=''">and lim_low=#{limLow}</if>
         <if test="limUp!=null and limUp !=''">and lim_up=#{limUp}</if>
