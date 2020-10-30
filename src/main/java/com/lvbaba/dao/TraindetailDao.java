@@ -4,6 +4,8 @@ import com.lvbaba.entity.Flightdetail;
 import com.lvbaba.entity.Traindetail;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TraindetailDao {
     /**
@@ -27,4 +29,9 @@ public interface TraindetailDao {
      * @return
      */
     boolean deleteTraindetailById(Traindetail traindetail);
+
+    List<Traindetail> query(Traindetail traindetail);
+
+    Traindetail queryOne(Traindetail traindetail);
+
 }

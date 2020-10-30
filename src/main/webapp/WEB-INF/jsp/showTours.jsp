@@ -23,8 +23,15 @@
 
     <script>
         $(function () {
+
             $("#d1").click(function () {
-                $("#d2").css("display","block")
+                $("#d4").css("display","none");
+                $("#d3").css("display","block");
+            });
+
+            $("#d2").click(function () {
+                $("#d3").css("display","none");
+                $("#d4").css("display","block");
             });
 
             $(".remove").click(function () {
@@ -57,29 +64,16 @@
                 })
             });
 
-            $(".choice").click(function () {
-                var str1 = "去程";
-                var str2 ="返程";
-                if($("#f").prop("checked")){
-                    $("#trans").html(str1);
-                }
-                if($("#t").prop("checked")){
-                    $("#trans").html(str2);
-                }
-            });
 
-
-            $("#deDate").blur(function () {
+            $("#deDateF").blur(function () {
                 var deDate = $(this).val();
                 var daId = ${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
                 if(deDate!=''){
                     var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
                 }
-                $("#reDate").val(date);
+                $("#reDateF").val(date);
 
-                $("#flight2 option:gt(0)").remove();
-                console.log("返程"+date);
                 $.ajax({
                     type:"post",
                     url:"searchFlight.do",
@@ -90,8 +84,34 @@
                         $.each(obj,function (index,item) {
                             str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
                         });
-                        $("#flight2").append(str);
+                        $("#flightId2").append(str);
 
+                    }
+                });
+
+            });
+
+            $("#deDateT").blur(function () {
+                var deDate = $(this).val();
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
+                if(deDate!=''){
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
+                }
+                $("#reDateT").val(date);
+
+
+                $.ajax({
+                    type:"post",
+                    url:"searchTrain.do",
+                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
+                        });
+                        $("#trainId2").append(str);
                     }
                 })
 
@@ -108,25 +128,51 @@
             }
 
 
-                $("#deDate").change(function () {
-                    $("#flight option:gt(0)").remove();
-                    var date = $(this).val();
-                    var daId = ${requestScope.product.daId};
-                    var arrAreaId =${requestScope.product.arrAreaId};
-                    $.ajax({
-                        type:"post",
-                        url:"searchFlight.do",
-                        data:{date:date,daId:daId,arrAreaId:arrAreaId},
-                        dataType:"json",
-                        success:function (obj) {
-                            var str ="";
-                            $.each(obj,function (index,item) {
-                                str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
-                            });
-                            $("#flight").append(str);
-                        }
-                    })
+            $("#deDateF").change(function () {
+                $("#flightId option:gt(0)").remove();
+                $("#flightId2 option:gt(0)").remove();
+                var date = $(this).val();
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
+                console.log("去程"+date);
+
+                $.ajax({
+                    type:"post",
+                    url:"searchFlight.do",
+                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                        });
+                        $("#flightId").append(str);
+                    }
                 });
+            });
+
+            $("#deDateT").change(function () {
+                $("#trainId option:gt(0)").remove();
+                $("#trainId2 option:gt(0)").remove();
+                var date = $(this).val();
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
+
+                $.ajax({
+                    type:"post",
+                    url:"searchTrain.do",
+                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
+                        });
+                        $("#trainId").append(str);
+                    }
+                })
+
+            });
         })
 
     </script>
@@ -134,16 +180,18 @@
     <base href="<%=basePath%>"/>
 </head>
 <body>
+
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1 id="go_top">欢迎${sessionScope.admin.adName}登录</h1>
     <p></p>
 </div>
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark" >
     <a class="navbar-brand" href="adminMain.do" style="margin-left: 50px">驴爸爸旅行</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div   class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav" >
             <li class="nav-item" style="margin-left: 50px">
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询产品" style="background-color: orange">
@@ -193,27 +241,8 @@
     </div>
 </nav>
 
-<div style="display: none" id="d2">
-    <form action="insertTour.do" method="post">
-        <input type="hidden" name="productId" value="${requestScope.productId}">
-        出发日期<input type="date" name="dDate" id="deDate"><br/>
-        返回日期<input type="date" name="rDate" id="reDate"><br/>
-        交通类型：
-        飞机<input type="radio" name="tran" class="choice" value="f" id="f">
-        火车<input type="radio" name="tran" class="choice" value="t" id="t">
-
-        选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
-    `   选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
-
-        选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>
-        选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>
-
-        <div id="trans"></div>
-        <input type="submit" value="点击添加">
-    </form>
-</div>
-
 <div class="container">
+
     <table class="table table-hover">
         <thead>
         <tr>
@@ -226,6 +255,7 @@
             <td>返回交通id</td>
             <td>已预订人数</td>
             <td>状态</td>
+            <td colspan="5">操作</td>
         </tr>
         </thead>
         <tbody>
@@ -239,25 +269,69 @@
                 <td>${tour.goId}</td>
                 <td>${tour.returnId}</td>
                 <td>${tour.bookNum}</td>
-                <td><c:if test="${tour.tourStatus eq 1}">
-                    已成团
-                </c:if>
+                <td>
+                    <c:if test="${tour.tourStatus eq 1}">
+                        待成团，预定开放
+                    </c:if>
                     <c:if test="${tour.tourStatus eq 2}">
-                        未成团
+                        待成团，预定关闭
+                    </c:if>
+                    <c:if test="${tour.tourStatus eq 3}">
+                        已成团，预定开放
+                    </c:if>
+                    <c:if test="${tour.tourStatus eq 4}">
+                        已成团，预定开放
+                    </c:if>
+                    <c:if test="${tour.tourStatus eq 5}">
+                        已发团
+                    </c:if>
+                    <c:if test="${tour.tourStatus eq 6}">
+                        已取消
                     </c:if>
                 </td>
-                <td><input type="button" value="修改产品" class="update"><input type="hidden" value="${tour.tourId}"></td>
-                <td><input type="button" value="删除产品" class="remove"><input type="hidden" value="${tour.tourId}"></td>
+
+                <td><a href="openBooking.do?tourId=${tour.tourId}">开放预定</a></td>
+                <td><a href="closeBooking.do?tourId=${tour.tourId}">关闭预定</a></td>
+                <td><a href="startTour.do?tourId=${tour.tourId}">发团</a></td>
+                <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
+                <td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
+
             </tr>
         </c:forEach>
         </tbody>
     </table>
-</div>
 
+    <div style="display: none" id="d3">
+        <form action="insertTour.do" method="post">
+            <input type="hidden" name="productId" value="${requestScope.product.productId}">
+            <input type="hidden" name="transType" value="1">
+            出发日期<input type="date" name="dDate" id="deDateF"><br/>
+            返回日期<input type="date" name="roomDate" id="reDateF"><br/>
+            航班选择：<br/>
+            选择去程航班<select name='goId' id="flightId"><option value='0'>--请选择去程航班--</option></select>
+            选择返程航班<select name='returnId' id="flightId2"><option value='0'>--请选择返程航班--</option></select>
+            <input type="submit" value="点击添加">
+        </form>
+    </div>
 
-<div style="text-align: center">
-    <%--增加产品--%>
-    <input type="button" value="增加产品" id="d1"><br/>
+    <div style="display: none" id="d4">
+        <form action="insertTour.do" method="post">
+            <input type="hidden" name="productId" value="${requestScope.product.productId}">
+            <input type="hidden" name="transType" value="2">
+            出发日期<input type="date" name="dDate" id="deDateT"><br/>
+            返回日期<input type="date" name="roomDate" id="reDateT"><br/>
+            航班选择：<br/>
+            选择去程航班<select name='goId' id="trainId"><option value='0'>--请选择去程火车--</option></select>
+            选择返程航班<select name='returnId' id="trainId2"><option value='0'>--请选择返程高铁--</option></select>
+            <input type="submit" value="点击添加">
+        </form>
+    </div>
+
+    <div style="text-align: center">
+        <%--增加产品--%>
+        <input type="button" value="添加新旅行团（飞机）" id="d1"><br/><br/>
+            <input type="button" value="添加新旅行团（火车）" id="d2"><br/>
+
         <c:if test="${requestScope.page>1}">
             <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
         </c:if>
@@ -267,17 +341,15 @@
         <c:if test="${requestScope.page < requestScope.pages}">
             <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
         </c:if>
+    </div>
+
+    <div id="update">
+    </div>
+
+
+    <p style="color: green">${requestScope.success}</p>
+    <p style="color: red">${requestScope.error}</p>
 </div>
 
-<div id="update">
-</div>
-
-${"测试"}
-
-${requestScope.product.days}
-
-
-<p style="color: green">${requestScope.success}</p>
-<p style="color: red">${requestScope.error}</p>
 </body>
 </html>

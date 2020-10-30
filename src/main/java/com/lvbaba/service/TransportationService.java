@@ -128,4 +128,12 @@ public interface TransportationService {
 
     Flight queryOne(Flight flight);
 
+    List<Train> query(Train train);
+
+    Train queryOne(Train train);
+
+    List<Traindetail> query(Traindetail traindetail);
+
+    Traindetail queryOne(Traindetail traindetail);
+
 }

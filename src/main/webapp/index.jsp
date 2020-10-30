@@ -285,5 +285,7 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+
+<a href="/test.do">测试</a>
 </body>
 </html>

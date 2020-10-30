@@ -16,6 +16,27 @@ public class Train {
   private Area d_area;
   private Area a_area;
 
+  public Train(long trId, String trNumber, String trDTime, long daId, long arrAreaId, long trCapacity, double trPrice, String trATime, List<Traindetail> traindetailList, Area d_area, Area a_area) {
+    this.trId = trId;
+    this.trNumber = trNumber;
+    this.trDTime = trDTime;
+    this.daId = daId;
+    this.arrAreaId = arrAreaId;
+    this.trCapacity = trCapacity;
+    this.trPrice = trPrice;
+    this.trATime = trATime;
+    this.traindetailList = traindetailList;
+    this.d_area = d_area;
+    this.a_area = a_area;
+  }
+
+  public Train() {
+  }
+
+  public Train(long trId) {
+    this.trId = trId;
+  }
+
   public long getTrId() {
     return trId;
   }

@@ -22,4 +22,32 @@
     <delete id="deleteTraindetailById" parameterType="Traindetail">
          delete from traindetail where td_id = #{tdId}
     </delete>
+
+    <select id="query" parameterType="Traindetail" resultMap="trainDetailMap">
+        SELECT td_id,tr_id,td_date,td_tickets FROM traindetail
+        <where>
+            <if test="tdId!=null and tdId!=''">
+                td_id =#{tdId}
+            </if>
+            <if test="trId!=null and trId!=''">
+                and tr_id = #{tdId}
+            </if>
+            <if test="tdDate!=null and tdDate!=''">
+                and td_date = #{tdDate}
+            </if>
+            <if test="tdTickets!=null and tdTickets!=''">
+                and td_tickets = #{tdTickets}
+            </if>
+        </where>
+    </select>
+    <select id="queryOne" parameterType="Traindetail" resultMap="trainDetailMap">
+        SELECT td_id,tr_id,td_date,td_tickets FROM traindetail where td_id = #{tdId}
+    </select>
+
+    <resultMap id="trainDetailMap" type="Traindetail">
+        <id property="tdId" column="td_id"/>
+        <result property="trId" column="tr_id"/>
+        <result property="tdDate" column="td_date"/>
+        <result property="tdTickets" column="td_tickets"/>
+    </resultMap>
 </mapper>

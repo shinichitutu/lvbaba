@@ -45,4 +45,10 @@ public interface TrainDao {
      * @return
      */
     List<Train> queryAllTrain();
+
+    List<Train> query(Train train);
+
+    Train queryOne(Train train);
+
+
 }
