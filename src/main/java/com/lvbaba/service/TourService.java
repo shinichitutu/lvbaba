@@ -48,4 +48,9 @@ public interface TourService {
      * @return
      */
     List<Tour> queryByPid(Tour tour);
+
+    int openBooking(int tourId);
+    int closeBooking(int tourId);
+    int startTour(int tourId);
+    int cancelTour(int tourId);
 }

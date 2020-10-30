@@ -48,4 +48,130 @@ public class TourServiceImpl implements TourService {
     public List<Tour> queryByPid(Tour tour) {
         return tourDao.queryByPid(tour);
     }
+
+
+/*    1-待成团，开放预定
+    2-待成团，关闭预定
+    3-已成团，开放预定
+    4-已成团，关闭预定
+    5-已发团
+    6-已取消*/
+    @Override
+    public int openBooking(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = query(tour);
+        int status = Integer.valueOf(tour1.getTourStatus());
+        if (status == 2) {
+            tour1.setTourStatus("1");
+            tourDao.updateTour(tour1);
+            return 1;
+        }
+        if (status == 4) {
+            tour1.setTourStatus("3");
+            tourDao.updateTour(tour1);
+            return 1;
+        }
+        if (status == 1 || status == 3) {
+            return 2;
+        }
+
+        if (status == 5) {
+            return 3;
+        }
+
+        if (status == 6) {
+            return 4;
+        }
+        return 0;
+    }
+
+    @Override
+    public int closeBooking(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = query(tour);
+        int status = Integer.valueOf(tour1.getTourStatus());
+        if (status == 1) {
+            tour1.setTourStatus("2");
+            tourDao.updateTour(tour1);
+            return 1;
+        }
+        if (status == 3) {
+            tour1.setTourStatus("4");
+            tourDao.updateTour(tour1);
+            return 1;
+        }
+        if (status == 2 || status == 4) {
+            return 2;
+        }
+
+        if (status == 5) {
+            return 3;
+        }
+
+        if (status == 6) {
+            return 4;
+        }
+        return 0;
+    }
+
+    @Override
+    public int startTour(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = query(tour);
+        int status = Integer.valueOf(tour1.getTourStatus());
+        if (status == 4) {
+            tour1.setTourStatus("5");
+            tourDao.updateTour(tour1);
+            return 1;
+        }
+        if (status == 3) {
+            return 2;
+        }
+        if (status == 1 || status == 2) {
+            return 3;
+        }
+
+        if (status == 5) {
+            return 4;
+        }
+
+        if (status == 6) {
+            return 5;
+        }
+        return 0;
+    }
+
+    @Override
+    public int cancelTour(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = query(tour);
+        Long bookingNum = tour1.getBookNum();
+        int status = Integer.valueOf(tour1.getTourStatus());
+        if (status == 1||status==2) {
+            if(bookingNum==0){
+                tour1.setTourStatus("6");
+                tourDao.updateTour(tour1);
+                return 1;
+            }
+            else {
+                return 2;
+            }
+
+        }
+
+        if (status == 3 || status == 4 ||status==5) {
+            return 3;
+        }
+
+        if (status == 6) {
+            return 4;
+        }
+
+        return 0;
+    }
+
 }

@@ -44,7 +44,6 @@ public class TourController {
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
-        System.out.println("===================================="+tour.getProductId());
         Product product = productService.query(new Product(tour.getProductId()));
         model.addAttribute("product",product);
         return "showTours";
@@ -69,12 +68,14 @@ public class TourController {
 
     @RequestMapping("/insertTour.do")
     public String insertTour(Tour tour,Model model){
+        tour.setTourStatus("2");//默认状态为2-待成团，关闭预定
         if (tourService.insertTour(tour)){
             model.addAttribute("success","增加成功");
         }else {
             model.addAttribute("error","增加失败");
         }
-        return "showTours";
+
+        return "forward:showTour.do";
     }
     @RequestMapping("/tour.do")
     public String tour(Tour tour,Model model){
@@ -82,6 +83,8 @@ public class TourController {
         model.addAttribute("tour",tour);
         return "showTours";
     }
+
+
     @RequestMapping("/removeTour.do")
     public String removeTour(Tour tour, Model model, HttpServletResponse response) throws IOException {
         System.out.println(tour);
@@ -92,10 +95,36 @@ public class TourController {
         }
         return "showTours";
     }
+
+
     @RequestMapping("/updateTour.do")
     public String updateTour(Tour tour,Model model){
         Tour tour1=tourService.query(tour);
         model.addAttribute("tour",tour);
         return "showTours";
     }
+
+    @RequestMapping("/openBooking.do")
+    public String openBooking(Model model,String tourId){
+        int res = tourService.openBooking(Integer.valueOf(tourId));
+        if(res==1){
+            model.addAttribute("success","开放预定成功");
+        }
+        else if(res==2){
+            model.addAttribute("error","已开放预定，不可重复操作！");
+        }
+        else if(res==3){
+            model.addAttribute("error","已发团，不可开放预定！");
+        }
+        else if(res==4){
+            model.addAttribute("error","已取消，不可开放预定！");
+        }
+        else {
+            model.addAttribute("error","操作失败");
+        }
+
+        return "forward:showTour.do";
+    }
+
+
 }

@@ -55,6 +55,7 @@
                 t_status=#{tourStatus}
             </if>
         </set>
+        where t_id = #{tourId}
     </update>
     <delete id="removeTour">
         DELETE from tour where t_id=#{tourId}
