@@ -64,4 +64,6 @@ public interface TourService {
     int cancelTour(int tourId);
 
     boolean forceCancelTour(int tourId);
+
+    Long queryPIdByTourId(int tourId);
 }
