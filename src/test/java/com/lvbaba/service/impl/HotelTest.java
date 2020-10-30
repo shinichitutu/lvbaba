@@ -35,7 +35,7 @@ public class HotelTest {
     public void testHotel(){
         Area area =new Area();
         area.setCountry("中国");
-        System.out.println(areaService.query(area));
+
     }
   
     @Test

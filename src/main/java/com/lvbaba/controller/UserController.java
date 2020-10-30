@@ -40,7 +40,6 @@ public class UserController {
 
     @RequestMapping("/login.do")
     public String login(User user, Model model, HttpSession session){
-        System.out.println(user);
         User user1 = userService.queryByUserName(user);
         if (null!=user1.getuPassword()&&user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);

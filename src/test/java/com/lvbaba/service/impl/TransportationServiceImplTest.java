@@ -22,6 +22,5 @@ public class TransportationServiceImplTest extends TestCase {
     @Test
     public void testQueryAllFlight(){
         List<Flight> flightList = transportationService.queryAllFlight();
-        flightList.forEach(System.out::println);
     }
 }

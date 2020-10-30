@@ -21,6 +21,6 @@ public class TraindetailDaoTest extends TestCase {
         traindetail.setTrId(1);
         traindetail.setTdDate("2020-9-1");
         boolean b = trainDetailDao.insertTraindetail(traindetail);
-        System.out.println(b);
+
     }
 }

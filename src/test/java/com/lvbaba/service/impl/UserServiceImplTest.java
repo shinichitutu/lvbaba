@@ -21,7 +21,6 @@ public class UserServiceImplTest {
         User user = new User();
         user.setuUsername("zhangsan");
         User user1 = userService.queryByUserName(user);
-        System.out.println(user1);
         assertNotNull(user1);
     }
 }

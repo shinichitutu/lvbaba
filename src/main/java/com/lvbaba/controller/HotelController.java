@@ -129,7 +129,6 @@ public class HotelController {
     public String showHotelInfo(Hotel hotel){
         System.out.println(hotel+"-----------------");
         List<Hotel> hotels = hotelService.queryAllByAreaId(hotel);
-        hotels.forEach(System.out::println);
         return JSON.toJSONString(hotels);
     }
 

@@ -27,7 +27,6 @@ public class AreaController {
     @ResponseBody
     public String showCountry(){
         List<Area> countryList = areaService.queryCountry();
-        countryList.forEach(System.out::println);
         return JSON.toJSONString(countryList);
     }
 
