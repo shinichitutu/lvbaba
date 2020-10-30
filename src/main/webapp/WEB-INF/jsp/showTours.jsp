@@ -23,6 +23,7 @@
 
     <script>
         $(function () {
+
             $("#d1").click(function () {
                 $("#d2").css("display","block")
             });
@@ -58,8 +59,10 @@
             });
 
             $(".choice").click(function () {
-                var str1 = "去程";
-                var str2 ="返程";
+                var str1 = "选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>"+
+                "选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>";
+                var str2 ="选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>"+
+                "选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>";
                 if($("#f").prop("checked")){
                     $("#trans").html(str1);
                 }
@@ -79,7 +82,8 @@
                 $("#reDate").val(date);
 
                 $("#flight2 option:gt(0)").remove();
-                console.log("返程"+date);
+                $("#train2 option:gt(0)").remove();
+
                 $.ajax({
                     type:"post",
                     url:"searchFlight.do",
@@ -92,6 +96,20 @@
                         });
                         $("#flight2").append(str);
 
+                    }
+                });
+
+                $.ajax({
+                    type:"post",
+                    url:"searchTrain.do",
+                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
+                        });
+                        $("#train2").append(str);
                     }
                 })
 
@@ -110,6 +128,7 @@
 
             $("#deDate").change(function () {
                 $("#flight option:gt(0)").remove();
+                $("#train option:gt(0)").remove();
                 var date = $(this).val();
                 var daId = ${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
@@ -208,27 +227,8 @@
     </div>
 </nav>
 
-<div style="display: none" id="d2">
-    <form action="insertTour.do" method="post">
-        <input type="hidden" name="productId" value="${requestScope.productId}">
-        出发日期<input type="date" name="dDate" id="deDate"><br/>
-        返回日期<input type="date" name="rDate" id="reDate"><br/>
-        交通类型：
-        飞机<input type="radio" name="tran" class="choice" value="f" id="f">
-        火车<input type="radio" name="tran" class="choice" value="t" id="t">
-
-        选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
-    `   选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
-
-        选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>
-        选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>
-
-        <div id="trans"></div>
-        <input type="submit" value="点击添加">
-    </form>
-</div>
-
 <div class="container">
+
     <table class="table table-hover">
         <thead>
         <tr>
@@ -267,12 +267,30 @@
         </c:forEach>
         </tbody>
     </table>
-</div>
 
+    <div style="display: none" id="d2">
+        <form action="insertTour.do" method="post">
 
-<div style="text-align: center">
-    <%--增加产品--%>
-    <input type="button" value="增加产品" id="d1"><br/>
+            <input type="hidden" name="productId" value="${requestScope.productId}">
+            飞机<input type="radio" name="tran" class="choice" value="f" id="f">
+            火车<input type="radio" name="tran" class="choice" value="t" id="t"><br/>
+            出发日期<input type="date" name="dDate" id="deDate"><br/>
+            返回日期<input type="date" name="rDate" id="reDate"><br/>
+            交通类型：
+            <%--选择去程航班<select id='flight'><option value='0'>--请选择去程航班--</option></select>
+            选择返程航班<select id='flight2'><option value='0'>--请选择返程航班--</option></select>
+
+            选择去程火车<select id='train'><option value='0'>--请选择去程火车--</option></select>
+            选择返程火车<select id='train2'><option value='0'>--请选择返程火车--</option></select>--%>
+
+            <div id="trans"></div>
+            <input type="submit" value="点击添加">
+        </form>
+    </div>
+
+    <div style="text-align: center">
+        <%--增加产品--%>
+        <input type="button" value="增加产品" id="d1"><br/>
         <c:if test="${requestScope.page>1}">
             <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
         </c:if>
@@ -282,13 +300,15 @@
         <c:if test="${requestScope.page < requestScope.pages}">
             <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
         </c:if>
+    </div>
+
+    <div id="update">
+    </div>
+
+
+    <p style="color: green">${requestScope.success}</p>
+    <p style="color: red">${requestScope.error}</p>
 </div>
 
-<div id="update">
-</div>
-
-
-<p style="color: green">${requestScope.success}</p>
-<p style="color: red">${requestScope.error}</p>
 </body>
 </html>

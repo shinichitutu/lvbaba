@@ -176,16 +176,13 @@ public class OperateTransportController {
     @RequestMapping("/searchTrain.do")
     @ResponseBody
     public String searchTrain(String date, String daId, String arrAreaId) {
-        System.out.println("测试"+date+":"+daId+":"+arrAreaId);
         Train train = new Train();
         train.setdaId(Long.valueOf(daId));
         train.setarrAreaId(Long.valueOf(arrAreaId));
         List<Train> trainList = transportationService.query(train);
-        System.out.println("测试火车"+trainList);
         Traindetail traindetail = new Traindetail();
         traindetail.setTdDate(date);
         List<Traindetail> traindetailList = transportationService.query(traindetail);
-        System.out.println("测试火车明细"+trainList);
         List<Traindetail> traindetailList1 = new ArrayList<>();
         for (Train t : trainList) {
             for (Traindetail td : traindetailList) {
@@ -194,8 +191,7 @@ public class OperateTransportController {
                 }
             }
         }
-        System.out.println("火车信息");
-        System.out.println(traindetailList1);
+
         return JSON.toJSONString(traindetailList1);
 
     }
