@@ -34,9 +34,28 @@
     </div>
     <div class="userDetails">
         <p><h3 style="display: inline">旅客信息</h3></p>
-        <br/>
-        <br/>
-        <br/>
+        <table>
+            <thead>
+                <tr>
+                    <td>选择</td>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>证件类型</td>
+                    <td>证件号码</td>
+                    <td>练习电话</td>
+                    <td>编辑</td>
+                    <td>删除</td>
+                </tr>
+            </thead>
+            <tbody>
+            <c:if test="${not empty requestScope.userinfoList}"><tr><td colspan="8">暂时没有任何旅客信息</td></tr></c:if>
+            <c:forEach items="${requestScope.userinfoList}" var="userInfo" varStatus="i">
+                <tr>
+                    <td><input type="checkbox" value="${userInfo.uiId}"></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
