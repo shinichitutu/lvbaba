@@ -29,7 +29,6 @@ public class TourController {
     private ProductService productService;
 
     @RequestMapping("/showTour.do")
-
     public String showTour(Model model,Tour tour,String page) {
 
         if (page==null){
