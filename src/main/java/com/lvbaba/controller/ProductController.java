@@ -50,8 +50,6 @@ public class ProductController {
         }
         PageHelper.startPage(Integer.valueOf(page),5);
         List<Product> products=productService.queryAll();
-        System.out.println("-----------------------------------------------------------");
-        products.forEach(System.out::println);
         PageInfo<Product> tourPageInfo = new PageInfo<>(products);
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
@@ -76,7 +74,6 @@ public class ProductController {
     @RequestMapping("productOne.do")
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);
-        System.out.println(product);
         return "productOne";
     }
 
@@ -102,7 +99,6 @@ public class ProductController {
     @RequestMapping("/updateProductInfo.do")
     @ResponseBody
     public String modifyProduct(Product product){
-        System.out.println(product);
         boolean flag = productService.updateProduct(product);
         return ""+flag;
     }

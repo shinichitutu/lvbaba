@@ -30,7 +30,7 @@ public class HotelDaoTest {
     public void test(){
         Hotel hotel = new Hotel();
         hotel.setHotelId(1);
-        System.out.println(hotelDao.queryOne(hotel));
+
     }
 
     @Test
@@ -48,7 +48,6 @@ public class HotelDaoTest {
         roomdetail.setRdId(1);
         roomdetail.setRdPrice(500);
 /*        roomdetail.setRdNumber(10);*/
-        System.out.println(roomDetailDao.updateRoomDetail(roomdetail));
     }
 
 }

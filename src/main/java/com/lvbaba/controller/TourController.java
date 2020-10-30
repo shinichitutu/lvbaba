@@ -30,23 +30,15 @@ public class TourController {
 
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page){
-        if (tour==null){
-            tour.setProductId(1);
-        }
-
         if (page==null){
             page="1";
         }
-
         PageHelper.startPage(Integer.valueOf(page),5);
         List<Tour> tours1=tourService.queryByPid(tour);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
-        System.out.println("===================================="+tour.getProductId());
-        Product product = productService.query(new Product(tour.getProductId()));
-        model.addAttribute("product",product);
         return "showTours";
     }
 

@@ -204,9 +204,6 @@ public class TransportationServiceImpl implements TransportationService {
             f.setFlight(flightDao.queryOne(flight));
             flightdetails1.add(f);
         }
-
-        System.out.println(flightdetails);
-
         return flightdetails1;
     }
 

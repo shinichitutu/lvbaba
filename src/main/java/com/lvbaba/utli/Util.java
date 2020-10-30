@@ -23,11 +23,7 @@ public class Util {
             Area area=new Area();
             //目的地
             area.setAreaId(product.getArrAreaId());
-            System.out.println("!!!!!!!!!!!1");
-            System.out.println(area);
             Area departArea=areaService.queryOne(area);
-            System.out.println("!!!!!!!!!!!1");
-            System.out.println(departArea);
             //出发地
             area.setAreaId(product.getDaId());
             Area destinationArea=areaService.queryOne(area);

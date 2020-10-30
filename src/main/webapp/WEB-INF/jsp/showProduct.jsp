@@ -342,13 +342,13 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.products}" var="productArea" varStatus="i">
+        <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
                 <td>${i.count}</td>
                 <td>${product.productName}</td>
                 <td>${product.d_area.country}-${product.d_area.city}</td>
                 <td>${product.a_area.country}-${product.a_area.city}</td>
-                <td>${productArea.product.limLow}</td>
+                <td>${product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
                 <td>${product.hotel.hotelName}-${product.hotel.hotelLevel}☆</td>
@@ -387,32 +387,32 @@
     <c:forEach items="${requestScope.products}" var="product" varStatus="i">
         <tr>
             <td>
-            <div class="container">
-                <div style="height:300px">
-                    <div style="float:left;height: 100%;width: 30%">
-                        <img src="../../img/4.png" style="height: 100%;width: 100%">
-                    </div>
-                    <div style="width:70%;float:left;height: 40%;font-size: 20px">
-                        <button style="background-color: gold">优选</button>${product.productName}
-                    </div>
-                    <div style="width:70%;float:left;height:40%;font-size: 20px">
-                        <div style="width:60%;float:left;height:100%;font-size: 20px;">
-                            <p style="font-size: 30px;text-align: center;margin-top: 30px">供应商:驴爸爸</p>
+                <div class="container">
+                    <div style="height:300px">
+                        <div style="float:left;height: 100%;width: 30%">
+                            <img src="../../img/4.png" style="height: 100%;width: 100%">
                         </div>
-                        <div style="width:20%;float:left;height:100%;font-size: 10px;">
-                            <p style="font-size: 30px;text-align: center;margin-top: 30px">评分:${product.productScore}</p>
+                        <div style="width:70%;float:left;height: 40%;font-size: 20px">
+                            <button style="background-color: gold">优选</button>${product.productName}
                         </div>
-                        <div style="width:20%;float:left;height:100%;">
-                            <p style="font-size: 30px;text-align: center;color:red;margin-top: 30px">${product.productFee}元</p>
-                        </div>
+                        <div style="width:70%;float:left;height:40%;font-size: 20px">
+                            <div style="width:60%;float:left;height:100%;font-size: 20px;">
+                                <p style="font-size: 30px;text-align: center;margin-top: 30px">供应商:驴爸爸</p>
+                            </div>
+                            <div style="width:20%;float:left;height:100%;font-size: 10px;">
+                                <p style="font-size: 30px;text-align: center;margin-top: 30px">评分:${product.productScore}</p>
+                            </div>
+                            <div style="width:20%;float:left;height:100%;">
+                                <p style="font-size: 30px;text-align: center;color:red;margin-top: 30px">${product.productFee}元</p>
+                            </div>
 
-                    </div>
-                    <div style="width:70%;float:left;height: 20%;text-align: center">
-                        <p style="font-size: 30px;text-align: center">供应商:驴爸爸</p>
+                        </div>
+                        <div style="width:70%;float:left;height: 20%;text-align: center">
+                            <p style="font-size: 30px;text-align: center">供应商:驴爸爸</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr>
+                <hr>
             </td>
         </tr>
     </c:forEach>
@@ -423,9 +423,9 @@
         <p>出发地：<select class="d_country">
             <option value="0">--请选择--</option>
         </select>
-        <select class="d_city">
-            <option value="0">--请选择--</option>
-        </select></p>
+            <select class="d_city">
+                <option value="0">--请选择--</option>
+            </select></p>
         <p>出发地：<select class="a_country">
             <option value="0">--请选择--</option>
         </select>
@@ -445,7 +445,8 @@
 
 <div style="margin-left: 50px;display: none;" id="d3">
 
-</div></div>
+</div>
+</div>
 
 </body>
 </html>

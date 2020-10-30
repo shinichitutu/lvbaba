@@ -92,7 +92,6 @@ public class OperateTransportController {
     @RequestMapping("/addFlightDetail.do")
     @ResponseBody
     public String addFlightDetail(Flightdetail flightdetail, Model model) {
-        System.out.println(flightdetail);
         boolean flag = transportationService.insertFlightDatail(flightdetail);
         return ""+flag;
     }
@@ -100,7 +99,6 @@ public class OperateTransportController {
     @RequestMapping("/addTrainDetail.do")
     @ResponseBody
     public String addTrainDetail(Traindetail traindetail, Model model) {
-        System.out.println(traindetail);
         boolean flag = transportationService.insertTraindetail(traindetail);
         model.addAttribute("addTDInfo", flag);
         return ""+flag;
@@ -155,9 +153,6 @@ public class OperateTransportController {
     @RequestMapping("/searchFlight.do")
     @ResponseBody
     public String searchFlight(String date,String daId,String arrAreaId){
-        System.out.println("日期"+date);
-        System.out.println("出发id"+daId);
-        System.out.println("到达id"+arrAreaId);
         Flight flight =new Flight();
         flight.setDaId(Long.valueOf(daId));
         flight.setArrAreaId(Long.valueOf(arrAreaId));
@@ -167,7 +162,6 @@ public class OperateTransportController {
         Flightdetail flightdetail =new Flightdetail();
         flightdetail.setFdDate(date);
         List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
-        System.out.println("明细表1"+flightdetailList);
         List<Flightdetail> flightdetailList1 = new ArrayList<>();
 
         for (Flight f:flightList) {

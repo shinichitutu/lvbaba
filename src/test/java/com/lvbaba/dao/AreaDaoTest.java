@@ -21,6 +21,6 @@ public class AreaDaoTest extends TestCase {
         Area area = new Area();
         area.setCountry("中国");
         List<Area> areaList = areaDao.query(area);
-        areaList.forEach(System.out::println);
+
     }
 }
