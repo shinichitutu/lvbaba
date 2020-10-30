@@ -65,7 +65,6 @@ public class ProductController {
             page="1";
         }
         PageHelper.startPage(Integer.valueOf(page),5);
-
         List<Product> list=productService.querByOthers(product);
         Area area=new Area();
         //出发地
@@ -75,7 +74,6 @@ public class ProductController {
         area.setAreaId(product.getDaId());
         Area destinationArea=areaService.queryOne(area);
         PageInfo<Product> tourPageInfo = new PageInfo<>(list);
-
         List<ProductArea> productAreas=new ArrayList<>();
 
         for (Product p:tourPageInfo.getList()) {
@@ -94,7 +92,6 @@ public class ProductController {
         model.addAttribute("daId",product.getDaId());
         model.addAttribute("arrAreaId",product.getArrAreaId());
         model.addAttribute("products",productAreas);
-
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("page",Integer.valueOf(page));
         return "searchProducts";

@@ -342,13 +342,13 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.products}" var="product" varStatus="i">
+        <c:forEach items="${requestScope.products}" var="productArea" varStatus="i">
             <tr>
                 <td>${i.count}</td>
                 <td>${product.productName}</td>
                 <td>${product.d_area.country}-${product.d_area.city}</td>
                 <td>${product.a_area.country}-${product.a_area.city}</td>
-                <td>${product.limLow}</td>
+                <td>${productArea.product.limLow}</td>
                 <td>${product.limUp}</td>
                 <td>${product.days}</td>
                 <td>${product.hotel.hotelName}-${product.hotel.hotelLevel}☆</td>

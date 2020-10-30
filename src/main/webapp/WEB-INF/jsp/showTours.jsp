@@ -225,7 +225,7 @@
             <td>去程交通id</td>
             <td>返回交通id</td>
             <td>已预订人数</td>
-            <td>状态</td>
+            <td>状态</td>flight
         </tr>
         </thead>
         <tbody>
