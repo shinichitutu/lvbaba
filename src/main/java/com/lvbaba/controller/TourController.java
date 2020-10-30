@@ -31,11 +31,6 @@ public class TourController {
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page) {
 
-        if (tour == null) {
-            tour = new Tour();
-            tour.setProductId(1);
-        }
-
         if (page==null){
             page="1";
         }
