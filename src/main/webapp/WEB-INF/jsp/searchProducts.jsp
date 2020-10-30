@@ -99,17 +99,17 @@
         <tbody>
         <c:forEach items="${requestScope.products}" var="product" varStatus="i">
             <tr>
-                <td>${i.index+1}</td>
-                <td>${productArea.departArea}</td>
-                <td>${productArea.destinationArea}</td>
-                <td>${productArea.product.limLow}</td>
-                <td>${productArea.product.limUp}</td>
-                <td>${productArea.product.days}</td>
-                <td>${productArea.hotel.hotelName}</td>
-                <td>${productArea.product.productName}</td>
-                <td>${productArea.product.productFee}</td>
-                <td>${productArea.product.productScore}</td>
-                <td><a href="userShowTour.do?productId=${productArea.product.productId}">查询产品详情</a></td>
+                <td>${i.count}</td>
+                <td>${product.productName}</td>
+                <td>${product.d_area.country}-${product.d_area.city}</td>
+                <td>${product.a_area.country}-${product.a_area.city}</td>
+                <td>${product.limLow}</td>
+                <td>${product.limUp}</td>
+                <td>${product.days}</td>
+                <td>${product.hotel.hotelName}</td>
+                <td>${product.productFee}</td>
+                <td>${product.productScore}</td>
+                <td><a href="userShowTour.do?productId=${product.productId}">查询产品详情</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -127,7 +127,7 @@
     </c:if>
 </div>
 <table class="table table-hover">
-    <c:forEach items="${requestScope.products}" var="productArea" varStatus="i">
+    <c:forEach items="${requestScope.products}" var="product" varStatus="i">
         <a href="#">
             <object>
                 <tr>
@@ -138,32 +138,32 @@
                                 <img src="../../img/4.png" style="height: 100%;width: 100%">
                             </div>
                             <div style="width:70%;float:left;height: 40%;font-size: 20px">
-                                <button style="background-color: gold">优选</button>${productArea.product.productName}
+                                <button style="background-color: gold">优选</button>${product.productName}
                             </div>
                             <div style="width:70%;float:left;height:40%;font-size: 20px">
                                 <div style="width:60%;float:left;height:100%;font-size: 20px;">
                                     <p style="font-size: 30px;text-align: center;margin-top: 30px">供应商:驴爸爸</p>
                                 </div>
                                 <div style="width:20%;float:left;height:100%;font-size: 10px;">
-                                    <p style="font-size: 30px;text-align: center;margin-top: 30px">评分:${productArea.product.productScore}</p>
+                                    <p style="font-size: 30px;text-align: center;margin-top: 30px">评分:${product.productScore}</p>
                                 </div>
                                 <div style="width:20%;float:left;height:100%;">
-                                    <p style="font-size: 30px;text-align: center;color:red;margin-top: 30px">${productArea.product.productFee}元</p>
+                                    <p style="font-size: 30px;text-align: center;color:red;margin-top: 30px">${product.productFee}元</p>
                                 </div>
 
                             </div>
                             <div style="width:70%;float:left;height: 20%;text-align: center;">
                                 <form action="productOne.do" method="post">
-                                    <input name="productId" type="hidden" value="${productArea.product.productId}">
-                                    <input name="daId" type="hidden" value="${productArea.product.daId}">
-                                    <input name="arrAreaId" type="hidden" value="${productArea.product.arrAreaId}">
-                                    <input name="limLow" type="hidden" value="${productArea.product.limLow}">
-                                    <input name="limUp" type="hidden" value="${productArea.product.limUp}">
-                                    <input name="days" type="hidden" value="${productArea.product.days}">
-                                    <input name="hotelId" type="hidden" value="${productArea.product.hotelId}">
-                                    <input name="productName" type="hidden" value="${productArea.product.productName}">
-                                    <input name="productFee" type="hidden" value="${productArea.product.productFee}">
-                                    <input name="productScore" type="hidden" value="${productArea.product.productScore}">
+                                    <input name="productId" type="hidden" value="${product.productId}">
+                                    <input name="daId" type="hidden" value="${product.daId}">
+                                    <input name="arrAreaId" type="hidden" value="${product.arrAreaId}">
+                                    <input name="limLow" type="hidden" value="${product.limLow}">
+                                    <input name="limUp" type="hidden" value="${product.limUp}">
+                                    <input name="days" type="hidden" value="${product.days}">
+                                    <input name="hotelId" type="hidden" value="${product.hotelId}">
+                                    <input name="productName" type="hidden" value="${product.productName}">
+                                    <input name="productFee" type="hidden" value="${product.productFee}">
+                                    <input name="productScore" type="hidden" value="${product.productScore}">
                                     <input type="submit" value="查询产品详情">
                                 </form>
                             </div>

@@ -9,6 +9,12 @@ public class Userinfo {
   private String idcard;
   private String phone;
 
+  public Userinfo() {
+  }
+
+  public Userinfo(long uiId) {
+    this.uiId = uiId;
+  }
 
   public long getUiId() {
     return uiId;
