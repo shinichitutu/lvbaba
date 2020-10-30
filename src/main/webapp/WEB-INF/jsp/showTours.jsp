@@ -108,25 +108,40 @@
             }
 
 
-                $("#deDate").change(function () {
-                    $("#flight option:gt(0)").remove();
-                    var date = $(this).val();
-                    var daId = ${requestScope.product.daId};
-                    var arrAreaId =${requestScope.product.arrAreaId};
-                    $.ajax({
-                        type:"post",
-                        url:"searchFlight.do",
-                        data:{date:date,daId:daId,arrAreaId:arrAreaId},
-                        dataType:"json",
-                        success:function (obj) {
-                            var str ="";
-                            $.each(obj,function (index,item) {
-                                str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
-                            });
-                            $("#flight").append(str);
-                        }
-                    })
+            $("#deDate").change(function () {
+                $("#flight option:gt(0)").remove();
+                var date = $(this).val();
+                var daId = ${requestScope.product.daId};
+                var arrAreaId =${requestScope.product.arrAreaId};
+                $.ajax({
+                    type:"post",
+                    url:"searchFlight.do",
+                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                        });
+                        $("#flight").append(str);
+                    }
                 });
+
+                $.ajax({
+                    type:"post",
+                    url:"searchTrain.do",
+                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str ="";
+                        $.each(obj,function (index,item) {
+                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
+                        });
+                        $("#train").append(str);
+                    }
+                })
+
+            });
         })
 
     </script>
@@ -271,10 +286,6 @@
 
 <div id="update">
 </div>
-
-${"测试"}
-
-${requestScope.product.days}
 
 
 <p style="color: green">${requestScope.success}</p>
