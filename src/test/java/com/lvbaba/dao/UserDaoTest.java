@@ -25,7 +25,6 @@ public class UserDaoTest {
         user.setuPassword("123");
         user.setuId(3);
         User user1 = userDao.queryByUserName(user);
-        System.out.println(user1);
         assertNotNull(user1);
     }
 }

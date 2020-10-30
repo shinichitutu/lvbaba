@@ -20,8 +20,6 @@ public class FlightDaoTest extends TestCase {
     @Test
     public void testFlightAndArea(){
         List<Flight> flightList = flightDao.queryAllFlight();
-        flightList.forEach(System.out::println);
-
     }
 
 }

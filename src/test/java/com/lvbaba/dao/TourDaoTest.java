@@ -32,9 +32,6 @@ public class TourDaoTest {
         PageHelper.startPage(1,2);
         List<Tour> tourList = tourDao.queryAll();
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tourList);
-        System.out.println(tourPageInfo.getTotal());
-        System.out.println(JSON.toJSONString(tourPageInfo));
-        System.out.println(tourPageInfo.getPages());
     }
 
 }

@@ -256,6 +256,7 @@
             <td>已预订人数</td>
             <td>状态</td>
             <td colspan="5">操作</td>
+
         </tr>
         </thead>
         <tbody>

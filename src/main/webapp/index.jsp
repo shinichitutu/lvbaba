@@ -7,10 +7,42 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="js/time.js"></script>
     <style>
         .fakeimg {
             height: 200px;
             background: #aaa;
+        }
+    </style>
+    <style>
+        p{
+            margin:0;padding:0;
+        }
+        #clock{
+            font-family: 'Share Tech Mono', monospace;
+            color: black;
+            text-align: center;
+            position: absolute;
+            left: 50%;top: 10%;-webkit-transform: translate(-50%, -50%);
+            color: black;
+        }
+        #clock .time{
+            letter-spacing: 0.05em;
+            font-size: 20px;
+            padding: 5px 0;
+        }
+        #clock .date{
+            letter-spacing:0.1em;
+            font-size:15px;
+        }
+        #clock .text{
+            letter-spacing: 0.1em;
+            font-size:2px;
+            padding:20px 0 0;
         }
     </style>
     <script>
@@ -93,8 +125,11 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1 id="go_top">驴爸爸</h1>
-    <p></p>
+    <div id="clock">
+        <p class="date">驴爸爸</p>
+        <p class="time">{{ time }}</p>
+        <p class="text">{{ date }}</p>
+    </div>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark background" >
@@ -161,9 +196,8 @@
             </li>
         </ul>
     </div>
-</nav outputStylesheet>
+</nav >
 <hr>
-
 
 <div class="container" style="margin-top:30px">
     <div class="row">
@@ -286,6 +320,30 @@
     });
 </script>
 
-<a href="/test.do">测试</a>
+<script>
+    var clock = new Vue({
+        el: '#clock',
+        data: {
+            time: '',
+            date: ''
+        }
+    });
+    var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    var timerID = setInterval(updateTime, 1000);
+    updateTime();
+    function updateTime() {
+        var cd = new Date();
+        clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+        clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth()+1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+    };
+    function zeroPadding(num, digit) {
+        var zero = '';
+        for(var i = 0; i < digit; i++) {
+            zero += '0';
+        }
+        return (zero + num).slice(-digit);
+    }
+</script>
+
 </body>
 </html>

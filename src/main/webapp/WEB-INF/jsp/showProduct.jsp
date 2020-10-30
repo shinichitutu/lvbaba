@@ -382,6 +382,7 @@
     <p style="color: green">${requestScope.success}</p>
     <p style="color: red">${requestScope.error}</p>
 </div>
+
 <%--<table class="table table-hover">--%>
 
 <%--    <c:forEach items="${requestScope.products}" var="product" varStatus="i">--%>
@@ -417,15 +418,16 @@
 <%--        </tr>--%>
 <%--    </c:forEach>--%>
 <%--</table>--%>
+
 <div style="margin-left: 50px;display: none;" id="d2">
     <form action="#" method="post">
         <p>产品名称：<input type="text" class="productName" placeholder="请输入产品名称"></p>
         <p>出发地：<select class="d_country">
             <option value="0">--请选择--</option>
         </select>
-        <select class="d_city">
-            <option value="0">--请选择--</option>
-        </select></p>
+            <select class="d_city">
+                <option value="0">--请选择--</option>
+            </select></p>
         <p>出发地：<select class="a_country">
             <option value="0">--请选择--</option>
         </select>
@@ -445,7 +447,8 @@
 
 <div style="margin-left: 50px;display: none;" id="d3">
 
-</div></div>
+</div>
+</div>
 
 </body>
 </html>
