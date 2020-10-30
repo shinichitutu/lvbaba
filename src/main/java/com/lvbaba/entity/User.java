@@ -9,6 +9,13 @@ public class User {
   private long uLevel;
   private double balance;
 
+  public User() {
+  }
+
+  public User(long uId) {
+    this.uId = uId;
+  }
+
   public long getuId() {
     return uId;
   }
