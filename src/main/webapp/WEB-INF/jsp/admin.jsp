@@ -46,7 +46,7 @@
             </li>
             <li class="nav-item" style="margin-left:50px">
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="查询旅行团" style="background-color: orange">
-                    <a href="showTour.do">查询旅行团</a><br/>
+                    <a href="showConfirmOrder.do">查询旅行团</a><br/>
                 </button>
             </li>
             <li class="nav-item" style="margin-left: 50px">
