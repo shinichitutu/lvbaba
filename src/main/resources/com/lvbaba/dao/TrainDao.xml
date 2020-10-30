@@ -32,14 +32,46 @@
         from train tr,traindetail td where d_a_id = #{daId} and a_area_id = #{arrAreaId} and tr.tr_id = td.tr_id
     </select>
 
-
     <select id="queryByTrainName" resultType="com.lvbaba.entity.Train" parameterType="String">
         select tr_id,tr_number,tr_d_time,tr_a_time,d_a_id,a_area_id,tr_capacity,tr_price from train where tr_number = #{trNumber}
     </select>
 
-
     <select id="queryAllTrain" resultMap="trainMap">
         select tr_id,tr_number,tr_d_time,tr_a_time,d_a_id,a_area_id,tr_capacity,tr_price from train
+    </select>
+
+    <select id="query" parameterType="Train" resultMap="trainMap">
+        select tr_id,tr_number,tr_d_time,tr_a_time,d_a_id,a_area_id,tr_capacity,tr_price from train
+        <where>
+            <if test="trId!=null and trId!=''">
+                tr_id = #{trId}
+            </if>
+            <if test="trNumber!=null and trNumber!=''">
+                and tr_number = #{trNumber}
+            </if>
+            <if test="trDTime!=null and trDTime!=''">
+                and tr_d_time =#{trDTime}
+            </if>
+            <if test="trATime!=null and trATime!=''">
+                and tr_a_time = #{trATime}
+            </if>
+            <if test="daId!=null and daId!=''">
+                and d_a_id =#{daId}
+            </if>
+            <if test="arrAreaId!=null and arrAreaId!=''">
+                and a_area_id = #{arrAreaId}
+            </if>
+            <if test="trCapacity!=null and trCapacity!=''">
+                and tr_capacity =#{trCapacity}
+            </if>
+            <if test="trPrice!=null and trPrice!=''">
+                and tr_price=#{trPrice}
+            </if>
+        </where>
+    </select>
+    <select id="queryOne" parameterType="Train" resultMap="trainMap">
+        select tr_id,tr_number,tr_d_time,tr_a_time,d_a_id,a_area_id,tr_capacity,tr_price from train WHERE tr_id = #{trId}
+
     </select>
 
     <resultMap id="trainMap" type="Train">

@@ -7,6 +7,7 @@ public class Traindetail {
   private long trId;
   private String tdDate;
   private long tdTickets;
+  private Train train;
 
   public long getTdId() {
     return tdId;
@@ -40,6 +41,14 @@ public class Traindetail {
     this.tdTickets = tdTickets;
   }
 
+  public Train getTrain() {
+    return train;
+  }
+
+  public void setTrain(Train train) {
+    this.train = train;
+  }
+
   @Override
   public String toString() {
     return "Traindetail{" +
@@ -47,6 +56,7 @@ public class Traindetail {
             ", trId=" + trId +
             ", tdDate='" + tdDate + '\'' +
             ", tdTickets=" + tdTickets +
+            ", train=" + train +
             '}';
   }
 }

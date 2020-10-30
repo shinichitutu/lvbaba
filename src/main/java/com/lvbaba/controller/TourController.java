@@ -29,7 +29,9 @@ public class TourController {
     private ProductService productService;
 
     @RequestMapping("/showTour.do")
-    public String showTour(Model model,Tour tour,String page){
+
+    public String showTour(Model model,Tour tour,String page) {
+
         if (page==null){
             page="1";
         }
@@ -39,12 +41,14 @@ public class TourController {
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
+
         return "showTours";
     }
 
     @RequestMapping("/userShowTour.do")
     public String userShowTour(Model model,Tour tour,String page){
         if (tour==null){
+            tour =new Tour();
             tour.setProductId(1);
         }
         if (page==null){
@@ -61,12 +65,14 @@ public class TourController {
 
     @RequestMapping("/insertTour.do")
     public String insertTour(Tour tour,Model model){
+        tour.setTourStatus("2");//默认状态为2-待成团，关闭预定
         if (tourService.insertTour(tour)){
             model.addAttribute("success","增加成功");
         }else {
             model.addAttribute("error","增加失败");
         }
-        return "showTours";
+
+        return "forward:showTour.do";
     }
     @RequestMapping("/tour.do")
     public String tour(Tour tour,Model model){
@@ -74,6 +80,8 @@ public class TourController {
         model.addAttribute("tour",tour);
         return "showTours";
     }
+
+
     @RequestMapping("/removeTour.do")
     public String removeTour(Tour tour, Model model, HttpServletResponse response) throws IOException {
         System.out.println(tour);
@@ -84,10 +92,118 @@ public class TourController {
         }
         return "showTours";
     }
+
+
     @RequestMapping("/updateTour.do")
     public String updateTour(Tour tour,Model model){
         Tour tour1=tourService.query(tour);
         model.addAttribute("tour",tour);
         return "showTours";
+    }
+
+    @RequestMapping("/openBooking.do")
+    public String openBooking(Model model,String tourId){
+        int res = tourService.openBooking(Integer.valueOf(tourId));
+        if(res==1){
+            model.addAttribute("success","开放预定成功");
+        }
+        else if(res==2){
+            model.addAttribute("error","已开放预定，不可重复操作！");
+        }
+        else if(res==3){
+            model.addAttribute("error","已发团，不可开放预定！");
+        }
+        else if(res==4){
+            model.addAttribute("error","已取消，不可开放预定！");
+        }
+        else {
+            model.addAttribute("error","操作失败");
+        }
+
+        return "forward:showTour.do";
+    }
+
+    @RequestMapping("/closeBooking.do")
+    public String closeBooing(Model model,String tourId){
+        int res = tourService.closeBooking(Integer.valueOf(tourId));
+        if(res==1){
+            model.addAttribute("success","关闭预定成功");
+        }
+        else if(res==2){
+            model.addAttribute("error","已关闭预定，不可重复操作！");
+        }
+        else if(res==3){
+            model.addAttribute("error","已发团，不可关闭预定！");
+        }
+        else if(res==4){
+            model.addAttribute("error","已取消，不可关闭预定！");
+        }
+        else {
+            model.addAttribute("error","操作失败");
+        }
+
+        return "forward:showTour.do";
+    }
+
+    @RequestMapping("/startTour.do")
+    public String startTour(Model model,String tourId){
+        int res = tourService.startTour(Integer.valueOf(tourId));
+        if(res==1){
+            model.addAttribute("success","发团成功");
+        }
+        else if(res==2){
+            model.addAttribute("error","开放预定中，不可发团！请先关闭预定");
+        }
+        else if(res==3){
+            model.addAttribute("error","未成团，不可发团！");
+        }
+        else if(res==4){
+            model.addAttribute("error","已发团，不可重复操作！");
+        }
+        else if(res==5){
+            model.addAttribute("error","已取消，不可发团！");
+        }
+        else {
+            model.addAttribute("error","操作失败");
+        }
+
+        return "forward:showTour.do";
+    }
+
+    @RequestMapping("/cancelTour.do")
+    public String cancelTour(Model model,String tourId){
+        int res = tourService.cancelTour(Integer.valueOf(tourId));
+        if(res==1){
+            model.addAttribute("success","取消成功");
+        }
+        else if(res==2){
+            model.addAttribute("choice","已有人预定，请确认是否要取消该团！");
+        }
+        else if(res==3){
+            model.addAttribute("error","已成团，不可取消！");
+        }
+        else if(res==4){
+            model.addAttribute("error","已取消，不可重复操作！");
+        }
+        else {
+            model.addAttribute("error","操作失败");
+        }
+
+        return "forward:showTour.do";
+    }
+
+    @RequestMapping("/deleteTour.do")
+    public String deleteTour(Model model,String tourId){
+        Tour tour =new Tour();
+        tour.setTourId(Long.valueOf(tourId));
+        boolean flag = tourService.removeTour(tour);
+        if(flag){
+            model.addAttribute("success","删除成功");
+        }
+        else {
+            model.addAttribute("error","删除失败，不可删除已有预定的旅行团！");
+        }
+
+        return "forward:showTour.do";
     }
 }

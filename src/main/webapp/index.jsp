@@ -319,6 +319,7 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
+
 <script>
     var clock = new Vue({
         el: '#clock',
