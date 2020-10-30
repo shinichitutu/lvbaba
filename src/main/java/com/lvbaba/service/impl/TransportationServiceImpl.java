@@ -60,8 +60,8 @@ public class TransportationServiceImpl implements TransportationService {
             return null;
         }
         List<Flight> flightList = flightDao.queryFlightAndDatailBydaIdAndarrAreaId(flight);
-        if (flightList!=null && flightList.size()>0){
-            for (Flight f:flightList) {
+        if (flightList != null && flightList.size() > 0) {
+            for (Flight f : flightList) {
                 f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
                 f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
             }
@@ -73,8 +73,8 @@ public class TransportationServiceImpl implements TransportationService {
     public List<Flight> queryAllFlight() {
         List<Flight> flightList = flightDao.queryAllFlight();
         List<Flight> list = new ArrayList<>();
-        if (null!=flightList && !flightList.isEmpty()){
-            for (Flight f:flightList) {
+        if (null != flightList && !flightList.isEmpty()) {
+            for (Flight f : flightList) {
                 f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
                 f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
                 list.add(f);
@@ -113,7 +113,7 @@ public class TransportationServiceImpl implements TransportationService {
             return false;
         }
         Train train1 = trainDao.queryByTrainName(train.getTrNumber());
-        if (train1!=null){
+        if (train1 != null) {
             return false;
         }
         return trainDao.insertTrain(train);
@@ -141,8 +141,8 @@ public class TransportationServiceImpl implements TransportationService {
             return null;
         }
         List<Train> trainList = trainDao.queryTrainAndDatailBydaIdAndarrAreaId(train);
-        if (trainList!=null && trainList.size()>0){
-            for (Train t:trainList) {
+        if (trainList != null && trainList.size() > 0) {
+            for (Train t : trainList) {
                 t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
                 t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
             }
@@ -154,8 +154,8 @@ public class TransportationServiceImpl implements TransportationService {
     public List<Train> queryAllTrain() {
         List<Train> trainList = trainDao.queryAllTrain();
         List<Train> list = new ArrayList<>();
-        if (null!=trainList && !trainList.isEmpty()){
-            for (Train t:trainList) {
+        if (null != trainList && !trainList.isEmpty()) {
+            for (Train t : trainList) {
                 t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
                 t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
                 list.add(t);
@@ -191,7 +191,7 @@ public class TransportationServiceImpl implements TransportationService {
     @Override
     public List<Flightdetail> query(Flightdetail flightdetail) {
 
-        if(flightdetail==null){
+        if (flightdetail == null) {
             return null;
         }
 
@@ -199,20 +199,18 @@ public class TransportationServiceImpl implements TransportationService {
 
         List<Flightdetail> flightdetails1 = new ArrayList<>();
 
-        for (Flightdetail f: flightdetails) {
-            Flight flight =new Flight(f.getFlightId());
+        for (Flightdetail f : flightdetails) {
+            Flight flight = new Flight(f.getFlightId());
             f.setFlight(flightDao.queryOne(flight));
             flightdetails1.add(f);
         }
-
-        System.out.println(flightdetails);
 
         return flightdetails1;
     }
 
     @Override
     public List<Flight> query(Flight flight) {
-        if(flight==null){
+        if (flight == null) {
             return null;
         }
         return flightDao.query(flight);
@@ -220,7 +218,7 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public Flight queryOne(Flight flight) {
-        if(flight==null){
+        if (flight == null) {
             return null;
         }
         return flightDao.queryOne(flight);
@@ -228,7 +226,7 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public List<Train> query(Train train) {
-        if(train==null){
+        if (train == null) {
             return null;
         }
         return trainDao.query(train);
@@ -236,7 +234,7 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public Train queryOne(Train train) {
-        if(train==null){
+        if (train == null) {
             return null;
         }
         return trainDao.queryOne(train);
@@ -244,15 +242,26 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public List<Traindetail> query(Traindetail traindetail) {
-        if(traindetail==null){
+        if (traindetail == null) {
             return null;
         }
-        return trainDetailDao.query(traindetail);
+
+        List<Traindetail> traindetails = trainDetailDao.query(traindetail);
+
+        List<Traindetail> traindetails1 = new ArrayList<>();
+
+        for (Traindetail t : traindetails) {
+            Train train =new Train(t.getTrId());
+            t.setTrain(trainDao.queryOne(train));
+            traindetails1.add(t);
+        }
+        return traindetails1;
+
     }
 
     @Override
     public Traindetail queryOne(Traindetail traindetail) {
-        if(traindetail==null){
+        if (traindetail == null) {
             return null;
         }
         return trainDetailDao.queryOne(traindetail);
