@@ -94,7 +94,7 @@ public class OperateTransportController {
     public String addFlightDetail(Flightdetail flightdetail, Model model) {
         System.out.println(flightdetail);
         boolean flag = transportationService.insertFlightDatail(flightdetail);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/addTrainDetail.do")
@@ -103,7 +103,7 @@ public class OperateTransportController {
         System.out.println(traindetail);
         boolean flag = transportationService.insertTraindetail(traindetail);
         model.addAttribute("addTDInfo", flag);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/deleteFlight.do")
@@ -154,33 +154,46 @@ public class OperateTransportController {
 
     @RequestMapping("/searchFlight.do")
     @ResponseBody
-    public String searchFlight(String date,String daId,String arrAreaId){
-        System.out.println("日期"+date);
-        System.out.println("出发id"+daId);
-        System.out.println("到达id"+arrAreaId);
-        Flight flight =new Flight();
+    public String searchFlight(String date, String daId, String arrAreaId) {
+        Flight flight = new Flight();
         flight.setDaId(Long.valueOf(daId));
         flight.setArrAreaId(Long.valueOf(arrAreaId));
         List<Flight> flightList = transportationService.query(flight);
-        System.out.println("航班表"+flightList);
-
-        Flightdetail flightdetail =new Flightdetail();
+        Flightdetail flightdetail = new Flightdetail();
         flightdetail.setFdDate(date);
         List<Flightdetail> flightdetailList = transportationService.query(flightdetail);
-        System.out.println("明细表1"+flightdetailList);
         List<Flightdetail> flightdetailList1 = new ArrayList<>();
-
-        for (Flight f:flightList) {
-            for (Flightdetail fd:flightdetailList) {
-                if(f.getFlightId()==fd.getFlightId()){
+        for (Flight f : flightList) {
+            for (Flightdetail fd : flightdetailList) {
+                if (f.getFlightId() == fd.getFlightId()) {
                     flightdetailList1.add(fd);
                 }
             }
         }
-
-        System.out.println("明细表"+flightdetailList1);
-
         return JSON.toJSONString(flightdetailList1);
     }
+
+    @RequestMapping("/searchTrain.do")
+    @ResponseBody
+    public String searchTrain(String date, String daId, String arrAreaId) {
+        Train train = new Train();
+        train.setdaId(Long.valueOf(daId));
+        train.setarrAreaId(Long.valueOf(arrAreaId));
+        List<Train> trainList = transportationService.query(train);
+        Traindetail traindetail = new Traindetail();
+        traindetail.setTdDate(date);
+        List<Traindetail> traindetailList = transportationService.query(traindetail);
+        List<Traindetail> traindetailList1 = new ArrayList<>();
+        for (Train t : trainList) {
+            for (Traindetail td : traindetailList) {
+                if (t.getTrId() == td.getTrId()) {
+                    traindetailList1.add(td);
+                }
+            }
+        }
+        return JSON.toJSONString(traindetailList1);
+
+    }
+
 
 }

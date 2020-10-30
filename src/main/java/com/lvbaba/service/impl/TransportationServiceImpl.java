@@ -225,4 +225,36 @@ public class TransportationServiceImpl implements TransportationService {
         }
         return flightDao.queryOne(flight);
     }
+
+    @Override
+    public List<Train> query(Train train) {
+        if(train==null){
+            return null;
+        }
+        return trainDao.query(train);
+    }
+
+    @Override
+    public Train queryOne(Train train) {
+        if(train==null){
+            return null;
+        }
+        return trainDao.queryOne(train);
+    }
+
+    @Override
+    public List<Traindetail> query(Traindetail traindetail) {
+        if(traindetail==null){
+            return null;
+        }
+        return trainDetailDao.query(traindetail);
+    }
+
+    @Override
+    public Traindetail queryOne(Traindetail traindetail) {
+        if(traindetail==null){
+            return null;
+        }
+        return trainDetailDao.queryOne(traindetail);
+    }
 }
