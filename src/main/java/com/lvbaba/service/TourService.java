@@ -10,6 +10,7 @@ import java.util.List;
 public interface TourService {
     /**
      * 插入旅行团
+     *
      * @param tour
      * @return
      */
@@ -17,6 +18,7 @@ public interface TourService {
 
     /**
      * 修改旅行团
+     *
      * @param tour
      * @return
      */
@@ -24,6 +26,7 @@ public interface TourService {
 
     /**
      * 删除旅行团
+     *
      * @param tour
      * @return
      */
@@ -31,6 +34,7 @@ public interface TourService {
 
     /**
      * 查询单个旅行团
+     *
      * @param tour
      * @return
      */
@@ -38,19 +42,26 @@ public interface TourService {
 
     /**
      * 查询所有旅行团
+     *
      * @return
      */
     List<Tour> queryAll();
 
     /**
      * 根据产品查询旅行团
+     *
      * @param tour
      * @return
      */
     List<Tour> queryByPid(Tour tour);
 
     int openBooking(int tourId);
+
     int closeBooking(int tourId);
+
     int startTour(int tourId);
+
     int cancelTour(int tourId);
+
+    boolean forceCancelTour(int tourId);
 }

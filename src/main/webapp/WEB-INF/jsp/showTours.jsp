@@ -296,7 +296,6 @@
                 <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
                 <td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
 
-
             </tr>
         </c:forEach>
         </tbody>

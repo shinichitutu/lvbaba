@@ -31,7 +31,14 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public boolean removeTour(Tour tour) {
-        return tourDao.removeTour(tour);
+        Tour tour1 =tourDao.query(tour);
+        if(tour1.getBookNum()==0){
+            return tourDao.removeTour(tour);
+        }
+        else {
+            return false;
+        }
+
     }
 
     @Override
@@ -122,14 +129,17 @@ public class TourServiceImpl implements TourService {
         tour.setTourId(tourId);
         Tour tour1 = query(tour);
         int status = Integer.valueOf(tour1.getTourStatus());
+
         if (status == 4) {
             tour1.setTourStatus("5");
             tourDao.updateTour(tour1);
             return 1;
         }
+
         if (status == 3) {
             return 2;
         }
+
         if (status == 1 || status == 2) {
             return 3;
         }
@@ -160,9 +170,7 @@ public class TourServiceImpl implements TourService {
             else {
                 return 2;
             }
-
         }
-
         if (status == 3 || status == 4 ||status==5) {
             return 3;
         }
@@ -172,6 +180,16 @@ public class TourServiceImpl implements TourService {
         }
 
         return 0;
+    }
+
+/*    待完善，要进行退款*/
+    @Override
+    public boolean forceCancelTour(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = query(tour);
+        tour1.setTourStatus("6");
+        return tourDao.updateTour(tour1);
     }
 
 }
