@@ -44,6 +44,10 @@ public class TourController {
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
+        Product product = new Product();
+        product.setProductId(tour.getProductId());
+        Product product1 = productService.query(product);
+        model.addAttribute("product",product1);
         return "showTours";
     }
 

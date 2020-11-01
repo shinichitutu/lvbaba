@@ -13,6 +13,7 @@
 %>
 <html>
 <head>
+    <base href="<%=basePath%>"/>
     <title>旅行团</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -38,49 +39,21 @@
 
     <script>
         $(function () {
-
             $("#d1").click(function () {
+                console.log("飞机测试");
                 $("#d4").css("display","none");
                 $("#d3").css("display","block");
             });
 
             $("#d2").click(function () {
+                console.log("火车测试");
                 $("#d3").css("display","none");
                 $("#d4").css("display","block");
             });
 
-            $(".remove").click(function () {
-                var tourId=$(this).next().val();
-                console.log(tourId);
-                $.ajax({
-                    type:"post",
-                    data:{tourId:tourId},
-                    dataType:"text",
-                    url:"removeTour.do",
-                    success:function (obj) {
-                        console.log(obj);
-                        window.location.href="showTour.do";
-                    }
-                })
-            });
-
-            $(".update").click(function () {
-                var tourId=$(this).next().val();
-                console.log(tourId);
-                $.ajax({
-                    type:"post",
-                    data:{tourId:tourId},
-                    dataType:"json",
-                    url:"updateTour.do",
-                    success:function (obj) {
-                        console.log(obj);
-                        window.location.href="showTour.do";
-                    }
-                })
-            });
-
 
             $("#deDateF").blur(function () {
+                console.log("aaa");
                 var deDate = $(this).val();
                 var daId = ${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
@@ -108,7 +81,7 @@
 
             $("#deDateT").blur(function () {
                 var deDate = $(this).val();
-                var daId = ${requestScope.product.daId};
+                var daId =${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
                 if(deDate!=''){
                     var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
@@ -146,9 +119,9 @@
             $("#deDateF").change(function () {
                 $("#flightId option:gt(0)").remove();
                 $("#flightId2 option:gt(0)").remove();
-                var date = $(this).val();
-                var daId = ${requestScope.product.daId};
-                var arrAreaId =${requestScope.product.arrAreaId};
+                var date = $(this).val()
+                var daId = ${requestScope.product.daId}
+                var arrAreaId =${requestScope.product.arrAreaId}
                 console.log("去程"+date);
 
                 $.ajax({
@@ -169,9 +142,9 @@
             $("#deDateT").change(function () {
                 $("#trainId option:gt(0)").remove();
                 $("#trainId2 option:gt(0)").remove();
-                var date = $(this).val();
-                var daId = ${requestScope.product.daId};
-                var arrAreaId =${requestScope.product.arrAreaId};
+                var date = $(this).val()
+                var daId = ${requestScope.product.daId}
+                var arrAreaId =${requestScope.product.arrAreaId}
 
                 $.ajax({
                     type:"post",
@@ -192,7 +165,7 @@
 
     </script>
 
-    <base href="<%=basePath%>"/>
+
 </head>
 <body>
 
@@ -282,7 +255,7 @@
         </tbody>
     </table>
 
-    <div style="display: none" id="d3">
+    <div style="display:none" id="d3">
         <form action="insertTour.do" method="post">
             <input type="hidden" name="productId" value="${requestScope.product.productId}">
             <input type="hidden" name="transType" value="1">
@@ -310,8 +283,8 @@
 
     <div style="text-align: center">
         <%--增加产品--%>
-        <input type="button" value="添加新旅行团（飞机）" id="d1"><br/><br/>
-            <input type="button" value="添加新旅行团（火车）" id="d2"><br/>
+        <input type="button" value="添加新旅行团（飞机）" id="d1">
+            <input type="button" value="添加新旅行团（火车）" id="d2">
 
         <c:if test="${requestScope.page>1}">
             <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
@@ -330,6 +303,8 @@
 
     <p style="color: green">${requestScope.success}</p>
     <p style="color: red">${requestScope.error}</p>
+
+
 </div>
     <footer id="footer">
 
@@ -362,5 +337,6 @@
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 <script src="assets/js/custom/admin.panel.js"></script>
+
 </body>
 </html>
