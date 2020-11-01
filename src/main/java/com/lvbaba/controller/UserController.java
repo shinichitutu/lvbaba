@@ -79,4 +79,9 @@ public class UserController {
     public String adminMain(){
         return "admin";
     }
+
+    @RequestMapping("/home.do")
+    public String testHome(){
+        return "indexcopy";
+    }
 }

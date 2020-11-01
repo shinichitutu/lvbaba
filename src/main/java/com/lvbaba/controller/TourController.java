@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.print.DocFlavor;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -30,17 +31,19 @@ public class TourController {
 
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page) {
+        Tour tour1 =new Tour();
+        tour1.setProductId(tour.getProductId());
 
         if (page==null){
             page="1";
         }
+
         PageHelper.startPage(Integer.valueOf(page),5);
-        List<Tour> tours1=tourService.queryByPid(tour);
+        List<Tour> tours1=tourService.queryByPid(tour1);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
-
         return "showTours";
     }
 
@@ -120,7 +123,6 @@ public class TourController {
         else {
             model.addAttribute("error","操作失败");
         }
-
         return "forward:showTour.do";
     }
 
