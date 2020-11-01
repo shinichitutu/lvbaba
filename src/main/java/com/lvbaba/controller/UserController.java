@@ -75,6 +75,7 @@ public class UserController {
     public String userMain(){
         return "userMain";
     }
+
     @RequestMapping("/adminMain.do")
     public String adminMain(){
         return "admin";

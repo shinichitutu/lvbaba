@@ -60,16 +60,6 @@
     <div id="intro_section" class="section under-header mb-0">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <ul class="dashboard--sidebar list-unstyled">
-                        <li><a href="#" class="dashboard--sidebar__link active"><i class="ion-md-stats"></i> <span>总览</span></a></li>
-                        <li><a href="#" class="dashboard--sidebar__link"><i class="ion-md-document"></i> <span>旅游产品管理</span></a></li>
-                        <li><a href="#" class="dashboard--sidebar__link"><i class="ion-md-bookmark"></i> <span>航班管理</span></a></li>
-                        <li><a href="#" class="dashboard--sidebar__link"><i class="ion-md-wallet"></i> <span>火车管理</span></a></li>
-                        <li><a href="#" class="dashboard--sidebar__link"><i class="ion-md-star"></i> <span>酒店管理</span></a></li>
-                        <li><a href="#" class="dashboard--sidebar__link"><i class="ion-md-list"></i> <span>订单管理</span></a></li>
-                    </ul>
-                </div>
                 <div class="col-lg-9">
                     <div class="dashboard--content">
                         <nav aria-label="breadcrumb">
@@ -298,11 +288,10 @@
         <ul>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">管理员操作</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="#">总览</a></li>
-                    <li><a href="#">旅游产品管理</a></li>
-                    <li><a href="#">航班管理</a></li>
-                    <li><a href="#">火车管理</a></li>
-                    <li><a href="#">酒店管理</a></li>
+                    <li><a href="adminMain.do">总览</a></li>
+                    <li><a href="showProduct.do">旅游产品管理</a></li>
+                    <li><a href="showFlightAndTrain.do">交通管理</a></li>
+                    <li><a href="showHotels.do">酒店管理</a></li>
                     <li><a href="#">订单管理</a></li>
                 </ul></li>
 
