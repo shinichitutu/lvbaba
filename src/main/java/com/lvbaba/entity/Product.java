@@ -16,6 +16,7 @@ public class Product {
   private Area d_area;
   private Area a_area;
   private Hotel hotel;
+  private Files files;
 
   public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore) {
     this.productId = productId;
@@ -139,6 +140,14 @@ public class Product {
 
   public void setHotel(Hotel hotel) {
     this.hotel = hotel;
+  }
+
+  public Files getFiles() {
+    return files;
+  }
+
+  public void setFiles(Files files) {
+    this.files = files;
   }
 
   @Override

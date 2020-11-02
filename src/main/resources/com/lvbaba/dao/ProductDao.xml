@@ -19,7 +19,7 @@
 
 
 
-    <insert id="insertProduct" parameterType="Product">
+    <insert id="insertProduct" parameterType="Product" >
         INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUES
         (#{daId},#{arrAreaId},#{limLow},#{limUp},#{days},#{hotelId},#{productName},#{productFee},#{productScore})
     </insert>
@@ -35,8 +35,8 @@
             <if test="hotelId!=null and hotelId !=''">h_id=#{hotelId},</if>
             <if test="productName!=null and productName !=''">p_name=#{productName},</if>
             <if test="productFee!=null and productFee !=''">p_fee=#{productFee},</if>
-            <if test="productScore!=null and productScore !=''">p_score=#{productScore},</if>
-        </set>
+            <if test="productScore!=null and productScore !=''">p_score=#{productScore}</if>
+        </set> where p_id = #{productId}
     </update>
 
     <delete id="removeProduct" parameterType="Product">

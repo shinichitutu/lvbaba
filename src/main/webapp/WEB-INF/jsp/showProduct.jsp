@@ -114,7 +114,7 @@
                         success:function (obj) {
                             var str = "";
                             $.each(obj,function (index,item) {
-                                str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"星</span></option>";
+                                str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"☆</span></option>";
                             })
                             $(".hotelId").append(str);
                         }
@@ -123,67 +123,76 @@
 
                 $(".addProduct").click(function () {
                     var productName=$(".productName").val();
+                    console.log(productName);
                     if (productName==null || productName==''){
                         alert("产品名称不能为空");
                         return;
                     }
 
                     var daId=$(".d_city option:selected").val();
+                    console.log(daId);
                     if (daId==null || daId==0){
                         alert("出发地不能为空");
                         return;
                     }
 
                     var arrAreaId=$(".a_city option:selected").val();
+                    console.log(arrAreaId);
                     if (arrAreaId==null || arrAreaId==0){
                         alert("目的地不能为空");
                         return;
                     }
 
                     var limLow=$(".limLow").val();
+                    console.log(limLow);
                     if (limLow==null || limLow==''){
                         alert("人数下限不能为空");
                         return;
                     }
 
                     var limUp=$(".limUp").val();
+                    console.log(limUp);
                     if (limUp==null || limUp==''){
                         alert("人数上限不能为空");
                         return;
                     }
 
                     var days=$(".days").val();
+                    console.log(days);
                     if (days==null || days==''){
                         alert("行程天数不能为空");
                         return;
                     }
 
                     var hotelId=$(".hotelId option:selected").val();
+                    console.log(hotelId);
                     if (hotelId==null || hotelId==''){
                         alert("入住酒店不能为空");
                         return;
                     }
 
                     var productFee=$(".productFee").val();
+                    console.log(productFee);
                     if (productFee==null || productFee==''){
                         alert("团费不能为空");
                         return;
                     }
 
-                    $.ajax({
-                        type:"post",
-                        data:{productName:productName,daId:daId,arrAreaId:arrAreaId,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
-                        dataType:"text",
-                        url:"addProductInfo.do",
-                        success:function (obj) {
-                            if("false"==obj){
-                                alert("新增失败");
-                            }else{
-                                alert("新增成功");
-                                location.href="showProduct.do";
-                            }
-                        }
-                    })
+                    $(".addProduct").submit();
+                    // $.ajax({
+                    //     type:"post",
+                    //     data:{productName:productName,daId:daId,arrAreaId:arrAreaId,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
+                    //     dataType:"text",
+                    //     url:"addProductInfo.do",
+                    //     success:function (obj) {
+                    //         if("false"==obj){
+                    //             alert("新增失败");
+                    //         }else{
+                    //             alert("新增成功");
+                    //             location.href="showProduct.do";
+                    //         }
+                    //     }
+                    // })
                 })
 
                 if (${not empty requestScope.delProductInfo}){
@@ -227,23 +236,26 @@
                         return;
                     }
 
-                    $.ajax({
-                        type:"post",
-                        data:{productName:productName,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
-                        dataType:"text",
-                        url:"updateProductInfo.do",
-                        success:function (obj) {
-                            if("false"==obj){
-                                alert("更新失败");
-                            }else{
-                                alert("更新成功");
-                                location.href="showProduct.do";
-                            }
-                        }
-                    })
+                    console.log($())
+                    $(this).submit();
+                    // $.ajax({
+                    //     type:"post",
+                    //     data:{productName:productName,limLow:limLow,limUp:limUp,days:days,hotelId:hotelId,productFee:productFee},
+                    //     dataType:"text",
+                    //     url:"updateProductInfo.do",
+                    //     success:function (obj) {
+                    //         if("false"==obj){
+                    //             alert("更新失败");
+                    //         }else{
+                    //             alert("更新成功");
+                    //             location.href="showProduct.do";
+                    //         }
+                    //     }
+                    // })
                 })
             })
-            function updateProduct(productId,productName,d_area,a_area,limLow,limUp,days,hotelId,productFee,arrAreaId) {
+
+            function updateProduct(productId,productName,d_area,a_area,limLow,limUp,days,hotelId,productFee,arrAreaId,filePath) {
                 $("#d2").css("display","none");
                 $("#d3").css("display","block");
                 // $(".hotelId option:gt(0)").remove();
@@ -257,19 +269,20 @@
                         $.each(obj,function (index,item) {
                             str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"星</span></option>";
                         })
-                        var form ="<form action='#' method='post'/>" +
-                            "<p>产品名称：<input type='text' id='u_productName' value='"+productName+"'/></p>" +
-                            "<p><input type='hidden' id='u_productId' value='"+productId+"'/></p>" +
+                        var form ="<form action='updateProductInfo.do' method='post' enctype='multipart/form-data'/>" +
+                            "<p>产品名称：<input type='text' id='u_productName' name='productName' value='"+productName+"'/></p>" +
+                            "<p><input type='hidden' id='u_productId' name='productId' value='"+productId+"'/></p>" +
                             "<p>出发地："+d_area+"</p>" +
                             "<p>出发地："+a_area+"</p>" +
-                            "<p>人数下限：<input type='number' min='1' max='5' id='u_limLow' value='"+limLow+"' ></p>" +
-                            "<p>人数上限：<input type='number' min='5' max='30' id='u_limUp' value='"+limUp+"' ></p>" +
-                            "<p>行程天数：<input type='number' min='1' max='10' id='u_days' value='"+days+"' /></p>" +
+                            "<p>人数下限：<input type='number' min='1' max='5' id='u_limLow' name='limLow' value='"+limLow+"' ></p>" +
+                            "<p>人数上限：<input type='number' min='5' max='30' id='u_limUp' name='limUp' value='"+limUp+"' ></p>" +
+                            "<p>行程天数：<input type='number' min='1' max='10' id='u_days' name='days' value='"+days+"' /></p>" +
                             "<p>入住酒店：<select id='u_hotelId'>" +
                             "<option value='0'>--请选择--</option>" +str+
                             "</select><span>选择了目的地之后，才能看到酒店</span></p>" +
-                            "<p>基础团费：<input type='number' min='500' max='10000' step='500' id='u_productFee' value='"+productFee+"'/></p>" +
-                            "<p><input type='button' value='提交修改' class='modifyProductInfo'/></p></form>";
+                            "<p>基础团费：<input type='number' min='500' max='10000' step='500' name='productFee' id='u_productFee' value='"+productFee+"'/></p>" +
+                            "<p>产品图片：<input type='file' name='file1'></p>" +
+                            "<p><input type='submit' value='提交修改' class='modifyProductInfo'/></p></form>";
 
                         $("#d3").html("");
                         $("#d3").html(form);
@@ -314,6 +327,7 @@
             <thead>
             <tr>
                 <td>序号</td>
+                <td>产品图片</td>
                 <td>产品名称</td>
                 <td>出发地</td>
                 <td>目的地</td>
@@ -332,6 +346,7 @@
             <c:forEach items="${requestScope.products}" var="product" varStatus="i">
                 <tr>
                     <td>${i.count}</td>
+                    <td><img style="width: 200px;height: 160px;" src="${product.files.filePath}"></td>
                     <td>${product.productName}</td>
                     <td>${product.d_area.country}-${product.d_area.city}</td>
                     <td>${product.a_area.country}-${product.a_area.city}</td>
@@ -345,7 +360,7 @@
                     <td><input type="button" value="删除产品" onclick="location.href='deleteProduct.do?productId=${product.productId}'"/></td>
                     <td><input type="button" value="修改产品" onclick="updateProduct('${product.productId}','${product.productName}',
                             '${product.d_area.country}-${product.d_area.city}','${product.a_area.country}-${product.a_area.city}','${product.limLow}',
-                            '${product.limUp}','${product.days}','${product.hotelId}','${product.productFee}','${product.arrAreaId}')"/></td>
+                            '${product.limUp}','${product.days}','${product.hotelId}','${product.productFee}','${product.arrAreaId}','${product.files.filePath}')"/></td>
 
                 </tr>
             </c:forEach>
@@ -372,27 +387,28 @@
 
 
     <div style="margin-left: 50px;display: none;" id="d2">
-        <form action="#" method="post">
-            <p>产品名称：<input type="text" class="productName" placeholder="请输入产品名称"></p>
+        <form action="addProductInfo.do" method="post" enctype="multipart/form-data">
+            <p>产品名称：<input type="text" name="productName" class="productName" placeholder="请输入产品名称"></p>
             <p>出发地：<select class="d_country">
                 <option value="0">--请选择--</option>
             </select>
-                <select class="d_city">
+                <select class="d_city" name="daId">
                     <option value="0">--请选择--</option>
                 </select></p>
             <p>出发地：<select class="a_country">
                 <option value="0">--请选择--</option>
             </select>
-                <select class="a_city">
+                <select class="a_city" name="arrAreaId">
                     <option value="0">--请选择--</option>
                 </select></p>
-            <p>人数下限：<input type="number" min="1" max="5" step="1" class="limLow" placeholder="请选择人数下限"></p>
-            <p>人数上限：<input type="number" min="5" max="30" step="1" class="limUp" placeholder="请选择人数上限"></p>
-            <p>行程天数：<input type="number" min="1" max="10" step="1" class="days" placeholder="请选择行程天数"></p>
-            <p>入住酒店：<select class="hotelId">
+            <p>人数下限：<input type="number" min="1" max="5" step="1" name="limLow" class="limLow" placeholder="请选择人数下限"></p>
+            <p>人数上限：<input type="number" min="5" max="30" step="1" name="limUp" class="limUp" placeholder="请选择人数上限"></p>
+            <p>行程天数：<input type="number" min="1" max="10" step="1" name="days" class="days" placeholder="请选择行程天数"></p>
+            <p>入住酒店：<select class="hotelId" name="hotelId">
                 <option value="0">--请选择--</option>
             </select><span>选择了目的地之后，才能看到酒店</span></p>
-            <p>基础团费：<input type="number" min="500" max="10000" step="500" class="productFee" placeholder="请输入基本团费"></p>
+            <p>基础团费：<input type="number" min="500" max="10000" step="500" name="productFee" class="productFee" placeholder="请输入基本团费"></p>
+            <p>选择文件：<input type="file" name="file"></p>
             <p><input type="submit" value="点击添加" class="addProduct"></p>
         </form>
     </div>
