@@ -77,8 +77,8 @@
     <div style="text-align: center;">
         <div style="text-align: center;">
             <form action="searchProducts.do">
-                <input type="text" name="deArea" placeholder="请输入出发地"><br/>
-                <input type="text" name="aimArea" placeholder="请输入目的地" style="margin-top: 20px"><br/>
+                <input type="text" name="deArea" placeholder="请输入出发地" value="${requestScope.deArea}"><br/>
+                <input type="text" name="aimArea" placeholder="请输入目的地" value="${requestScope.aimArea}" style="margin-top: 20px"><br/>
                 <input type="submit" value="搜索" style="margin-top: 20px">
 
             </form>

@@ -90,4 +90,19 @@ public class ProductServiceImpl implements ProductService {
         }
         return productList;
     }
+
+    @Override
+    public List<Product> queryByAreaName(String deArea, String aimArea) {
+        Area area =new Area();
+        area.setCity(deArea);
+        Area area1 =new Area();
+        area1.setCity(aimArea);
+        Area area2 = areaDao.queryOne(area);
+        Area area3 = areaDao.queryOne(area1);
+        Product product =new Product();
+        product.setDaId(area2.getAreaId());
+        product.setArrAreaId(area3.getAreaId());
+        return productDao.queryByOthers(product);
+
+    }
 }
