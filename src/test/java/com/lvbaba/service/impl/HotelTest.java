@@ -5,10 +5,14 @@ import com.lvbaba.dao.HotelDao;
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Hotel;
 
+import com.lvbaba.entity.Product;
 import com.lvbaba.entity.Roomdetail;
 import com.lvbaba.service.AreaService;
+import com.lvbaba.service.HotelService;
+import com.lvbaba.service.ProductService;
 import com.lvbaba.service.RoomDetailService;
 
+import com.lvbaba.utli.Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -30,6 +34,12 @@ public class HotelTest {
     @Resource
     private RoomDetailService roomDetailService;
 
+    @Resource
+    private ProductService productService;
+
+    @Resource
+    private HotelService hotelService;
+
 
     @Test
     public void testHotel(){
@@ -43,6 +53,23 @@ public class HotelTest {
         Roomdetail roomdetail =new Roomdetail();
         roomdetail.setRdId(1);
         System.out.println(roomDetailService.deleteRoomDetail(roomdetail));}
+
+    @Test
+    public void testFindProduct(){
+
+        System.out.println(productService.queryByAreaName("上海","北京"));
+    }
+
+    @Test
+    public void testDate(){
+        String date = Util.addDay("2020-10-25",1);
+        System.out.println(date);
+    }
+
+    @Test
+    public void testRoom(){
+        System.out.println(hotelService.isRoomAvailable("2020-10-22","2020-10-25",2,1));
+    }
 
 
 

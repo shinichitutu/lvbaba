@@ -134,7 +134,7 @@
     <header id="header" class="plain-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in">登录</a></li>
                 </ul>
@@ -148,12 +148,13 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-11 mx-auto">
                         <h1 class="intro-section-title wow fade-in-down">寻找你想踏足的远方</h1>
+                        <form action="searchProductMain.do" method="post">
                         <div class="search-wrapper wow fade-in-up">
                             <div class="search-form">
                                 <div class="search-input">
                                     <label for="what" class="form-control-label mb-0">出发地</label>
                                     <div class="input-group align-items-center dropdown">
-                                        <input type="text" id="what" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" />
+                                        <input type="text" id="what" class="form-control" name="deArea" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" />
                                         <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                         <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                             <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
@@ -170,7 +171,7 @@
                                 <div class="search-input">
                                     <label for="where" class="form-control-label mb-0">目的地</label>
                                     <div class="input-group align-items-center dropdown">
-                                        <input type="text" id="where" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" />
+                                        <input type="text" id="where" class="form-control" name="aimArea" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" />
                                         <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                         <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                             <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
@@ -182,9 +183,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-danger">搜索</button>
+                                <button type="submit" class="btn btn-danger">搜索</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -310,8 +312,9 @@
         <div>
             <a href="home.do">旧版主页</a>
         </div>
-</div>
+
 </footer>
+
 <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
 <!-- 侧边导航栏 -->
 <aside id="sidebar">
@@ -325,18 +328,14 @@
                     <li><a href="userMain.do">旅游首页</a></li>
                     <li><a href="#">推荐路线</a></li>
                 </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票</a>
+
+            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="#">机票首页</a></li>
-                    <li><a href="#">航班推荐</a></li>
+                    <li><a href="hotelView.do">预订机票</a></li>
+                    <li><a href="#">预订酒店</a></li>
 
                 </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">酒店</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="#">酒店首页</a></li>
-                    <li><a href="#">酒店推荐</a></li>
 
-                </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
                     <li><a href="#">旅行订单</a></li>

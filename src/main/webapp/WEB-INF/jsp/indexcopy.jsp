@@ -249,11 +249,12 @@
                                     <option value="0">--请选择--<</option>
                                 </select>
                                 <br/>
-                                入住日期:<input type="datetime-local"><br>
-                                退房日期:<input type="datetime-local"><br>
+                                入住日期:<input type="date"><br>
+                                退房日期:<input type="date"><br>
                                 关键字:<input type="text" placeholder="酒店/商圈/地标"><br/>
-                                <input type="submit" value="搜索机票">
+                                <input type="submit" value="搜索酒店">
                             </form></div>
+
                         <div id="vacation" class="container tab-pane fade" style="font-size: 10px;"><br>
                             <form action="searchProducts.do" method="post">
                                 出发城市:<select id="v_d_country" name="daId">

@@ -3,6 +3,7 @@ package com.lvbaba.service;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Hotel;
 
+import javax.print.DocFlavor;
 import java.util.List;
 
 /**
@@ -29,5 +30,12 @@ public interface HotelService {
      * @return
      */
     List<Hotel> queryAllByAreaId(Hotel hotel);
+
+    List<Hotel> queryHotelByArea(String country,String city);
+
+    List<Hotel> queryBySearch(String country,String city,String inDate,String outDate,int num);
+
+    boolean isRoomAvailable(String inDate,String outDate,int num,long roomId);
+
 
 }
