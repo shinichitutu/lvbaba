@@ -87,6 +87,10 @@
     </div>
     </div>
 
+    <p>${requestScope.aimArea}</p>
+    <p>${requestScope.deArea}</p>
+
+
     <footer id="footer">
 
         <div class="last-footer text-muted">
