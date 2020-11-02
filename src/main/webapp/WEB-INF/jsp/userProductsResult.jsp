@@ -74,6 +74,7 @@
     </header>
     <br/>
     <div class="container" style="padding-top: 50px">
+
     <div style="text-align: center;">
         <div style="text-align: center;">
             <form action="searchProducts.do">
