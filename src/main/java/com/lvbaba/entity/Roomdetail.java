@@ -45,44 +45,48 @@ public class Roomdetail {
     this.rdNumber = rdNumber;
   }
 
-  public long getRoomId() {
-    return roomId;
-  }
-
-  public String getRoomDate() {
-    return roomDate;
-  }
-
-  public double getRdPrice() {
-    return rdPrice;
-  }
-
-  public long getRdNumber() {
-    return rdNumber;
-  }
-
-  public Room getRoom() {
-    return room;
+  public long getRdId() {
+    return rdId;
   }
 
   public void setRdId(long rdId) {
     this.rdId = rdId;
   }
 
+  public long getRoomId() {
+    return roomId;
+  }
+
   public void setRoomId(long roomId) {
     this.roomId = roomId;
+  }
+
+  public String getRoomDate() {
+    return roomDate;
   }
 
   public void setRoomDate(String roomDate) {
     this.roomDate = roomDate;
   }
 
+  public double getRdPrice() {
+    return rdPrice;
+  }
+
   public void setRdPrice(double rdPrice) {
     this.rdPrice = rdPrice;
   }
 
+  public long getRdNumber() {
+    return rdNumber;
+  }
+
   public void setRdNumber(long rdNumber) {
     this.rdNumber = rdNumber;
+  }
+
+  public Room getRoom() {
+    return room;
   }
 
   public void setRoom(Room room) {

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.print.DocFlavor;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -29,19 +30,24 @@ public class TourController {
     private ProductService productService;
 
     @RequestMapping("/showTour.do")
-
     public String showTour(Model model,Tour tour,String page) {
+        Tour tour1 =new Tour();
+        tour1.setProductId(tour.getProductId());
 
         if (page==null){
             page="1";
         }
+
         PageHelper.startPage(Integer.valueOf(page),5);
-        List<Tour> tours1=tourService.queryByPid(tour);
+        List<Tour> tours1=tourService.queryByPid(tour1);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page",Integer.valueOf(page));
         model.addAttribute("pages",tourPageInfo.getPages());
         model.addAttribute("tours",tours1);
-
+        Product product = new Product();
+        product.setProductId(tour.getProductId());
+        Product product1 = productService.query(product);
+        model.addAttribute("product",product1);
         return "showTours";
     }
 
@@ -104,6 +110,8 @@ public class TourController {
     @RequestMapping("/openBooking.do")
     public String openBooking(Model model,String tourId){
         int res = tourService.openBooking(Integer.valueOf(tourId));
+        Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+        model.addAttribute("productId",pId);
         if(res==1){
             model.addAttribute("success","开放预定成功");
         }
@@ -119,13 +127,14 @@ public class TourController {
         else {
             model.addAttribute("error","操作失败");
         }
-
         return "forward:showTour.do";
     }
 
     @RequestMapping("/closeBooking.do")
     public String closeBooing(Model model,String tourId){
         int res = tourService.closeBooking(Integer.valueOf(tourId));
+        Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+        model.addAttribute("productId",pId);
         if(res==1){
             model.addAttribute("success","关闭预定成功");
         }
@@ -148,6 +157,8 @@ public class TourController {
     @RequestMapping("/startTour.do")
     public String startTour(Model model,String tourId){
         int res = tourService.startTour(Integer.valueOf(tourId));
+        Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+        model.addAttribute("productId",pId);
         if(res==1){
             model.addAttribute("success","发团成功");
         }
@@ -173,6 +184,8 @@ public class TourController {
     @RequestMapping("/cancelTour.do")
     public String cancelTour(Model model,String tourId){
         int res = tourService.cancelTour(Integer.valueOf(tourId));
+        Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+        model.addAttribute("productId",pId);
         if(res==1){
             model.addAttribute("success","取消成功");
         }
@@ -194,6 +207,8 @@ public class TourController {
 
     @RequestMapping("/deleteTour.do")
     public String deleteTour(Model model,String tourId){
+        Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+        model.addAttribute("productId",pId);
         Tour tour =new Tour();
         tour.setTourId(Long.valueOf(tourId));
         boolean flag = tourService.removeTour(tour);

@@ -75,8 +75,14 @@ public class UserController {
     public String userMain(){
         return "userMain";
     }
+
     @RequestMapping("/adminMain.do")
     public String adminMain(){
         return "admin";
+    }
+
+    @RequestMapping("/home.do")
+    public String testHome(){
+        return "indexcopy";
     }
 }

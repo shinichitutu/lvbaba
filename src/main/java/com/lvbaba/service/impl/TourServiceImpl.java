@@ -192,4 +192,12 @@ public class TourServiceImpl implements TourService {
         return tourDao.updateTour(tour1);
     }
 
+    @Override
+    public Long queryPIdByTourId(int tourId) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 =query(tour);
+        return tour1.getProductId();
+    }
+
 }
