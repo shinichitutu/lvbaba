@@ -10,6 +10,7 @@ import com.lvbaba.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,5 +90,29 @@ public class ProductServiceImpl implements ProductService {
             }
         }
         return productList;
+    }
+
+    @Override
+    public List<Product> queryByAreaName(String deArea, String aimArea) {
+        Area area =new Area();
+        area.setCity(deArea);
+        Area area1 =new Area();
+        area1.setCity(aimArea);
+        Area area2 = areaDao.queryOne(area);
+        Area area3 = areaDao.queryOne(area1);
+        Product product =new Product();
+        product.setDaId(area2.getAreaId());
+        product.setArrAreaId(area3.getAreaId());
+        List<Product> productList  =productDao.queryByOthers(product);
+        List<Product> productList1 = new ArrayList<>();
+        for (Product p:productList) {
+            Hotel hotel1 =new Hotel();
+            hotel1.setHotelId(p.getHotelId());
+            Hotel hotel = hotelDao.queryOne(hotel1);
+            p.setHotel(hotel);
+            productList1.add(p);
+        }
+        return productList1;
+
     }
 }

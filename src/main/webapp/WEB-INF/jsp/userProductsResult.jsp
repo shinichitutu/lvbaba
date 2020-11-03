@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: YY
@@ -37,9 +38,11 @@
 <body>
 
 <div id="wrapper">
+
     <div id="loading">
         <div id="loader"></div>
     </div>
+
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
@@ -63,50 +66,50 @@
                 </ol>
             </nav>
             <form action="searchProductMain.do" method="post">
-            <div class="search-wrapper search-wrapper-light mb-5">
-                <div class="search-form">
+                <div class="search-wrapper search-wrapper-light mb-5">
+                    <div class="search-form">
 
-                    <div class="search-input">
-                        <label for="what" class="form-control-label mb-0">出发地</label>
-                        <div class="input-group align-items-center dropdown">
-                            <input type="text" id="what" name="deArea" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" />
-                            <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
-                            <div class="dropdown-menu" data-scrollable="true" data-height="200">
-                                <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
-                                <a href="javascript:void(0);" class="dropdown-item">上海</a>
-                                <a href="javascript:void(0);" class="dropdown-item">北京</a>
-                                <a href="javascript:void(0);" class="dropdown-item">广州</a>
-                                <a href="javascript:void(0);" class="dropdown-item">深圳</a>
-                                <a href="javascript:void(0);" class="dropdown-item">杭州</a>
+                        <div class="search-input">
+                            <label for="what" class="form-control-label mb-0">出发地</label>
+                            <div class="input-group align-items-center dropdown">
+                                <input type="text" id="what" name="deArea" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" value="${requestScope.deArea}"/>
+                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
+                                <div class="dropdown-menu" data-scrollable="true" data-height="200">
+                                    <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">上海</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">北京</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">广州</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">深圳</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">杭州</a>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="search-input">
-                        <label for="where" class="form-control-label mb-0">目的地</label>
-                        <div class="input-group align-items-center dropdown">
-                            <input type="text" id="where" name="aimArea" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" />
-                            <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
-                            <div class="dropdown-menu" data-scrollable="true" data-height="200">
-                                <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
-                                <a href="javascript:void(0);" class="dropdown-item">北京</a>
-                                <a href="javascript:void(0);" class="dropdown-item">成都</a>
-                                <a href="javascript:void(0);" class="dropdown-item">张家界</a>
-                                <a href="javascript:void(0);" class="dropdown-item">东京</a>
-                                <a href="javascript:void(0);" class="dropdown-item">悉尼</a>
+                        <div class="search-input">
+                            <label for="where" class="form-control-label mb-0">目的地</label>
+                            <div class="input-group align-items-center dropdown">
+                                <input type="text" id="where" name="aimArea" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" value="${requestScope.aimArea}"/>
+                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
+                                <div class="dropdown-menu" data-scrollable="true" data-height="200">
+                                    <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">北京</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">成都</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">张家界</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">东京</a>
+                                    <a href="javascript:void(0);" class="dropdown-item">悉尼</a>
+                                </div>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn btn-danger">搜索</button>
+
                     </div>
-
-                    <button type="submit" class="btn btn-danger">搜索</button>
-
                 </div>
-            </div>
             </form>
 
             <div class="listing-header">
-                <span class="result-text">热门推荐</span>
+                <span class="result-text">共查到${requestScope.count}条旅游路线</span>
                 <ul class="listing-options">
                     <!-- <li class="listing-options-item"><a href="list-full-width.html" class="active"><i class="ion-md-list"></i></a></li>
                     <li class="listing-options-item"><a href="grid-full-width.html"><i class="ion-md-grid"></i></a></li> -->
@@ -114,6 +117,9 @@
                 </ul>
             </div>
             <div class="row list-bunch">
+
+<c:forEach items="${requestScope.product}" var="product" varStatus="status">
+
                 <div class="col-lg-6 list-bunch-item">
                     <div class="listing-card list-view">
 
@@ -133,39 +139,31 @@
 
                                     <!-- 评分 -->
                                     <div class="listing-rating">
-                                        <span class="listing-rating-number">4.5</span>
+                                        <span class="listing-rating-number">${product.productScore}</span>
                                         <i class="ion-md-star"></i>
                                     </div>
 
                                     <div class="listing-desc">
-                                        <a href="list-details.html" class="listing-title text-truncate">北京秋日赏枫五日游</a>
-                                        <p>五星级酒店<br />航班直飞</p>
+                                        <a href="list-details.html" class="listing-title text-truncate">${product.productName}</a>
+                                        <p>${product.hotel.hotelName}<br />行程天数：${product.days}天</p>
                                     </div>
 
                                 </div>
 
-                                <p style="font-size: 26px">￥1550.0元起</p>
+                                <p style="font-size: 26px">￥${product.productFee}元起</p>
                             </div>
 
                         </div>
                     </div>
                 </div>
-
+</c:forEach>
             </div>
 
-<%--            <nav class="mt-5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#"><i class="ion-ios-arrow-back"></i> <span>Previous</span></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><span>Next</span> <i class="ion-ios-arrow-forward"></i></a></li>
-                </ul>
-            </nav>--%>
 
 
         </div>
     </section>
+
     <footer id="footer">
 
         <div class="last-footer text-muted">
@@ -173,46 +171,46 @@
         </div>
 
     </footer>
-<a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
-<aside id="sidebar">
-    <div class="sidebar-header">
-        <a href="javascript:void(0);" id="close_sidebar">&times;</a>
-    </div>
-    <nav id="nav">
-        <ul>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="userMain.do">旅游首页</a></li>
-                    <li><a href="#">推荐路线</a></li>
-                </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="#">机票首页</a></li>
-                    <li><a href="#">航班推荐</a></li>
 
-                </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">酒店</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="#">酒店首页</a></li>
-                    <li><a href="#">酒店推荐</a></li>
+    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="userMain.do">旅游首页</a></li>
+                        <li><a href="#">推荐路线</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="#">机票首页</a></li>
+                        <li><a href="#">航班推荐</a></li>
 
-                </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="#">旅行订单</a></li>
-                    <li><a href="#">机票订单</a></li>
-                    <li><a href="#">酒店订单</a></li>
-                    <li><a href="#">个人信息</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">酒店</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="#">酒店首页</a></li>
+                        <li><a href="#">酒店推荐</a></li>
 
-                </ul></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="#">旅行订单</a></li>
+                        <li><a href="#">机票订单</a></li>
+                        <li><a href="#">酒店订单</a></li>
+                        <li><a href="#">个人信息</a></li>
+                    </ul></li>
 
-        </ul>
-    </nav>
-</aside>
+            </ul>
+        </nav>
+    </aside>
 </div>
+
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 
 </body>
-
 </html>

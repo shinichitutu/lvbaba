@@ -44,4 +44,6 @@ public interface ProductService {
     List<Product> queryAll();
 
     List<Product> querByOthers(Product product);
+
+    List<Product> queryByAreaName(String deArea,String aimArea);
 }
