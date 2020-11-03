@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,5 +24,15 @@ public class AreaDaoTest extends TestCase {
         area.setCountry("中国");
         List<Area> areaList = areaDao.query(area);
 
+    }
+    @Test
+    public void testDate(){
+        Calendar calendar=Calendar.getInstance();
+        Date nowTime=calendar.getTime();
+        System.out.println(nowTime);
+        //减填负数
+        calendar.add(Calendar.HOUR, 10);
+        nowTime=calendar.getTime();
+        System.out.println(nowTime);
     }
 }

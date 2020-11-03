@@ -70,6 +70,29 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
+    public List<Flightdetail> queryFlightInfoByAreaIdAndDate(Flight flight, String date) {
+        List<Flight> flightList = flightDao.queryFlightByDateAndAreaId(flight);
+        List<Flightdetail> flightdetailList = flightDatailDao.queryFlightDetailByFIdAndDate(date);
+        List<Flightdetail> list = new ArrayList<>();
+        if (null!=flightList&&!flightList.isEmpty()&&flightdetailList!=null&&!flightdetailList.isEmpty()){
+            for (Flight f:flightList) {
+                f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
+                f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
+                for (Flightdetail fd:flightdetailList) {
+                    if (f.getFlightId()==fd.getFlightId()){
+                        f.setFlightPrice(f.getFlightPrice()*fd.getRatio());
+                        fd.setRatio(fd.getRatio()*10);
+                        fd.setFdTickets(f.getFlightCapacity()-fd.getFdTickets());
+                        fd.setFlight(f);
+                        list.add(fd);
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    @Override
     public List<Flight> queryAllFlight() {
         List<Flight> flightList = flightDao.queryAllFlight();
         List<Flight> list = new ArrayList<>();

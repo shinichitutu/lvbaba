@@ -51,4 +51,11 @@ public interface FlightDao {
     List<Flight> query(Flight flight);
 
     Flight queryOne(Flight flight);
+
+    /**
+     * 通过航班的出发地点和到达地点ID以及出发的时间查询满足条件的航班
+     * @param flight
+     * @return
+     */
+    List<Flight> queryFlightByDateAndAreaId(Flight flight);
 }

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.lvbaba.entity.*;
 import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TransportationService;
+import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -196,5 +197,29 @@ public class OperateTransportController {
 
     }
 
+    @RequestMapping("/toUserFlightBookView.do")
+    public String toUserFlightBookView() {
+        return "userFlightBookView";
+    }
+
+    @RequestMapping("/searchFlightInfo.do")
+    public String searchFlightAndDetail(Long d_city, Long a_city ,String date, Model model) {
+        String time = Util.getDate().replace("-",":");
+        System.out.println(d_city+"-----"+a_city+"----------"+date+"-------------"+time);
+        Flight flight = new Flight();
+        flight.setDaId(d_city);
+        flight.setArrAreaId(a_city);
+        flight.setFlightDTime(time);
+        List<Flightdetail> flightdetailList = transportationService.queryFlightInfoByAreaIdAndDate(flight, date);
+        System.out.println("--------"+flightdetailList);
+        model.addAttribute("flightDetailInfoList",flightdetailList);
+        return "forward:toUserFlightBookView.do";
+    }
+
+    @RequestMapping("/toTicketOrderView.do")
+    @ResponseBody
+    public String toTicketOrderView(){
+        return "";
+    }
 
 }

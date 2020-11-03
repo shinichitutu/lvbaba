@@ -30,4 +30,11 @@ public interface FlightDatailDao {
     boolean deleteFlightDatailById(Flightdetail flightdetail);
 
     List<Flightdetail> query(Flightdetail flightdetail);
+
+    /**
+     * 通过传过来的日期和航班Id查询数据
+     * @param date
+     * @return List<Flightdetail>
+     */
+    List<Flightdetail> queryFlightDetailByFIdAndDate(String date);
 }

@@ -37,6 +37,13 @@ public interface TransportationService {
     List<Flight> queryFlightAndDatailBydaIdAndarrAreaId(Flight flight);
 
     /**
+     * 通过航班的出发地和目的地ID以及出发时间查询对应航班信息，根据日期查询detail的满足情况的信息
+     * @param  flight, date, time
+     * @return List<Flightdetail>
+     */
+    List<Flightdetail> queryFlightInfoByAreaIdAndDate(Flight flight,String date);
+
+    /**
      * 管理员查看所有的航班信息
      * @param
      * @return
