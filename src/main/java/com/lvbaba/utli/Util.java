@@ -6,7 +6,9 @@ import com.lvbaba.entityUtil.ProductArea;
 import com.lvbaba.service.AreaService;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -32,5 +34,22 @@ public class Util {
             productAreas.add(productArea);
         }
         return productAreas;
+    }
+
+    //实现日期加一天
+    public static String addDay(String s, int n) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+            Calendar cd = Calendar.getInstance();
+            cd.setTime(sdf.parse(s));
+            cd.add(Calendar.DATE, n);//增加一天
+            //cd.add(Calendar.MONTH, n);//增加一个月
+
+            return sdf.format(cd.getTime());
+
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

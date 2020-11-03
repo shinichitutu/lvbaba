@@ -217,7 +217,6 @@
                 <td><a href="showRooms.do?hotelId=${hotel.hotelId}">查看客房</a></td>
                 <td><input type="button" class="update" value="修改"></td>
                 <td><a href="deleteHotel.do?hotelId=${hotel.hotelId}">删除</a></td>
-
             </tr>
         </c:forEach>
         </tbody>

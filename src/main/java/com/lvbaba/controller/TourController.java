@@ -3,10 +3,8 @@ package com.lvbaba.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lvbaba.entity.Product;
-import com.lvbaba.entity.Tour;
-import com.lvbaba.service.ProductService;
-import com.lvbaba.service.TourService;
+import com.lvbaba.entity.*;
+import com.lvbaba.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +19,19 @@ import java.util.List;
  * Created by YY on 2020/10/26.
  *  旅行团
  */
+
 @Controller
 public class TourController {
     @Resource
     private TourService tourService;
-
+    @Resource
+    private TransportationService transportationService;
     @Resource
     private ProductService productService;
-
+    @Resource
+    private AreaService areaService;
+    @Resource
+    private HotelService hotelService;
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page) {
         Tour tour1 =new Tour();
@@ -90,7 +93,7 @@ public class TourController {
 
     @RequestMapping("/removeTour.do")
     public String removeTour(Tour tour, Model model, HttpServletResponse response) throws IOException {
-        System.out.println(tour);
+
         if (tourService.removeTour(tour)){
             response.getWriter().write("删除成功");
         }else {
@@ -220,5 +223,60 @@ public class TourController {
         }
 
         return "forward:showTour.do";
+    }
+
+    @RequestMapping("/createOne.do")
+    public String createOne(Model model,Tour tour,Integer sRoom,Product product,Integer numberOfTrips){
+//        sRoom:标准间
+        /*出发地*/
+        Area departureArea=new Area();
+        departureArea.setAreaId(product.getDaId());
+        departureArea=areaService.queryOne(departureArea);
+        /*目的地*/
+        Area destinationArea=new Area();
+        destinationArea.setAreaId(product.getArrAreaId());
+        destinationArea=areaService.queryOne(destinationArea);
+        /*酒店*/
+        Hotel hotel=new Hotel();
+        hotel.setHotelId(product.getHotelId());
+        hotel=hotelService.queryOne(hotel);
+
+        tour=tourService.query(tour);
+        if(tour==null){
+            model.addAttribute("error","该天没有旅行团哦");
+            return "productOne";
+        }
+/*        if (numberOfTrips>(sRoom*2)){
+            model.addAttribute("error","您所预定的房间住不下您预定的人哦");
+            return "productOne";
+        }*/
+        /*判断用户选择的出行工具*/
+        if (tour.getTransType().equals("1")){
+             /*火车*/
+            Train train=new Train();
+            train.setTrId(tour.getGoId());
+            train=transportationService.queryOne(train);
+            model.addAttribute("train",train);
+        }
+        if (tour.getTransType().equals("2")){
+            /*飞机*/
+            Flight flight=new Flight();
+            flight.setFlightId(tour.getGoId());
+            flight=transportationService.queryOne(flight);
+            model.addAttribute("flight",flight);
+        }
+        /*出行人数  Number of trips*/
+        model.addAttribute("numberOfTrips",numberOfTrips);
+        /*出发地*/
+        model.addAttribute("departureArea",departureArea);
+        /*目的地*/
+        model.addAttribute("destinationArea",destinationArea);
+        /*酒店*/
+        model.addAttribute("hotel",hotel);
+        /*房间数*/
+        model.addAttribute("sRoom",sRoom);
+        model.addAttribute("product",product);
+        /*用户购票页面*/
+        return "confirmOrderView";
     }
 }

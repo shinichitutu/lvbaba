@@ -46,6 +46,7 @@ public interface ProductService {
 
     List<Product> querByOthers(Product product);
 
+
     /**
      * 上传文件的方法
      * @param files
@@ -66,5 +67,7 @@ public interface ProductService {
      * @return
      */
     boolean updateFilePath(Files files);
+
+    List<Product> queryByAreaName(String deArea,String aimArea);
 
 }

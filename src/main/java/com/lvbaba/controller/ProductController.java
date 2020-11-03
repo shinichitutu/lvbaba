@@ -66,6 +66,19 @@ public class ProductController {
         return "searchProducts";
     }
 
+    @RequestMapping("searchProductMain.do")
+    public String searchProductMain(String aimArea,String deArea,Model model){
+        System.out.println("测试"+aimArea+deArea);
+        List<Product> productList=productService.queryByAreaName(deArea,aimArea);
+        int count =productList.size();
+        model.addAttribute("product",productList);
+        model.addAttribute("aimArea",aimArea);
+        model.addAttribute("deArea",deArea);
+        model.addAttribute("count",count);
+        return "userProductsResult";
+    }
+
+
     @RequestMapping("productOne.do")
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);

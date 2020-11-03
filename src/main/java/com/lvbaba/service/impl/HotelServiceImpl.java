@@ -4,9 +4,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.dao.AreaDao;
 import com.lvbaba.dao.HotelDao;
+import com.lvbaba.dao.RoomDao;
+import com.lvbaba.dao.RoomDetailDao;
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Hotel;
+import com.lvbaba.entity.Room;
+import com.lvbaba.entity.Roomdetail;
 import com.lvbaba.service.HotelService;
+import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +28,12 @@ public class HotelServiceImpl implements HotelService {
 
     @Resource
     private AreaDao areaDao;
+
+    @Resource
+    private RoomDao roomDao;
+
+    @Resource
+    private RoomDetailDao roomDetailDao;
 
 
     @Override
@@ -116,6 +127,74 @@ public class HotelServiceImpl implements HotelService {
             return null;
         }
         return hotelDao.queryAllByAreaId(hotel);
+    }
+
+    @Override
+    public List<Hotel> queryHotelByArea(String country, String city) {
+        Area area =new Area();
+        area.setCountry(country);
+        area.setCity(city);
+        Area area1 = areaDao.queryOne(area);
+        Hotel hotel =new Hotel();
+        hotel.setAreaId(area1.getAreaId());
+        return hotelDao.query(hotel);
+    }
+
+    @Override
+    public List<Hotel> queryBySearch(String country, String city, String inDate, String outDate, int num) {
+        List<Hotel> hotelList =queryHotelByArea(country,city);
+        List<Room> roomList = roomDao.query(new Room());
+        List<Room> roomListRes = new ArrayList<>();
+        for (Hotel hotel:hotelList) {
+            for(Room room: roomList){
+                if(hotel.getHotelId()==room.getHotelId()){
+                    roomListRes.add(room);
+                }
+            }
+        }
+
+/*
+        List<Roomdetail> roomdetailList = roomDetailDao.query(new Roomdetail());
+        for(Room room:roomListRes){
+            for(Roomdetail roomdetail:roomdetailList){
+                if
+            }
+        }
+*/
+
+  return hotelList;
+
+
+    }
+
+    @Override
+    public boolean isRoomAvailable(String inDate, String outDate, int num,long roomId) {
+        while (!inDate.equals(outDate)){
+            System.out.println(inDate);
+            Roomdetail roomdetail =new Roomdetail();
+            roomdetail.setRoomDate(inDate);
+            roomdetail.setRoomId(roomId);
+            Roomdetail roomdetail1 = roomDetailDao.queryOne(roomdetail);
+            System.out.println(roomdetail1);
+            Room room =new Room();
+            room.setRoomId(roomId);
+            Room room1 =roomDao.queryOne(room);
+            long roomNum = room1.getRoomNumber();
+            if(roomdetail1==null){
+                System.out.println(1);
+                return false;
+            }
+            else {
+                if(roomNum - roomdetail1.getRdNumber()<num){
+                    System.out.println(2);
+                    return false;
+                }
+            }
+            inDate = Util.addDay(inDate,1);
+
+        }
+
+        return true;
     }
 
 

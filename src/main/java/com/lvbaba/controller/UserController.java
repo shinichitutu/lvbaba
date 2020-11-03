@@ -21,6 +21,11 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @RequestMapping("/index.do")
+    public String returnIndex(){
+        return "../../index";
+    }
+
     @RequestMapping("/toLoginView.do")
     public String toLoginView(){
         return "login";
