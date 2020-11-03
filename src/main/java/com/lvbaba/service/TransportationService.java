@@ -122,18 +122,53 @@ public interface TransportationService {
      */
     boolean deleteTraindetailById(Traindetail traindetail);
 
+    /**
+     * 查询航班明细表集合
+     * @param flightdetail
+     * @return
+     */
     List<Flightdetail> query(Flightdetail flightdetail);
 
+    /**
+     * 查询航班集合
+     * @param flight
+     * @return
+     */
     List<Flight> query(Flight flight);
 
+    /**
+     * 查询单个航班
+     * @param flight
+     * @return
+     */
     Flight queryOne(Flight flight);
 
+    /**
+     * 查询火车集合
+     * @param train
+     * @return
+     */
     List<Train> query(Train train);
 
+    /**
+     * 查询单个火车
+     * @param train
+     * @return
+     */
     Train queryOne(Train train);
 
+    /**
+     * 查询火车明细表集合
+     * @param traindetail
+     * @return
+     */
     List<Traindetail> query(Traindetail traindetail);
 
+    /**
+     * 查询单个火车明细表
+     * @param traindetail
+     * @return
+     */
     Traindetail queryOne(Traindetail traindetail);
 
 }

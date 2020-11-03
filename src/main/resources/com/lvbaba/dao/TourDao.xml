@@ -5,8 +5,10 @@
         t_id,p_id,d_date,r_date,c_type,go_id,return_id,book_num,t_status
     </sql>
     <sql id="condition">
+
         <if test="tourId!=null and tourId!=''">t_id=#{tourId}</if>
         <if test="productId!=null and productId!=''">and p_id=#{productId}</if>
+
         <if test="dDate!=null and dDate!=''">
             and d_date=#{dDate}
         </if>

@@ -310,7 +310,7 @@
         </div>
         <%--原主页入口--%>
         <div>
-            <a href="home.do">旧版主页</a>
+            <a href="home.do" style="font-size: 100px">旧版主页</a>
         </div>
 
 </footer>
@@ -328,14 +328,12 @@
                     <li><a href="userMain.do">旅游首页</a></li>
                     <li><a href="#">推荐路线</a></li>
                 </ul></li>
-
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
+
                     <li><a href="hotelView.do">预订机票</a></li>
                     <li><a href="#">预订酒店</a></li>
-
                 </ul></li>
-
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
                     <li><a href="#">旅行订单</a></li>

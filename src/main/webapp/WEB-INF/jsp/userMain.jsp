@@ -40,6 +40,7 @@
     <div id="loading">
         <div id="loader"></div>
     </div>
+
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
@@ -177,6 +178,7 @@
 <aside id="sidebar">
     <div class="sidebar-header">
         <a href="javascript:void(0);" id="close_sidebar">&times;</a>
+
     </div>
     <nav id="nav">
         <ul>

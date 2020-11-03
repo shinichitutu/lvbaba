@@ -17,6 +17,7 @@
     <base href="<%=basePath%>"/>
 </head>
 <body>
+<%--产品页面--%>
 <div >
     <div class="container" style="border-bottom: solid;height: 400px">
         <div style="height:100%;width: 70%;float: left">
@@ -46,13 +47,14 @@
         </div>
     </div>
 </div>
+<form action="createOne.do" method="post">
 <div style="float: none;height: 200px;background-color: navajowhite">
     <div style="height: 100%;width: 20%;float:left">
         <div style="height: 50%;text-align: left;font-size: 30px;">
             出发:
         </div>
         <div style=";height: 50%">
-            <input type="date" style="height: 50px;width: 80%">
+            <input type="date" style="height: 50px;width: 80%" name="dDate">
         </div>
     </div>
     <div style="height: 100%;width: 20%;float:left">
@@ -60,9 +62,9 @@
             交通方式
         </div>
         <div style=";height: 50%;font-size: 50px">
-            <select style="height: 50px;width: 80%">
-                <option>火车</option>
-                <option>飞机</option>
+            <select style="height: 50px;width: 80%" name="transType">
+                <option value="1">火车</option>
+                <option value="2">飞机</option>
             </select>
         </div>
     </div>
@@ -71,18 +73,7 @@
             人数:
         </div>
         <div style=";height: 50%">
-            <select style="height: 50px;width: 80%">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-            </select>
+            <input type="number" max="10" min="1" step="1" name="numberOfTrips" style="height: 50px;width: 80%">
         </div>
     </div>
     <div style="height: 100%;width: 20%;float:left">
@@ -93,36 +84,24 @@
             <strong>标间/大床房:</strong>
         </div>
         <div style=";height: 25%;float: left;width: 70%">
-            <select style="height: 40px;width: 80%">
-                <option>请选择</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-            </select>
-        </div>
-        <div style=";height: 25%;float: left;width: 30%;font-size: 15px;text-align: right">
-            <strong>家庭房:</strong>
-        </div>
-        <div style=";height: 25%;float: left;width: 70%">
-            <select style="height: 40px;width: 80%;">
-                <option>请选择</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-            </select>
+            <input type="number" max="5" min="0" step="1" name="sRoom" style="width: 40%">
         </div>
     </div>
     <div style="height: 100%;width: 20%;float:left">
+        <input name="productId" type="hidden" value="${product.productId}">
+        <input name="daId" type="hidden" value="${product.daId}">
+        <input name="arrAreaId" type="hidden" value="${product.arrAreaId}">
+        <input name="limLow" type="hidden" value="${product.limLow}">
+        <input name="limUp" type="hidden" value="${product.limUp}">
+        <input name="days" type="hidden" value="${product.days}">
+        <input name="hotelId" type="hidden" value="${product.hotelId}">
+        <input name="productName" type="hidden" value="${product.productName}">
+        <input name="productFee" type="hidden" value="${product.productFee}">
+        <input name="productScore" type="hidden" value="${product.productScore}">
         <input type="submit" value="立即预订" style="margin-top: 20%;text-align: right;font-size: 40px;color: red">
     </div>
 </div>
+</form>
+<p style="color: red;">${requestScope.error}</p>
 </body>
 </html>
