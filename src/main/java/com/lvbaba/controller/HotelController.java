@@ -197,6 +197,7 @@ public class HotelController {
         return "forward:showRooms.do";
     }
 
+
     @RequestMapping("/deleteRoomDetail.do")
     public String deleteRoomDetail(Model model,String roomId,String rdId){
         Roomdetail roomdetail = new Roomdetail();
@@ -211,10 +212,14 @@ public class HotelController {
         return "forward:showRoomDetail.do";
     }
 
-/*    @RequestMapping("/showHotels.do")
-    public String showHotels(Model model,String city,String country,String date1,String date2,String number){
 
-    }*/
+    @RequestMapping("/showHotelsResult.do")
+    public String showHotels(Model model,String city,String inDate,String outDate,String number){
+        List<Hotel> hotelList =hotelService.queryBySearch(city,inDate,outDate,Integer.valueOf(number));
+        model.addAttribute("hotelList",hotelList);
+        return "userHotelResult";
+
+    }
 
 
 

@@ -505,7 +505,7 @@
                 <ul class="nav-sub-menu">
 
                     <li><a href="hotelView.do">预订机票</a></li>
-                    <li><a href="#">预订酒店</a></li>
+                    <li><a href="hotelView.do">预订酒店</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
@@ -519,6 +519,7 @@
         </ul>
     </nav>
 </aside>
+
 </div>
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>

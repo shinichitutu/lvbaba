@@ -253,7 +253,7 @@
     <c:if test="${requestScope.page < requestScope.pages}">
         <a href="showHotels.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
     </c:if></div>
-</div>
+
 
 <footer id="footer">
 

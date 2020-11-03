@@ -187,17 +187,11 @@
                     <li><a href="userMain.do">旅游首页</a></li>
                     <li><a href="#">推荐路线</a></li>
                 </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票</a>
+            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="#">机票首页</a></li>
-                    <li><a href="#">航班推荐</a></li>
 
-                </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">酒店</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="#">酒店首页</a></li>
-                    <li><a href="#">酒店推荐</a></li>
-
+                    <li><a href="#">预订机票</a></li>
+                    <li><a href="hotelView.do">预订酒店</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
@@ -212,6 +206,7 @@
     </nav>
 </aside>
 </div>
+
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 

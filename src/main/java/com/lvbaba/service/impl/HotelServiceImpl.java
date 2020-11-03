@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -130,9 +131,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> queryHotelByArea(String country, String city) {
+    public List<Hotel> queryHotelByArea(String city) {
         Area area =new Area();
-        area.setCountry(country);
         area.setCity(city);
         Area area1 = areaDao.queryOne(area);
         Hotel hotel =new Hotel();
@@ -141,8 +141,9 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> queryBySearch(String country, String city, String inDate, String outDate, int num) {
-        List<Hotel> hotelList =queryHotelByArea(country,city);
+    public List<Hotel> queryBySearch(String city, String inDate, String outDate, int num) {
+
+        List<Hotel> hotelList =queryHotelByArea(city);
         List<Room> roomList = roomDao.query(new Room());
         List<Room> roomListRes = new ArrayList<>();
         for (Hotel hotel:hotelList) {
@@ -153,49 +154,56 @@ public class HotelServiceImpl implements HotelService {
             }
         }
 
-/*
         List<Roomdetail> roomdetailList = roomDetailDao.query(new Roomdetail());
+        List<Long> hotelIdList=new ArrayList<>();
+
         for(Room room:roomListRes){
-            for(Roomdetail roomdetail:roomdetailList){
-                if
+            if(isRoomAvailable(inDate,outDate,num,room.getRoomId())){
+                hotelIdList.add(room.getHotelId());
             }
         }
-*/
 
-  return hotelList;
+       /* Collections.sort(hotelIdList);*/
+       List<Long> hotelIdList2 = Util.duplicateRemoval(hotelIdList);
+        List<Hotel> hotelList1 =new ArrayList<>();
+        for(Long l:hotelIdList2){
+            Hotel hotel =new Hotel();
+            hotel.setHotelId(l);
+           hotelList1.add(hotelDao.queryOne(hotel));
+        }
 
-
+        return hotelList1;
     }
+
 
     @Override
     public boolean isRoomAvailable(String inDate, String outDate, int num,long roomId) {
         while (!inDate.equals(outDate)){
-            System.out.println(inDate);
+            System.out.println("入住日期"+inDate);
             Roomdetail roomdetail =new Roomdetail();
             roomdetail.setRoomDate(inDate);
             roomdetail.setRoomId(roomId);
-            Roomdetail roomdetail1 = roomDetailDao.queryOne(roomdetail);
-            System.out.println(roomdetail1);
+            System.out.println("查询的roomdetail"+roomdetail);
+/*            Roomdetail roomdetail1 = roomDetailDao.queryOne(roomdetail);*/
+            List<Roomdetail> roomdetailList = roomDetailDao.query(roomdetail);
             Room room =new Room();
             room.setRoomId(roomId);
             Room room1 =roomDao.queryOne(room);
             long roomNum = room1.getRoomNumber();
-            if(roomdetail1==null){
+            if(roomdetailList.size()==0){
                 System.out.println(1);
                 return false;
             }
             else {
-                if(roomNum - roomdetail1.getRdNumber()<num){
+                if(roomNum - roomdetailList.get(0).getRdNumber()<num){
                     System.out.println(2);
                     return false;
                 }
             }
             inDate = Util.addDay(inDate,1);
-
         }
 
         return true;
     }
-
 
 }

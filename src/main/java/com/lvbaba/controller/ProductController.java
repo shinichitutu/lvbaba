@@ -71,7 +71,6 @@ public class ProductController {
 
     @RequestMapping("searchProductMain.do")
     public String searchProductMain(String aimArea,String deArea,Model model){
-        System.out.println("测试"+aimArea+deArea);
         List<Product> productList=productService.queryByAreaName(deArea,aimArea);
         int count =productList.size();
         model.addAttribute("product",productList);
@@ -165,6 +164,7 @@ public class ProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
         System.out.println("修改地址为：--------"+"/upload"+File.separator+fileName);
