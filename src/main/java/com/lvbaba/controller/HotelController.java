@@ -50,6 +50,11 @@ public class HotelController {
         return "showHotels";
     }
 
+    @RequestMapping("hotelView.do")
+    public String showHotels(Model model){
+        return "searchHotel";
+    }
+
 
     @RequestMapping("/showRooms.do")
     public String showRooms(Model model, String hotelId) {
@@ -205,6 +210,11 @@ public class HotelController {
         model.addAttribute("roomId",roomId);
         return "forward:showRoomDetail.do";
     }
+
+/*    @RequestMapping("/showHotels.do")
+    public String showHotels(Model model,String city,String country,String date1,String date2,String number){
+
+    }*/
 
 
 
