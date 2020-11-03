@@ -59,12 +59,14 @@
     <section id="intro_section" class="section under-header mb-0">
         <div class="container">
             <h2 class="mb-3">旅游首页</h2>
+
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-5">
                     <li class="breadcrumb-item"><a href="index.do">首页</a></li>
                     <li class="breadcrumb-item active" aria-current="page">旅游首页</li>
                 </ol>
             </nav>
+
             <form action="searchProductMain.do" method="post">
                 <div class="search-wrapper search-wrapper-light mb-5">
                     <div class="search-form">
@@ -116,6 +118,7 @@
                     <%--<li class="listing-options-item"><select name="filter" id="filter" class="custom-select"><option value="0">Popularity</option><option value="1">High Rated</option><option value="2">Most Reviewed</option><option value="3">Newest Listing</option><option value="4">Oldest Listing</option></select></li>--%>
                 </ul>
             </div>
+
             <div class="row list-bunch">
 
 <c:forEach items="${requestScope.product}" var="product" varStatus="status">

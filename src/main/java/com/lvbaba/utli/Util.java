@@ -2,6 +2,7 @@ package com.lvbaba.utli;
 
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Product;
+import com.lvbaba.entity.Tour;
 import com.lvbaba.entityUtil.ProductArea;
 import com.lvbaba.service.AreaService;
 
@@ -19,18 +20,18 @@ public class Util {
     @Resource
     private static AreaService areaService;
 
-    public static List<ProductArea> queryProductArea(List<Product> products){
-        List<ProductArea> productAreas=new ArrayList<>();
-        for (Product product:products) {
-            Area area=new Area();
+    public static List<ProductArea> queryProductArea(List<Product> products) {
+        List<ProductArea> productAreas = new ArrayList<>();
+        for (Product product : products) {
+            Area area = new Area();
             //目的地
             area.setAreaId(product.getArrAreaId());
-            Area departArea=areaService.queryOne(area);
+            Area departArea = areaService.queryOne(area);
             //出发地
             area.setAreaId(product.getDaId());
-            Area destinationArea=areaService.queryOne(area);
+            Area destinationArea = areaService.queryOne(area);
 
-            ProductArea productArea=new ProductArea(product,departArea.getCity(),departArea.getCity());
+            ProductArea productArea = new ProductArea(product, departArea.getCity(), departArea.getCity());
             productAreas.add(productArea);
         }
         return productAreas;
@@ -52,4 +53,45 @@ public class Util {
             return null;
         }
     }
+
+    //去重Long的集合
+    public static List<Long> duplicateRemoval(List<Long> list) {
+        List<Long> longList = new ArrayList<>();
+        boolean flag = true;
+        for (int i = 0; i < list.size(); i++) {
+            flag = true;
+            for (int j =0 ;j<longList.size();j++) {
+                System.out.println(list.get(i).equals(longList.get(j)));
+                if (list.get(i).equals(longList.get(j))) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                longList.add(list.get(i));
+            }
+        }
+        return longList;
+    }
+
+    public static List<Tour> duplicate(List<Tour> list) {
+        List<Tour> longList = new ArrayList<>();
+        boolean flag = true;
+        for (int i = 0; i < list.size(); i++) {
+            flag = true;
+            for (int j =0 ;j<longList.size();j++) {
+                System.out.println(list.get(i).getdDate().equals(longList.get(j).getdDate()));
+                if (list.get(i).equals(longList.get(j))) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                longList.add(list.get(i));
+            }
+        }
+        return longList;
+    }
+
+
 }

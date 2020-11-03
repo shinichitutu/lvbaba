@@ -47,6 +47,7 @@
         </div>
     </div>
 </div>
+
 <form action="createOne.do" method="post">
 <div style="float: none;height: 200px;background-color: navajowhite">
     <div style="height: 100%;width: 20%;float:left">
@@ -102,6 +103,7 @@
     </div>
 </div>
 </form>
+
 <p style="color: red;">${requestScope.error}</p>
 </body>
 </html>

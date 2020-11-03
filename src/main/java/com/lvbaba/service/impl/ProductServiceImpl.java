@@ -133,8 +133,9 @@ public class ProductServiceImpl implements ProductService {
         if (files == null) {
             return false;
         }
-        return filesDao.updateFilePath(files);
+        return filesDao.updateFilePath(files);}
 
+    @Override
     public List<Product> queryByAreaName(String deArea, String aimArea) {
         Area area =new Area();
         area.setCity(deArea);
@@ -155,6 +156,6 @@ public class ProductServiceImpl implements ProductService {
             productList1.add(p);
         }
         return productList1;
-
     }
+
 }

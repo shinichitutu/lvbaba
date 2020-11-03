@@ -31,9 +31,9 @@ public interface HotelService {
      */
     List<Hotel> queryAllByAreaId(Hotel hotel);
 
-    List<Hotel> queryHotelByArea(String country,String city);
+    List<Hotel> queryHotelByArea(String city);
 
-    List<Hotel> queryBySearch(String country,String city,String inDate,String outDate,int num);
+    List<Hotel> queryBySearch(String city,String inDate,String outDate,int num);
 
     boolean isRoomAvailable(String inDate,String outDate,int num,long roomId);
 
