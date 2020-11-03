@@ -290,7 +290,7 @@
         </div>
         <%--原主页入口--%>
         <div>
-            <a href="home.do">旧版主页</a>
+            <a href="home.do" style="font-size: 100px">旧版主页</a>
         </div>
 </div>
 </footer>
@@ -304,27 +304,27 @@
         <ul>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="index.html">旅游首页</a></li>
-                    <li><a href="index2.html">推荐路线</a></li>
+                    <li><a href="userMain.do">旅游首页</a></li>
+                    <li><a href="#">推荐路线</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="list-sidebar.html">机票首页</a></li>
-                    <li><a href="list-full-width.html">航班推荐</a></li>
+                    <li><a href="#">机票首页</a></li>
+                    <li><a href="#">航班推荐</a></li>
 
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">酒店</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="dashboard.html">酒店首页</a></li>
-                    <li><a href="invoice.html">酒店推荐</a></li>
+                    <li><a href="#">酒店首页</a></li>
+                    <li><a href="#">酒店推荐</a></li>
 
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="about.html">旅行订单</a></li>
-                    <li><a href="contact.html">机票订单</a></li>
-                    <li><a href="coming-soon.html">酒店订单</a></li>
-                    <li><a href="pricing.html">个人信息</a></li>
+                    <li><a href="#">旅行订单</a></li>
+                    <li><a href="#">机票订单</a></li>
+                    <li><a href="#">酒店订单</a></li>
+                    <li><a href="#">个人信息</a></li>
 
                 </ul></li>
 

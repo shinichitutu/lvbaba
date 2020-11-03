@@ -55,15 +55,45 @@ public interface TourService {
      */
     List<Tour> queryByPid(Tour tour);
 
+    /**
+     * 开放预订
+     * @param tourId
+     * @return
+     */
     int openBooking(int tourId);
 
+    /**
+     * 关闭预订
+     * @param tourId
+     * @return
+     */
     int closeBooking(int tourId);
 
+    /**
+     *开启旅行团
+     * @param tourId
+     * @return
+     */
     int startTour(int tourId);
 
+    /**
+     * 取消旅行团
+     * @param tourId
+     * @return
+     */
     int cancelTour(int tourId);
 
+    /**
+     * 强制删除旅行团
+     * @param tourId
+     * @return
+     */
     boolean forceCancelTour(int tourId);
 
+    /**
+     * 通过TourId查询PId
+     * @param tourId
+     * @return
+     */
     Long queryPIdByTourId(int tourId);
 }

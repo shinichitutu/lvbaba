@@ -5,28 +5,32 @@
         t_id,p_id,d_date,r_date,c_type,go_id,return_id,book_num,t_status
     </sql>
     <sql id="condition">
-        <if test="tourId!=null and tourId!=''">t_id=#{tourId}</if>
-        <if test="productId!=null and productId!=''">p_id=#{productId}</if>
+        <if test="tourId!=null and tourId!=''">
+            t_id=#{tourId}
+        </if>
+        <if test="productId!=null and productId!=''">
+            and p_id=#{productId}
+        </if>
         <if test="dDate!=null and dDate!=''">
-            d_date=#{dDate}
+            and d_date=#{dDate}
         </if>
         <if test="roomDate!=null and roomDate!=''">
-            r_date=#{roomDate}
+            and r_date=#{roomDate}
         </if>
         <if test="transType!=null and transType!=''">
-            c_type=#{transType}
+            and c_type=#{transType}
         </if>
         <if test="goId!=null and goId!=''">
-            go_id=#{goId}
+            and go_id=#{goId}
         </if>
         <if test="returnId!=null and returnId!=''">
-            return_id=#{returnId}
+            and return_id=#{returnId}
         </if>
         <if test="bookNum!=null and bookNum!=''">
-            book_num=#{bookNum}
+            and book_num=#{bookNum}
         </if>
         <if test="tourStatus!=null and tourStatus!=''">
-            t_status=#{tourStatus}
+            and t_status=#{tourStatus}
         </if>
     </sql>
     <update id="updateTour">

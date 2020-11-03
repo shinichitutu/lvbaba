@@ -10,6 +10,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+
 <html>
 <head>
     <title>用户</title>
@@ -87,6 +88,7 @@
         </ul>
     </div>
 </nav>
+
 <div style="text-align: center;">
     <div style="text-align: center;">
         <form action="searchProducts.do">
