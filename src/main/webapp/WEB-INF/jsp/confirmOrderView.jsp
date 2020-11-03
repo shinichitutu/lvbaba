@@ -177,7 +177,7 @@
     </div>
     <div style="width: 880px;" >
         <div class="tourInfo" style="background-color: white;padding: 10px;border-radius: 10px;">
-            <h3>乌镇+杭州2日1晚跟团游(5钻)</h3>
+            <h3>${requestScope.departureArea.city}+${requestScope.destinationArea.city}${product.days}日游</h3>
             <p style="text-indent: 2em">船游西湖·深度纯玩·【一整天360打卡网红乌镇日夜景】拒绝走马观花+【泛舟西湖赏美景】A线住乌镇景区内5钻酒店+可免费使用景区内电瓶车+健身房，B线入住乌镇旗下特色客栈+多次入园+赠晚餐
                 B线-宿5钻子夜大酒店上海出发2020年10月31日(星期六)-2020年11月1日(星期日)3 标间:${requestScope.sRoom}间,家庭间:${requestScope.fRoom}间,出行人数:${requestScope.numberOfTrips}</p>
         </div>
@@ -186,7 +186,8 @@
             <h3 style="display: inline">明细</h3><span>以下为您所选择的全部资源明细，下单前请仔细查看核实。</span></p>
             出发地:${requestScope.departureArea.city}<br/>
             目的地:${requestScope.destinationArea.city}<br/>
-            出发时间:${requestScope.train.trDTime}${requestScope.flight.flightDTime}<br/>
+            出发时间:${requestScope.traindetail.tdDate}&nbsp;${requestScope.train.trDTime}${requestScope.flightdetail.fdDate}&nbsp;${requestScope.flight.flightDTime}<br/>
+            到达时间:${requestScope.traindetail.tdDate}&nbsp;${requestScope.train.trATime}${requestScope.flightdetail.fdDate}&nbsp;${requestScope.flight.flightATime}<br/>
             航班号:${requestScope.train.trNumber}${requestScope.flight.flightNumber}<br/>
             酒店名称:${requestScope.hotel.hotelName}<br/>
             房间数:${requestScope.sRoom}间
