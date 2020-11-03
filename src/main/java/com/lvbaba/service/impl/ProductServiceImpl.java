@@ -134,7 +134,7 @@ public class ProductServiceImpl implements ProductService {
             return false;
         }
         return filesDao.updateFilePath(files);
-
+    }
     public List<Product> queryByAreaName(String deArea, String aimArea) {
         Area area =new Area();
         area.setCity(deArea);
