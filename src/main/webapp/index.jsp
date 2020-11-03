@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,10 +21,172 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="js/jquery-3.1.0.js"></script>
+    <script>
+        $(function () {
+            if (${not empty sessionScope.user}){
+                $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+            }
+
+            // 判断用户名是否可以使用
+            var flag_name = false;
+            // 判断mm1的状态
+            var flag_mm1 = false;
+            // 判断mm2的状态
+            var flag_mm2 = false;
+
+            // 当我们跳转到注册界面时，我们的注册按钮是不能点击的
+            $("#registerUser").attr("disabled", "disabled");
+
+            // 当我们用户名输入完成之后，失焦事件触发，判断当前用户名是否重复可用
+            $("#username2").blur(function () {
+                var reg = /^[a-zA-Z].{5,17}$/;
+                var username = $(this).val();
+                console.log(username);
+                if (null == username) {
+                    $(this).css("border", "1px solid red");
+                    alert("账号不能为空");
+                } else if (reg.test(username) == false) {
+                    $(this).css("border", "1px solid red");
+                    $(".showUserNameInfo").html("密码的长度为6-18为，不能以数字开头，不能重复");
+                    $(".showUserNameInfo").css("color", "red")
+                } else {
+                    $(this).css("border", "");
+                    $.ajax({
+                        type: "post",
+                        data: {uUsername:username},
+                        url: "testUserName.do",
+                        dataType: "text",
+                        success: function (obj) {
+                            if ("true" == obj) {
+                                $(".showUserNameInfo").html("可以使用");
+                                $(".showUserNameInfo").css("color", "green")
+                                flag_name = true;
+                            } else {
+                                $("#username_register").css("border", "1px solid red");
+                                $(".showUserNameInfo").html("名字重复");
+                                $(".showUserNameInfo").css("color", "red")
+                            }
+                        }
+                    })
+                }
+                testSubmit(flag_name, flag_mm1, flag_mm2);
+            })
+
+            // 密码输入框失焦之后判断其输入的格式
+            $("#password2").blur(function () {
+                var reg = /^.{6,20}$/;
+                var mm = $(this).val();
+                if (null == mm) {
+                    $(this).css("border", "1px solid red");
+                    alert("密码不能为空");
+                } else if (reg.test(mm) == false) {
+                    $(this).css("border", "1px solid red");
+                    $(".showPasswordInfo").html("密码的长度为6-18为，不能以数字开头，不能重复");
+                    $(".showPasswordInfo").css("color", "red")
+                } else {
+                    $(this).css("border", "");
+                    $(".showPasswordInfo").html("");
+                    flag_mm1 = true;
+                }
+                testSubmit(flag_name, flag_mm1, flag_mm2);
+            })
+
+            // 再次确认密码输入框失焦之后判断其输入的格式以及与上一次的密码是否一样
+            $("#password3").blur(function () {
+                var mm = $(this).val();
+                if (null == mm) {
+                    $(this).css("border", "1px solid red");
+                    alert("密码不能为空");
+                } else if (mm != $("#password2").val()) {
+                    $(this).css("border", "1px solid red");
+                    $(".showAgainPasswordInfo").html("两次密码不相同");
+                    $(".showAgainPasswordInfo").css("color", "red")
+                } else {
+                    $(this).css("border", "");
+                    $(".showAgainPasswordInfo").html("");
+                    flag_mm2 = true;
+                }
+                testSubmit(flag_name, flag_mm1, flag_mm2);
+            })
+
+            //当信息填完整之后，我们进行注册
+            $("#registerUser").click(function () {
+                var name = $("#nickname").val();
+                var userName = $("#username2").val();
+                var password = $("#password2").val();
+                $.ajax({
+                    type: "post",
+                    data: {uName:name,uUsername: userName,uPassword:password},
+                    url: "register.do",
+                    dataType: "text",
+                    success: function (obj) {
+                        if ("false" == obj) {
+                            alert("注册失败")
+                        } else {
+                            alert("注册成功")
+                            location.href = "index.jsp";
+                        }
+                    }
+                })
+            })
+
+            // 判断用户名是否为空
+            $("#name_login").blur(function () {
+                var userName = $(this).val();
+                if (null==userName){
+                    $(this).css({"border":"1px solid red"});
+                    alert("用户名不能为空");
+                }else{
+                    $(this).css({"border":""});
+                    flag_login_name=true;
+                }
+                // cancelLoginBtn(flag_login_name,flag_login_pwd);
+            })
+
+            // 判断密码是否为空
+            $("#pwd_login").blur(function () {
+                var pwd = $(this).val();
+                if (null==pwd){
+                    $(this).css({"border":"1px solid red"});
+                    alert("密码不能为空");
+                }else{
+                    $(this).css({"border":""});
+                    flag_login_pwd=true;
+                }
+                // cancelLoginBtn(flag_login_name,flag_login_pwd);
+            })
+
+            // 登录按钮触发事件
+            $("#login_btn").click(function () {
+                var name = $("#username1").val();
+                var pwd = $("#password1").val();
+                var check =$("#remember").val();
+                $.ajax({
+                    type:"post",
+                    data:{uUsername:name,uPassword:pwd,check:check},
+                    url:"login.do",
+                    dataType:"text",
+                    success:function (obj) {
+                        if ("false"==obj){
+                            alert("账号或密码有误，请重新登录");
+                        }else{
+                            location.href="index.jsp";
+                        }
+                    }
+                })
+            })
+        })
+
+        //取消注册按钮不能点击的方法
+        function testSubmit(flag_name, flag_mm1, flag_mm2) {
+            if (flag_name && flag_mm1 && flag_mm2) {
+                $("#registerUser").removeAttr("disabled");
+            }
+        }
+    </script>
 </head>
 <body>
-
-
 <!-- 注册登录 -->
 <div class="modal fade" id="sign_in" role="dialog" aria-hidden="true">
     <div class="modal-dialog auth-modal modal-dialog-centered" role="document">
@@ -59,7 +222,7 @@
                                 </div>
                                 <a href="#" class="link" data-dismiss="modal" data-toggle="modal" data-target="#forgot">管理员登录</a>
                             </div>
-                            <button type="submit" class="btn btn-danger btn-block">登录</button>
+                            <button type="button" id="login_btn" class="btn btn-danger btn-block">登录</button>
                             <div class="auth-modal-foot mt-4">
                                 <div class="mb-4 text-center">
 
@@ -80,20 +243,23 @@
                             <div class="form-group">
                                 <label for="username2" class="form-control-label">用户名</label>
                                 <input id="username2" type="text" name="username2" placeholder="请输入用户名" class="form-control" required="" />
+                                <br/><span class="showUserNameInfo"></span>
                             </div>
                             <div class="form-group">
                                 <label for="password2" class="form-control-label">密码</label>
                                 <div class="form-control-icon form-control-icon_right">
                                     <input id="password2" type="password" name="password2" placeholder="请输入密码" class="form-control" required="" />
+                                    <br/><span class="showPasswordInfo"></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password2" class="form-control-label">确认密码</label>
                                 <div class="form-control-icon form-control-icon_right">
                                     <input id="password3" type="password" name="password3" placeholder="请再次输入密码" class="form-control" required="" />
+                                    <br/><span class="showAgainPasswordInfo"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger btn-block mt-4">注册</button>
+                            <button type="button" id="registerUser" class="btn btn-danger btn-block mt-4">注册</button>
                         </form>
                     </div>
                 </div>
@@ -112,12 +278,12 @@
 
             </div>
             <div class="modal-body px-4 px-sm-5 pt-4">
-                <form action="#" class="pb-5">
+                <form action="adminLogin.do" class="pb-5" method="post">
                     <div class="form-group">
                         <label for="username3" class="form-control-label">用户名</label>
-                        <input id="username3" type="text" name="username3" placeholder="请输入用户名" class="form-control" required="" /><br/>
-                        <label for="username3" class="form-control-label">用户名</label>
-                        <input id="password4" type="text" name="password4" placeholder="请输入密码" class="form-control" required="" />
+                        <input id="username3" type="text" name="adName" placeholder="请输入用户名" class="form-control" required="" /><br/>
+                        <label for="username3" class="form-control-label">密码</label>
+                        <input id="password4" type="text" name="adPassword" placeholder="请输入密码" class="form-control" required="" />
                     </div>
                     <button type="submit" class="btn btn-danger btn-block mt-4">登录</button>
                 </form>
@@ -136,7 +302,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>

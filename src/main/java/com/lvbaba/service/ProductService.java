@@ -1,5 +1,6 @@
 package com.lvbaba.service;
 
+import com.lvbaba.entity.Files;
 import com.lvbaba.entity.Product;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface ProductService {
      * @param product
      * @return
      */
-    boolean insertProduct(Product product);
+    boolean insertProduct(Product product,Files files);
 
     /**
      * 删除产品表
@@ -27,7 +28,7 @@ public interface ProductService {
      * @param product
      * @return
      */
-    boolean updateProduct(Product product);
+    boolean updateProduct(Product product,Files files);
 
     /**
      * 根据产品id查询商品
@@ -45,5 +46,28 @@ public interface ProductService {
 
     List<Product> querByOthers(Product product);
 
+
+    /**
+     * 上传文件的方法
+     * @param files
+     * @return
+     */
+    boolean upLoadFile(Files files);
+
+    /**
+     * 通过产品Id返回该产品的路径
+     * @param productId
+     * @return
+     */
+    Files queryByProductId(Long productId);
+
+    /**
+     * 通过产品Id修改当前产品的路径
+     * @param files
+     * @return
+     */
+    boolean updateFilePath(Files files);
+
     List<Product> queryByAreaName(String deArea,String aimArea);
+
 }
