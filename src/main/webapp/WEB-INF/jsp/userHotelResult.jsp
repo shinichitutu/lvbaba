@@ -69,8 +69,6 @@
             </div>
         </nav>
     </header>
-    <br/>
-
 
     <section id="intro_section" class="section under-header mb-0">
         <div class="container">
@@ -110,8 +108,6 @@
 
                             <div class="listing-image">
                                 <div class="listing-image-head">
-                                    <!-- <span class="listing-tag">Close now</span>
-                                    <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
 
                                 </div>
                                 <a href="list-details.html"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
@@ -124,18 +120,18 @@
 
                                         <!-- 评分 -->
                                         <div class="listing-rating">
-                                            <span class="listing-rating-number">hhhh</span>
+                                            <span class="listing-rating-number">${hotel.hotelLevel}</span>
                                             <i class="ion-md-star"></i>
                                         </div>
 
                                         <div class="listing-desc">
-                                            <a href="list-details.html" class="listing-title text-truncate">${hotel.hotelLevel}</a>
-                                            <p>${hotel.hotelName}<br />行程天数：5天</p>
+                                            <a href="list-details.html" class="listing-title text-truncate"></a>
+                                            <p></p>
                                         </div>
 
                                     </div>
 
-                                    <p style="font-size: 26px">￥500元起</p>
+                                    <p style="font-size: 26px">${hotel.hotelName}</p>
                                 </div>
 
                             </div>
