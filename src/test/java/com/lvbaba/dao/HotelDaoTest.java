@@ -45,9 +45,10 @@ public class HotelDaoTest {
     @Test
     public void testRoom(){
         Roomdetail roomdetail =new Roomdetail();
-        roomdetail.setRdId(1);
-        roomdetail.setRdPrice(500);
-/*        roomdetail.setRdNumber(10);*/
+        roomdetail.setRoomId(1);
+        roomdetail.setRoomDate("2020-10-22");
+        System.out.println(roomDetailDao.query(roomdetail));
+
     }
 
 }

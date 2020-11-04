@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.HotelOrderDao">
+    <sql id="all">
+        ho_id,u_id, r_id, in_date, out_date, hotel_booking_date, room_num, ho_price
+    </sql>
+    <insert id="insertHotelOrder">
+        INSERT INTO hotelorder(u_id, r_id, in_date, out_date, hotel_booking_date, room_num, ho_price)
+        VALUE (#{userId},#{roomId},#{inDate},#{outDate},#{hotelBookingDate},#{roomNum},#{hoPrice})
+    </insert>
+    <update id="updateHotelOrder">
+        UPDATE hotelorder
+        <set>
+            <if test="hoId!=null and hoId!=''">ho_id=#{hoId},</if>
+            <if test="userId!=null and userId!=''">u_id=#{userId},</if>
+            <if test="roomId!=null and roomId!=''">r_id=#{roomId},</if>
+            <if test="inDate!=null and inDate!=''">in_date=#{inDate},</if>
+            <if test="outDate!=null and outDate!=''">out_date=#{outDate},</if>
+            <if test="hotelBookingDate!=null and hotelBookingDate!=''">
+                hotel_booking_date=#{hotelBookingDate},</if>
+            <if test="roomNum!=null and roomNum!=''">room_num=#{roomNum},</if>
+            <if test="hoPrice!=null and hoPrice!=''">ho_price=#{hoPrice},</if>
+        </set>
+        where ho_id=#{hoId}
+    </update>
+    <delete id="removeHotelOrder">
+        DELETE from hotelorder where ho_id=#{hoId}
+    </delete>
+    <sql id="condition">
+        <if test="hoId!=null and hoId!=''">ho_id=#{hoId}</if>
+        <if test="userId!=null and userId!=''">and u_id=#{userId}</if>
+        <if test="roomId!=null and roomId!=''">and r_id=#{roomId}</if>
+        <if test="inDate!=null and inDate!=''">and in_date=#{inDate}</if>
+        <if test="outDate!=null and outDate!=''">and out_date=#{outDate}</if>
+        <if test="hotelBookingDate!=null and hotelBookingDate!=''">and hotel_booking_date=#{hotelBookingDate}</if>
+        <if test="roomNum!=null and roomNum!=''">and room_num=#{roomNum}</if>
+        <if test="hoPrice!=null and hoPrice!=''">and ho_price=#{hoPrice}</if>
+    </sql>
+    <select id="queryOne" resultMap="hotelOrderMap">
+        SELECT <include refid="all"/> from hotelorder
+        <where>
+            <include refid="condition"></include>
+        </where>
+    </select>
+    <select id="query" resultMap="hotelOrderMap">
+        SELECT <include refid="all"/> FROM hotelorder
+        <where>
+            <include refid="condition"/>
+        </where>
+    </select>
+
+    <resultMap id="hotelOrderMap" type="com.lvbaba.entity.HotelOrder">
+        <id property="hoId" column="ho_id"/>
+        <result property="userId" column="u_id"/>
+        <result property="roomId" column="r_id"/>
+        <result property="inDate" column="in_date"/>
+        <result property="outDate" column="out_date"/>
+        <result property="hotelBookingDate" column="hotel_booking_date"/>
+        <result property="roomNum" column="room_num"/>
+        <result property="hoPrice" column="ho_price"/>
+    </resultMap>
+</mapper>

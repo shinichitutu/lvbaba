@@ -92,4 +92,15 @@ public class Roomdetail {
   public void setRoom(Room room) {
     this.room = room;
   }
+
+  @Override
+  public String toString() {
+    return "Roomdetail{" +
+            "rdId=" + rdId +
+            ", roomId=" + roomId +
+            ", roomDate='" + roomDate + '\'' +
+            ", rdPrice=" + rdPrice +
+            ", rdNumber=" + rdNumber +
+            '}';
+  }
 }

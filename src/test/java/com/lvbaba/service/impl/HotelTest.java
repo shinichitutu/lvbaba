@@ -19,6 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,7 +72,23 @@ public class HotelTest {
         System.out.println(hotelService.isRoomAvailable("2020-10-22","2020-10-25",2,1));
     }
 
+    @Test
+    public void testHotelSearch(){
+        System.out.println(hotelService.queryBySearch("1","2020-10-22","2020-10-26",2));
+    }
 
+    @Test
+    public void quchong(){
+        List<Long> list =new ArrayList<>();
+        list.add(Long.valueOf("5"));
+        list.add(Long.valueOf("6"));
+        list.add(Long.valueOf("6"));
+        list.add(Long.valueOf("9"));
+        list.add(Long.valueOf("6"));
+
+/*        System.out.println(list.get(2).equals(list.get(1)));*/
+        System.out.println(Util.duplicateRemoval(list));
+    }
 
 
 }

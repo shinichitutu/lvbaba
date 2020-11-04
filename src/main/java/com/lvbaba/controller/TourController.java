@@ -5,9 +5,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.*;
 import com.lvbaba.service.*;
+import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.print.DocFlavor;
@@ -102,6 +104,13 @@ public class TourController {
         return "showTours";
     }
 
+    @RequestMapping("/queryTransPort.do")
+    @ResponseBody
+    public String queryTransPort(Tour tour){
+        List<Tour> tours=tourService.queryByPid(tour);
+        List<Tour> tourList=Util.de_weightTrans(tours);
+        return JSON.toJSONString(tours);
+    }
 
     @RequestMapping("/updateTour.do")
     public String updateTour(Tour tour,Model model){
@@ -246,23 +255,31 @@ public class TourController {
             model.addAttribute("error","该天没有旅行团哦");
             return "productOne";
         }
-/*        if (numberOfTrips>(sRoom*2)){
+        if (numberOfTrips>(sRoom*2)){
             model.addAttribute("error","您所预定的房间住不下您预定的人哦");
             return "productOne";
-        }*/
+        }
         /*判断用户选择的出行工具*/
         if (tour.getTransType().equals("1")){
              /*火车*/
             Train train=new Train();
-            train.setTrId(tour.getGoId());
+            Traindetail traindetail=new Traindetail();
+            traindetail.setTdId(tour.getGoId());
+            traindetail=transportationService.queryOne(traindetail);
+            train.setTrId(traindetail.getTrId());
             train=transportationService.queryOne(train);
+            model.addAttribute("traindetail",traindetail);
             model.addAttribute("train",train);
         }
         if (tour.getTransType().equals("2")){
             /*飞机*/
             Flight flight=new Flight();
-            flight.setFlightId(tour.getGoId());
+            Flightdetail flightdetail=new Flightdetail();
+            flightdetail.setFdId(tour.getGoId());
+            flightdetail=transportationService.query(flightdetail).get(0);
+            flight.setFlightId(flightdetail.getFlightId());
             flight=transportationService.queryOne(flight);
+            model.addAttribute("flightdetail",flightdetail);
             model.addAttribute("flight",flight);
         }
         /*出行人数  Number of trips*/

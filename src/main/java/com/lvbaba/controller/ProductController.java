@@ -4,10 +4,8 @@ package com.lvbaba.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.*;
-import com.lvbaba.service.AreaService;
-import com.lvbaba.service.HotelService;
-import com.lvbaba.service.ProductService;
-import com.lvbaba.service.RoomService;
+import com.lvbaba.service.*;
+import com.lvbaba.utli.Util;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +17,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by YY on 2020/10/26.
@@ -37,7 +37,10 @@ public class ProductController {
     private RoomService roomService;
     @Resource
     private HotelService hotelService;
-
+    @Resource
+    private TourService tourService;
+    @Resource
+    private CommentService commentService;
     @RequestMapping("/showProduct.do")
     public String showProduct(Model model,String page){
         if (page==null){
@@ -68,7 +71,6 @@ public class ProductController {
 
     @RequestMapping("searchProductMain.do")
     public String searchProductMain(String aimArea,String deArea,Model model){
-        System.out.println("测试"+aimArea+deArea);
         List<Product> productList=productService.queryByAreaName(deArea,aimArea);
         int count =productList.size();
         model.addAttribute("product",productList);
@@ -82,6 +84,16 @@ public class ProductController {
     @RequestMapping("productOne.do")
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);
+        /*查询关于产品的评论*/
+        Comment comment=new Comment();
+        comment.setProductId(product.getProductId());
+        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+        Tour tour=new Tour();
+        tour.setProductId(product.getProductId());
+        List<Tour> tours=tourService.queryByPid(tour);
+        List<Tour> tourList= Util.duplicate(tours);
+        model.addAttribute("tours",tourList);
+        model.addAttribute("comments",comments);
         return "productOne";
     }
 
@@ -152,6 +164,7 @@ public class ProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
         System.out.println("修改地址为：--------"+"/upload"+File.separator+fileName);
