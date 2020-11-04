@@ -41,6 +41,7 @@ public class ProductController {
     private TourService tourService;
     @Resource
     private CommentService commentService;
+
     @RequestMapping("/showProduct.do")
     public String showProduct(Model model,String page){
         if (page==null){
@@ -85,15 +86,15 @@ public class ProductController {
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);
         /*查询关于产品的评论*/
-        Comment comment=new Comment();
+        /*Comment comment=new Comment();
         comment.setProductId(product.getProductId());
-        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);*/
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
         List<Tour> tourList= Util.duplicate(tours);
         model.addAttribute("tours",tourList);
-        model.addAttribute("comments",comments);
+        /*model.addAttribute("comments",comments);*/
         return "productOne";
     }
 

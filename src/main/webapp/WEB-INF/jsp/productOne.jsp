@@ -13,11 +13,12 @@
 %>
 <html>
 <head>
+
     <title>用户查看产品详情</title>
     <script src="js/jquery-3.1.0.js"></script>
     <script>
         $(function () {
-            $(".dDate").blur(function () {
+            $(".dDate").change(function () {
                 $("#trans option:gt(0)").remove()
                 var pId=$("#pId").val()
                 var dDate=$(this).val()
@@ -34,13 +35,14 @@
                             }else {
                                 str += "<option value='"+item.goId+"'>火车</option>";
                             }
-                        })
+                        });
                         $("#trans").append(str);
                     }
                 })
             })
         })
     </script>
+
     <base href="<%=basePath%>"/>
 </head>
 <body>
