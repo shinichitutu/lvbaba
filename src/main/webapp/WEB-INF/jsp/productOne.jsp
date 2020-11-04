@@ -14,10 +14,19 @@
 <html>
 <head>
     <title>用户查看产品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="js/jquery-3.1.0.js"></script>
     <script>
         $(function () {
-            $(".dDate").blur(function () {
+            $("#numberOfTrips").change(function () {
+                var num=$(this).val();
+                $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2))
+            })
+            $(".dDate").change(function () {
                 $("#trans option:gt(0)").remove()
                 var pId=$("#pId").val()
                 var dDate=$(this).val()
@@ -83,6 +92,7 @@
             </div>
             <div style=";height: 50%">
                 <select style="height: 50px;width: 80%"name="dDate" class="dDate">
+                    <option>请选择出发日期</option>
                     <c:forEach items="${tours}" var="tour" varStatus="i">
                         <option >${tour.dDate}</option>
                     </c:forEach>
@@ -93,7 +103,7 @@
             <div style="height: 50%;text-align: left;font-size: 30px;">
                 交通方式
             </div>
-            <div style=";height: 50%;font-size: 50px">
+            <div style=";height: 50%">
                 <select style="height: 50px;width: 80%" name="transType" id="trans">
                     <option value="1">请选择</option>
                 </select>
@@ -104,7 +114,7 @@
                 人数:
             </div>
             <div style=";height: 50%">
-                <input type="number" max="10" min="1" step="1" name="numberOfTrips" style="height: 50px;width: 80%">
+                <input type="number" max="10" min="1" step="1" name="numberOfTrips" id="numberOfTrips" style="height: 50px;width: 80%">
             </div>
         </div>
         <div style="height: 100%;width: 20%;float:left">
@@ -115,7 +125,7 @@
                 <strong>标间/大床房:</strong>
             </div>
             <div style=";height: 25%;float: left;width: 70%">
-                <input type="number" max="5" min="0" step="1" name="sRoom" style="height: 50px;width: 80%">
+                <input type="number" max="5" step="1" name="sRoom" style="height: 50px;width: 80%" id="sRoom">
             </div>
         </div>
         <div style="height: 100%;width: 20%;float:left">
@@ -133,8 +143,29 @@
         </div>
     </div>
 </form>
-
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>评论id</td>
+        <td>用户id</td>
+        <td>产品id</td>
+        <td>评论内容</td>
+        <td>评分</td>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${comments}" var="comment" varStatus="i">
+        <tr>
+            <td>${comment.commentId}</td>
+            <td>${comment.uId}</td>
+            <td>${comment.productId}</td>
+            <td>${comment.content}</td>
+            <td>${comment.score}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 <p style="color: red;">${requestScope.error}</p>
-
+<br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

@@ -481,10 +481,7 @@
         <div class="last-footer text-muted">
             &copy; 2020 Kri8thm. All rights reserved.
         </div>
-        <%--原主页入口--%>
-        <div>
-            <a href="home.do" style="font-size: 100px">旧版主页</a>
-        </div>
+
 
 </footer>
 
@@ -519,6 +516,10 @@
     </nav>
 </aside>
 
+</div>
+<%--原主页入口--%>
+<div>
+    <a href="home.do" style="font-size: 100px">旧版主页</a>
 </div>
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
