@@ -5,10 +5,11 @@ import com.lvbaba.entity.Product;
 import com.lvbaba.entity.Tour;
 import com.lvbaba.entityUtil.ProductArea;
 import com.lvbaba.service.AreaService;
-
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+
 import java.util.*;
+
 
 /**
  * Created by YY on 2020/10/28.
@@ -42,8 +43,10 @@ public class Util {
 
             Calendar cd = Calendar.getInstance();
             cd.setTime(sdf.parse(s));
-            cd.add(Calendar.DATE, n);//增加一天
-            //cd.add(Calendar.MONTH, n);//增加一个月
+            //增加一天
+            cd.add(Calendar.DATE, n);
+            //增加一个月
+            //cd.add(Calendar.MONTH, n);
 
             return sdf.format(cd.getTime());
 
@@ -52,6 +55,13 @@ public class Util {
         }
     }
 
+
+    public static String getDate() {
+        Calendar calendar=Calendar.getInstance();
+        //减填负数
+        calendar.add(Calendar.HOUR, 2);
+        return new SimpleDateFormat("HH-mm").format(calendar.getTime());
+    }
 
     //去重Long的集合
     public static List<Long> duplicateRemoval(List<Long> list) {
@@ -127,5 +137,6 @@ public class Util {
         longList.forEach(System.out::println);
         return longList;
     }
+
 
 }
