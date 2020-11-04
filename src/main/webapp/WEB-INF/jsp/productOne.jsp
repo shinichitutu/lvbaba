@@ -13,6 +13,7 @@
 %>
 <html>
 <head>
+
     <title>用户查看产品详情</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,10 +23,12 @@
     <script src="js/jquery-3.1.0.js"></script>
     <script>
         $(function () {
+
             $("#numberOfTrips").change(function () {
                 var num=$(this).val();
                 $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2))
             })
+
             $(".dDate").change(function () {
                 $("#trans option:gt(0)").remove()
                 var pId=$("#pId").val()
@@ -43,13 +46,14 @@
                             }else {
                                 str += "<option value='"+item.goId+"'>火车</option>";
                             }
-                        })
+                        });
                         $("#trans").append(str);
                     }
                 })
             })
         })
     </script>
+
     <base href="<%=basePath%>"/>
 </head>
 <body>

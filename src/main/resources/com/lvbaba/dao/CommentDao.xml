@@ -12,9 +12,11 @@
         <if test="commentId!=null and commentId!=''">and c_id = #{commentId}</if>
     </where>
     </update>
+
     <delete id="deleteCommentById" parameterType="Comment">
         delete from comment where c_id = #{commentId}
     </delete>
+
     <select id="queryCommentByUidAndPid" parameterType="Comment" resultMap="comMap">
         select c_id,u_id,p_id,content,score from comment <where>
         <if test="productId!=null and productId!=''">p_id = #{productId}</if>
@@ -22,6 +24,7 @@
         <if test="commentId!=null and commentId!=''">and c_id = #{commentId}</if>
     </where>
     </select>
+
     <resultMap id="comMap" type="Comment">
         <id property="commentId" column="c_id"/>
         <result property="uId" column="u_id"/>
@@ -29,4 +32,6 @@
         <result property="content" column="content"/>
         <result property="score" column="score"/>
     </resultMap>
+
+
 </mapper>
