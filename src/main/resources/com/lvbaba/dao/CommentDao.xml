@@ -19,9 +19,9 @@
 
     <select id="queryCommentByUidAndPid" parameterType="Comment" resultMap="comMap">
         select c_id,u_id,p_id,content,score from comment <where>
-        <if test="u_id!=null and u_id!=''">u_id = #{uId}</if>
-        <if test="p_id!=null and p_id!=''">and p_id = #{productId}</if>
-        <if test="c_id!=null and c_id!=''">and c_id = #{commentId}</if>
+        <if test="productId!=null and productId!=''">p_id = #{productId}</if>
+        <if test="uId!=null and uId!=''">and u_id = #{uId}</if>
+        <if test="commentId!=null and commentId!=''">and c_id = #{commentId}</if>
     </where>
     </select>
 

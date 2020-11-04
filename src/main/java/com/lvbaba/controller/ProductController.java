@@ -85,10 +85,8 @@ public class ProductController {
     @RequestMapping("productOne.do")
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);
-        /*查询关于产品的评论*/
-        /*Comment comment=new Comment();
-        comment.setProductId(product.getProductId());
-        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);*/
+        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+        comments.forEach(System.out::println);
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
