@@ -31,6 +31,8 @@ public class Product {
     this.productScore = productScore;
   }
 
+
+
   public Product() {
   }
 
