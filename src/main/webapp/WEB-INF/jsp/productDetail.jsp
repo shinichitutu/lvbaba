@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: shinichi
@@ -35,6 +36,41 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="js/jquery-3.1.0.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#numberOfTrips").change(function () {
+                var num=$(this).val();
+                $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2));
+            })
+
+            $(".dDate").change(function () {
+                $("#trans option:gt(0)").remove();
+                var pId=$("#pId").val()
+                var dDate=$(this).val()
+                $.ajax({
+                    type:"post",
+                    url:"queryTransPort.do",
+                    data:{productId:pId,dDate:dDate},
+                    dataType:"json",
+                    success:function (obj) {
+                        var str=""
+                        $.each(obj,function (index,item) {
+                            if (item.goId==1){
+                                str += "<option value='"+item.goId+"'>飞机</option>";
+                            }else {
+                                str += "<option value='"+item.goId+"'>火车</option>";
+                            }
+                        });
+                        $("#trans").append(str);
+                    }
+                })
+            })
+        })
+    </script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -87,15 +123,15 @@
                 <div class="col-xl-6 col-lg-7">
                     <div id="listing_content">
                         <div class="listing-video">
-                            <img src="assets/images/listing/details/video-hero.jpg" alt=""/>
+                            <img src="assets/images/listing/details/beijin.jfif" alt=""/>
                             <div class="d-inline-block">
                                 <!-- <a href="javascript:void(0);" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-play"></i> <span>Play video</span></a> -->
                             </div>
                         </div>
                         <div id="overview" class="mt-5">
                             <h3>产品介绍</h3>
-                            <h5 class="mb-4">北京秋日赏枫五日游</h5>
-                            <p>一次出游畅游皇城精华景点，帝都风貌一览到底不留遗憾！精选高端商务型酒店，品地道京味餐菜，升级一顿全聚德，便宜坊烤鸭。服务至上，精选优秀导游带团！</p>
+                            <h5 class="mb-4">${requestScope.product.productName}</h5>
+                            <p>${requestScope.product.productIntroduction}</p>
                             <h5 class="mb-4">产品特点</h5>
                             <ul class="amenities">
                                 <li>航变无忧</li>
@@ -118,7 +154,7 @@
                                     <div class="media-body pl-4">
                                         <div class="d-sm-flex align-items-center price-title">
                                             <span class="d-block">基本团费</span>
-                                            <span class="d-block">￥500.0元</span>
+                                            <span class="d-block">￥${requestScope.product.productFee}元</span>
                                         </div>
                                         <p class="font-md text-muted">基本团费为除去机票（或高铁）、酒店外的服务费，主要包含导游、门票、当地大巴服务等。</p>
                                     </div>
@@ -154,49 +190,32 @@
                             <h3>产品评价 <span class="font-weight-light">(40)</span></h3>
                             <div class="comments mt-0">
 
+                            <c:forEach items="${requestScope.comments}" var="comments" varStatus="status">
+
                                 <div class="comment media">
                                     <div class="avatar avatar-sm">
-                                        <!--             <img src="assets/images/user/32/user-2.jpg" alt="" /> -->
+                        <img src="assets/images/user/32/user-2.jpg" alt="" />
                                     </div>
                                     <div class="media-body">
                                         <div class="commenter-name d-sm-flex align-items-center">
                                             用户名
                                             <span class="text-muted pl-1">钻石会员</span>
                                             <div class="stars ml-auto">
+
+                                            <c:forEach begin="1"
+                                                       end="${comments.score}"
+                                                       step="1">
                                                 <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star-half"></i>
+                                            </c:forEach>
+
                                             </div>
                                         </div>
-                                        <p>
-                                            四川的风景是没得说的，就是要最好车程漫长辛苦和爬山，长距离徒步的心理准备。但是我觉得携程对于五星的标准越来越低了，无论是住宿，交通，还是导游都很一般，满满套路。推荐的演出和推销的商品请大家把持住，需要就买，不需要就不为所动。我觉得这些套路不应该出现在这个档次的跟团游中。国内旅游资源丰富，好山好水，但是软件一塌糊涂，从业人员不够真诚，浪费了大好资源。上传的图美丽的景色和差劲的用车对比给大家看。</p>
+                                        <p>${comments.content}</p>
 
                                     </div>
                                 </div>
+                            </c:forEach>
 
-                                <div class="comment media">
-                                    <div class="avatar avatar-sm">
-                                        <img src="assets/images/user/32/user-4.jpg" class="retina" alt=""/>
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="commenter-name d-sm-flex align-items-center">
-                                            用户名
-                                            <span class="text-muted pl-1">钻石会员</span>
-                                            <div class="stars ml-auto">
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star"></i>
-                                                <i class="ion-md-star-half"></i>
-                                            </div>
-                                        </div>
-                                        <p>
-                                            四川的风景是没得说的，就是要最好车程漫长辛苦和爬山，长距离徒步的心理准备。但是我觉得携程对于五星的标准越来越低了，无论是住宿，交通，还是导游都很一般，满满套路。推荐的演出和推销的商品请大家把持住，需要就买，不需要就不为所动。我觉得这些套路不应该出现在这个档次的跟团游中。国内旅游资源丰富，好山好水，但是软件一塌糊涂，从业人员不够真诚，浪费了大好资源。上传的图美丽的景色和差劲的用车对比给大家看。</p>
-
-                                    </div>
-                                </div>
                             </div>
 
                             <!--          <nav class="mt-5">
@@ -221,47 +240,66 @@
                         <div class="mb-5">
                             <div class="listing-content-head mb-4">
                                 <div class="listing-rating">
-                                    <span class="listing-rating-number">4.5</span>
+                                    <span class="listing-rating-number">${requestScope.product.productScore}</span>
                                     <i class="ion-md-star"></i>
                                 </div>
                                 <div class="listing-desc">
                                     <span class="listing-title mb-1">钻石产品</span>
-                                    <p>品质之选</p>
+                                    <p>${requestScope.product.productName}</p>
                                 </div>
                             </div>
                             <!--          <button type="button" class="btn btn-block btn-info btn-icon"><i class="ion-md-bookmark"></i> <span>Book mark</span></button> -->
                         </div>
+
                         <div class="mb-5">
                             <!--          <span class="d-block mb-2">Opening time</span>
                                      <p class="font-md">Mon-Sat: 9:00AM to 5:00PM</p> -->
                         </div>
+
                         <div class="mb-5">
                             <div class="listing-sidebar-card p-4">
-                                <h5>Booking form</h5>
-                                <form action="#">
+                                <h5>立即订票</h5>
+                                <form action="createOne.do">
+
                                     <div class="form-group">
-                                        <input type="text" placeholder="Full name"
-                                               class="form-control ion-ios-calendar"/>
+                                        出发日期
+                                        <select style="height: 50px;width: 80%" name="dDate" class="dDate">
+                                        <option value="0">请选择</option>
+                                        <c:forEach items="${tours}" var="tour" varStatus="i">
+                                            <option >${tour.dDate}</option>
+                                        </c:forEach>
+                                    </select>
+
                                     </div>
+
                                     <div class="form-group">
-                                        <input type="text" placeholder="Date time"
-                                               class="form-control date-time-picker"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <select name="guest" id="guest" class="custom-select">
-                                            <option value="0" selected="selected" disabled="disabled" hidden="">Guests
-                                            </option>
-                                            <option value="1">1-10</option>
-                                            <option value="2">10-15</option>
-                                            <option value="3">15-20</option>
-                                            <option value="3">20-25</option>
+                                        往返交通
+                                        <select style="height: 50px;width: 80%" name="transType" id="trans">
+                                            <option value="0">请选择</option>
                                         </select>
                                     </div>
+
                                     <div class="form-group">
-                                        <textarea name="comments" id="comments" cols="30" rows="3" class="form-control"
-                                                  placeholder="Comments"></textarea>
+                                        出行人数
+                                        <input type="number" max="10" min="1" step="1" name="numberOfTrips" id="numberOfTrips" style="height: 50px;width: 80%">
                                     </div>
-                                    <button type="button" class="btn btn-danger btn-block">Book now</button>
+
+                                    <div class="form-group">
+                                        标间/大床房（间）
+                                        <input type="number" max="5" step="1" name="sRoom" style="height: 50px;width: 80%" id="sRoom">
+                                    </div>
+
+                                        <input name="productId" type="hidden" value="${product.productId}" id="pId">
+                                        <input name="daId" type="hidden" value="${product.daId}">
+                                        <input name="arrAreaId" type="hidden" value="${product.arrAreaId}">
+                                        <input name="limLow" type="hidden" value="${product.limLow}">
+                                        <input name="limUp" type="hidden" value="${product.limUp}">
+                                        <input name="days" type="hidden" value="${product.days}">
+                                        <input name="hotelId" type="hidden" value="${product.hotelId}">
+                                        <input name="productName" type="hidden" value="${product.productName}">
+                                        <input name="productFee" type="hidden" value="${product.productFee}">
+                                        <input name="productScore" type="hidden" value="${product.productScore}">
+                                    <button type="submit" class="btn btn-danger btn-block">立即预定</button>
                                 </form>
                             </div>
                         </div>

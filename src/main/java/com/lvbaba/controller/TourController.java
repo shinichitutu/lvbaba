@@ -260,7 +260,7 @@ public class TourController {
             return "productOne";
         }
         /*判断用户选择的出行工具*/
-        if (tour.getTransType().equals("1")){
+        if (tour.getTransType().equals("2")){
              /*火车*/
             Train train=new Train();
             Traindetail traindetail=new Traindetail();
@@ -268,10 +268,20 @@ public class TourController {
             traindetail=transportationService.queryOne(traindetail);
             train.setTrId(traindetail.getTrId());
             train=transportationService.queryOne(train);
-            model.addAttribute("traindetail",traindetail);
-            model.addAttribute("train",train);
+            model.addAttribute("traindetailGo",traindetail);
+            model.addAttribute("trainGo",train);
+
+            Train train1=new Train();
+            Traindetail traindetail1=new Traindetail();
+            traindetail1.setTdId(tour.getReturnId());
+            traindetail1=transportationService.queryOne(traindetail1);
+            train1.setTrId(traindetail1.getTrId());
+            train1=transportationService.queryOne(train1);
+            model.addAttribute("traindetailRe",traindetail1);
+            model.addAttribute("trainRe",train1);
         }
-        if (tour.getTransType().equals("2")){
+
+        if (tour.getTransType().equals("1")){
             /*飞机*/
             Flight flight=new Flight();
             Flightdetail flightdetail=new Flightdetail();
@@ -279,8 +289,18 @@ public class TourController {
             flightdetail=transportationService.query(flightdetail).get(0);
             flight.setFlightId(flightdetail.getFlightId());
             flight=transportationService.queryOne(flight);
-            model.addAttribute("flightdetail",flightdetail);
-            model.addAttribute("flight",flight);
+            model.addAttribute("flightdetailGo",flightdetail);
+            model.addAttribute("flightGo",flight);
+
+            Flight flight1=new Flight();
+            Flightdetail flightdetail1=new Flightdetail();
+            flightdetail1.setFdId(tour.getReturnId());
+            flightdetail1=transportationService.query(flightdetail1).get(0);
+            flight1.setFlightId(flightdetail1.getFlightId());
+            flight1=transportationService.queryOne(flight1);
+            model.addAttribute("flightdetailRe",flightdetail1);
+            model.addAttribute("flightRe",flight1);
+
         }
         /*出行人数  Number of trips*/
         model.addAttribute("numberOfTrips",numberOfTrips);
@@ -292,10 +312,15 @@ public class TourController {
         model.addAttribute("hotel",hotel);
         /*房间数*/
         model.addAttribute("sRoom",sRoom);
+
+        model.addAttribute("type",tour.getTransType());
+
         model.addAttribute("product",product);
         /*用户购票页面*/
         return "confirmOrderView";
     }
+
+
     /*添加评论*/
     @RequestMapping("/createComment.do")
     public String createComment(Userorder userorder, Comment comment,Model model){

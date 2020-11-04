@@ -100,6 +100,8 @@ public class ProductController {
 
     @RequestMapping("productDetail.do")
     public String productOne(String productId,Model model){
+        System.out.println("测试");
+        System.out.println(productId);
         Product product =productService.query(new Product(Long.valueOf(productId)));
         model.addAttribute("product",product);
         Comment comment = new Comment();

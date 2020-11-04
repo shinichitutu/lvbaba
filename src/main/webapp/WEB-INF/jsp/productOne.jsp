@@ -95,7 +95,7 @@
                 出发:
             </div>
             <div style=";height: 50%">
-                <select style="height: 50px;width: 80%"name="dDate" class="dDate">
+                <select style="height: 50px;width: 80%" name="dDate" class="dDate">
                     <option>请选择出发日期</option>
                     <c:forEach items="${tours}" var="tour" varStatus="i">
                         <option >${tour.dDate}</option>

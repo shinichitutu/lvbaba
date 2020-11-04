@@ -132,7 +132,7 @@
                                 <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
 
                             </div>
-                            <a href="productDetail.do?product=${product.productId}"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
+                            <a href="productDetail.do?productId=${product.productId}"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
                         </div>
 
                         <div class="listing-content">
@@ -147,7 +147,7 @@
                                     </div>
 
                                     <div class="listing-desc">
-                                        <a href="#" class="listing-title text-truncate">${product.productName}</a>
+                                        <a href="productDetail.do?productId=${product.productId}" class="listing-title text-truncate">${product.productName}</a>
                                         <p>${product.hotel.hotelName}<br />行程天数：${product.days}天</p>
                                     </div>
 
