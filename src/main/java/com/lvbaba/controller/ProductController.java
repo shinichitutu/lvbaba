@@ -88,6 +88,7 @@ public class ProductController {
         Comment comment=new Comment();
         comment.setProductId(product.getProductId());
         List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+        comments.forEach(System.out::println);
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);

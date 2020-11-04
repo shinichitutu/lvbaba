@@ -309,11 +309,14 @@
         </div>
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<form action="createComment.do" method="get">
+    <input type="hidden" name="orderId" value="1">
+    <input type="text" name="content" placeholder="请输入评论内容"><br/>
+    <input type="number" name="score" max="100" min="0" step="1">
+    <input type="submit" value="点击评论">
+</form>
+<p style="color: red">${error}</p>
+<p style="color: green">${success}</p>
 <a href="#go_top">返回顶层</a>
 <script>
     $(document).ready(function(){

@@ -1,13 +1,13 @@
-package com.lvbaba.dao;
+package com.lvbaba.service;
 
 import com.lvbaba.entity.Userorder;
 
 import java.util.List;
 
 /**
- * Created by shinichi on 2020/10/23.
+ * Created by YY on 2020/11/4.
  */
-public interface UserorderDao {
+public interface UserOrderService {
     /**
      * 查询单个订单表
      * @param userorder

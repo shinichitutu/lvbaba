@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.print.DocFlavor;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.util.List;
 
@@ -34,6 +34,10 @@ public class TourController {
     private AreaService areaService;
     @Resource
     private HotelService hotelService;
+    @Resource
+    private UserOrderService userOrderService;
+    @Resource
+    private CommentService commentService;
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page) {
         Tour tour1 =new Tour();
@@ -233,7 +237,7 @@ public class TourController {
 
         return "forward:showTour.do";
     }
-
+    /*创建订单*/
     @RequestMapping("/createOne.do")
     public String createOne(Model model,Tour tour,Integer sRoom,Product product,Integer numberOfTrips){
 //        sRoom:标准间
@@ -253,10 +257,6 @@ public class TourController {
         tour=tourService.query(tour);
         if(tour==null){
             model.addAttribute("error","该天没有旅行团哦");
-            return "productOne";
-        }
-        if (numberOfTrips>(sRoom*2)){
-            model.addAttribute("error","您所预定的房间住不下您预定的人哦");
             return "productOne";
         }
         /*判断用户选择的出行工具*/
@@ -295,5 +295,27 @@ public class TourController {
         model.addAttribute("product",product);
         /*用户购票页面*/
         return "confirmOrderView";
+    }
+    /*添加评论*/
+    @RequestMapping("/createComment.do")
+    public String createComment(Userorder userorder, Comment comment,Model model){
+        userorder =userOrderService.queryOne(userorder);
+        /**
+         * 根据用户订单查询产品
+         */
+        Tour tour=new Tour();
+        tour.setTourId(userorder.getTourId());
+        tour=tourService.query(tour);
+        /**
+         * 向评论插入产品id 用户id
+         */
+        comment.setProductId(tour.getProductId());
+        comment.setuId(userorder.getuId());
+        if (commentService.insertCommentByUid(comment)){
+            model.addAttribute("success","评论成功");
+        }else {
+            model.addAttribute("error","评论失败");
+        }
+        return "indexcopy";
     }
 }
