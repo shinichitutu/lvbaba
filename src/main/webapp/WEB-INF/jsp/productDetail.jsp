@@ -44,7 +44,7 @@
             $("#numberOfTrips").change(function () {
                 var num=$(this).val();
                 $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2));
-            })
+            });
 
             $(".dDate").change(function () {
                 $("#trans option:gt(0)").remove();
@@ -58,10 +58,10 @@
                     success:function (obj) {
                         var str=""
                         $.each(obj,function (index,item) {
-                            if (item.goId==1){
-                                str += "<option value='"+item.goId+"'>飞机</option>";
+                            if (item.transType==1){
+                                str += "<option value='"+item.transType+"'>飞机</option>";
                             }else {
-                                str += "<option value='"+item.goId+"'>火车</option>";
+                                str += "<option value='"+item.transType+"'>火车</option>";
                             }
                         });
                         $("#trans").append(str);

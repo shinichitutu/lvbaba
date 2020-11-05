@@ -183,19 +183,26 @@
             <h3 style="display: inline">明细</h3><span>以下为您所选择的全部资源明细，下单前请仔细查看核实。</span></p>
             出发地:${requestScope.departureArea.city}<br/>
             目的地:${requestScope.destinationArea.city}<br/>
-            出发时间:${requestScope.traindetail.tdDate}&nbsp;${requestScope.train.trDTime}${requestScope.flightdetail.fdDate}&nbsp;${requestScope.flight.flightDTime}<br/>
-            到达时间:${requestScope.traindetail.tdDate}&nbsp;${requestScope.train.trATime}${requestScope.flightdetail.fdDate}&nbsp;${requestScope.flight.flightATime}<br/>
+
             <c:if test="${requestScope.type eq '1'}">
                 去程航班号:${requestScope.flightGo.flightNumber}<br/>
+                预计起飞时间${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightDTime}<br/>
+                预计达到时间${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightATime}<br/>
                 回程航班号:${requestScope.flightRe.flightNumber}<br/>
+                预计起飞时间${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightDTime}<br/>
+                预计达到时间${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightATime}<br/>
             </c:if>
 
             <c:if test="${requestScope.type eq '2'}">
                 去程火车车次：${requestScope.trainGo.trNumber}<br/>
+                预计出发时间:${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trDTime}<br/>
+                预计到达时间:${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trATime}<br/>
                 回程火车车次：${requestScope.trainRe.trNumber}<br/>
+                预计出发时间:${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trDTime}<br/>
+                预计到达时间:${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trATime}<br/>
             </c:if>
 
-            酒店名称:${requestScope.hotel.hotelName}<br/>
+            酒店名称:${requestScope.destinationArea.city}&nbsp${requestScope.hotel.hotelName}<br/>
             房间数:${requestScope.sRoom}间
         </div>
 
@@ -247,10 +254,12 @@
                 <p><input type="button" class="addUserInfo" value="新增"/></p>
             </div>
         </div>
+
         <div style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
             <p style="padding: 10px;background-color: #f6f3f1"> · 支付完成后，订单会立即确认。</p>
             <p style="text-align: right"><input type="button" value="同意以下条款，去支付" class="payOrder"></p>
         </div>
+
         <div style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
             <p style="text-indent: 2em">
                 条款和合同
