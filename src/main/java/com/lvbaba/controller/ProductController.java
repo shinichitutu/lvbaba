@@ -41,6 +41,7 @@ public class ProductController {
     private TourService tourService;
     @Resource
     private CommentService commentService;
+
     @RequestMapping("/showProduct.do")
     public String showProduct(Model model,String page){
         if (page==null){
@@ -84,10 +85,12 @@ public class ProductController {
     @RequestMapping("productOne.do")
     public String productOne(Product product,Model model){
         model.addAttribute("product",product);
-        /*查询关于产品的评论*/
-        Comment comment=new Comment();
+        Comment comment = new Comment();
         comment.setProductId(product.getProductId());
         List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+
+       /* comments.forEach(System.out::println);*/
+
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
@@ -96,6 +99,26 @@ public class ProductController {
         model.addAttribute("comments",comments);
         return "productOne";
     }
+
+    @RequestMapping("productDetail.do")
+    public String productOne(String productId,Model model){
+        System.out.println("测试");
+        System.out.println(productId);
+        Product product =productService.query(new Product(Long.valueOf(productId)));
+        model.addAttribute("product",product);
+        Comment comment = new Comment();
+        comment.setProductId(product.getProductId());
+        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+       /* comments.forEach(System.out::println);*/
+        Tour tour=new Tour();
+        tour.setProductId(product.getProductId());
+        List<Tour> tours=tourService.queryByPid(tour);
+        List<Tour> tourList= Util.duplicate(tours);
+        model.addAttribute("tours",tourList);
+        model.addAttribute("comments",comments);
+        return "productDetail";
+    }
+
 
     @RequestMapping("/addProductInfo.do")
     public String addProductInfo(Product product, MultipartFile file, HttpServletRequest request,Model model){
@@ -120,7 +143,6 @@ public class ProductController {
         }
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
-        System.out.println("地址Wie："+"/upload"+File.separator+fileName);
         boolean flag = productService.insertProduct(product,files);
         if (flag){
             model.addAttribute("addProduct","新增成功");
@@ -143,8 +165,6 @@ public class ProductController {
 
     @RequestMapping("/updateProductInfo.do")
     public String modifyProduct(Product product, MultipartFile file1, HttpServletRequest request,Model model){
-        System.out.println("-----------------"+file1);
-        System.out.println("-----------------"+product);
         if(file1==null){
             model.addAttribute("error","重新选择");
             return "forward:showProduct.do";
@@ -167,7 +187,6 @@ public class ProductController {
 
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
-        System.out.println("修改地址为：--------"+"/upload"+File.separator+fileName);
         boolean flag = productService.updateProduct(product,files);
         if (flag){
             model.addAttribute("modifyProduct","修改成功");
@@ -176,4 +195,5 @@ public class ProductController {
         }
         return "forward:showProduct.do";
     }
+
 }

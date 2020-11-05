@@ -9,7 +9,7 @@ import java.util.List;
 public interface CommentDao {
 
     /**
-     * 向comment表中插入数据
+     * 增加评论
      * @param comment
      * @return
      */

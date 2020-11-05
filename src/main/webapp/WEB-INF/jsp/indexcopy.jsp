@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <script type="text/javascript" src="js/time.js"></script>
+    <script src="js/jquery-3.1.0.js"></script>
     <style>
         .fakeimg {
             height: 200px;
@@ -309,11 +310,8 @@
         </div>
     </div>
 </div>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<p style="color: red">${error}</p>
+<p style="color: green">${success}</p>
 <a href="#go_top">返回顶层</a>
 <script>
     $(document).ready(function(){

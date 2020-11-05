@@ -167,13 +167,13 @@
 
         </div>
     </section>
-    <footer id="footer">
 
+    <footer id="footer">
         <div class="last-footer text-muted">
             &copy; 2020 Kri8thm. All rights reserved.
         </div>
-
     </footer>
+
 <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
 <aside id="sidebar">
     <div class="sidebar-header">
@@ -201,7 +201,6 @@
                     <li><a href="#">个人信息</a></li>
 
                 </ul></li>
-
         </ul>
     </nav>
 </aside>

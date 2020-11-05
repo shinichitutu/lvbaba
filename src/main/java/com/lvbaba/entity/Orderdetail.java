@@ -1,7 +1,7 @@
 package com.lvbaba.entity;
 
 
-public class Orderdatail {
+public class Orderdetail {
 
   private long odId;
   private long orderId;
@@ -51,7 +51,7 @@ public class Orderdatail {
 
   @Override
   public String toString() {
-    return "Orderdatail{" +
+    return "Orderdetail{" +
             "odId=" + odId +
             ", orderId=" + orderId +
             ", odPerson='" + odPerson + '\'' +

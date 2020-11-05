@@ -216,7 +216,6 @@ public class OperateTransportController {
         flight.setArrAreaId(a_city);
         flight.setFlightDTime(time);
         List<Flightdetail> flightdetailList = transportationService.queryFlightInfoByAreaIdAndDate(flight, date);
-        System.out.println("--------"+flightdetailList);
         model.addAttribute("flightDetailInfoList",flightdetailList);
         return "forward:toUserFlightBookView.do";
     }
