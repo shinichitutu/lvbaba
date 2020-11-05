@@ -203,8 +203,8 @@
         <div id="flightInfo" class="container tab-pane active"><br>
             <p>航班号：<input type="text" name="flightNumber"/></p>
             <p>所属航空公司：<input type="text" name="flightCompany"/></p>
-            <p>出发日期：<input type="datetime-local" name="flightDTime"/></p>
-            <p>到达日期：<input type="datetime-local" name="flightATime"/></p>
+            <p>出发日期：<input type="time" name="flightDTime"/></p>
+            <p>到达日期：<input type="time" name="flightATime"/></p>
             <p>出发地：<select id="d_country">
                 <option value="0">--请选择--</option>
             </select>
@@ -225,8 +225,8 @@
         </div>
         <div id="trainInfo" class="container tab-pane fade"><br>
             <p>火车次号：<input type="text" name="trNumber"/></p>
-            <p>出发日期：<input type="datetime-local" name="trDTime"/></p>
-            <p>到达日期：<input type="datetime-local" name="trATime"/></p>
+            <p>出发日期：<input type="time" name="trDTime"/></p>
+            <p>到达日期：<input type="time" name="trATime"/></p>
             <p>出发地：<select id="tr_d_country">
                 <option value="0">--请选择--</option>
             </select>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lvbaba.dao.TicketrecordDao">
+
+    <sql id="all_filed">flightName,flightCanpany,departureArea,destinationArea,departureTime,arrivalTime,flightPrice,fdId,userId,userName,userIdcard,userPhone,createDate,recordStatus,modifyDate</sql>
+
+    <insert id="insertTicketRecord" parameterType="Ticketrecord">
+        insert into ticketrecord(<include refid="all_filed"/>)
+        values(#{flightName},#{flightCanpany},#{departureArea},#{destinationArea},#{departureTime},#{arrivalTime},
+        #{flightPrice},#{fdId},#{userId},#{userName},#{userIdcard},#{userPhone},#{createDate},"已支付",#{modifyDate})
+    </insert>
+
+    <update id="updateTicketRecordByFdrId" parameterType="Ticketrecord">
+        update ticketrecord set recordStatus=#{recordStatus},modifyDate=#{modifyDate} where fdrId = #{fdrId}
+    </update>
+
+    <delete id="deleteTicketRecordByFdrId">
+        delete from ticketrecord where fdrId = #{fdrId}
+    </delete>
+
+    <select id="queryAllByUerId" resultType="Ticketrecord" parameterType="long">
+        select fdrId,<include refid="all_filed"/> from ticketrecord where userId = #{userId}
+    </select>
+
+    <select id="queryOneByFdrId" resultType="Ticketrecord" parameterType="Long">
+        select fdrId,<include refid="all_filed"/> from ticketrecord where fdrId = #{fdrId}
+    </select>
+
+<!--    <resultMap id="tkRecordMap" type="Ticketrecord">-->
+<!--        <id property="fdrId" column="fdrId"/>-->
+<!--        <result property="flightName" column="flightName"/>-->
+<!--        <result property="flightCanpany" column="flightCanpany"/>-->
+<!--        <result property="departureArea" column="departureArea"/>-->
+<!--        <result property="destinationArea" column="destinationArea"/>-->
+<!--        <result property="departureTime" column="departureTime"/>-->
+<!--        <result property="arrivalTime" column="arrivalTime"/>-->
+<!--        <result property="flightPrice" column="flightPrice"/>-->
+<!--        <result property="flightStatus" column="flightStatus"/>-->
+<!--        <result property="fdId" column="fdId"/>-->
+<!--        <result property="userId" column="userId"/>-->
+<!--        <result property="userName" column="userName"/>-->
+<!--        <result property="userIdcard" column="userIdcard"/>-->
+<!--        <result property="userPhone" column="userPhone"/>-->
+<!--        <result property="createDate" column="createDate"/>-->
+<!--        <result property="updateDate" column="updateDate"/>-->
+<!--    </resultMap>-->
+</mapper>

@@ -45,6 +45,10 @@
         select fd_id,f_id,fd_date,fd_tickets,ratio from flightDetail where fd_date=#{date}
     </select>
 
+    <update id="updateFlightDetailTickets" parameterType="Long">
+        update flightdetail set fd_tickets =fd_tickets+#{tickets} where fd_id = #{fdId}
+    </update>
+
     <resultMap id="flightDetailMap" type="Flightdetail">
         <id property="fdId" column="fd_id"/>
         <result property="flightId" column="f_id"/>

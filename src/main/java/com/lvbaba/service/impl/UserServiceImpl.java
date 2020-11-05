@@ -82,6 +82,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Userinfo queryUserInfoByUiId(Long uiId) {
+        return userInfoDao.queryUserInfoByUiId(uiId);
+    }
+
+    @Override
     public User queryByAdminName(Admin admin) {
         if (null==admin){
             return null;

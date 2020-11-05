@@ -42,6 +42,11 @@
             <include refid="condition"/>
         </where>
     </select>
+
+    <select id="queryUserInfoByUiId" resultType="com.lvbaba.entity.Userinfo">
+        select ui_id,<include refid="all_filed"/> from userinfo where ui_id = #{uiId}
+    </select>
+
     <resultMap id="userInfoMap" type="com.lvbaba.entity.Userinfo">
         <id property="uiId" column="ui_id"/>
         <result property="uId" column="u_id"/>

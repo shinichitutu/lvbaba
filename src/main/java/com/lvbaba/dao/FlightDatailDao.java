@@ -1,6 +1,7 @@
 package com.lvbaba.dao;
 
 import com.lvbaba.entity.Flightdetail;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,4 +38,6 @@ public interface FlightDatailDao {
      * @return List<Flightdetail>
      */
     List<Flightdetail> queryFlightDetailByFIdAndDate(String date);
+
+    boolean updateFlightDetailTickets(@Param("fdId") Long fdId,@Param("tickets")  Long tickets);
 }

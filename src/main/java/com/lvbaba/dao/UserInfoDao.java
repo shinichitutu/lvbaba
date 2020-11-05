@@ -35,4 +35,11 @@ public interface UserInfoDao {
      * @return
      */
     List<Userinfo> queryAllByUid(Userinfo userinfo);
+
+    /**
+     * 通过userInfoId查询对应的userInfo信息
+     * @param uiId
+     * @return
+     */
+    Userinfo queryUserInfoByUiId(Long uiId);
 }
