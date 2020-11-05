@@ -205,13 +205,11 @@ public class OperateTransportController {
     @RequestMapping("/searchFlightInfo.do")
     public String searchFlightAndDetail(Long d_city, Long a_city ,String date, Model model) {
         String time = Util.getDate().replace("-",":");
-        System.out.println(d_city+"-----"+a_city+"----------"+date+"-------------"+time);
         Flight flight = new Flight();
         flight.setDaId(d_city);
         flight.setArrAreaId(a_city);
         flight.setFlightDTime(time);
         List<Flightdetail> flightdetailList = transportationService.queryFlightInfoByAreaIdAndDate(flight, date);
-        System.out.println("--------"+flightdetailList);
         model.addAttribute("flightDetailInfoList",flightdetailList);
         return "forward:toUserFlightBookView.do";
     }

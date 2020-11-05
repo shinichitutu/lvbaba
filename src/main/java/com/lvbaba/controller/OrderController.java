@@ -1,15 +1,19 @@
 package com.lvbaba.controller;
 
-import com.lvbaba.entity.User;
-import com.lvbaba.entity.Userinfo;
+import com.lvbaba.entity.*;
+import com.lvbaba.service.TourService;
+import com.lvbaba.service.UserOrderService;
 import com.lvbaba.service.UserService;
+import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -20,7 +24,10 @@ import java.util.List;
 public class OrderController {
     @Resource
     private UserService userService;
-
+    @Resource
+    private TourService tourService;
+    @Resource
+    private UserOrderService userOrderService;
     @RequestMapping("/showConfirmOrder.do")
     public ModelAndView showConfirmOrder(HttpSession session){
         User user = (User) session.getAttribute("user");
@@ -38,7 +45,6 @@ public class OrderController {
     @RequestMapping("/updateUserInfo.do")
     @ResponseBody
     public String updateUserInfo(Userinfo userinfo){
-        System.out.println(userinfo);
         boolean flag = userService.updateUserInfoById(userinfo);
         return ""+flag;
     }

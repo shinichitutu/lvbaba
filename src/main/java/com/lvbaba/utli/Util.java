@@ -3,9 +3,15 @@ package com.lvbaba.utli;
 import com.lvbaba.entity.Area;
 import com.lvbaba.entity.Product;
 import com.lvbaba.entity.Tour;
+import com.lvbaba.entity.Userorder;
 import com.lvbaba.entityUtil.ProductArea;
 import com.lvbaba.service.AreaService;
+import com.lvbaba.service.TourService;
+import com.lvbaba.service.UserOrderService;
+import org.springframework.stereotype.Component;
+
 import javax.annotation.Resource;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.*;
@@ -15,9 +21,12 @@ import java.util.*;
  * Created by YY on 2020/10/28.
  */
 public class Util {
-
     @Resource
     private static AreaService areaService;
+    @Resource
+    private static TourService tourService;
+    @Resource
+    private static UserOrderService userOrderService;
 
     public static List<ProductArea> queryProductArea(List<Product> products) {
         List<ProductArea> productAreas = new ArrayList<>();
@@ -70,7 +79,6 @@ public class Util {
         for (int i = 0; i < list.size(); i++) {
             flag = true;
             for (int j = 0; j < longList.size(); j++) {
-                System.out.println(list.get(i).equals(longList.get(j)));
                 if (list.get(i).equals(longList.get(j))) {
                     flag = false;
                     break;
@@ -85,7 +93,6 @@ public class Util {
 
     /*去重日期*/
     public static List<Tour> de_weightDate(List<Tour> tours){
-        System.out.println("去重之后的");
         List<Tour> tourList=new ArrayList<>();
         for (int i=0;i<tours.size();i++){
             for(int j=i+1;j<tours.size();j++){
@@ -94,10 +101,6 @@ public class Util {
                 }
             }
         }
-        System.out.println("去重之前的");
-        tours.forEach(System.out::println);
-        System.out.println("去重之后的");
-        tourList.forEach(System.out::println);
         return tours;
     }
       
@@ -120,8 +123,6 @@ public class Util {
         for (int i = 0; i < list.size(); i++) {
             flag = true;
             for (int j =0 ;j<longList.size();j++) {
-                System.out.println(list.get(i).getdDate().equals(longList.get(j).getdDate()));
-
                 if (list.get(i).getdDate().equals(longList.get(j).getdDate())) {
                     flag = false;
                     break;
@@ -131,13 +132,23 @@ public class Util {
                 longList.add(list.get(i));
             }
         }
-
-        System.out.println("去重之前的");
-        list.forEach(System.out::println);
-        System.out.println("去重之后的");
-        longList.forEach(System.out::println);
         return longList;
     }
-
-
+    /*退款*/
+    public static double refund(Tour tour) throws ParseException {
+        Date date=new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString=tour.getdDate();
+        Date date2=sdf.parse(dateString);
+        double d=((date.getTime()-date2.getTime())/(1000*60*60*24))*100;
+        if(d>=0 && d<=3){
+            return 0.5;
+        }else if(d>3 && d<=10){
+            return 0.3;
+        }else if(d>10 && d<=30){
+            return 0.2;
+        } else {
+            return 0.1;
+        }
+    }
 }

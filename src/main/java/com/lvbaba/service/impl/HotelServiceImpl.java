@@ -179,11 +179,9 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public boolean isRoomAvailable(String inDate, String outDate, int num,long roomId) {
         while (!inDate.equals(outDate)){
-            System.out.println("入住日期"+inDate);
             Roomdetail roomdetail =new Roomdetail();
             roomdetail.setRoomDate(inDate);
             roomdetail.setRoomId(roomId);
-            System.out.println("查询的roomdetail"+roomdetail);
 /*            Roomdetail roomdetail1 = roomDetailDao.queryOne(roomdetail);*/
             List<Roomdetail> roomdetailList = roomDetailDao.query(roomdetail);
             Room room =new Room();
@@ -191,12 +189,10 @@ public class HotelServiceImpl implements HotelService {
             Room room1 =roomDao.queryOne(room);
             long roomNum = room1.getRoomNumber();
             if(roomdetailList.size()==0){
-                System.out.println(1);
                 return false;
             }
             else {
                 if(roomNum - roomdetailList.get(0).getRdNumber()<num){
-                    System.out.println(2);
                     return false;
                 }
             }

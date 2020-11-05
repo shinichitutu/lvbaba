@@ -324,6 +324,7 @@ public class TourController {
     }
 
 
+
     /*添加评论*/
     @RequestMapping("/createComment.do")
     public String createComment(Userorder userorder, Comment comment,Model model){
@@ -346,4 +347,5 @@ public class TourController {
         }
         return "indexcopy";
     }
+
 }
