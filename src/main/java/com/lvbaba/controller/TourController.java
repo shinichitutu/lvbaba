@@ -254,7 +254,7 @@ public class TourController {
         hotel.setHotelId(product.getHotelId());
 
         hotel=hotelService.queryOne(hotel);
-        System.out.println("测试接收的旅行团"+tour+"空格测试");
+
         tour=tourService.query(tour);
 
 
