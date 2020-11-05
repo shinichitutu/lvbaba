@@ -11,6 +11,10 @@ public class Tour {
   private long returnId;
   private long bookNum;
   private String tourStatus;
+  private Flightdetail flightdetail;
+  private Flight flight;
+  private Train train;
+  private Traindetail traindetail;
 
   public long getTourId() {
     return tourId;
@@ -84,6 +88,38 @@ public class Tour {
     this.tourStatus = tourStatus;
   }
 
+  public Flightdetail getFlightdetail() {
+    return flightdetail;
+  }
+
+  public void setFlightdetail(Flightdetail flightdetail) {
+    this.flightdetail = flightdetail;
+  }
+
+  public Flight getFlight() {
+    return flight;
+  }
+
+  public void setFlight(Flight flight) {
+    this.flight = flight;
+  }
+
+  public Train getTrain() {
+    return train;
+  }
+
+  public void setTrain(Train train) {
+    this.train = train;
+  }
+
+  public Traindetail getTraindetail() {
+    return traindetail;
+  }
+
+  public void setTraindetail(Traindetail traindetail) {
+    this.traindetail = traindetail;
+  }
+
   @Override
   public String toString() {
     return "Tour{" +
@@ -96,6 +132,10 @@ public class Tour {
             ", returnId=" + returnId +
             ", bookNum=" + bookNum +
             ", tourStatus='" + tourStatus + '\'' +
+            ", flightdetail=" + flightdetail +
+            ", flight=" + flight +
+            ", train=" + train +
+            ", traindetail=" + traindetail +
             '}';
   }
 }

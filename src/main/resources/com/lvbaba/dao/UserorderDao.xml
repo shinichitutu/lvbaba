@@ -62,8 +62,13 @@
             </if>
         </where>
     </select>
+
     <select id="queryAll" resultType="com.lvbaba.entity.Userorder">
         SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder
+    </select>
+
+    <select id="queryUserOrdersByUserId" parameterType="Long" resultMap="userorderMap">
+        SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder WHERE u_id = #{userId}
     </select>
 
     <resultMap id="userorderMap" type="Userorder">

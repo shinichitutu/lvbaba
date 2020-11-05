@@ -20,6 +20,7 @@ public class Flight {
   private Area d_area;
   private Area a_area;
 
+
   public Flight(long flightId, String flightNumber, String flightCompany, String flightDTime, String flightATime, long daId, long arrAreaId, long flightCapacity, double flightPrice, List<Flightdetail> flightdetails, Area d_area, Area a_area) {
     this.flightId = flightId;
     this.flightNumber = flightNumber;

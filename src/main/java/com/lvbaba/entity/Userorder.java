@@ -10,6 +10,9 @@ public class Userorder {
   private String orderStatus;
   private String orderTime;
   private String payTime;
+  private Long roomId;
+  private Tour tour;
+  private Product product;
 
   public long getOrderId() {
     return orderId;
@@ -67,6 +70,30 @@ public class Userorder {
     this.payTime = payTime;
   }
 
+  public Long getRoomId() {
+    return roomId;
+  }
+
+  public void setRoomId(Long roomId) {
+    this.roomId = roomId;
+  }
+
+  public Tour getTour() {
+    return tour;
+  }
+
+  public void setTour(Tour tour) {
+    this.tour = tour;
+  }
+
+  public Product getProduct() {
+    return product;
+  }
+
+  public void setProduct(Product product) {
+    this.product = product;
+  }
+
   @Override
   public String toString() {
     return "Userorder{" +
@@ -77,6 +104,9 @@ public class Userorder {
             ", orderStatus='" + orderStatus + '\'' +
             ", orderTime='" + orderTime + '\'' +
             ", payTime='" + payTime + '\'' +
+            ", roomId=" + roomId +
+            ", tour=" + tour +
+            ", product=" + product +
             '}';
   }
 }

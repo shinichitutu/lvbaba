@@ -10,6 +10,13 @@ public class Flightdetail {
   private double ratio;
   private Flight flight;
 
+  public Flightdetail() {
+  }
+
+  public Flightdetail(long fdId) {
+    this.fdId = fdId;
+  }
+
   public long getFdId() {
     return fdId;
   }

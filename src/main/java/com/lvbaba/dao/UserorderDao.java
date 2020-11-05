@@ -48,4 +48,11 @@ public interface UserorderDao {
      * @return
      */
     boolean updateUserorder(Userorder userorder);
+
+    /**
+     * 查询关于用户的所有订单,用户用户旅行订单记录的表的展示
+     * @param userId
+     * @return
+     */
+    List<Userorder> queryUserOrdersByUserId(Long userId);
 }
