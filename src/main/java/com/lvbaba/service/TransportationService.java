@@ -178,4 +178,6 @@ public interface TransportationService {
      */
     Traindetail queryOne(Traindetail traindetail);
 
+    Double calculateFlightPrice(Long fdId);
+
 }

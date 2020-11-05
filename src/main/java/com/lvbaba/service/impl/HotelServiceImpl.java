@@ -208,9 +208,12 @@ public class HotelServiceImpl implements HotelService {
         Room room =new Room();
         room.setHotelId(hotelId);
         List<Room> roomList = roomDao.query(room);
+        System.out.println("测试房间列表"+roomList);
         for (Room r:roomList) {
             if(r.getPersonLimit()==1){
                 if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    System.out.println("标间");
+                    System.out.println(queryByDateAndRid(inDate,outDate,r.getRoomId()));
                     return queryByDateAndRid(inDate,outDate,r.getRoomId());
                 }
             }
@@ -219,6 +222,7 @@ public class HotelServiceImpl implements HotelService {
         for (Room r:roomList) {
             if(r.getPersonLimit()==2){
                 if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    System.out.println("大床");
                     return queryByDateAndRid(inDate,outDate,r.getRoomId());
                 }
             }
@@ -227,6 +231,7 @@ public class HotelServiceImpl implements HotelService {
         for (Room r:roomList) {
             if(r.getPersonLimit()==3){
                 if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    System.out.println("豪华");
                     return queryByDateAndRid(inDate,outDate,r.getRoomId());
                 }
             }
@@ -248,6 +253,15 @@ public class HotelServiceImpl implements HotelService {
             inDate = Util.addDay(inDate,1);
         }
         return list;
+    }
+
+    @Override
+    public Double calculate(List<Roomdetail> list) {
+        Double money  = 0.0;
+        for (Roomdetail r: list) {
+            money += r.getRdPrice();
+        }
+        return money;
     }
 
 }

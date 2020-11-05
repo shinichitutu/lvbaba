@@ -288,4 +288,16 @@ public class TransportationServiceImpl implements TransportationService {
         }
         return trainDetailDao.queryOne(traindetail);
     }
+
+    @Override
+    public Double calculateFlightPrice(Long fdId) {
+        Flightdetail flightdetail =new Flightdetail();
+        flightdetail.setFdId(fdId);
+        flightdetail = flightDatailDao.query(flightdetail).get(0);
+        Long flightId = flightdetail.getFlightId();
+        Flight flight =new Flight();
+        flight.setFlightId(flightId);
+        Flight flight1 =queryOne(flight);
+        return flightdetail.getRatio() * flight1.getFlightPrice();
+    }
 }
