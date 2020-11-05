@@ -13,10 +13,19 @@ public class Product {
   private String productName;
   private String productFee;
   private double productScore;
+  private String productIntroduction;
   private Area d_area;
   private Area a_area;
   private Hotel hotel;
   private Files files;
+
+  public String getProductIntroduction() {
+    return productIntroduction;
+  }
+
+  public void setProductIntroduction(String productIntroduction) {
+    this.productIntroduction = productIntroduction;
+  }
 
   public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore) {
     this.productId = productId;
@@ -29,6 +38,19 @@ public class Product {
     this.productName = productName;
     this.productFee = productFee;
     this.productScore = productScore;
+  }
+
+  public Product(long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore, String productIntroduction) {
+    this.daId = daId;
+    this.arrAreaId = arrAreaId;
+    this.limLow = limLow;
+    this.limUp = limUp;
+    this.days = days;
+    this.hotelId = hotelId;
+    this.productName = productName;
+    this.productFee = productFee;
+    this.productScore = productScore;
+    this.productIntroduction = productIntroduction;
   }
 
   public Product() {
@@ -163,6 +185,7 @@ public class Product {
             ", productName='" + productName + '\'' +
             ", productFee='" + productFee + '\'' +
             ", productScore=" + productScore +
+            ", productIntroduction='" + productIntroduction + '\'' +
             '}';
   }
 }

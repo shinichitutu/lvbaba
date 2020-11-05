@@ -88,15 +88,35 @@ public class ProductController {
         Comment comment = new Comment();
         comment.setProductId(product.getProductId());
         List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
-        comments.forEach(System.out::println);
+       /* comments.forEach(System.out::println);*/
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
         List<Tour> tourList= Util.duplicate(tours);
         model.addAttribute("tours",tourList);
-        /*model.addAttribute("comments",comments);*/
+        model.addAttribute("comments",comments);
         return "productOne";
     }
+
+    @RequestMapping("productDetail.do")
+    public String productOne(String productId,Model model){
+        System.out.println("测试");
+        System.out.println(productId);
+        Product product =productService.query(new Product(Long.valueOf(productId)));
+        model.addAttribute("product",product);
+        Comment comment = new Comment();
+        comment.setProductId(product.getProductId());
+        List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
+       /* comments.forEach(System.out::println);*/
+        Tour tour=new Tour();
+        tour.setProductId(product.getProductId());
+        List<Tour> tours=tourService.queryByPid(tour);
+        List<Tour> tourList= Util.duplicate(tours);
+        model.addAttribute("tours",tourList);
+        model.addAttribute("comments",comments);
+        return "productDetail";
+    }
+
 
     @RequestMapping("/addProductInfo.do")
     public String addProductInfo(Product product, MultipartFile file, HttpServletRequest request,Model model){
@@ -177,4 +197,5 @@ public class ProductController {
         }
         return "forward:showProduct.do";
     }
+
 }
