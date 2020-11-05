@@ -5,9 +5,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.*;
 import com.lvbaba.service.*;
+import com.lvbaba.utli.UserbLocker;
 import com.lvbaba.utli.Util;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +25,6 @@ import java.util.List;
  * Created by YY on 2020/10/26.
  * 旅行团
  */
-
 @Controller
 public class TourController {
     @Resource
@@ -226,6 +228,8 @@ public class TourController {
     }
 
     /*创建订单*/
+    @GetMapping(value = "createOne",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    @UserbLocker
     @RequestMapping("/createOne.do")
     public String createOne(Model model, Tour tour, Integer sRoom, Product product, Integer numberOfTrips, HttpSession session) {
 //        sRoom:标准间
@@ -354,6 +358,8 @@ public class TourController {
         return "confirmOrderView";
     }
 
+
+
     @RequestMapping("/comfirmUserInfo.do")
     public String comfirmUserInfo(String tourId, String total, Model model,HttpSession session) {
         model.addAttribute("tourId",tourId);
@@ -365,6 +371,7 @@ public class TourController {
         model.addAttribute("userinfoList", list);
         return "comfirmUserInfo";
     }
+
 
 
     @RequestMapping("/test.do")
@@ -401,7 +408,7 @@ public class TourController {
         return "test";
     }
 
-    /*退货*/
+
     @RequestMapping("/refund.do")
     public String refund(Userorder userorder, Model model) throws ParseException {
         userorder = userOrderService.queryOne(userorder);

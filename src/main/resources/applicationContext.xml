@@ -36,6 +36,12 @@
     </mvc:annotation-driven>
     <!--为静态资源放行-->
     <mvc:default-servlet-handler/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="com.lvbaba.interceptor.UserInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <context:annotation-config/>
     <!--配置前端视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

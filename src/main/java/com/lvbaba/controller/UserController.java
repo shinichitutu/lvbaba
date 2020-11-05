@@ -3,6 +3,7 @@ package com.lvbaba.controller;
 import com.lvbaba.entity.Admin;
 import com.lvbaba.entity.User;
 import com.lvbaba.service.UserService;
+import com.lvbaba.utli.UserbLocker;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -50,6 +52,7 @@ public class UserController {
         User user1 = userService.queryByUserName(user);
         if (null!=user1.getuPassword()&&user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);
+
             return "true";
         }else{
             return "false";
