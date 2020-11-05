@@ -69,7 +69,7 @@ public class Util {
         boolean flag = true;
         for (int i = 0; i < list.size(); i++) {
             flag = true;
-            for (int j =0 ;j<longList.size();j++) {
+            for (int j = 0; j < longList.size(); j++) {
                 System.out.println(list.get(i).equals(longList.get(j)));
                 if (list.get(i).equals(longList.get(j))) {
                     flag = false;
@@ -81,6 +81,7 @@ public class Util {
             }
         }
         return longList;
+    }
 
     /*去重日期*/
     public static List<Tour> de_weightDate(List<Tour> tours){
@@ -138,5 +139,8 @@ public class Util {
         return longList;
     }
 
+    public static String getCurrentDate(){
+        return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+    }
 
 }

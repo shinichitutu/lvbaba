@@ -77,21 +77,15 @@
                     }
                 })
             })
+
+            if ($(".remainVotes").text()=='已售完'){
+                $("#bookingTicket").attr("disabled",true);
+            }
+
+            if (${not empty requestScope.insertTicketRecord}){
+            alert("${requestScope.insertTicketRecord}");
+            }
         })
-        function bookeTickets(obj,flightName,flightCanpany,d_country,d_city,a_country,a_city,date,d_time,a_time,flightPrice) {
-            $.ajax({
-                type:"post",
-                data:{flightName:flightName,flightCanpany:flightCanpany, d_country:d_country,d_city:d_city,
-                    a_country:a_country,a_city:a_city,date:date,d_time:d_time,a_time:a_time,flightPrice:flightPrice},
-                url:"toTicketOrderView.do",
-                dataType:"text",
-                success:function (obj) {
-                    if (null!=obj && obj!=''){
-                        alert(obj);
-                    }
-                }
-            })
-        }
     </script>
 </head>
 <body style="width: 1000px;margin: 30px auto 0 auto;background-color:#eef1f1">
@@ -133,20 +127,29 @@
                <p><span>${fd.flight.a_area.country}-${fd.flight.a_area.city}</span></p>
            </div>
        </div>
-       <div style="width: 200px;height: 110px;">
+       <div style="width: 220px;height: 110px;">
             <div>
-                <p>￥<span style="color: firebrick;font-weight: bold;font-size: 30px;">${fd.flight.flightPrice}</span></p>
+                <p>￥<span style="color: rgba(239,26,26,0.76);font-weight: bold;font-size: 30px;">${fd.flight.flightPrice}</span></p>
                 <p>经济舱${fd.ratio}折</p>
             </div>
-           <div style="margin: 0 auto;height: 110px;">
+            <div style="margin: 0 auto;height: 110px;">
                <p class="remainVotes" style="color: red;">
                    <c:if test="${fd.fdTickets==0}">已售完</c:if>
                    <c:if test="${fd.fdTickets<=10}">仅剩${fd.fdTickets}</c:if>
                </p>
-               <p><input type="submit" value="订票" style="width: 80px;font-size: 20px;height: 40px;border-radius: 15px;background-color: orange;color: white;font-weight: bold;"
-               onclick="bookeTickets(this,'${fd.flight.flightNumber}','${fd.flight.flightCompany}','${fd.flight.d_area.country}','${fd.flight.d_area.city}',
-                       '${fd.flight.a_area.country}','${fd.flight.a_area.city}','${fd.fdDate}','${fd.flight.flightDTime}','${fd.flight.flightATime}',
-                       '${fd.flight.flightPrice}')"/></p>
+               <p>
+                    <form action="toTicketOrderView.do" method="post">
+                        <input type="hidden" name="flightName" value="${fd.flight.flightNumber}"/>
+                        <input type="hidden" name="fdId" value="${fd.fdId}"/>
+                        <input type="hidden" name="flightCanpany" value="${fd.flight.flightCompany}"/>
+                        <input type="hidden" name="departureArea" value="${fd.flight.d_area.country}-${fd.flight.d_area.city}"/>
+                        <input type="hidden" name="destinationArea" value="${fd.flight.a_area.country}-${fd.flight.a_area.city}"/>
+                        <input type="hidden" name="departureTime" value="${fd.fdDate} ${fd.flight.flightDTime}"/>
+                        <input type="hidden" name="arrivalTime" value="${fd.fdDate} ${fd.flight.flightATime}"/>
+                        <input type="hidden" name="flightPrice" value="${fd.flight.flightPrice}"/>
+                       <input type="submit" id="bookingTicket" value="订票" style="width: 80px;font-size: 20px;height: 40px;border-radius: 15px;background-color: orange;color: white;font-weight: bold;"/>
+                    </form>
+               </p>
            </div>
        </div>
     </div>

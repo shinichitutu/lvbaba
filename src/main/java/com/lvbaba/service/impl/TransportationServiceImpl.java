@@ -80,7 +80,7 @@ public class TransportationServiceImpl implements TransportationService {
                 f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
                 for (Flightdetail fd:flightdetailList) {
                     if (f.getFlightId()==fd.getFlightId()){
-                        f.setFlightPrice(f.getFlightPrice()*fd.getRatio());
+                        f.setFlightPrice(Math.round(f.getFlightPrice()*fd.getRatio()*100)/100);
                         fd.setRatio(fd.getRatio()*10);
                         fd.setFdTickets(f.getFlightCapacity()-fd.getFdTickets());
                         fd.setFlight(f);

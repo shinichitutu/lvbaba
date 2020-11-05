@@ -57,6 +57,13 @@ public interface UserService {
     List<Userinfo> queryAllByUid(Userinfo userinfo);
 
     /**
+     * 通过userInfoId查询对应的userInfo信息
+     * @param UiId
+     * @return
+     */
+    Userinfo queryUserInfoByUiId(Long uiId);
+
+    /**
      * 通过用户的登录用户名查询返回该用户的所有信息
      * @param admin
      * @return
@@ -76,4 +83,6 @@ public interface UserService {
      * @return
      */
     boolean updateAdmin(Admin admin);
+
+
 }

@@ -10,12 +10,14 @@ public class Ticketrecord {
   private String departureTime;
   private String arrivalTime;
   private double flightPrice;
+  private long fdId;
+  private long userId;
   private String userName;
   private String userIdcard;
   private String userPhone;
   private String createDate;
-  private String flightStatus;
-  private String updateDate;
+  private String recordStatus;
+  private String modifyDate;
 
 
   public long getFdrId() {
@@ -90,6 +92,24 @@ public class Ticketrecord {
   }
 
 
+  public long getFdId() {
+    return fdId;
+  }
+
+  public void setFdId(long fdId) {
+    this.fdId = fdId;
+  }
+
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
+
+
   public String getUserName() {
     return userName;
   }
@@ -126,21 +146,21 @@ public class Ticketrecord {
   }
 
 
-  public String getFlightStatus() {
-    return flightStatus;
+  public String getRecordStatus() {
+    return recordStatus;
   }
 
-  public void setFlightStatus(String flightStatus) {
-    this.flightStatus = flightStatus;
+  public void setRecordStatus(String recordStatus) {
+    this.recordStatus = recordStatus;
   }
 
 
-  public String getUpdateDate() {
-    return updateDate;
+  public String getModifyDate() {
+    return modifyDate;
   }
 
-  public void setUpdateDate(String updateDate) {
-    this.updateDate = updateDate;
+  public void setModifyDate(String modifyDate) {
+    this.modifyDate = modifyDate;
   }
 
   @Override
@@ -151,15 +171,17 @@ public class Ticketrecord {
             ", flightCanpany='" + flightCanpany + '\'' +
             ", departureArea='" + departureArea + '\'' +
             ", destinationArea='" + destinationArea + '\'' +
-            ", departureTime=" + departureTime +
-            ", arrivalTime=" + arrivalTime +
+            ", departureTime='" + departureTime + '\'' +
+            ", arrivalTime='" + arrivalTime + '\'' +
             ", flightPrice=" + flightPrice +
+            ", fdId=" + fdId +
+            ", userId=" + userId +
             ", userName='" + userName + '\'' +
             ", userIdcard='" + userIdcard + '\'' +
             ", userPhone='" + userPhone + '\'' +
             ", createDate='" + createDate + '\'' +
-            ", flightStatus='" + flightStatus + '\'' +
-            ", updateDate='" + updateDate + '\'' +
+            ", recordStatus='" + recordStatus + '\'' +
+            ", modifyDate='" + modifyDate + '\'' +
             '}';
   }
 }
