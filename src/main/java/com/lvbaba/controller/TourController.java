@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -38,6 +39,8 @@ public class TourController {
     private UserOrderService userOrderService;
     @Resource
     private CommentService commentService;
+    @Resource
+    private UserService userService;
     @RequestMapping("/showTour.do")
     public String showTour(Model model,Tour tour,String page) {
         Tour tour1 =new Tour();
@@ -325,9 +328,19 @@ public class TourController {
 
 
 
+
+    @RequestMapping("/test.do")
+    public String test(){
+        return "test";
+    }
+    /*查询订单*/
+    @RequestMapping("/orderInquiry.do")
+    public String orderInquiry(){
+        return "test";
+    }
     /*添加评论*/
     @RequestMapping("/createComment.do")
-    public String createComment(Userorder userorder, Comment comment,Model model){
+    public String createComment(Userorder userorder, Comment comment, Model model){
         userorder =userOrderService.queryOne(userorder);
         /**
          * 根据用户订单查询产品
@@ -345,7 +358,25 @@ public class TourController {
         }else {
             model.addAttribute("error","评论失败");
         }
-        return "indexcopy";
+        return "test";
     }
-
+    /*退货*/
+    @RequestMapping("/refund.do")
+    public String refund(Userorder userorder, Model model) throws ParseException {
+        userorder=userOrderService.queryOne(userorder);
+        /*查询用户*/
+        User user=new User();
+        user.setuId(userorder.getuId());
+        /*查询旅行团*/
+        Tour tour=new Tour();
+        tour.setTourId(userorder.getTourId());
+        tour=tourService.query(tour);
+        user.setBalance(userorder.getOrderPrice()*Util.refund(tour.getdDate()));
+        if (userService.updateUser(user)){
+            model.addAttribute("success","退款成功");
+        }else {
+            model.addAttribute("error","退款失败");
+        }
+        return "test";
+    }
 }
