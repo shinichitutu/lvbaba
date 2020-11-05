@@ -10,6 +10,9 @@ public class Userorder {
   private String orderStatus;
   private String orderTime;
   private String payTime;
+  private long roomId;
+  private long roomNum;
+  private long person;
 
   public long getOrderId() {
     return orderId;
@@ -67,6 +70,31 @@ public class Userorder {
     this.payTime = payTime;
   }
 
+
+  public long getRoomNum() {
+    return roomNum;
+  }
+
+  public void setRoomNum(long roomNum) {
+    this.roomNum = roomNum;
+  }
+
+  public long getPerson() {
+    return person;
+  }
+
+  public void setPerson(long person) {
+    this.person = person;
+  }
+
+  public long getRoomId() {
+    return roomId;
+  }
+
+  public void setRoomId(long roomId) {
+    this.roomId = roomId;
+  }
+
   @Override
   public String toString() {
     return "Userorder{" +
@@ -77,6 +105,9 @@ public class Userorder {
             ", orderStatus='" + orderStatus + '\'' +
             ", orderTime='" + orderTime + '\'' +
             ", payTime='" + payTime + '\'' +
+            ", roomId=" + roomId +
+            ", roomNum=" + roomNum +
+            ", person=" + person +
             '}';
   }
 }

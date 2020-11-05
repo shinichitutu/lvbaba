@@ -11,7 +11,7 @@ public class Product {
   private long days;
   private long hotelId;
   private String productName;
-  private String productFee;
+  private Double productFee;
   private double productScore;
   private String productIntroduction;
   private Area d_area;
@@ -27,7 +27,7 @@ public class Product {
     this.productIntroduction = productIntroduction;
   }
 
-  public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore) {
+  public Product(long productId, long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, Double productFee, double productScore) {
     this.productId = productId;
     this.daId = daId;
     this.arrAreaId = arrAreaId;
@@ -40,7 +40,7 @@ public class Product {
     this.productScore = productScore;
   }
 
-  public Product(long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, String productFee, double productScore, String productIntroduction) {
+  public Product(long daId, long arrAreaId, long limLow, long limUp, long days, long hotelId, String productName, Double productFee, double productScore, String productIntroduction) {
     this.daId = daId;
     this.arrAreaId = arrAreaId;
     this.limLow = limLow;
@@ -124,11 +124,11 @@ public class Product {
     this.productName = productName;
   }
 
-  public String getProductFee() {
+  public Double getProductFee() {
     return productFee;
   }
 
-  public void setProductFee(String productFee) {
+  public void setProductFee(Double productFee) {
     this.productFee = productFee;
   }
 

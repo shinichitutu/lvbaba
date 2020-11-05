@@ -28,34 +28,34 @@ public class OrderController {
     private TourService tourService;
     @Resource
     private UserOrderService userOrderService;
+
     @RequestMapping("/showConfirmOrder.do")
-    public ModelAndView showConfirmOrder(HttpSession session){
+    public ModelAndView showConfirmOrder(HttpSession session) {
         User user = (User) session.getAttribute("user");
         ModelAndView mv = new ModelAndView("confirmOrderView");
-//        if (user!=null) {
-//            List<Userinfo> userinfoList = userService.queryAllByUid(new Userinfo(user.getuId()));
-        Userinfo userinfo = new Userinfo();
+     if (user!=null) {
+         List<Userinfo> userinfoList = userService.queryAllByUid(new Userinfo(user.getuId()));
+/*        Userinfo userinfo = new Userinfo();
         userinfo.setuId(1);
-        List<Userinfo> userinfoList = userService.queryAllByUid(userinfo);
-            mv.addObject("userinfoList", userinfoList);
-//        }
+        List<Userinfo> userinfoList = userService.queryAllByUid(userinfo);*/
+        mv.addObject("userinfoList", userinfoList);
+    }
         return mv;
     }
 
     @RequestMapping("/updateUserInfo.do")
     @ResponseBody
-    public String updateUserInfo(Userinfo userinfo){
+    public String updateUserInfo(Userinfo userinfo) {
         boolean flag = userService.updateUserInfoById(userinfo);
-        return ""+flag;
+        return "" + flag;
     }
 
     @RequestMapping("/addUserInfo.do")
     @ResponseBody
-    public String addUserInfo(Userinfo userinfo,HttpSession session){
-//        User user = (User) session.getAttribute("user");
-//        userinfo.setuId(user.getuId());
-        userinfo.setuId(1);
+    public String addUserInfo(Userinfo userinfo, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        userinfo.setuId(user.getuId());
         boolean flag = userService.insertUserInfo(userinfo);
-        return ""+flag;
+        return "" + flag;
     }
 }
