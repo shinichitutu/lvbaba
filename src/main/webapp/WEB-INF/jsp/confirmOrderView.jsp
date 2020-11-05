@@ -46,117 +46,28 @@
             cursor: pointer;
             color: #0099ff;
         }
-        .costDetail{
+
+        .costDetail {
             float: right;
             width: 400px;
             background-color: white;
             padding: 10px;
             border-radius: 10px;
         }
-        body{
+
+        body {
             background-color: #f1f1f6;
         }
-        .payOrder{
+
+        .payOrder {
             font-weight: bold;
-            color:white;
+            color: white;
             margin-right: 50px;
             width: 250px;
             padding: 10px;
             background-color: rgba(255, 138, 38, 0.83);
         }
     </style>
-    <script>
-        function modifyUserInfo(uiId, person, idcard, phone) {
-            var str = "<p>姓名：<input type='text' class='person' value='" + person + "'/></p>" +
-                "<p>身份证号码：<input type='text' class='idcard' value='" + idcard + "'/></p>" +
-                "<p>联系电话：<input type='text' class='phone' value='" + phone + "'/></p>" +
-                "<p><input type='hidden' class='uiId' value='" + uiId + "'/></p>" +
-                "<p><input type='button' class='modifyUserInfo' value='提交'/></p>";
-            $("#updateUserInfo").html("");
-            $("#updateUserInfo").html(str);
-        }
-
-        $(function () {
-            $("#updateUserInfo").on("click", ".modifyUserInfo", function () {
-                $("#updateUserInfo").css("display", "block");
-                $(".add_UserInfo").css("display", "none");
-
-                var uiId = $(".uiId").val();
-                var person = $(".person").val();
-                if (person == null || person == '') {
-                    alert("旅客名字不能为空");
-                    return;
-                }
-
-                var idcard = $(".idcard").val();
-                if (idcard == null || idcard == '') {
-                    alert("身份证不能为空");
-                    return;
-                }
-
-                var phone = $(".phone").val();
-                if (uiId == null || uiId == '') {
-                    alert("联系电话不能为空");
-                    return;
-                }
-
-                $.ajax({
-                    type: "post",
-                    data: {uiId: uiId, person: person, idcard: idcard, phone: phone},
-                    url: "updateUserInfo.do",
-                    dataType: "text",
-                    success: function (obj) {
-                        if ("false" == obj) {
-                            alert("更新旅客信息失败");
-                        } else {
-                            alert("更新旅客信息成功");
-                            window.location.reload();
-                        }
-                    }
-                })
-            })
-
-            $(".addUserInfo").click(function () {
-                var person = $("[name='person']").val();
-                if (person == null || person == '') {
-                    alert("姓名不能为空");
-                    return;
-                }
-
-                var idcard = $("[name='idcard']").val();
-                if (idcard == null || idcard == '') {
-                    alert("身份证号码不能为空");
-                    return;
-                }
-
-                var phone = $("[name='phone']").val();
-                if (person == null || person == '') {
-                    alert("联系电话不能为空");
-                    return;
-                }
-
-                $.ajax({
-                    type: "post",
-                    data: {person: person, idcard: idcard, phone: phone},
-                    dataType: "text",
-                    url: "addUserInfo.do",
-                    success: function (obj) {
-                        if ("false" == obj) {
-                            alert("添加旅客信息失败");
-                        } else {
-                            alert("添加旅客信息成功");
-                            window.location.reload();
-                        }
-                    }
-                })
-            })
-
-            $("#addUser").click(function () {
-                $("#updateUserInfo").css("display", "none");
-                $(".add_UserInfo").css("display", "block");
-            })
-        })
-    </script>
 </head>
 <body>
 
@@ -177,11 +88,11 @@
         <p>总价￥${requestScope.total}</p>
     </div>
 
-    <div style="width: 880px;" >
+    <div style="width: 880px;">
         <div class="tourInfo" style="background-color: white;padding: 10px;border-radius: 10px;">
             <%--<h3>${requestScope.departureArea.city}+${requestScope.destinationArea.city}${product.days}日游</h3>--%>
             <h3>${requestScope.product.productName}</h3>
-     <%--       <p style="text-indent: 2em">${requestScope.product.productIntroduction}</p>--%>
+            <%--       <p style="text-indent: 2em">${requestScope.product.productIntroduction}</p>--%>
         </div>
         <div class="orderDetail" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
             <p>
@@ -214,6 +125,9 @@
         <form action="comfirmUserInfo.do" method="post">
             <input type="hidden" name="tourId" value="${requestScope.tour.tourId}">
             <input type="hidden" name="total" value="${requestScope.total}">
+            <input type="hidden" name="person" value="${requestScope.numberOfTrips}">
+            <input type="hidden" name="roomNum" value="${requestScope.sRoom}">
+            <input type="hidden" name="roomId" value="${requestScope.roomId}">
             <input type="submit" value="下一步">
         </form>
 

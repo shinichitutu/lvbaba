@@ -267,7 +267,7 @@ public class TourController {
 
         if (roomdetailList == null) {
             model.addAttribute("productId", product.getProductId());
-            model.addAttribute("error", "很抱歉，该日出发的名额不足，请选择其他出发日！");
+            model.addAttribute("error", "很抱歉，该日出发的酒店房间不足，请选择其他出发日！");
             return "productDetail";
         }
         model.addAttribute("roomId", roomdetailList.get(0).getRoomId());
@@ -361,9 +361,12 @@ public class TourController {
 
 
     @RequestMapping("/comfirmUserInfo.do")
-    public String comfirmUserInfo(String tourId, String total, Model model,HttpSession session) {
+    public String comfirmUserInfo(String tourId, String total, String roomId,String person,String roomNum,Model model,HttpSession session) {
         model.addAttribute("tourId",tourId);
         model.addAttribute("total",total);
+        model.addAttribute("roomId",roomId);
+        model.addAttribute("person",person);
+        model.addAttribute("roomNum",roomNum);
         User user = (User) session.getAttribute("user");
         Userinfo userinfo = new Userinfo();
         userinfo.setuId(user.getuId());
