@@ -2,6 +2,7 @@ package com.lvbaba.dao;
 
 import com.lvbaba.entity.HotelOrder;
 import com.lvbaba.service.HotelOrderService;
+import com.lvbaba.service.HotelService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,6 +18,9 @@ import javax.annotation.Resource;
 public class HotelOrderTest {
     @Resource
     private HotelOrderService hotelOrderService;
+
+    @Resource
+    private HotelService hotelService;
 
     /**
      * 增加
@@ -84,5 +88,12 @@ public class HotelOrderTest {
         HotelOrder hotelOrder=new HotelOrder();
         hotelOrder.setHoPrice(1);
         hotelOrderService.query(hotelOrder).forEach(System.out::println);
+    }
+
+    @Test
+    public void hoteltest(){
+        System.out.println(hotelService.searchSuitableRooms("2020-10-22","2020-10-26",1,8));
+
+
     }
 }

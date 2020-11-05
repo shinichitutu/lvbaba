@@ -43,5 +43,8 @@ public interface HotelService {
 
     List<Roomdetail> queryByDateAndRid(String inDate, String outDate, long rid);
 
+    Double calculate(List<Roomdetail> list);
+
+
 
 }
