@@ -521,6 +521,10 @@
 <div>
     <a href="home.do" style="font-size: 100px">旧版主页</a>
 </div>
+<div>
+    <a href="test.do"style="font-size: 100px">测试页面</a>
+</div>
+
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 

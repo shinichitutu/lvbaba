@@ -296,26 +296,5 @@ public class TourController {
         /*用户购票页面*/
         return "confirmOrderView";
     }
-    /*添加评论*/
-    @RequestMapping("/createComment.do")
-    public String createComment(Userorder userorder, Comment comment,Model model){
-        userorder =userOrderService.queryOne(userorder);
-        /**
-         * 根据用户订单查询产品
-         */
-        Tour tour=new Tour();
-        tour.setTourId(userorder.getTourId());
-        tour=tourService.query(tour);
-        /**
-         * 向评论插入产品id 用户id
-         */
-        comment.setProductId(tour.getProductId());
-        comment.setuId(userorder.getuId());
-        if (commentService.insertCommentByUid(comment)){
-            model.addAttribute("success","评论成功");
-        }else {
-            model.addAttribute("error","评论失败");
-        }
-        return "indexcopy";
-    }
+
 }

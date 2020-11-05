@@ -58,13 +58,4 @@ public class OrderController {
         boolean flag = userService.insertUserInfo(userinfo);
         return ""+flag;
     }
-    @RequestMapping("/refund.do")
-    public String refund(Userorder userorder, Model model) throws ParseException {
-        userorder=userOrderService.queryOne(userorder);
-        Tour tour=new Tour();
-        tour.setTourId(userorder.getTourId());
-        tour=tourService.query(tour);
-        model.addAttribute("error", Util.refund(tour));
-        return "indexcopy";
-    }
 }
