@@ -34,10 +34,19 @@
                 alert("${requestScope.returnTicketInfo}");
             }
         })
+        function returnTicket(obj,fdrId) {
+            var res = confirm("退票需付手续费，详情参照上面，确认退款吗？")
+            if (res){
+                location.href="returnTicket.do?fdrId="+fdrId;
+            }else{
+                return;
+            }
+        }
     </script>
 </head>
 <body>
     <h3>购票记录</h3>
+    <h4 style="color: red"> ! 退票需付手续费，出发当天不能退票，出发前3天内50%手续费，前4-10天内30%的手续费，前11-30天20%的手续费，提前一个月退票10%的手续费</h4>
     <div>
         <table>
             <thead>
@@ -79,7 +88,11 @@
                     <td>${tkrecord.userPhone}</td>
                     <td style="color: red;font-weight: bold;font-size: 20px;">${tkrecord.flightPrice}</td>
                     <td>${tkrecord.recordStatus}</td>
-                    <td><a href="returnTicket.do?fdrId=${tkrecord.fdrId}">退票</a></td>
+                    <td>
+                        <c:if test="${'已支付'.equals(tkrecord.recordStatus)}">
+                        <a style="cursor: pointer" onclick="returnTicket(this,'${tkrecord.fdrId}')">退票</a></c:if>
+                        <c:if test="${'已退票'.equals(tkrecord.recordStatus)}"><a>...</a></c:if>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>

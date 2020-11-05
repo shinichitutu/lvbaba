@@ -92,6 +92,7 @@
                             alert("更新旅客信息失败");
                         } else {
                             alert("更新旅客信息成功");
+                            // location.href="toTicketOrderView.do";
                             window.location.reload();
                         }
                     }
@@ -127,8 +128,10 @@
                             alert("添加旅客信息失败");
                         } else {
                             alert("添加旅客信息成功");
+
                           /*  location.href="toTicketOrderView.do"*/
                           window.location.reload();
+
                         }
                     }
                 })

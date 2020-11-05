@@ -40,4 +40,11 @@ public interface FlightDatailDao {
     List<Flightdetail> queryFlightDetailByFIdAndDate(String date);
 
     boolean updateFlightDetailTickets(@Param("fdId") Long fdId,@Param("tickets")  Long tickets);
+
+    /**
+     * 通过fdid查询返回对应信息
+     * @param fdId
+     * @return
+     */
+    Flightdetail queryByFdId(Long fdId);
 }

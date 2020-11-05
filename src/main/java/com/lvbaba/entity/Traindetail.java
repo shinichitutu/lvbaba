@@ -9,6 +9,13 @@ public class Traindetail {
   private long tdTickets;
   private Train train;
 
+  public Traindetail() {
+  }
+
+  public Traindetail(long tdId) {
+    this.tdId = tdId;
+  }
+
   public long getTdId() {
     return tdId;
   }

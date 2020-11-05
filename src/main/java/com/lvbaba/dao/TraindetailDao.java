@@ -32,6 +32,11 @@ public interface TraindetailDao {
 
     List<Traindetail> query(Traindetail traindetail);
 
+    /**
+     * 通过tdid查询返回对应信息
+     * @param traindetail
+     * @return
+     */
     Traindetail queryOne(Traindetail traindetail);
 
 }
