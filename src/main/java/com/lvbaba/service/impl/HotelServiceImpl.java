@@ -175,7 +175,7 @@ public class HotelServiceImpl implements HotelService {
         return hotelList1;
     }
 
-
+    /*根据入住时间、离店时间，入住人数，roomId返判断是否有房间可以入住*/
     @Override
     public boolean isRoomAvailable(String inDate, String outDate, int num,long roomId) {
         while (!inDate.equals(outDate)){
@@ -200,6 +200,54 @@ public class HotelServiceImpl implements HotelService {
         }
 
         return true;
+    }
+
+    /*根据入住时间、离店时间，入住人数，hotelId返回最适合的roomDetail集合*/
+    @Override
+    public List<Roomdetail> searchSuitableRooms(String inDate, String outDate, int num, long hotelId) {
+        Room room =new Room();
+        room.setHotelId(hotelId);
+        List<Room> roomList = roomDao.query(room);
+        for (Room r:roomList) {
+            if(r.getPersonLimit()==1){
+                if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    return queryByDateAndRid(inDate,outDate,r.getRoomId());
+                }
+            }
+        }
+
+        for (Room r:roomList) {
+            if(r.getPersonLimit()==2){
+                if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    return queryByDateAndRid(inDate,outDate,r.getRoomId());
+                }
+            }
+        }
+
+        for (Room r:roomList) {
+            if(r.getPersonLimit()==3){
+                if(isRoomAvailable(inDate,outDate,num,r.getRoomId())){
+                    return queryByDateAndRid(inDate,outDate,r.getRoomId());
+                }
+            }
+        }
+
+
+        return null;
+    }
+
+    @Override
+    public List<Roomdetail> queryByDateAndRid(String inDate, String outDate, long rid) {
+        List<Roomdetail> list =new ArrayList<>();
+        Roomdetail roomdetail = new Roomdetail();
+        roomdetail.setRoomId(rid);
+        while (!inDate.equals(outDate)) {
+            roomdetail.setRoomDate(inDate);
+            List<Roomdetail> roomdetailList = roomDetailDao.query(roomdetail);
+            list.add(roomdetailList.get(0));
+            inDate = Util.addDay(inDate,1);
+        }
+        return list;
     }
 
 }

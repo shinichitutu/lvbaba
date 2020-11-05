@@ -2,6 +2,8 @@ package com.lvbaba.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.Hotel;
+import com.lvbaba.entity.Room;
+import com.lvbaba.entity.Roomdetail;
 
 import javax.print.DocFlavor;
 import java.util.List;
@@ -36,6 +38,10 @@ public interface HotelService {
     List<Hotel> queryBySearch(String city,String inDate,String outDate,int num);
 
     boolean isRoomAvailable(String inDate,String outDate,int num,long roomId);
+
+    List<Roomdetail> searchSuitableRooms(String inDate, String outDate, int num, long hotelId);
+
+    List<Roomdetail> queryByDateAndRid(String inDate, String outDate, long rid);
 
 
 }

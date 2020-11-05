@@ -224,11 +224,13 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <c:if test="${empty requestScope.userinfoList}">
                     <tr>
                         <td colspan="8">暂时没有任何旅客信息</td>
                     </tr>
                 </c:if>
+
                 <c:forEach items="${requestScope.userinfoList}" var="userInfo" varStatus="i">
                     <tr>
                         <td><input type="checkbox" value="${userInfo.uiId}"></td>
