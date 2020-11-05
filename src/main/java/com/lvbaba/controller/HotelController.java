@@ -68,7 +68,6 @@ public class HotelController {
 
     @RequestMapping("/showRoomDetail.do")
     public String showRoomDetail(Model model, String roomId) {
-/*        System.out.println(roomId);*/
         Roomdetail roomdetail = new Roomdetail();
         roomdetail.setRoomId(Long.valueOf(roomId));
         List<Roomdetail> list = roomDetailService.query(roomdetail);
@@ -132,7 +131,6 @@ public class HotelController {
     @RequestMapping("/showHotelInfo.do")
     @ResponseBody
     public String showHotelInfo(Hotel hotel){
-        System.out.println(hotel+"-----------------");
         List<Hotel> hotels = hotelService.queryAllByAreaId(hotel);
         return JSON.toJSONString(hotels);
     }

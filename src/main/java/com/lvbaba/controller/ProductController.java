@@ -88,7 +88,6 @@ public class ProductController {
         Comment comment=new Comment();
         comment.setProductId(product.getProductId());
         List<Comment> comments=commentService.queryCommentByUidAndPid(comment);
-        comments.forEach(System.out::println);
         Tour tour=new Tour();
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
@@ -121,7 +120,6 @@ public class ProductController {
         }
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
-        System.out.println("地址Wie："+"/upload"+File.separator+fileName);
         boolean flag = productService.insertProduct(product,files);
         if (flag){
             model.addAttribute("addProduct","新增成功");
@@ -144,8 +142,6 @@ public class ProductController {
 
     @RequestMapping("/updateProductInfo.do")
     public String modifyProduct(Product product, MultipartFile file1, HttpServletRequest request,Model model){
-        System.out.println("-----------------"+file1);
-        System.out.println("-----------------"+product);
         if(file1==null){
             model.addAttribute("error","重新选择");
             return "forward:showProduct.do";
@@ -168,7 +164,6 @@ public class ProductController {
 
         Files files = new Files();
         files.setFilePath("/upload"+File.separator+fileName);
-        System.out.println("修改地址为：--------"+"/upload"+File.separator+fileName);
         boolean flag = productService.updateProduct(product,files);
         if (flag){
             model.addAttribute("modifyProduct","修改成功");

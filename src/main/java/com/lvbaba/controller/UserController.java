@@ -48,7 +48,6 @@ public class UserController {
     @ResponseBody
     public String login(User user, HttpSession session){
         User user1 = userService.queryByUserName(user);
-        System.out.println("login+"+user1);
         if (null!=user1.getuPassword()&&user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);
             return "true";
@@ -64,7 +63,6 @@ public class UserController {
     }
     @RequestMapping("/adminLogin.do")
     public String adminLogin(Admin admin, Model model, HttpSession session,String adPassword){
-        System.out.println(admin);
         if (admin.getAdName().equals("admin")&&admin.getAdPassword().equals("admin")){
             session.setAttribute("admin",admin);
             return "admin";

@@ -36,7 +36,6 @@ public class AreaController {
         Area area = new Area();
         area.setCountry(country);
         List<Area> cityList = areaService.queryCityByCountry(area);
-        cityList.forEach(System.out::println);
         return JSON.toJSONString(cityList);
     }
 }

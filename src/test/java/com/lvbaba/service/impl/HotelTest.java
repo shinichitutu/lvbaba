@@ -2,15 +2,9 @@ package com.lvbaba.service.impl;
 
 import com.lvbaba.dao.AreaDao;
 import com.lvbaba.dao.HotelDao;
-import com.lvbaba.entity.Area;
-import com.lvbaba.entity.Hotel;
+import com.lvbaba.entity.*;
 
-import com.lvbaba.entity.Product;
-import com.lvbaba.entity.Roomdetail;
-import com.lvbaba.service.AreaService;
-import com.lvbaba.service.HotelService;
-import com.lvbaba.service.ProductService;
-import com.lvbaba.service.RoomDetailService;
+import com.lvbaba.service.*;
 
 import com.lvbaba.utli.Util;
 import org.junit.Test;
@@ -19,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +36,9 @@ public class HotelTest {
     @Resource
     private HotelService hotelService;
 
+    @Resource
+    private UserOrderService userOrderService;
+
 
     @Test
     public void testHotel(){
@@ -53,7 +51,8 @@ public class HotelTest {
     public void testDelete(){
         Roomdetail roomdetail =new Roomdetail();
         roomdetail.setRdId(1);
-        System.out.println(roomDetailService.deleteRoomDetail(roomdetail));}
+        System.out.println(roomDetailService.deleteRoomDetail(roomdetail));
+    }
 
     @Test
     public void testFindProduct(){
@@ -88,6 +87,14 @@ public class HotelTest {
 
 /*        System.out.println(list.get(2).equals(list.get(1)));*/
         System.out.println(Util.duplicateRemoval(list));
+    }
+
+
+    @Test
+    public void testnew2(){
+        Userorder userorder =new Userorder();
+        userorder.setOrderId(1);
+        userOrderService.queryOne(userorder);
     }
 
 

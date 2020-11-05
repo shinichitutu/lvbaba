@@ -312,8 +312,12 @@
 <form action="createComment.do" method="get">
     <input type="hidden" name="orderId" value="1">
     <input type="text" name="content" placeholder="请输入评论内容"><br/>
-    <input type="number" name="score" max="100" min="0" step="1">
+    <input type="number" name="score" max="5" min="1" step="1">
     <input type="submit" value="点击评论">
+</form>
+<form action="refund.do">
+    <input type="hidden"name="orderId" value="1">
+    <input type="submit" value="点击退单">
 </form>
 <p style="color: red">${error}</p>
 <p style="color: green">${success}</p>

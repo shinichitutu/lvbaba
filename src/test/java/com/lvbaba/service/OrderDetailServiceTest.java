@@ -24,6 +24,5 @@ public class OrderDetailServiceTest {
     @Test
     public void query(){
         List<Orderdetail> list=orderDetailService.query();
-        list.forEach(System.out::println);
     }
 }
