@@ -3,7 +3,7 @@
 <mapper namespace="com.lvbaba.dao.UserorderDao">
 
     <insert id="insertUserorder" parameterType="Userorder">
-        INSERT INTO userorder(u_id,t_id,o_price,o_status,o_time,p_time) VALUES (#{uId},#{tourId},#{orderPrice},#{orderStatus},#{orderTime},#{payTime});
+        INSERT INTO userorder(u_id,t_id,o_price,o_status,o_time,p_time,r_id,room_num,person) VALUES (#{uId},#{tourId},#{orderPrice},#{orderStatus},#{orderTime},#{payTime},#{roomId},#{roomNum},#{person});
     </insert>
     <update id="updateUserorder" parameterType="Userorder">
         UPDATE userorder SET
@@ -22,8 +22,18 @@
         <if test="orderTime!=null and orderTime!=''">
             o_time = #{orderTime},
         </if>
-        <if test="payTime!-null and payTime!=''">
-            p_time =#{payTime}
+        <if test="payTime!=null and payTime!=''">
+            p_time =#{payTime},
+        </if>
+
+        <if test="roomId!=null and roomId!=''">
+            r_id = ${roomId},
+        </if>
+        <if test="roomNum!=null and roomNum!=''">
+            room_num=${roomNum},
+        </if>
+        <if test="person!=null and person!=''">
+            person = #{person}
         </if>
         where o_id = #{orderId}
     </update>
@@ -33,11 +43,11 @@
     </delete>
 
     <select id="queryOne" parameterType="Userorder" resultMap="userorderMap">
-      SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder WHERE o_id = #{orderId};
+      SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time,r_id,room_num,person FROM userorder WHERE o_id = #{orderId};
     </select>
 
     <select id="query" resultMap="userorderMap" parameterType="Userorder">
-        SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder
+        SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time,r_id,room_num,person FROM userorder
         <where>
             <if test="orderId!=null and orderId!=''">
                 o_id = #{orderId}
@@ -60,11 +70,20 @@
             <if test="payTime!-null and payTime!=''">
                 and p_time =#{payTime}
             </if>
+            <if test="roomId!=null and roomId!=''">
+                and r_id = ${roomId}
+            </if>
+            <if test="roomNum!=null and roomNum!=''">
+                and room_num=${roomNum}
+            </if>
+            <if test="person!=null and person!=''">
+                person = #{person}
+            </if>
         </where>
     </select>
 
     <select id="queryAll" resultType="com.lvbaba.entity.Userorder">
-        SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time FROM userorder
+        SELECT o_id,u_id,t_id,o_price,o_status,o_time,p_time,r_id,room_num,person FROM userorder
     </select>
 
     <select id="queryUserOrdersByUserId" parameterType="Long" resultMap="userorderMap">
@@ -79,5 +98,8 @@
         <result property="orderStatus" column="o_status"/>
         <result property="orderTime" column="o_time"/>
         <result property="payTime" column="p_time"/>
+        <result property="roomId" column="r_id"/>
+        <result property="roomNum" column="room_num"/>
+        <result property="person" column="person"/>
     </resultMap>
 </mapper>

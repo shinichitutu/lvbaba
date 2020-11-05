@@ -7,9 +7,12 @@ import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TicketrecordService;
 import com.lvbaba.service.TransportationService;
 import com.lvbaba.service.UserService;
+import com.lvbaba.utli.UserbLocker;
 import com.lvbaba.utli.Util;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -219,7 +222,8 @@ public class OperateTransportController {
         model.addAttribute("flightDetailInfoList",flightdetailList);
         return "forward:toUserFlightBookView.do";
     }
-
+    @GetMapping(value = "toTicketOrderView",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    @UserbLocker
     @RequestMapping("/toTicketOrderView.do")
     public String toTicketOrderView(Ticketrecord ticketrecord,Model model,HttpSession session){
         System.out.println("----------------"+ticketrecord);

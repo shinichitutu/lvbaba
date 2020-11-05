@@ -52,4 +52,14 @@ public class Room {
   public void setPersonLimit(long personLimit) {
     this.personLimit = personLimit;
   }
+
+  @Override
+  public String toString() {
+    return "Room{" +
+            "roomId=" + roomId +
+            ", hotelId=" + hotelId +
+            ", roomNumber=" + roomNumber +
+            ", personLimit=" + personLimit +
+            '}';
+  }
 }

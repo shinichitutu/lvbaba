@@ -10,9 +10,13 @@ public class Userorder {
   private String orderStatus;
   private String orderTime;
   private String payTime;
-  private Long roomId;
-  private Tour tour;
+
+  privite Tour tour;
   private Product product;
+  private long roomId;
+  private long roomNum;
+  private long person;
+
 
   public long getOrderId() {
     return orderId;
@@ -70,13 +74,7 @@ public class Userorder {
     this.payTime = payTime;
   }
 
-  public Long getRoomId() {
-    return roomId;
-  }
 
-  public void setRoomId(Long roomId) {
-    this.roomId = roomId;
-  }
 
   public Tour getTour() {
     return tour;
@@ -92,6 +90,31 @@ public class Userorder {
 
   public void setProduct(Product product) {
     this.product = product;
+
+
+  public long getRoomNum() {
+    return roomNum;
+  }
+
+  public void setRoomNum(long roomNum) {
+    this.roomNum = roomNum;
+  }
+
+  public long getPerson() {
+    return person;
+  }
+
+  public void setPerson(long person) {
+    this.person = person;
+  }
+
+  public long getRoomId() {
+    return roomId;
+  }
+
+  public void setRoomId(long roomId) {
+    this.roomId = roomId;
+
   }
 
   @Override
@@ -107,6 +130,9 @@ public class Userorder {
             ", roomId=" + roomId +
             ", tour=" + tour +
             ", product=" + product +
+            ", roomNum=" + roomNum +
+            ", person=" + person +
+
             '}';
   }
 }
