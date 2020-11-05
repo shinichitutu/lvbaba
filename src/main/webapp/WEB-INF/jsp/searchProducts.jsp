@@ -152,6 +152,7 @@
                                 </div>
 
                             </div>
+
                             <div style="width:70%;float:left;height: 20%;text-align: center;">
                                 <form action="productOne.do" method="post">
                                     <input name="productId" type="hidden" value="${product.productId}">
@@ -167,6 +168,7 @@
                                     <input type="submit" value="查询产品详情">
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </td>

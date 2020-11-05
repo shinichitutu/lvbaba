@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lvbaba.dao.ProductDao">
 
-    <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,h_id,p_name,p_fee,p_score</sql>
+    <sql id="all">p_id,d_a_id,a_area_id,lim_low,lim_up,days,h_id,p_name,p_fee,p_score,p_introduction</sql>
 
     <sql id="condition">
         <if test="productId!=null and productId!=''">p_id=#{productId}</if>
@@ -15,13 +15,12 @@
         <if test="productName!=null and productName !=''">and p_name=#{productName}</if>
         <if test="productFee!=null and productFee !=''">and p_fee=#{productFee}</if>
         <if test="productScore!=null and productScore !=''">and p_score=#{productScore}</if>
+        <if test="productIntroduction!=null and productIntroduction!=''">and p_introduction=#{productIntroduction}</if>
     </sql>
 
-
-
     <insert id="insertProduct" parameterType="Product" >
-        INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score) VALUES
-        (#{daId},#{arrAreaId},#{limLow},#{limUp},#{days},#{hotelId},#{productName},#{productFee},#{productScore})
+        INSERT into product(d_a_id, a_area_id, lim_low, lim_up, days, h_id, p_name, p_fee, p_score,p_introduction) VALUES
+        (#{daId},#{arrAreaId},#{limLow},#{limUp},#{days},#{hotelId},#{productName},#{productFee},#{productScore},#{productIntroduction})
     </insert>
 
     <update id="updateProduct" parameterType="Product">
@@ -36,6 +35,7 @@
             <if test="productName!=null and productName !=''">p_name=#{productName},</if>
             <if test="productFee!=null and productFee !=''">p_fee=#{productFee},</if>
             <if test="productScore!=null and productScore !=''">p_score=#{productScore}</if>
+            <if test="productIntroduction!=null and productIntroduction!=''">p_introduction=#{productIntroduction}</if>
         </set> where p_id = #{productId}
     </update>
 
@@ -72,6 +72,7 @@
         <result property="productName" column="p_name"/>
         <result property="productFee" column="p_fee"/>
         <result property="productScore" column="p_score"/>
+        <result property="productIntroduction" column="p_introduction"/>
     </resultMap>
 
 
