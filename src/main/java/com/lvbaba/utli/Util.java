@@ -145,10 +145,9 @@ public class Util {
 
 
     /*退款*/
-    public static double refund(Tour tour) throws ParseException {
+    public static double refund(String dateString) throws ParseException {
         Date date=new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateString=tour.getdDate();
         Date date2=sdf.parse(dateString);
         double d=((date.getTime()-date2.getTime())/(1000*60*60*24))*100;
         if(d>=0 && d<=3){
@@ -157,9 +156,8 @@ public class Util {
             return 0.3;
         }else if(d>10 && d<=30){
             return 0.2;
-        } else {
+        }else{
             return 0.1;
         }
     }
-
 }
