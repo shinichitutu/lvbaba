@@ -72,6 +72,17 @@ public class ProductController {
 
     @RequestMapping("searchProductMain.do")
     public String searchProductMain(String aimArea,String deArea,Model model){
+        Area area=new Area();
+        area.setCity(aimArea);
+        if (areaService.queryOne(area)==null){
+            model.addAttribute("count",0);
+            return "userProductsResult";
+        }
+        area.setCity(deArea);
+        if (areaService.queryOne(area)==null){
+            model.addAttribute("count",0);
+            return "userProductsResult";
+        }
         List<Product> productList=productService.queryByAreaName(deArea,aimArea);
         int count =productList.size();
         model.addAttribute("product",productList);

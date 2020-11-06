@@ -28,6 +28,11 @@
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
 
+            $("#serch").click(function () {
+                var what= $("#what").val();
+                var where =$("#where").val();
+            })
+
             // 判断用户名是否可以使用
             var flag_name = false;
             // 判断mm1的状态
@@ -185,6 +190,11 @@
             }
         }
     </script>
+<%--    <script>
+        if(${not empty requestScope.error}){
+            alert("${requestScope.error}");
+        }
+    </script>--%>
 </head>
 <body>
 <!-- 注册登录 -->
@@ -302,15 +312,13 @@
             <div class="container">
                 <a class="navbar-brand" href="index.do">
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" />
-<%--
-                    <img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" />
---%>
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="default dark" alt="Listigo" />
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact light" alt="Listigo" />
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
                 </ul>
+
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
         </nav>
@@ -327,7 +335,7 @@
                                 <div class="search-input">
                                     <label for="what" class="form-control-label mb-0">出发地</label>
                                     <div class="input-group align-items-center dropdown">
-                                        <input type="text" id="what" class="form-control" name="deArea" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" />
+                                        <input required type="text" id="what" class="form-control" name="deArea" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" />
                                         <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                         <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                             <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
@@ -344,7 +352,7 @@
                                 <div class="search-input">
                                     <label for="where" class="form-control-label mb-0">目的地</label>
                                     <div class="input-group align-items-center dropdown">
-                                        <input type="text" id="where" class="form-control" name="aimArea" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" />
+                                        <input required type="text" id="where" class="form-control" name="aimArea" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" />
                                         <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                         <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                             <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
@@ -356,7 +364,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-danger">搜索</button>
+                                <button type="submit" class="btn btn-danger" id="serch">搜索</button>
                             </div>
                         </div>
                         </form>
@@ -508,8 +516,10 @@
                     <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
                     <li><a href="toBookingRecordView.do">机票订单</a></li>
                     <li><a href="#">个人信息</a></li>
-                </ul></li>
-
+                    <li><a href="userRecharge.do">充值</a></li>
+                    <li><a href="loginOut.do">退出登录</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </aside>
@@ -519,12 +529,11 @@
 <div>
     <a href="home.do" style="font-size: 100px">旧版主页</a>
 </div>
-<div>
+<%--<div>
     <a href="test.do"style="font-size: 100px">测试页面</a>
-</div>
+</div>--%>
 
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
-
 </body>
 </html>

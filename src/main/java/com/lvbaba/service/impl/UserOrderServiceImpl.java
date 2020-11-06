@@ -4,6 +4,7 @@ import com.lvbaba.dao.*;
 import com.lvbaba.entity.*;
 import com.lvbaba.service.ProductService;
 import com.lvbaba.service.UserOrderService;
+import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -37,8 +38,7 @@ public class UserOrderServiceImpl implements UserOrderService{
     @Resource
     private RoomDetailDao roomDetailDao;
     @Resource
-    private TicketrecordDao ticketrecordDao;
-
+    private UserDao userDao;
     @Override
     public Userorder queryOne(Userorder userorder) {
         return userorderDao.queryOne(userorder);
@@ -113,11 +113,26 @@ public class UserOrderServiceImpl implements UserOrderService{
         Tour tour = tourDao.query(new Tour(userorder.getTourId()));
         boolean flag3 =false;
         boolean flag4 =false;
+        boolean flag5=false;
         if ("1".equals(tour.getTransType())) {
             flag3 = flightDatailDao.updateFlightDetailTickets(tour.getGoId(), userorder.getRoomNum());
         }else if("2".equals(tour.getTransType())) {
             flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), userorder.getRoomNum()));
         }
-        return flag1&&flag2&&flag3&&flag4?true:false;
+        flag5=refund(userorder);
+        return flag1&&flag2&&flag3&&flag4&&flag5?true:false;
+    }
+
+    @Override
+    public boolean refund(Userorder userorder) {
+        /*查询用户*/
+        User user = new User();
+        user.setuId(userorder.getuId());
+        /*查询旅行团*/
+        Tour tour = new Tour();
+        tour.setTourId(userorder.getTourId());
+        tour = tourDao.query(tour);
+        user.setBalance(-userorder.getOrderPrice() * Util.refund(tour.getdDate()));
+        return userDao.updateUser(user);
     }
 }

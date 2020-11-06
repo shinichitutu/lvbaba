@@ -62,4 +62,11 @@ public interface UserOrderService {
      * @return
      */
     boolean returnOrder(Long orderId);
+
+    /**
+     * 根据用户订单退款
+     * @param userorder
+     * @return
+     */
+    boolean refund(Userorder userorder);
 }

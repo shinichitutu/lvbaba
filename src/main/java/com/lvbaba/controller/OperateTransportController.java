@@ -2,6 +2,8 @@ package com.lvbaba.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lvbaba.entity.*;
 import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TicketrecordService;
@@ -65,7 +67,6 @@ public class OperateTransportController {
         boolean flag = transportationService.insertTrain(train);
         return "" + flag;
     }
-
     @RequestMapping("/showFlightAndTrain.do")
     public ModelAndView showFlightAndTrain() {
         List<Flight> flightList = transportationService.queryAllFlight();
@@ -262,7 +263,8 @@ public class OperateTransportController {
             return "forward:toTicketOrderView.do";
         }
     }
-
+//    @GetMapping(value="toBookingRecordView", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    @UserbLocker
     @RequestMapping("/toBookingRecordView.do")
     public String toBookingRecordView(HttpSession session,Model model){
         User user = (User) session.getAttribute("user");

@@ -17,29 +17,20 @@
     <script src="js/jquery-3.1.0.js"></script>
 </head>
 <body>
+<p>评论</p>
 <form action="createComment.do" method="get">
     <input type="hidden" name="orderId" value="1">
     <input type="text" name="content" placeholder="请输入评论内容"><br/>
     <input type="number" name="score" max="5" min="1" step="1">
     <input type="submit" value="点击评论">
 </form>
-<form action="refund.do">
-    <input type="hidden"name="orderId" value="1">
-    <input type="submit" value="点击退单">
-</form>
+<hr/>
 <form action="orderInquiry.do" method="get">
     <input type="hidden" name="uId" value="1">
     <input type="submit" value="点击查询订单">
 </form>
-<form action="testAuto.do" method="get">
-    <input type="checkbox" value="true" name="auto">
-    <input type="submit" value="自动登录">
-</form>
-<form action="refund.do" method="get">
-    <input type="text" name="uId" value="${sessionScope.user.uId}">
-    请输入充值金额:<input type="number" max="10000" min="1" step="any" name="balance"><br/>
-    <<input type="submit" value="充值">
-</form>
+<p>充值</p>
+
 <p style="color: red">${error}</p>
 <p style="color: green">${success}</p>
 </body>

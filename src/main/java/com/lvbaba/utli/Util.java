@@ -145,10 +145,15 @@ public class Util {
 
 
     /*退款*/
-    public static double refund(String dateString) throws ParseException {
+    public static double refund(String dateString) {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date2 = sdf.parse(dateString);
+        Date date2 = null;
+        try {
+            date2 = sdf.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         double d = ((date.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24)) * 100;
         if (d >= 0 && d <= 3) {
             return 0.5;

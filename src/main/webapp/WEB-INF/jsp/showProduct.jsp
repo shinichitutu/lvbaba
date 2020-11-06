@@ -270,18 +270,18 @@
                             str += "<option value='"+item.hotelId+"'>"+item.hotelName+"--<span style='color: gold;'>"+item.hotelLevel+"星</span></option>";
                         })
                         var form ="<form action='updateProductInfo.do' method='post' enctype='multipart/form-data'/>" +
-                            "<p>产品名称：<input type='text' id='u_productName' name='productName' value='"+productName+"'/></p>" +
+                            "<p>产品名称：<input required type='text' id='u_productName' name='productName' value='"+productName+"'/></p>" +
                             "<p><input type='hidden' id='u_productId' name='productId' value='"+productId+"'/></p>" +
                             "<p>出发地："+d_area+"</p>" +
                             "<p>出发地："+a_area+"</p>" +
-                            "<p>人数下限：<input type='number' min='1' max='5' id='u_limLow' name='limLow' value='"+limLow+"' ></p>" +
-                            "<p>人数上限：<input type='number' min='5' max='30' id='u_limUp' name='limUp' value='"+limUp+"' ></p>" +
-                            "<p>行程天数：<input type='number' min='1' max='10' id='u_days' name='days' value='"+days+"' /></p>" +
+                            "<p>人数下限：<input required type='number' min='1' max='5' id='u_limLow' name='limLow' value='"+limLow+"' ></p>" +
+                            "<p>人数上限：<input required type='number' min='5' max='30' id='u_limUp' name='limUp' value='"+limUp+"' ></p>" +
+                            "<p>行程天数：<input required type='number' min='1' max='10' id='u_days' name='days' value='"+days+"' /></p>" +
                             "<p>入住酒店：<select id='u_hotelId'>" +
                             "<option value='0'>--请选择--</option>" +str+
                             "</select><span>选择了目的地之后，才能看到酒店</span></p>" +
-                            "<p>基础团费：<input type='number' min='500' max='10000' step='500' name='productFee' id='u_productFee' value='"+productFee+"'/></p>" +
-                            "<p>产品图片：<input type='file' name='file1'></p>" +
+                            "<p>基础团费：<input required type='number' min='500' max='10000' step='500' name='productFee' id='u_productFee' value='"+productFee+"'/></p>" +
+                            "<p>产品图片：<input required type='file' name='file1'></p>" +
                             "<p><input type='submit' value='提交修改' class='modifyProductInfo'/></p></form>";
 
                         $("#d3").html("");
@@ -388,27 +388,27 @@
 
     <div style="margin-left: 50px;display: none;" id="d2">
         <form action="addProductInfo.do" method="post" enctype="multipart/form-data">
-            <p>产品名称：<input type="text" name="productName" class="productName" placeholder="请输入产品名称"></p>
+            <p>产品名称：<input required type="text" name="productName" class="productName" placeholder="请输入产品名称"></p>
             <p>出发地：<select class="d_country">
                 <option value="0">--请选择--</option>
             </select>
-                <select class="d_city" name="daId">
+                <select required class="d_city" name="daId">
                     <option value="0">--请选择--</option>
                 </select></p>
-            <p>出发地：<select class="a_country">
+            <p>出发地：<select required class="a_country">
                 <option value="0">--请选择--</option>
             </select>
-                <select class="a_city" name="arrAreaId">
+                <select required class="a_city" name="arrAreaId">
                     <option value="0">--请选择--</option>
                 </select></p>
-            <p>人数下限：<input type="number" min="1" max="5" step="1" name="limLow" class="limLow" placeholder="请选择人数下限"></p>
-            <p>人数上限：<input type="number" min="5" max="30" step="1" name="limUp" class="limUp" placeholder="请选择人数上限"></p>
-            <p>行程天数：<input type="number" min="1" max="10" step="1" name="days" class="days" placeholder="请选择行程天数"></p>
-            <p>入住酒店：<select class="hotelId" name="hotelId">
+            <p>人数下限：<input required type="number" min="1" max="5" step="1" name="limLow" class="limLow" placeholder="请选择人数下限"></p>
+            <p>人数上限：<input required type="number" min="5" max="30" step="1" name="limUp" class="limUp" placeholder="请选择人数上限"></p>
+            <p>行程天数：<input required type="number" min="1" max="10" step="1" name="days" class="days" placeholder="请选择行程天数"></p>
+            <p>入住酒店：<select required class="hotelId" name="hotelId">
                 <option value="0">--请选择--</option>
             </select><span>选择了目的地之后，才能看到酒店</span></p>
-            <p>基础团费：<input type="number" min="500" max="10000" step="500" name="productFee" class="productFee" placeholder="请输入基本团费"></p>
-            <p>选择文件：<input type="file" name="file"></p>
+            <p>基础团费：<input required type="number" min="500" max="10000" step="500" name="productFee" class="productFee" placeholder="请输入基本团费"></p>
+            <p>选择文件：<input required type="file" name="file"></p>
             <p><input type="submit" value="点击添加" class="addProduct"></p>
         </form>
     </div>

@@ -230,7 +230,7 @@ public class TourController {
     }
 
     /*创建订单，判断房间、机票、火车票是否充足，计算价格*/
-    @GetMapping(value = "createOne", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+//    @GetMapping(value = "createOne", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
     @UserbLocker
     @RequestMapping("/createOne.do")
     public String createOne(Model model, Tour tour, Integer sRoom, Product product, Integer numberOfTrips, HttpSession session) {
@@ -424,33 +424,5 @@ public class TourController {
         return "test";
     }
 
-    /*退货*/
-    @RequestMapping("/refund.do")
-    public String refund(Userorder userorder, Model model) throws ParseException {
-        userorder = userOrderService.queryOne(userorder);
-        /*查询用户*/
-        User user = new User();
-        user.setuId(userorder.getuId());
-        /*查询旅行团*/
-        Tour tour = new Tour();
-        tour.setTourId(userorder.getTourId());
-        tour = tourService.query(tour);
-        user.setBalance(userorder.getOrderPrice() * Util.refund(tour.getdDate()));
-        if (userService.updateUser(user)) {
-            model.addAttribute("success", "退款成功");
-        } else {
-            model.addAttribute("error", "退款失败");
-        }
-        return "test";
-    }
-    /*recharge*/
-    @RequestMapping("recharge.do")
-    public String recharge(User user,Model model){
-        if (userService.updateUser(user)){
-            model.addAttribute("sucess","充值成功");
-        }else {
-            model.addAttribute("error","充值失败");
-        }
-        return "test";
-    }
+
 }

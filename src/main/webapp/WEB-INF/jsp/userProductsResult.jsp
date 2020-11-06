@@ -74,7 +74,7 @@
                         <div class="search-input">
                             <label for="what" class="form-control-label mb-0">出发地</label>
                             <div class="input-group align-items-center dropdown">
-                                <input type="text" id="what" name="deArea" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" value="${requestScope.deArea}"/>
+                                <input required type="text" id="what" name="deArea" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" value="${requestScope.deArea}"/>
                                 <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                 <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                     <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
@@ -91,7 +91,7 @@
                         <div class="search-input">
                             <label for="where" class="form-control-label mb-0">目的地</label>
                             <div class="input-group align-items-center dropdown">
-                                <input type="text" id="where" name="aimArea" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" value="${requestScope.aimArea}"/>
+                                <input required type="text" id="where" name="aimArea" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" value="${requestScope.aimArea}"/>
                                 <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
                                 <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                     <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>

@@ -20,7 +20,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
     <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <title>Listigo | Directory Bootstrap 4 Template</title>
     <link href="assets/images/logos/favicon.png" rel="icon" />
     <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
@@ -30,10 +29,8 @@
     <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
@@ -140,23 +137,22 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                        <li><a href="#">推荐路线</a></li>
+                        <li><a href="userMain.do">推荐路线</a></li>
                     </ul></li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                     <ul class="nav-sub-menu">
-
-                        <li><a href="#">预订机票</a></li>
+                        <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
                     </ul></li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                     <ul class="nav-sub-menu">
-                        <li><a href="#">旅行订单</a></li>
-                        <li><a href="#">机票订单</a></li>
-                        <li><a href="#">酒店订单</a></li>
+                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                        <li><a href="toBookingRecordView.do">机票订单</a></li>
                         <li><a href="#">个人信息</a></li>
-
-                    </ul></li>
-
+                        <li><a href="userRecharge.do">充值</a></li>
+                        <li><a href="loginOut.do">退出登录</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </aside>

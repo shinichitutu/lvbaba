@@ -119,7 +119,7 @@
                 // console.log(flightNumber+"--"+flightCompany+"---"+flightDTime+"---"+flightATime+"--"+daId+"---"+arrAreaId+"--"+flightCapacity+"---"+f_price);
                 $.ajax({
                     type:"post",
-                    data:{flightNumber:flightNumber,flightCompany:flightCompany,flightDTime:flightDTime,flightATime:flightATime,daId:daId,arrAreaId:arrAreaId,flightCapacity:flightCapacity,flightPrice:flightPrice},
+                    data:{flightNumber:flightNumber,flightCompany:flightCompany,flightDTime:flightDTime,flightATime:flightATime,daId:dareaId,arrAreaId:arrAreaId,flightCapacity:flightCapacity,flightPrice:flightPrice},
                     url:"addFlight.do",
                     dataType:"text",
                     success:function (obj) {
