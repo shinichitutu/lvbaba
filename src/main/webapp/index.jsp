@@ -507,7 +507,7 @@
                 <ul class="nav-sub-menu">
                     <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
                     <li><a href="toBookingRecordView.do">机票订单</a></li>
-                    <li><a href="#">个人信息</a></li>
+                    <li><a href="userCenter.do">个人中心</a></li>
                 </ul></li>
 
         </ul>

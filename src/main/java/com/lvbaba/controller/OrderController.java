@@ -76,7 +76,7 @@ public class OrderController {
         }else{
             model.addAttribute("returnUserOrderInfo","退款失败");
         }
-        return "forward:toUserOrderRecordView.do";
+        return "forward:toUserOrderRecordView.do";}
 
     @RequestMapping("/createOrder.do")
     public String createNewOrder(String userIds,Model model,String tourId,String total,String person,String roomNum,String roomId,HttpSession session){
@@ -108,6 +108,5 @@ public class OrderController {
            orderDetailService.insertOrderDetail(orderdetail);
         }
         return "payResult";
-
     }
 }

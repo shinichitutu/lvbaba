@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: shinichi
-  Date: 2020/11/5
-  Time: 14:03
+  Date: 2020/11/6
+  Time: 10:12
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,14 +13,9 @@
 %>
 <html>
 <head>
-
     <title>Title</title>
     <base href="<%=basePath%>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -43,50 +38,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <style>
-        table {
-            width: 800px;
-            border-top: 1px solid #aaaaaa;
-            border-bottom: 1px solid #aaaaaa;
-        }
-
-        tr, th {
-            border-bottom: 1px solid #aaaaaa;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-/*        #addUser {
-            width: 850px;
-            display: block;
-            text-align: right;
-            padding-right: 100px;
-        }*/
-
-       /* #addUser, */.modify_UserInfo {
-            text-decoration: underline;
-            cursor: pointer;
-            color: #0099ff;
-        }
-        .costDetail{
-            float: right;
-            width: 400px;
-            background-color: white;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        body{
-            background-color: #f1f1f6;
-        }
-        .payOrder{
-            font-weight: bold;
-            color:white;
-            margin-right: 50px;
-            width: 250px;
-            padding: 10px;
-            background-color: rgba(255, 138, 38, 0.83);
-        }
-    </style>
     <script>
         function modifyUserInfo(uiId, person, idcard, phone) {
             var str = "<p>姓名：<input type='text' class='person' value='" + person + "'/></p>" +
@@ -178,29 +129,12 @@
                 $(".add_UserInfo").css("display", "block");
             })
 
-            $("#payMoney").click(function () {
-                var str ="";
-                var count =0;
-                $(".choiseUser:checked").each(function () {
-                    str +=$(this).val()+","
-                    count+=1;
-                });
-
-                if(count!=${requestScope.person}){
-                    alert("必须选择与出行人数量相符的信息，以便于进行实名制购票及客房预订")
-                }
-                else {
-                    var userIds = "<input type='hidden' name='userIds' value='"+str+"'/>";
-                    $("#payMoney").prepend(userIds);
-                    $("#hiddenForm").submit();
-                }
-
-            })
         })
     </script>
 
 </head>
 <body>
+
 <div id="wrapper">
     <div id="loading">
         <div id="loader"></div>
@@ -217,99 +151,67 @@
         </nav>
     </header>
 
-<div class="container" style="padding-top: 50px;height: 400px">
+    <div class="container">
+        <h2>基础列表组</h2>
+        <ul class="list-group">
+            <li class="list-group-item"><span style="font-weight:bold"> 用户名:</span>${requestScope.user.uUsername}</li>
+            <li class="list-group-item"><span style="font-weight:bold"> 昵称:</span>${requestScope.user.uName}</li>
+            <li class="list-group-item"><span style="font-weight:bold"> 会员等级:</span>普通会员</li>
+            <li class="list-group-item"><span style="font-weight:bold"> 账户余额：</span>${requestScope.user.balance}元&nbsp<button type="button" class="btn btn-success">去充值</button></li>
+        </ul>
+        <br/><br/>
 
-<div class="userDetails" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
-    <p>
-    <h2 style="display: inline-block;">确认旅客信息</h2><br/>
-    <p class="text-info">根据你选择的行程信息，为了进行实名制购票，请选择${requestScope.person}名旅客信息</p>
-    <span id="addUser" class="float-right"><button type="button" class="btn btn-primary">新增旅客信息</button></span></p><br/><br/>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>选择</th>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>证件类型</th>
-            <th>证件号码</th>
-            <th>联系电话</th>
-            <th>编辑</th>
-
-        </tr>
-        </thead>
-        <tbody>
-
-        <c:if test="${empty requestScope.userinfoList}">
+        <span id="addUser" class="float-right"><button type="button" class="btn btn-primary">新增旅客信息</button></span></p><br/><br/>
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td colspan="8">暂时没有任何旅客信息</td>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>证件类型</th>
+                <th>证件号码</th>
+                <th>联系电话</th>
+                <th>编辑</th>
             </tr>
-        </c:if>
+            </thead>
+            <tbody>
 
-        <c:forEach items="${requestScope.userinfoList}" var="userInfo" varStatus="i">
-            <tr>
-                <td><input type="checkbox" class="choiseUser" value="${userInfo.uiId}"></td>
-                <td>${i.count}</td>
-                <td>${userInfo.person}</td>
-                <td>身份证</td>
-                <td>${userInfo.idcard}</td>
-                <td>${userInfo.phone}</td>
-                <td><span class="modify_UserInfo"
-                          onclick="modifyUserInfo('${userInfo.uiId}','${userInfo.person}','${userInfo.idcard}','${userInfo.phone}')">编辑</span>
-                </td>
+            <c:if test="${empty requestScope.userinfoList}">
+                <tr>
+                    <td colspan="8">暂时没有任何旅客信息</td>
+                </tr>
+            </c:if>
 
-            </tr>
-        </c:forEach>
+            <c:forEach items="${requestScope.userinfoList}" var="userInfo" varStatus="i">
+                <tr>
+                    <td>${i.count}</td>
+                    <td>${userInfo.person}</td>
+                    <td>身份证</td>
+                    <td>${userInfo.idcard}</td>
+                    <td>${userInfo.phone}</td>
+                    <td><span class="modify_UserInfo"
+                              onclick="modifyUserInfo('${userInfo.uiId}','${userInfo.person}','${userInfo.idcard}','${userInfo.phone}')">编辑</span>
+                    </td>
 
-        </tbody>
-    </table>
+                </tr>
+            </c:forEach>
 
-    <br/>
+            </tbody>
+        </table>
 
-    <div id="updateUserInfo"></div>
-    <div class="add_UserInfo" style="display: none;">
-        <p>旅客姓名：<input type="text" name="person"/></p>
-        <p>身份证号码：<input type="text" name="idcard"/></p>
-        <p>联系电话：<input type="text" name="phone"/></p>
-        <p><input type="button" class="addUserInfo" value="新增"/></p>
+        <br/>
+
+        <div id="updateUserInfo"></div>
+        <div class="add_UserInfo" style="display: none;">
+            <p>旅客姓名：<input type="text" name="person"/></p>
+            <p>身份证号码：<input type="text" name="idcard"/></p>
+            <p>联系电话：<input type="text" name="phone"/></p>
+            <p><input type="button" class="addUserInfo" value="新增"/></p>
+        </div>
+
     </div>
 
-</div>
 
-<div style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
-    <p style="padding: 10px;background-color: #f6f3f1"> · 支付完成后，订单会立即确认。</p>
 
-    <p style="text-align: right">
-    <form action="createOrder.do" method="post" id="hiddenForm">
-   <input type="hidden" name="total" value="${requestScope.total}">
-    <input type="hidden" name="tourId" value="${requestScope.tourId}">
-    <input type="hidden" name="person" value="${requestScope.person}">
-    <input type="hidden" name="roomNum" value="${requestScope.roomNum}">
-    <input type="hidden" name="roomId" value="${requestScope.roomId}">
-        <input type="button" value="同意以下条款，去支付" class="payOrder" id="payMoney">
-    </form>
-    </p>
-
-</div>
-
-<div style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
-    <p style="text-indent: 2em">
-        条款和合同
-        为支持绿色环保，我同意接受电子合同并默认其合法有效性，如需签署纸质合同将另行致电携程旅行网客服。
-        预订限制
-        出于安全考虑，18岁以下未成年人需要至少一名成年旅客陪同
-        此线路行程强度较大，请确保身体健康适宜旅游，如出行人中有70周岁(含)以上老人、须至少有1位18周岁—69周岁亲友陪同方可参团，敬请谅解
-        此线路因服务能力有限，仅接受持有中国有效身份证件的客人预订（不含中国香港、中国澳门和中国台湾），敬请谅解
-        如产品确认单中的条款约定与旅游合同主协议（示范文本）不一致的，以产品确认单中的约定为准
-        预订说明
-        请您在预订时务必提供准确、完整的信息（姓名、性别、证件号码、国籍、联系方式等），以免产生预订错误，影响出行。如因您提供信息错误而造成损失，由您自行承担
-        产品说明
-        为保障您和其他客人的安全，团队车辆使用前每日至少消毒1次；司机、导服、所有团队客人行程开始前需通过体温检测；司机、导服行中全程佩戴口罩；随车配备客用消毒用品及测温工具；行中团餐部分，实现分餐制，或为您提供公筷
-        本产品最少成团人数1人，订单一经携程旅行网以书面形式确认后均默认发团，若因我司原因未发团，旅行社将按双方合同约定的违约条款予以赔付
-        本线路在不影响您行程的情况下，部分行程段可能会与其他客人合并用车，共同游玩。如有入住其他不同酒店的客人，当地司导人员会根据团队实际情况安排接送事宜，敬请谅解
-    </p>
-</div>
-</div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <footer id="footer">
         <div class="last-footer text-muted">
             &copy; 2020 Kri8thm. All rights reserved.
@@ -350,8 +252,6 @@
 
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
-
-
 
 </body>
 </html>

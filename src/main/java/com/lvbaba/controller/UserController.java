@@ -2,6 +2,7 @@ package com.lvbaba.controller;
 
 import com.lvbaba.entity.Admin;
 import com.lvbaba.entity.User;
+import com.lvbaba.entity.Userinfo;
 import com.lvbaba.service.UserService;
 import com.lvbaba.utli.CookieUtil;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author DBY
@@ -34,6 +36,17 @@ public class UserController {
     public String toLoginView(String auto){
         System.out.println(auto);
         return "login";
+    }
+
+    @RequestMapping("/userCenter.do")
+    public String userCenter(Model model,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        Userinfo userinfo = new Userinfo();
+        userinfo.setuId(user.getuId());
+        List<Userinfo> list = userService.queryAllByUid(userinfo);
+        model.addAttribute("user",user);
+        model.addAttribute("userinfoList", list);
+        return "userCenter";
     }
 
     @RequestMapping("/testUserName.do")
