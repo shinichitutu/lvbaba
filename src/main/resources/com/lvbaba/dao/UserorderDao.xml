@@ -6,7 +6,7 @@
         INSERT INTO userorder(u_id,t_id,o_price,o_status,o_time,p_time,r_id,room_num,person) VALUES (#{uId},#{tourId},#{orderPrice},#{orderStatus},#{orderTime},#{payTime},#{roomId},#{roomNum},#{person});
     </insert>
     <update id="updateUserorder" parameterType="Userorder">
-        UPDATE userorder SET
+        UPDATE userorder <set>
         <if test="uId!=null and uId!=''">
             u_id =#{uId},
         </if>
@@ -34,7 +34,7 @@
         </if>
         <if test="person!=null and person!=''">
             person = #{person}
-        </if>
+        </if></set>
         where o_id = #{orderId}
     </update>
 
