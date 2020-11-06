@@ -55,4 +55,11 @@ public interface UserOrderService {
      * @return
      */
     List<Userorder> queryUserOrdersByUserId(Long userId);
+
+    /**
+     * 通过订单Id退团
+     * @param orderId
+     * @return
+     */
+    boolean returnOrder(Long orderId);
 }

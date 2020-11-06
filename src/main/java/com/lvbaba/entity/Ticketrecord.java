@@ -19,6 +19,9 @@ public class Ticketrecord {
   private String recordStatus;
   private String modifyDate;
 
+  public Ticketrecord() {
+  }
+
 
   public long getFdrId() {
     return fdrId;

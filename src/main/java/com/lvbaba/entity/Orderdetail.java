@@ -9,6 +9,16 @@ public class Orderdetail {
   private String odIdcard;
   private String odPhone;
 
+  public Orderdetail(long orderId, String odPerson, String odIdcard, String odPhone) {
+    this.orderId = orderId;
+    this.odPerson = odPerson;
+    this.odIdcard = odIdcard;
+    this.odPhone = odPhone;
+  }
+
+  public Orderdetail() {
+  }
+
   public long getOdId() {
     return odId;
   }

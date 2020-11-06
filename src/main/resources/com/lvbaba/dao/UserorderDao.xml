@@ -67,7 +67,7 @@
             <if test="orderTime!=null and orderTime!=''">
                 and o_time = #{orderTime}
             </if>
-            <if test="payTime!-null and payTime!=''">
+            <if test="payTime!=null and payTime!=''">
                 and p_time =#{payTime}
             </if>
             <if test="roomId!=null and roomId!=''">

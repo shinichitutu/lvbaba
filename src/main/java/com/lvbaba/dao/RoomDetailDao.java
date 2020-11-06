@@ -18,4 +18,6 @@ public interface RoomDetailDao {
     boolean deleteRoomDetail(Roomdetail roomdetail);
 
     boolean updateRoomDetail(Roomdetail roomdetail);
+
+    boolean updateRoomDetailRdNumber(Roomdetail roomdetail);
 }

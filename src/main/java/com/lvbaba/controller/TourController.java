@@ -43,6 +43,8 @@ public class TourController {
     private CommentService commentService;
     @Resource
     private UserService userService;
+    @Resource
+    private RoomService roomService;
 
     @RequestMapping("/showTour.do")
     public String showTour(Model model, Tour tour, String page) {
@@ -227,13 +229,12 @@ public class TourController {
         return "forward:showTour.do";
     }
 
-    /*创建订单*/
-    @GetMapping(value = "createOne",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    /*创建订单，判断房间、机票、火车票是否充足，计算价格*/
+    @GetMapping(value = "createOne", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
     @UserbLocker
     @RequestMapping("/createOne.do")
     public String createOne(Model model, Tour tour, Integer sRoom, Product product, Integer numberOfTrips, HttpSession session) {
 //        sRoom:标准间
-
         User user = (User) session.getAttribute("user");
         Userinfo userinfo = new Userinfo();
         userinfo.setuId(user.getuId());
@@ -250,28 +251,31 @@ public class TourController {
         /*酒店*/
         Hotel hotel = new Hotel();
         hotel.setHotelId(product.getHotelId());
-
         hotel = hotelService.queryOne(hotel);
 
         tour = tourService.query(tour);
-
         model.addAttribute("tour", tour);
 
-
+        model.addAttribute("productId", product.getProductId());
         if (tour == null) {
-            model.addAttribute("error", "该天没有旅行团哦");
-            return "productOne";
+            model.addAttribute("error", "很抱歉，名额不足，预定失败！");
+            return "forward:productDetail.do";
         }
 
         List<Roomdetail> roomdetailList = hotelService.searchSuitableRooms(tour.getdDate(), tour.getRoomDate(), sRoom, hotel.getHotelId());
 
         if (roomdetailList == null) {
-            model.addAttribute("productId", product.getProductId());
-            model.addAttribute("error", "很抱歉，该日出发的名额不足，请选择其他出发日！");
-            return "productDetail";
+
+            model.addAttribute("error", "很抱歉，经系统查询，因酒店房间不足，请选择其他出发日！");
+            return "forward:productDetail.do";
         }
         model.addAttribute("roomId", roomdetailList.get(0).getRoomId());
+
         Double hotelFee = hotelService.calculate(roomdetailList);
+        Room room =new Room();
+        room.setRoomId(roomdetailList.get(0).getRoomId());
+        room =roomService.queryOne(room);
+        model.addAttribute("roomType",room.getPersonLimit());
 
         Double transFee = 0.0;
         Double transFee2 = 0.0;
@@ -280,6 +284,11 @@ public class TourController {
         /*判断用户选择的出行工具*/
         if (tour.getTransType().equals("2")) {
              /*火车*/
+            boolean flag =transportationService.isTrainTicketEnough(tour.getTourId(),numberOfTrips);
+            if(flag==false){
+                model.addAttribute("error", "很抱歉，经系统查询，因火车票余票不足，请选择其他出发日！");
+                return "forward:productDetail.do";
+            }
             Train train = new Train();
             Traindetail traindetail = new Traindetail();
             traindetail.setTdId(tour.getGoId());
@@ -307,6 +316,11 @@ public class TourController {
 
         if (tour.getTransType().equals("1")) {
             /*飞机*/
+            boolean flag =transportationService.isFlightTicketEnough(tour.getTourId(),numberOfTrips);
+            if(flag==false){
+                model.addAttribute("error", "很抱歉，经系统查询，因机票余票不足，请选择其他出发日！");
+                return "forward:productDetail.do";
+            }
             Flight flight = new Flight();
             Flightdetail flightdetail = new Flightdetail();
             flightdetail.setFdId(tour.getGoId());
@@ -335,8 +349,9 @@ public class TourController {
             model.addAttribute("flightRe", flight1);
 
         }
-
+        /*旅行费用，人均*/
         model.addAttribute("transFee", transFee2);
+        /*酒店费用，合计*/
         model.addAttribute("hotelFee", hotelFee);
         /*出行人数  Number of trips*/
         model.addAttribute("numberOfTrips", numberOfTrips);
@@ -348,22 +363,24 @@ public class TourController {
         model.addAttribute("hotel", hotel);
         /*房间数*/
         model.addAttribute("sRoom", sRoom);
-
+         /*出行方式 1-飞机 2-火车*/
         model.addAttribute("type", tour.getTransType());
 
         model.addAttribute("product", product);
-
+        /*订单总价*/
         model.addAttribute("total", total);
         /*用户购票页面*/
         return "confirmOrderView";
     }
 
 
-
     @RequestMapping("/comfirmUserInfo.do")
-    public String comfirmUserInfo(String tourId, String total, Model model,HttpSession session) {
-        model.addAttribute("tourId",tourId);
-        model.addAttribute("total",total);
+    public String comfirmUserInfo(String tourId, String total, String roomId, String person, String roomNum, Model model, HttpSession session) {
+        model.addAttribute("tourId", tourId);
+        model.addAttribute("total", total);
+        model.addAttribute("roomId", roomId);
+        model.addAttribute("person", person);
+        model.addAttribute("roomNum", roomNum);
         User user = (User) session.getAttribute("user");
         Userinfo userinfo = new Userinfo();
         userinfo.setuId(user.getuId());
@@ -371,7 +388,6 @@ public class TourController {
         model.addAttribute("userinfoList", list);
         return "comfirmUserInfo";
     }
-
 
 
     @RequestMapping("/test.do")

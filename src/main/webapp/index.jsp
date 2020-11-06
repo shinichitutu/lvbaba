@@ -496,7 +496,7 @@
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                 <ul class="nav-sub-menu">
                     <li><a href="userMain.do">旅游首页</a></li>
-                    <li><a href="#">推荐路线</a></li>
+                    <li><a href="userMain.do">推荐路线</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
@@ -507,9 +507,7 @@
                 <ul class="nav-sub-menu">
                     <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
                     <li><a href="toBookingRecordView.do">机票订单</a></li>
-                    <li><a href="#">酒店订单</a></li>
                     <li><a href="#">个人信息</a></li>
-
                 </ul></li>
 
         </ul>

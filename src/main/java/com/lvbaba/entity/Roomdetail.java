@@ -1,8 +1,5 @@
 package com.lvbaba.entity;
 
-
-import java.util.List;
-
 public class Roomdetail {
 
   private long rdId;
@@ -42,6 +39,11 @@ public class Roomdetail {
     this.roomId = roomId;
     this.roomDate = roomDate;
     this.rdPrice = rdPrice;
+    this.rdNumber = rdNumber;
+  }
+
+  public Roomdetail(long rdId, long rdNumber) {
+    this.rdId = rdId;
     this.rdNumber = rdNumber;
   }
 

@@ -39,4 +39,12 @@ public interface TraindetailDao {
      */
     Traindetail queryOne(Traindetail traindetail);
 
+    /**
+     * 更新traindetail剩余票数表中数据
+     * @param traindetail
+     * @return
+     */
+    boolean updateTraindetailTickets(Traindetail traindetail);
+
+
 }
