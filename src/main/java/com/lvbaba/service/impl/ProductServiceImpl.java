@@ -62,19 +62,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean updateProduct(Product product,Files files) {
-        if (product == null || files==null) {
+    public boolean updateProduct(Product product, Files files) {
+        if (product == null || files == null) {
             return false;
         }
         boolean flag1 = productDao.updateProduct(product);
-        if (!flag1){
+        if (!flag1) {
             return false;
         }
         files.setProductId(product.getProductId());
         Files files1 = filesDao.queryByProductId(product.getProductId());
-        if (files1!=null) {
+        if (files1 != null) {
             return filesDao.updateFilePath(files);
-        }else{
+        } else {
             return filesDao.upLoadFile(files);
         }
     }
@@ -84,7 +84,10 @@ public class ProductServiceImpl implements ProductService {
         if (product == null) {
             return null;
         }
-        return productDao.query(product);
+        Product product1 = productDao.query(product);
+        Files files = filesDao.queryByProductId(product1.getProductId());
+        product1.setFiles(files);
+        return product1;
     }
 
     @Override
@@ -137,24 +140,25 @@ public class ProductServiceImpl implements ProductService {
         return filesDao.updateFilePath(files);
     }
 
-
+    @Override
     public List<Product> queryByAreaName(String deArea, String aimArea) {
-        Area area =new Area();
+        Area area = new Area();
         area.setCity(deArea);
-        Area area1 =new Area();
+        Area area1 = new Area();
         area1.setCity(aimArea);
         Area area2 = areaDao.queryOne(area);
         Area area3 = areaDao.queryOne(area1);
-        Product product =new Product();
+        Product product = new Product();
         product.setDaId(area2.getAreaId());
         product.setArrAreaId(area3.getAreaId());
-        List<Product> productList  =productDao.queryByOthers(product);
+        List<Product> productList = productDao.queryByOthers(product);
         List<Product> productList1 = new ArrayList<>();
-        for (Product p:productList) {
-            Hotel hotel1 =new Hotel();
+        for (Product p : productList) {
+            Hotel hotel1 = new Hotel();
             hotel1.setHotelId(p.getHotelId());
             Hotel hotel = hotelDao.queryOne(hotel1);
             p.setHotel(hotel);
+            p.setFiles(filesDao.queryByProductId(p.getProductId()));
             productList1.add(p);
         }
         return productList1;

@@ -117,12 +117,15 @@ public class UserOrderServiceImpl implements UserOrderService{
         Tour tour = tourDao.query(new Tour(userorder.getTourId()));
         boolean flag3 =false;
         boolean flag4 =false;
+        boolean flag6 =false;
+        boolean flag7 =false;
         if ("1".equals(tour.getTransType())) {
             flag3 = flightDatailDao.updateFlightDetailTickets(tour.getGoId(), userorder.getRoomNum());
+            flag6 = flightDatailDao.updateFlightDetailTickets(tour.getReturnId(), userorder.getRoomNum());
         }else if("2".equals(tour.getTransType())) {
             flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), userorder.getRoomNum()));
+            flag7 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getReturnId(), userorder.getRoomNum()));
         }
-        System.out.println(flag1+"-----"+flag2+"-----"+flag3+"--------"+flag4);
-        return flag1&&flag2&&flag5&&(flag3||flag4)?true:false;
+        return flag1&&flag2&&flag5&&((flag3 && flag6)||(flag7&&flag4))?true:false;
     }
 }

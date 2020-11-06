@@ -43,9 +43,6 @@ public class OrderController {
         ModelAndView mv = new ModelAndView("confirmOrderView");
      if (user!=null) {
          List<Userinfo> userinfoList = userService.queryAllByUid(new Userinfo(user.getuId()));
-/*        Userinfo userinfo = new Userinfo();
-        userinfo.setuId(1);
-        List<Userinfo> userinfoList = userService.queryAllByUid(userinfo);*/
         mv.addObject("userinfoList", userinfoList);
     }
         return mv;
@@ -70,7 +67,6 @@ public class OrderController {
 
     @RequestMapping("/returnUserOrder.do")
     public String returnUserOrder(Long orderId,Model model) {
-        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhh---------------"+orderId);
         boolean flag = userOrderService.returnOrder(orderId);
         if (flag) {
             model.addAttribute("returnUserOrderInfo", "退款成功");
