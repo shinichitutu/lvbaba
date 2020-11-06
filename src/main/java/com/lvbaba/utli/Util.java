@@ -66,7 +66,7 @@ public class Util {
 
 
     public static String getDate() {
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         //减填负数
         calendar.add(Calendar.HOUR, 2);
         return new SimpleDateFormat("HH-mm").format(calendar.getTime());
@@ -95,23 +95,23 @@ public class Util {
     }
 
     /*去重日期*/
-    public static List<Tour> de_weightDate(List<Tour> tours){
-        List<Tour> tourList=new ArrayList<>();
-        for (int i=0;i<tours.size();i++){
-            for(int j=i+1;j<tours.size();j++){
-                if (!tours.get(i).getdDate().equals(tours.get(j).getdDate())){
+    public static List<Tour> de_weightDate(List<Tour> tours) {
+        List<Tour> tourList = new ArrayList<>();
+        for (int i = 0; i < tours.size(); i++) {
+            for (int j = i + 1; j < tours.size(); j++) {
+                if (!tours.get(i).getdDate().equals(tours.get(j).getdDate())) {
                     tourList.add(tours.get(i));
                 }
             }
         }
         return tours;
     }
-      
+
     /*去重日期交通*/
-    public static List<Tour> de_weightTrans(List<Tour> tours){
-        for (int i=0;i<tours.size();i++){
-            for(int j=i+1;j<tours.size();j++){
-                if (tours.get(i).getTransType().equals(tours.get(j).getTransType())){
+    public static List<Tour> de_weightTrans(List<Tour> tours) {
+        for (int i = 0; i < tours.size(); i++) {
+            for (int j = i + 1; j < tours.size(); j++) {
+                if (tours.get(i).getTransType().equals(tours.get(j).getTransType())) {
                     tours.remove(j);
                 }
             }
@@ -125,7 +125,7 @@ public class Util {
         boolean flag = true;
         for (int i = 0; i < list.size(); i++) {
             flag = true;
-            for (int j =0 ;j<longList.size();j++) {
+            for (int j = 0; j < longList.size(); j++) {
                 if (list.get(i).getdDate().equals(longList.get(j).getdDate())) {
                     flag = false;
                     break;
@@ -139,25 +139,35 @@ public class Util {
     }
 
 
-    public static String getCurrentDate(){
+    public static String getCurrentDate() {
         return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
     }
 
 
     /*退款*/
     public static double refund(String dateString) throws ParseException {
-        Date date=new Date();
+        Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date2=sdf.parse(dateString);
-        double d=((date.getTime()-date2.getTime())/(1000*60*60*24))*100;
-        if(d>=0 && d<=3){
+        Date date2 = sdf.parse(dateString);
+        double d = ((date.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24)) * 100;
+        if (d >= 0 && d <= 3) {
             return 0.5;
-        }else if(d>3 && d<=10){
+        } else if (d > 3 && d <= 10) {
             return 0.3;
-        }else if(d>10 && d<=30){
+        } else if (d > 10 && d <= 30) {
             return 0.2;
-        }else{
+        } else {
             return 0.1;
         }
     }
+
+    /*获取当前时间*/
+    public static String getCurrentTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        String str_date = sdf.format(date);
+        return str_date;
+
+    }
+
 }

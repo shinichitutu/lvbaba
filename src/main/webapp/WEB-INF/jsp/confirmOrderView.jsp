@@ -21,6 +21,22 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
+    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
+    <link href="assets/images/logos/favicon.png" rel="icon" />
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style>
         table {
             width: 800px;
@@ -46,121 +62,49 @@
             cursor: pointer;
             color: #0099ff;
         }
-        .costDetail{
+
+        .costDetail {
             float: right;
             width: 400px;
             background-color: white;
             padding: 10px;
             border-radius: 10px;
         }
-        body{
+
+        body {
             background-color: #f1f1f6;
         }
-        .payOrder{
+
+        .payOrder {
             font-weight: bold;
-            color:white;
+            color: white;
             margin-right: 50px;
             width: 250px;
             padding: 10px;
             background-color: rgba(255, 138, 38, 0.83);
         }
     </style>
-    <script>
-        function modifyUserInfo(uiId, person, idcard, phone) {
-            var str = "<p>姓名：<input type='text' class='person' value='" + person + "'/></p>" +
-                "<p>身份证号码：<input type='text' class='idcard' value='" + idcard + "'/></p>" +
-                "<p>联系电话：<input type='text' class='phone' value='" + phone + "'/></p>" +
-                "<p><input type='hidden' class='uiId' value='" + uiId + "'/></p>" +
-                "<p><input type='button' class='modifyUserInfo' value='提交'/></p>";
-            $("#updateUserInfo").html("");
-            $("#updateUserInfo").html(str);
-        }
 
-        $(function () {
-            $("#updateUserInfo").on("click", ".modifyUserInfo", function () {
-                $("#updateUserInfo").css("display", "block");
-                $(".add_UserInfo").css("display", "none");
-
-                var uiId = $(".uiId").val();
-                var person = $(".person").val();
-                if (person == null || person == '') {
-                    alert("旅客名字不能为空");
-                    return;
-                }
-
-                var idcard = $(".idcard").val();
-                if (idcard == null || idcard == '') {
-                    alert("身份证不能为空");
-                    return;
-                }
-
-                var phone = $(".phone").val();
-                if (uiId == null || uiId == '') {
-                    alert("联系电话不能为空");
-                    return;
-                }
-
-                $.ajax({
-                    type: "post",
-                    data: {uiId: uiId, person: person, idcard: idcard, phone: phone},
-                    url: "updateUserInfo.do",
-                    dataType: "text",
-                    success: function (obj) {
-                        if ("false" == obj) {
-                            alert("更新旅客信息失败");
-                        } else {
-                            alert("更新旅客信息成功");
-                            window.location.reload();
-                        }
-                    }
-                })
-            })
-
-            $(".addUserInfo").click(function () {
-                var person = $("[name='person']").val();
-                if (person == null || person == '') {
-                    alert("姓名不能为空");
-                    return;
-                }
-
-                var idcard = $("[name='idcard']").val();
-                if (idcard == null || idcard == '') {
-                    alert("身份证号码不能为空");
-                    return;
-                }
-
-                var phone = $("[name='phone']").val();
-                if (person == null || person == '') {
-                    alert("联系电话不能为空");
-                    return;
-                }
-
-                $.ajax({
-                    type: "post",
-                    data: {person: person, idcard: idcard, phone: phone},
-                    dataType: "text",
-                    url: "addUserInfo.do",
-                    success: function (obj) {
-                        if ("false" == obj) {
-                            alert("添加旅客信息失败");
-                        } else {
-                            alert("添加旅客信息成功");
-                            window.location.reload();
-                        }
-                    }
-                })
-            })
-
-            $("#addUser").click(function () {
-                $("#updateUserInfo").css("display", "none");
-                $(".add_UserInfo").css("display", "block");
-            })
-        })
-    </script>
 </head>
 <body>
 
+<div id="wrapper">
+    <div id="loading">
+        <div id="loader"></div>
+    </div>
 
+    <header id="header" class="colored-header fixed-top">
+        <nav class="navbar navbar-expand-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <ul class="navbar-nav ml-auto">
+                </ul>
+                <a href="javascript:void(0);" id="hamburger"><span></span></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="padding-top: 50px;height: 400px">
 <div style="width: 1300px;margin: 30px auto 0 auto;">
     <div style="width: 1300px;background-color: #eedde4;padding: 10px;border-radius: 10px;">
         旅游提醒：可接待体温正常、持有健康码绿码、未途经或来自国内疫情中、高风险地区的境内人员。 若您持有非绿码、来自或途经国内疫情中、高风险地区、或是港澳台/外籍人员，请务必详细了解当地疫情相关规定，合理安排出行。
@@ -177,11 +121,11 @@
         <p>总价￥${requestScope.total}</p>
     </div>
 
-    <div style="width: 880px;" >
+    <div style="width: 880px;">
         <div class="tourInfo" style="background-color: white;padding: 10px;border-radius: 10px;">
             <%--<h3>${requestScope.departureArea.city}+${requestScope.destinationArea.city}${product.days}日游</h3>--%>
             <h3>${requestScope.product.productName}</h3>
-     <%--       <p style="text-indent: 2em">${requestScope.product.productIntroduction}</p>--%>
+                <p>产品编号：${requestScope.product.productId}</p>
         </div>
         <div class="orderDetail" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
             <p>
@@ -209,16 +153,80 @@
 
             酒店名称:${requestScope.destinationArea.city}&nbsp${requestScope.hotel.hotelName}<br/>
             房间数:${requestScope.sRoom}间
+            <c:if test="${requestScope.roomType eq 1}">
+                标间
+            </c:if>
+            <c:if test="${requestScope.roomType eq 2}">
+                大床房
+            </c:if>
+            <c:if test="${requestScope.roomType eq 3}">
+                豪华套房
+            </c:if>
         </div>
 
-        <form action="comfirmUserInfo.do" method="post">
-            <input type="hidden" name="tourId" value="${requestScope.tour.tourId}">
-            <input type="hidden" name="total" value="${requestScope.total}">
-            <input type="submit" value="下一步">
-        </form>
 
     </div>
+
+    <br/>
+    <form action="comfirmUserInfo.do" method="post">
+        <input type="hidden" name="tourId" value="${requestScope.tour.tourId}">
+        <input type="hidden" name="total" value="${requestScope.total}">
+        <input type="hidden" name="person" value="${requestScope.numberOfTrips}">
+        <input type="hidden" name="roomNum" value="${requestScope.sRoom}">
+        <input type="hidden" name="roomId" value="${requestScope.roomId}">
+        <button type="submit" class="btn btn-primary">下一步</button>
+    </form>
+    </div>
+
+
+
 </div>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <footer id="footer">
+        <div class="last-footer text-muted">
+            &copy; 2020 Kri8thm. All rights reserved.
+        </div>
+    </footer>
+
+    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
+
+        </div>
+        <nav id="nav">
+            <ul>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="userMain.do">旅游首页</a></li>
+                        <li><a href="#">推荐路线</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
+                    <ul class="nav-sub-menu">
+
+                        <li><a href="#">预订机票</a></li>
+                        <li><a href="hotelView.do">预订酒店</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="#">旅行订单</a></li>
+                        <li><a href="#">机票订单</a></li>
+                        <li><a href="#">酒店订单</a></li>
+                        <li><a href="#">个人信息</a></li>
+
+                    </ul></li>
+            </ul>
+        </nav>
+    </aside>
+</div>
+
+<script src="assets/js/vendors.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+
 
 
 </body>

@@ -25,6 +25,8 @@ public class TransportationServiceImpl implements TransportationService {
     private TraindetailDao trainDetailDao;
     @Resource
     private AreaDao areaDao;
+    @Resource
+    private TourDao tourDao;
 
     @Override
     public boolean insertFlight(Flight flight) {
@@ -74,15 +76,15 @@ public class TransportationServiceImpl implements TransportationService {
         List<Flight> flightList = flightDao.queryFlightByDateAndAreaId(flight);
         List<Flightdetail> flightdetailList = flightDatailDao.queryFlightDetailByFIdAndDate(date);
         List<Flightdetail> list = new ArrayList<>();
-        if (null!=flightList&&!flightList.isEmpty()&&flightdetailList!=null&&!flightdetailList.isEmpty()){
-            for (Flight f:flightList) {
+        if (null != flightList && !flightList.isEmpty() && flightdetailList != null && !flightdetailList.isEmpty()) {
+            for (Flight f : flightList) {
                 f.setD_area(areaDao.queryOne(new Area(f.getDaId())));
                 f.setA_area(areaDao.queryOne(new Area(f.getArrAreaId())));
-                for (Flightdetail fd:flightdetailList) {
-                    if (f.getFlightId()==fd.getFlightId()){
-                        f.setFlightPrice(Math.round(f.getFlightPrice()*fd.getRatio()*100)/100);
-                        fd.setRatio(fd.getRatio()*10);
-                        fd.setFdTickets(f.getFlightCapacity()-fd.getFdTickets());
+                for (Flightdetail fd : flightdetailList) {
+                    if (f.getFlightId() == fd.getFlightId()) {
+                        f.setFlightPrice(Math.round(f.getFlightPrice() * fd.getRatio() * 100) / 100);
+                        fd.setRatio(fd.getRatio() * 10);
+                        fd.setFdTickets(f.getFlightCapacity() - fd.getFdTickets());
                         fd.setFlight(f);
                         list.add(fd);
                     }
@@ -273,7 +275,7 @@ public class TransportationServiceImpl implements TransportationService {
         List<Traindetail> traindetails1 = new ArrayList<>();
 
         for (Traindetail t : traindetails) {
-            Train train =new Train(t.getTrId());
+            Train train = new Train(t.getTrId());
             t.setTrain(trainDao.queryOne(train));
             traindetails1.add(t);
         }
@@ -289,15 +291,55 @@ public class TransportationServiceImpl implements TransportationService {
         return trainDetailDao.queryOne(traindetail);
     }
 
+    /*计算飞机票价*/
     @Override
     public Double calculateFlightPrice(Long fdId) {
-        Flightdetail flightdetail =new Flightdetail();
+        Flightdetail flightdetail = new Flightdetail();
         flightdetail.setFdId(fdId);
         flightdetail = flightDatailDao.query(flightdetail).get(0);
         Long flightId = flightdetail.getFlightId();
-        Flight flight =new Flight();
+        Flight flight = new Flight();
         flight.setFlightId(flightId);
-        Flight flight1 =queryOne(flight);
+        Flight flight1 = queryOne(flight);
         return flightdetail.getRatio() * flight1.getFlightPrice();
+    }
+
+    /*判断机票是否充足，num为订票数量*/
+    @Override
+    public boolean isFlightTicketEnough(Long tourId, int num) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = tourDao.query(tour);
+        Flightdetail flightdetail = flightDatailDao.queryByFdId(tour1.getGoId());
+
+        Flight flight = new Flight();
+        flight.setFlightId(flightdetail.getFlightId());
+        flight = flightDao.queryOne(flight);
+        if (flight.getFlightCapacity() - flightdetail.getFdTickets() >= num) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /*判断火车票是否充足，num为订票数量*/
+    @Override
+    public boolean isTrainTicketEnough(Long tourId, int num) {
+        Tour tour = new Tour();
+        tour.setTourId(tourId);
+        Tour tour1 = tourDao.query(tour);
+        Traindetail traindetail = new Traindetail();
+        traindetail.setTdId(tour1.getGoId());
+        Traindetail traindetail1 = trainDetailDao.queryOne(traindetail);
+
+        Train train = new Train();
+        train.setTrId(traindetail1.getTrId());
+        train = trainDao.queryOne(train);
+        if (train.getTrCapacity() - traindetail1.getTdTickets() >= num) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }

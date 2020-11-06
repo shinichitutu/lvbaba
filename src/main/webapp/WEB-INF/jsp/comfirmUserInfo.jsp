@@ -114,7 +114,7 @@
                         }
                     }
                 })
-            })
+            });
 
             $(".addUserInfo").click(function () {
                 var person = $("[name='person']").val();
@@ -155,11 +155,31 @@
                 $("#updateUserInfo").css("display", "none");
                 $(".add_UserInfo").css("display", "block");
             })
+
+            $("#payMoney").click(function () {
+                var str ="";
+                var count =0;
+                $(".choiseUser:checked").each(function () {
+                    str +=$(this).val()+","
+                    count+=1;
+                });
+
+                if(count!=${requestScope.person}){
+                    alert("必须选择与出行人数量相符的信息，以便于进行实名制购票及客房预订")
+                }
+                else {
+                    var userIds = "<input type='hidden' name='userIds' value='"+str+"'/>";
+                    $("#payMoney").prepend(userIds);
+                    $("#hiddenForm").submit();
+                }
+
+            })
         })
     </script>
 
 </head>
 <body>
+<div class="container" style="padding-top: 50px;height: 400px">
 
 <div class="userDetails" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
     <p>
@@ -188,7 +208,7 @@
 
         <c:forEach items="${requestScope.userinfoList}" var="userInfo" varStatus="i">
             <tr>
-                <td><input type="checkbox" value="${userInfo.uiId}"></td>
+                <td><input type="checkbox" class="choiseUser" value="${userInfo.uiId}"></td>
                 <td>${i.count}</td>
                 <td>${userInfo.person}</td>
                 <td>身份证</td>
@@ -220,10 +240,13 @@
     <p style="padding: 10px;background-color: #f6f3f1"> · 支付完成后，订单会立即确认。</p>
 
     <p style="text-align: right">
-    <form action="#" method="post">
-    总价<input type="text" name="total" value="${requestScope.total}">
-    id<input type="text" name="tourId" value="${requestScope.tourId}">
-        <input type="button" value="同意以下条款，去支付" class="payOrder">
+    <form action="createOrder.do" method="post" id="hiddenForm">
+   <input type="hidden" name="total" value="${requestScope.total}">
+    <input type="hidden" name="tourId" value="${requestScope.tourId}">
+    <input type="hidden" name="person" value="${requestScope.person}">
+    <input type="hidden" name="roomNum" value="${requestScope.roomNum}">
+    <input type="hidden" name="roomId" value="${requestScope.roomId}">
+        <input type="button" value="同意以下条款，去支付" class="payOrder" id="payMoney">
     </form>
     </p>
 
@@ -248,6 +271,6 @@
         本线路在不影响您行程的情况下，部分行程段可能会与其他携程客人合并用车，共同游玩。如有入住其他不同酒店的客人，当地司导人员会根据团队实际情况安排接送事宜，敬请谅解
     </p>
 </div>
-
+</div>
 </body>
 </html>

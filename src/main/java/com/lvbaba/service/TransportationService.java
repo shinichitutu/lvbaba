@@ -180,4 +180,8 @@ public interface TransportationService {
 
     Double calculateFlightPrice(Long fdId);
 
+    boolean isFlightTicketEnough(Long tourId,int num);
+
+    boolean isTrainTicketEnough(Long tourId,int num);
+
 }
