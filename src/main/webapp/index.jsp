@@ -164,7 +164,7 @@
                 var check =$("#remember").val();
                 $.ajax({
                     type:"post",
-                    data:{uUsername:name,uPassword:pwd,check:check},
+                    data:{uUsername:name,uPassword:pwd,auto:check},
                     url:"login.do",
                     dataType:"text",
                     success:function (obj) {
@@ -203,7 +203,7 @@
             <div class="modal-body px-4 px-sm-5 pt-4">
                 <div class="tab-content" id="signContent">
                     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                        <form action="toLoginView.do" class="pb-5">
+                        <form action="toLoginView.do" method="get" class="pb-5">
                             <div class="form-group">
                                 <label for="username1" class="form-control-label">用户名</label>
                                 <input id="username1" type="text" name="username1" placeholder="请输入用户名" class="form-control" required="" />
@@ -217,8 +217,8 @@
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <div class="checkbox">
-                                    <input id="remember" type="checkbox" />
-                                    <label for="remember">记住密码</label>
+                                    <input id="remember" type="checkbox" value="true" name="auto"/>
+                                    <label for="remember">自动登录</label>
                                 </div>
                                 <a href="#" class="link" data-dismiss="modal" data-toggle="modal" data-target="#forgot">管理员登录</a>
                             </div>
