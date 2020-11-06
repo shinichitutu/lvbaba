@@ -113,55 +113,62 @@
     <br/>
 
     <div class="costDetail">
-        <h5>费用明细</h5>
+        <h5 class="text-info">费用明细</h5>
 
-        <p>基本团费￥${requestScope.product.productFee}</p>
-        <p>酒店￥${requestScope.hotelFee}</p>
-        <p>往返交通￥${requestScope.transFee}x${requestScope.numberOfTrips}人</p>
-        <p>总价￥${requestScope.total}</p>
+        <p>基本团费：￥${requestScope.product.productFee}</p>
+        <p>酒店：￥${requestScope.hotelFee}</p>
+        <p>往返交通：￥${requestScope.transFee}x${requestScope.numberOfTrips}人</p>
+        <p class="text-primary">总价：￥${requestScope.total}</p>
     </div>
 
     <div style="width: 880px;">
         <div class="tourInfo" style="background-color: white;padding: 10px;border-radius: 10px;">
             <%--<h3>${requestScope.departureArea.city}+${requestScope.destinationArea.city}${product.days}日游</h3>--%>
-            <h3>${requestScope.product.productName}</h3>
-                <p>产品编号：${requestScope.product.productId}</p>
+            <h3>产品名称：${requestScope.product.productName}</h3>
+                <p>产品编号：202000${requestScope.product.productId}</p>
         </div>
         <div class="orderDetail" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
             <p>
-            <h3 style="display: inline">明细</h3><span>以下为您所选择的全部资源明细，下单前请仔细查看核实。</span></p>
-            出发地:${requestScope.departureArea.city}<br/>
-            目的地:${requestScope.destinationArea.city}<br/>
+            <h3 style="display: inline" class="text-info">订单明细</h3><br/>
+            <span class="text-warning">以下为您所选择的全部资源明细，下单前请仔细查看核实。</span></p>
+
+            <ul class="list-group">
+                <li class="list-group-item">出发地：${requestScope.departureArea.city}</li>
+                <li class="list-group-item">目的地：${requestScope.destinationArea.city}</li>
+
 
             <c:if test="${requestScope.type eq '1'}">
-                去程航班号:${requestScope.flightGo.flightCompany}${requestScope.flightGo.flightNumber}<br/>
-                预计起飞时间${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightDTime}<br/>
-                预计达到时间${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightATime}<br/>
-                回程航班号:${requestScope.flightRe.flightCompany}${requestScope.flightRe.flightNumber}<br/>
-                预计起飞时间${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightDTime}<br/>
-                预计达到时间${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightATime}<br/>
+                <li class="list-group-item">去程航班号：${requestScope.flightGo.flightCompany}-${requestScope.flightGo.flightNumber}</li>
+                <li class="list-group-item">预计起飞时间：${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightDTime}</li>
+                <li class="list-group-item">预计达到时间：${requestScope.flightdetailGo.fdDate}&nbsp;${requestScope.flightGo.flightATime}</li>
+                <li class="list-group-item">回程航班号：${requestScope.flightRe.flightCompany}-${requestScope.flightRe.flightNumber}</li>
+                <li class="list-group-item">预计起飞时间：${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightDTime}</li>
+                <li class="list-group-item">预计达到时间：${requestScope.flightdetailRe.fdDate}&nbsp;${requestScope.flightRe.flightATime}</li>
             </c:if>
 
             <c:if test="${requestScope.type eq '2'}">
-                去程火车车次：${requestScope.trainGo.trNumber}<br/>
-                预计出发时间:${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trDTime}<br/>
-                预计到达时间:${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trATime}<br/>
-                回程火车车次：${requestScope.trainRe.trNumber}<br/>
-                预计出发时间:${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trDTime}<br/>
-                预计到达时间:${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trATime}<br/>
+                <li class="list-group-item">去程火车车次：${requestScope.trainGo.trNumber}</li>
+                <li class="list-group-item">预计出发时间：${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trDTime}</li>
+                <li class="list-group-item">预计到达时间：${requestScope.traindetailGo.tdDate}&nbsp;${requestScope.trainGo.trATime}</li>
+                <li class="list-group-item">回程火车车次：${requestScope.trainRe.trNumber}</li>
+                <li class="list-group-item">预计出发时间：${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trDTime}</li>
+                <li class="list-group-item">预计到达时间：${requestScope.traindetailRe.tdDate}&nbsp;${requestScope.trainRe.trATime}</li>
             </c:if>
 
-            酒店名称:${requestScope.destinationArea.city}&nbsp${requestScope.hotel.hotelName}<br/>
-            房间数:${requestScope.sRoom}间
-            <c:if test="${requestScope.roomType eq 1}">
-                标间
-            </c:if>
-            <c:if test="${requestScope.roomType eq 2}">
-                大床房
-            </c:if>
-            <c:if test="${requestScope.roomType eq 3}">
-                豪华套房
-            </c:if>
+                <li class="list-group-item">酒店名称：${requestScope.destinationArea.city}&nbsp${requestScope.hotel.hotelName}</li>
+                <li class="list-group-item">房间数：${requestScope.sRoom}间
+                    <c:if test="${requestScope.roomType eq 1}">
+                    标间
+                </c:if>
+                    <c:if test="${requestScope.roomType eq 2}">
+                        大床房
+                    </c:if>
+                    <c:if test="${requestScope.roomType eq 3}">
+                        豪华套房
+                    </c:if>
+                </li>
+
+            </ul>
         </div>
 
 
@@ -181,6 +188,11 @@
 
 
 </div>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
     <br/><br/>
     <br/><br/>
     <br/><br/>
