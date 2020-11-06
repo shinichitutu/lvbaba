@@ -31,6 +31,15 @@
     <input type="hidden" name="uId" value="1">
     <input type="submit" value="点击查询订单">
 </form>
+<form action="testAuto.do" method="get">
+    <input type="checkbox" value="true" name="auto">
+    <input type="submit" value="自动登录">
+</form>
+<form action="refund.do" method="get">
+    <input type="text" name="uId" value="${sessionScope.user.uId}">
+    请输入充值金额:<input type="number" max="10000" min="1" step="any" name="balance"><br/>
+    <<input type="submit" value="充值">
+</form>
 <p style="color: red">${error}</p>
 <p style="color: green">${success}</p>
 </body>

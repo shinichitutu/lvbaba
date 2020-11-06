@@ -408,7 +408,7 @@ public class TourController {
         return "test";
     }
 
-
+    /*退货*/
     @RequestMapping("/refund.do")
     public String refund(Userorder userorder, Model model) throws ParseException {
         userorder = userOrderService.queryOne(userorder);
@@ -424,6 +424,16 @@ public class TourController {
             model.addAttribute("success", "退款成功");
         } else {
             model.addAttribute("error", "退款失败");
+        }
+        return "test";
+    }
+    /*recharge*/
+    @RequestMapping("recharge.do")
+    public String recharge(User user,Model model){
+        if (userService.updateUser(user)){
+            model.addAttribute("sucess","充值成功");
+        }else {
+            model.addAttribute("error","充值失败");
         }
         return "test";
     }

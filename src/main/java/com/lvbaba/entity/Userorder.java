@@ -10,8 +10,7 @@ public class Userorder {
   private String orderStatus;
   private String orderTime;
   private String payTime;
-
-  privite Tour tour;
+  private Tour tour;
   private Product product;
   private long roomId;
   private long roomNum;
@@ -90,7 +89,7 @@ public class Userorder {
 
   public void setProduct(Product product) {
     this.product = product;
-
+  }
 
   public long getRoomNum() {
     return roomNum;

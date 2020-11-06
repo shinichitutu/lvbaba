@@ -3,7 +3,7 @@ package com.lvbaba.controller;
 import com.lvbaba.entity.Admin;
 import com.lvbaba.entity.User;
 import com.lvbaba.service.UserService;
-import com.lvbaba.utli.UserbLocker;
+import com.lvbaba.utli.CookieUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,7 +31,8 @@ public class UserController {
     }
 
     @RequestMapping("/toLoginView.do")
-    public String toLoginView(){
+    public String toLoginView(String auto){
+        System.out.println(auto);
         return "login";
     }
 
@@ -48,11 +51,11 @@ public class UserController {
 
     @RequestMapping("/login.do")
     @ResponseBody
-    public String login(User user, HttpSession session){
+    public String login(User user, HttpSession session,String auto){
+        System.out.println(auto);
         User user1 = userService.queryByUserName(user);
         if (null!=user1.getuPassword()&&user1.getuPassword().equals(user.getuPassword())){
             session.setAttribute("user",user1);
-
             return "true";
         }else{
             return "false";
@@ -94,5 +97,10 @@ public class UserController {
 return "";
     }
 
-
+    @RequestMapping("/testAuto.do")
+    public String testAuto(String auto){
+        System.out.println("自动登录s");
+        System.out.println(auto);
+        return "test";
+    }
 }
