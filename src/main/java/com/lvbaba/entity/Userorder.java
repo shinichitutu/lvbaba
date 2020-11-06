@@ -10,13 +10,18 @@ public class Userorder {
   private String orderStatus;
   private String orderTime;
   private String payTime;
-
-  privite Tour tour;
+  private Tour tour;
   private Product product;
   private long roomId;
   private long roomNum;
   private long person;
 
+  public Userorder() {
+  }
+
+  public Userorder(long orderId) {
+    this.orderId = orderId;
+  }
 
   public long getOrderId() {
     return orderId;
@@ -74,8 +79,6 @@ public class Userorder {
     this.payTime = payTime;
   }
 
-
-
   public Tour getTour() {
     return tour;
   }
@@ -90,7 +93,7 @@ public class Userorder {
 
   public void setProduct(Product product) {
     this.product = product;
-
+  }
 
   public long getRoomNum() {
     return roomNum;

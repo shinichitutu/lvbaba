@@ -19,6 +19,10 @@
         </where>
     </update>
 
+    <update id="updateTraindetailTickets" parameterType="Traindetail">
+        update traindetail set td_tickets = td_tickets+#{tdTickets} where td_id = #{tdId}
+    </update>
+
     <delete id="deleteTraindetailById" parameterType="Traindetail">
          delete from traindetail where td_id = #{tdId}
     </delete>

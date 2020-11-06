@@ -24,6 +24,10 @@
         where rd_id =#{rdId}
     </update>
 
+    <update id="updateRoomDetailRdNumber" parameterType="Roomdetail">
+        update roomdetail set rd_number = rd_number+#{rdNumber} where rd_id=#{rdId}
+    </update>
+
     <delete id="deleteRoomDetail" parameterType="Roomdetail">
         DELETE FROM roomdetail WHERE rd_id = #{rdId}
     </delete>

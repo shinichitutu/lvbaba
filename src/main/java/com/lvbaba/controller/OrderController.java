@@ -58,4 +58,15 @@ public class OrderController {
         boolean flag = userService.insertUserInfo(userinfo);
         return "" + flag;
     }
+
+    @RequestMapping("/returnUserOrder.do")
+    public String returnUserOrder(Long orderId,Model model){
+        boolean flag = userOrderService.returnOrder(orderId);
+        if (flag){
+            model.addAttribute("returnUserOrderInfo","退款成功");
+        }else{
+            model.addAttribute("returnUserOrderInfo","退款失败");
+        }
+        return "forward:toUserOrderRecordView.do";
+    }
 }

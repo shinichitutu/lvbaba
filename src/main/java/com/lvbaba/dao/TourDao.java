@@ -50,4 +50,10 @@ public interface TourDao {
      * @return
      */
     List<Tour> queryByPid(Tour tour);
+
+    /**
+     * 通过tourId更新对应的预订人数
+     * @return
+     */
+    boolean updateBookNum(Tour tour);
 }
