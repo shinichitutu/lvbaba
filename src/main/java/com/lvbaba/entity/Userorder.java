@@ -145,12 +145,11 @@ public class Userorder {
             ", orderStatus='" + orderStatus + '\'' +
             ", orderTime='" + orderTime + '\'' +
             ", payTime='" + payTime + '\'' +
-            ", roomId=" + roomId +
             ", tour=" + tour +
             ", product=" + product +
+            ", roomId=" + roomId +
             ", roomNum=" + roomNum +
             ", person=" + person +
-
             '}';
   }
 }

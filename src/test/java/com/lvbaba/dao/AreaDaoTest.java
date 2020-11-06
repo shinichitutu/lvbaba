@@ -1,6 +1,7 @@
 package com.lvbaba.dao;
 
 import com.lvbaba.entity.Area;
+import com.lvbaba.utli.DateUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -26,13 +29,7 @@ public class AreaDaoTest extends TestCase {
 
     }
     @Test
-    public void testDate(){
-        Calendar calendar=Calendar.getInstance();
-        Date nowTime=calendar.getTime();
-        System.out.println(nowTime);
-        //减填负数
-        calendar.add(Calendar.HOUR, 10);
-        nowTime=calendar.getTime();
-        System.out.println(nowTime);
+    public void testDate() throws ParseException {
+        System.out.println(DateUtil.compareDate("2020-12-13","2020-12-12"));
     }
 }

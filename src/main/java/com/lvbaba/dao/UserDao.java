@@ -13,6 +13,13 @@ public interface UserDao {
     User queryByUserName(User user);
 
     /**
+     * 通过用户的id查詢用戶信息
+     * @param userId
+     * @return User
+     */
+    User queryByUserId(Long userId);
+
+    /**
      * 向user表中插入新的User数据（注册）
      * @param user
      * @return

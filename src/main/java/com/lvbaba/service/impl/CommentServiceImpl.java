@@ -1,6 +1,7 @@
 package com.lvbaba.service.impl;
 
 import com.lvbaba.dao.CommentDao;
+import com.lvbaba.dao.UserDao;
 import com.lvbaba.entity.Comment;
 import com.lvbaba.service.CommentService;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService{
     @Resource
     private CommentDao commentDao;
+    @Resource
+    private  UserDao userDao;
+
     @Override
     public boolean insertCommentByUid(Comment comment) {
         return commentDao.insertCommentByUid(comment);
@@ -32,6 +36,15 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public List<Comment> queryCommentByUidAndPid(Comment comment) {
-        return commentDao.queryCommentByUidAndPid(comment);
+        if (null==comment){
+            return null;
+        }
+        List<Comment> commentList = commentDao.queryCommentByUidAndPid(comment);
+        if (commentList!=null&&commentList.size()>0){
+            for (Comment c:commentList) {
+                c.setUser(userDao.queryByUserId(c.getuId()));
+            }
+        }
+        return commentList;
     }
 }

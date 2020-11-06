@@ -7,6 +7,7 @@ import com.lvbaba.service.AreaService;
 import com.lvbaba.service.TicketrecordService;
 import com.lvbaba.service.TransportationService;
 import com.lvbaba.service.UserService;
+import com.lvbaba.utli.DateUtil;
 import com.lvbaba.utli.UserbLocker;
 import com.lvbaba.utli.Util;
 import org.springframework.http.MediaType;
@@ -21,7 +22,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -212,39 +217,53 @@ public class OperateTransportController {
     }
 
     @RequestMapping("/searchFlightInfo.do")
-    public String searchFlightAndDetail(Long d_city, Long a_city ,String date, Model model) {
-        String time = Util.getDate().replace("-",":");
+    public String searchFlightAndDetail(Long d_city, Long a_city, String date, Model model) throws ParseException {
         Flight flight = new Flight();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String newDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        boolean dateFlag = DateUtil.compareDate(date, newDate);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, 2);
+        Date date1 = calendar.getTime();
+
         flight.setDaId(d_city);
         flight.setArrAreaId(a_city);
-        flight.setFlightDTime(time);
+        if (dateFlag) {
+            flight.setFlightDTime("00:00");
+        }else{
+            flight.setFlightDTime(new SimpleDateFormat("HH:mm").format(date1));
+        }
+
         List<Flightdetail> flightdetailList = transportationService.queryFlightInfoByAreaIdAndDate(flight, date);
-        model.addAttribute("flightDetailInfoList",flightdetailList);
+        model.addAttribute("flightDetailInfoList", flightdetailList);
         return "forward:toUserFlightBookView.do";
     }
 
 
+
     @GetMapping(value = "toTicketOrderView",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+
     @UserbLocker
     @RequestMapping("/toTicketOrderView.do")
-    public String toTicketOrderView(Ticketrecord ticketrecord,Model model,HttpSession session){
-        System.out.println("----------------"+ticketrecord);
+    public String toTicketOrderView(Ticketrecord ticketrecord, Model model, HttpSession session) {
+        System.out.println("----------------" + ticketrecord);
         User user = (User) session.getAttribute("user");
         Userinfo userinfo = new Userinfo();
         userinfo.setuId(user.getuId());
 //        userinfo.setuId(1);
         List<Userinfo> userinfos = userService.queryAllByUid(userinfo);
-        session.setAttribute("ticketrecord",ticketrecord);
-        model.addAttribute("userinfos",userinfos);
+        session.setAttribute("ticketrecord", ticketrecord);
+        model.addAttribute("userinfos", userinfos);
         return "ticketOrderView";
     }
 
     @RequestMapping("/payFlightTicket.do")
-    public String payFlightTicket(Ticketrecord ticketrecord,String userIds,HttpSession session,Model model){
+    public String payFlightTicket(Ticketrecord ticketrecord, String userIds, HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
-        System.out.println("支付时"+ticketrecord+"-----------"+userIds);
-        boolean flag=false;
-        if (userIds!=null && userIds!="") {
+        System.out.println("支付时" + ticketrecord + "-----------" + userIds);
+        boolean flag = false;
+        if (userIds != null && userIds != "") {
             String[] array = userIds.split(",");
             for (int i = 0; i < array.length; i++) {
                 Userinfo userinfo = userService.queryUserInfoByUiId(Long.parseLong(array[i]));
@@ -256,34 +275,34 @@ public class OperateTransportController {
                 flag = ticketrecordService.insertTicketRecord(ticketrecord);
             }
         }
-        if (flag){
-            model.addAttribute("insertTicketRecord","支付完成，等待出票");
+        if (flag) {
+            model.addAttribute("insertTicketRecord", "支付完成，等待出票");
             return "forward:toBookingRecordView.do";
-        }else{
-            model.addAttribute("insertTicketRecord","支付失败！！");
+        } else {
+            model.addAttribute("insertTicketRecord", "支付失败！！");
             return "forward:toTicketOrderView.do";
         }
     }
 
     @RequestMapping("/toBookingRecordView.do")
-    public String toBookingRecordView(HttpSession session,Model model){
+    public String toBookingRecordView(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         List<Ticketrecord> ticketrecords = ticketrecordService.queryAllByUerId(user.getuId());
-        model.addAttribute("ticketrecords",ticketrecords);
+        model.addAttribute("ticketrecords", ticketrecords);
         return "bookingRecordView";
     }
 
     @RequestMapping("/returnTicket.do")
-    public String returnTicket(String fdrId,Model model){
+    public String returnTicket(String fdrId, Model model) {
         Ticketrecord ticketrecord = new Ticketrecord();
         ticketrecord.setFdrId(Long.parseLong(fdrId));
         ticketrecord.setModifyDate(Util.getCurrentDate());
         ticketrecord.setRecordStatus("已退票");
         boolean flag = ticketrecordService.updateTicketRecordByFdrId(ticketrecord);
         if (flag) {
-            model.addAttribute("returnTicketInfo","退票成功");
-        }else{
-            model.addAttribute("returnTicketInfo","退票失败");
+            model.addAttribute("returnTicketInfo", "退票成功");
+        } else {
+            model.addAttribute("returnTicketInfo", "退票失败");
         }
         return "forward:toBookingRecordView.do";
     }

@@ -13,6 +13,7 @@ import com.lvbaba.service.TourService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,7 +63,17 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public List<Tour> queryByPid(Tour tour) {
-        return tourDao.queryByPid(tour);
+        if (null==tour){
+            return null;
+        }
+        List<Tour> tourList = tourDao.queryByPid(tour);
+        List<Tour> list = new ArrayList<>();
+        for (Tour t:tourList) {
+            if("1".equals(t.getTourStatus()) || "3".equals(t.getTourStatus())){
+                list.add(t);
+            }
+        }
+        return list;
     }
 
 

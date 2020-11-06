@@ -119,6 +119,8 @@ public class UserOrderServiceImpl implements UserOrderService {
         boolean flag5 = userorderDao.updateUserorder(userorder1);
 
         Tour tour = tourDao.query(new Tour(userorder.getTourId()));
+
+ 
         boolean flag3 = false;
         boolean flag4 = false;
         boolean flag6 = false;
@@ -131,7 +133,6 @@ public class UserOrderServiceImpl implements UserOrderService {
             flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), -userorder.getRoomNum()));
             flag7 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getReturnId(), -userorder.getRoomNum()));
         }
-        System.out.println(flag1 + "-----" + flag2 + "-----" + flag3 + "--------" + flag4);
         return flag1 && flag2 && flag5 && ((flag3 && flag6) || (flag4 && flag7)) ? true : false;
     }
 
