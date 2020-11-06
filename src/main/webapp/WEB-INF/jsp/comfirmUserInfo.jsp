@@ -158,18 +158,28 @@
 
             $("#payMoney").click(function () {
                 var str ="";
+                var count =0;
                 $(".choiseUser:checked").each(function () {
                     str +=$(this).val()+","
-                })
-                var userIds = "<input type='hidden' name='userIds' value='"+str+"'/>";
-                $("#payMoney").prepend(userIds)
-                $("#hiddenForm").submit();
+                    count+=1;
+                });
+
+                if(count!=${requestScope.person}){
+                    alert("必须选择与出行人数量相符的信息，以便于进行实名制购票及客房预订")
+                }
+                else {
+                    var userIds = "<input type='hidden' name='userIds' value='"+str+"'/>";
+                    $("#payMoney").prepend(userIds);
+                    $("#hiddenForm").submit();
+                }
+
             })
         })
     </script>
 
 </head>
 <body>
+<div class="container" style="padding-top: 50px;height: 400px">
 
 <div class="userDetails" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
     <p>
@@ -261,6 +271,6 @@
         本线路在不影响您行程的情况下，部分行程段可能会与其他携程客人合并用车，共同游玩。如有入住其他不同酒店的客人，当地司导人员会根据团队实际情况安排接送事宜，敬请谅解
     </p>
 </div>
-
+</div>
 </body>
 </html>
