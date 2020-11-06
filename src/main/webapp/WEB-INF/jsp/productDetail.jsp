@@ -44,6 +44,7 @@
             $("#numberOfTrips").change(function () {
                 var num=$(this).val();
                 $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2));
+                $("#sRoom").attr("max",parseInt(num));
             });
 
             $(".dDate").change(function () {
