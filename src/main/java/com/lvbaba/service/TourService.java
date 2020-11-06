@@ -70,7 +70,7 @@ public interface TourService {
     int closeBooking(int tourId);
 
     /**
-     *开启旅行团
+     *发团
      * @param tourId
      * @return
      */
@@ -96,4 +96,11 @@ public interface TourService {
      * @return
      */
     Long queryPIdByTourId(int tourId);
+
+    /*未成团，已成团间的切换*/
+    boolean updateTourStatus(int tourId);
+
+
+    /*判断该旅行团是否超额,num为准备预定的人数*/
+    boolean isTourNumEnough(long tourId,int num);
 }

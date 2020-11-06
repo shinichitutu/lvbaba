@@ -17,5 +17,8 @@
 </head>
 <body>
 
+${requestScope.success}
+${requestScope.error}
+
 </body>
 </html>

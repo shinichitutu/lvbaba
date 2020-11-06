@@ -278,7 +278,7 @@
         <div class="last-footer text-muted">
             &copy; 2020 杜炳友|陆垚|陆金易. All rights reserved.
         </div>
-</div>
+
 </footer>
 <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
 <aside id="sidebar">

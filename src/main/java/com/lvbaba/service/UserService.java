@@ -85,4 +85,8 @@ public interface UserService {
     boolean updateAdmin(Admin admin);
 
 
+    /*根据订单的金额--money判断余额是否足够*/
+    boolean isBalanceEnough(User user,Double money);
+
+
 }

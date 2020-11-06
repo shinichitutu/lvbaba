@@ -25,6 +25,10 @@
         <include refid="all_field"/>
         from user where u_username = #{uUsername}
     </select>
+    <select id="queryByUid" resultMap="userMap" parameterType="long">
+        select u_id,
+        <include refid="all_field"/> FROM user WHERE u_id= #{value}
+    </select>
     <resultMap id="userMap" type="User">
         <id property="uId" column="u_id"/>
         <result property="uName" column="u_name"/>
