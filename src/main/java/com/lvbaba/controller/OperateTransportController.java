@@ -240,7 +240,10 @@ public class OperateTransportController {
         return "forward:toUserFlightBookView.do";
     }
 
-    @GetMapping(value = "toTicketOrderView", produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+
+
+    @GetMapping(value = "toTicketOrderView",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+
     @UserbLocker
     @RequestMapping("/toTicketOrderView.do")
     public String toTicketOrderView(Ticketrecord ticketrecord, Model model, HttpSession session) {

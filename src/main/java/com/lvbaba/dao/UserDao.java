@@ -33,4 +33,7 @@ public interface UserDao {
      * @return
      */
     boolean updateUser(User user);
+
+
+    User queryByUid(long Uid);
 }

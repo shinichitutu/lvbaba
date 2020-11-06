@@ -124,7 +124,10 @@
                 <div class="col-xl-6 col-lg-7">
                     <div id="listing_content">
                         <div class="listing-video">
+
+                        
                             <img src="${product.files.filePath}" alt=""/>
+
                             <div class="d-inline-block">
                                 <!-- <a href="javascript:void(0);" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-play"></i> <span>Play video</span></a> -->
                             </div>

@@ -2,14 +2,8 @@ package com.lvbaba.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lvbaba.dao.AreaDao;
-import com.lvbaba.dao.HotelDao;
-import com.lvbaba.dao.RoomDao;
-import com.lvbaba.dao.RoomDetailDao;
-import com.lvbaba.entity.Area;
-import com.lvbaba.entity.Hotel;
-import com.lvbaba.entity.Room;
-import com.lvbaba.entity.Roomdetail;
+import com.lvbaba.dao.*;
+import com.lvbaba.entity.*;
 import com.lvbaba.service.HotelService;
 import com.lvbaba.utli.Util;
 import org.springframework.stereotype.Service;
@@ -35,6 +29,15 @@ public class HotelServiceImpl implements HotelService {
 
     @Resource
     private RoomDetailDao roomDetailDao;
+
+    @Resource
+    private UserDao userDao;
+
+    @Resource
+    private UserorderDao userorderDao;
+
+    @Resource
+    private TourDao tourDao;
 
 
     @Override
@@ -255,6 +258,8 @@ public class HotelServiceImpl implements HotelService {
         return list;
     }
 
+
+
     @Override
     public Double calculate(List<Roomdetail> list) {
         Double money  = 0.0;
@@ -263,5 +268,7 @@ public class HotelServiceImpl implements HotelService {
         }
         return money;
     }
+
+
 
 }
