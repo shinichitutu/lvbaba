@@ -67,6 +67,17 @@ public class OrderController {
         return "" + flag;
     }
 
+
+    @RequestMapping("/returnUserOrder.do")
+    public String returnUserOrder(Long orderId,Model model){
+        boolean flag = userOrderService.returnOrder(orderId);
+        if (flag){
+            model.addAttribute("returnUserOrderInfo","退款成功");
+        }else{
+            model.addAttribute("returnUserOrderInfo","退款失败");
+        }
+        return "forward:toUserOrderRecordView.do";
+
     @RequestMapping("/createOrder.do")
     public String createNewOrder(String userIds,Model model,String tourId,String total,String person,String roomNum,String roomId,HttpSession session){
         User user = (User) session.getAttribute("user");
@@ -97,5 +108,6 @@ public class OrderController {
            orderDetailService.insertOrderDetail(orderdetail);
         }
         return "payResult";
+
     }
 }

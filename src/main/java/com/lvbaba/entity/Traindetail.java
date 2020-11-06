@@ -12,6 +12,11 @@ public class Traindetail {
   public Traindetail() {
   }
 
+  public Traindetail(long tdId, long tdTickets) {
+    this.tdId = tdId;
+    this.tdTickets = tdTickets;
+  }
+
   public Traindetail(long tdId) {
     this.tdId = tdId;
   }

@@ -34,6 +34,10 @@ public class UserOrderServiceImpl implements UserOrderService{
     private TrainDao trainDao;
     @Resource
     private TraindetailDao traindetailDao;
+    @Resource
+    private RoomDetailDao roomDetailDao;
+    @Resource
+    private TicketrecordDao ticketrecordDao;
 
     @Override
     public Userorder queryOne(Userorder userorder) {
@@ -79,11 +83,15 @@ public class UserOrderServiceImpl implements UserOrderService{
                 if ("1".equals(tour1.getTransType())){
                     Flightdetail flightdetail = flightDatailDao.queryByFdId(tour1.getGoId());
                     tour1.setFlightdetail(flightdetail);
-                    tour1.setFlight(flightDao.queryOne(new Flight(flightdetail.getFlightId())));
+                    tour1.setGo_flight(flightDao.queryOne(new Flight(flightdetail.getFlightId())));
+                    flightdetail = flightDatailDao.queryByFdId(tour1.getReturnId());
+                    tour1.setRe_flight(flightDao.queryOne(new Flight(flightdetail.getFlightId())));
                 }else if("2".equals(tour1.getTransType())){
                     Traindetail traindetail = traindetailDao.queryOne(new Traindetail(tour1.getGoId()));
                     tour1.setTraindetail(traindetail);
-                    tour1.setTrain(trainDao.queryOne(new Train(traindetail.getTrId())));
+                    tour1.setGo_train(trainDao.queryOne(new Train(traindetail.getTrId())));
+                    traindetail = traindetailDao.queryOne(new Traindetail(tour1.getReturnId()));
+                    tour1.setRe_train(trainDao.queryOne(new Train(traindetail.getTrId())));
                 }
                 uo.setTour(tour1);
                 Product product = productDao.query(new Product(tour1.getProductId()));
@@ -95,5 +103,21 @@ public class UserOrderServiceImpl implements UserOrderService{
             }
         }
         return userorderList;
+    }
+
+    @Override
+    public boolean returnOrder(Long orderId) {
+        Userorder userorder = userorderDao.queryOne(new Userorder(orderId));
+        boolean flag1 = tourDao.updateBookNum(new Tour(userorder.getTourId(),-userorder.getRoomNum()));
+        boolean flag2 = roomDetailDao.updateRoomDetailRdNumber(new Roomdetail(userorder.getRoomId(), -userorder.getRoomNum()));
+        Tour tour = tourDao.query(new Tour(userorder.getTourId()));
+        boolean flag3 =false;
+        boolean flag4 =false;
+        if ("1".equals(tour.getTransType())) {
+            flag3 = flightDatailDao.updateFlightDetailTickets(tour.getGoId(), userorder.getRoomNum());
+        }else if("2".equals(tour.getTransType())) {
+            flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), userorder.getRoomNum()));
+        }
+        return flag1&&flag2&&flag3&&flag4?true:false;
     }
 }

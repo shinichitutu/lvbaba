@@ -80,6 +80,11 @@
             <include refid="condition"/>
         </where>
     </select>
+
+    <update id="updateBookNum" parameterType="Tour">
+        update tour set book_num = book_num+#{bookNum} where t_id = #{tourId}
+    </update>
+
     <resultMap id="tourMap" type="Tour">
         <id property="tourId" column="t_id"/>
         <result property="productId" column="p_id"/>

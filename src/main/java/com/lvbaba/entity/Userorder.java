@@ -16,6 +16,10 @@ public class Userorder {
   private long roomNum;
   private long person;
 
+
+
+  public Userorder(long orderId) {}
+
   public Userorder(long uId, long tourId, double orderPrice, String orderStatus, String orderTime, String payTime, long roomId, long roomNum, long person) {
     this.uId = uId;
     this.tourId = tourId;
@@ -87,8 +91,6 @@ public class Userorder {
     this.payTime = payTime;
   }
 
-
-
   public Tour getTour() {
     return tour;
   }
@@ -102,7 +104,9 @@ public class Userorder {
   }
 
   public void setProduct(Product product) {
-    this.product = product;}
+
+    this.product = product;
+  }
 
 
   public long getRoomNum() {
