@@ -30,12 +30,15 @@
     </style>
     <script>
         $(function () {
-            if (${not empty requestScope.returnUserOrderInfo}){
-                alert("${requestScope.returnUserOrderInfo}");
+            if (count<1){
+                if (${not empty requestScope.returnUserOrderInfo}){
+                    alert("${requestScope.returnUserOrderInfo}");
+                }
             }
         })
         function returnMoney(obj,orderId) {
             var res = confirm("退票需付手续费，详情参照上面，确认退款吗？")
+            console.log(orderId);
             if (res){
                 location.href="returnUserOrder.do?orderId="+orderId;
             }else{
@@ -59,8 +62,8 @@
                 <th>出发日期</th>
                 <th>返程日期</th>
                 <th>交通类型</th>
-                <th>(去)航班号/列车班次</th>
-                <th>(返)航班号/列车班次</th>
+                <th>去程交通</th>
+                <th>返程交通</th>
                 <th>入住酒店</th>
                 <th>支付价格</th>
                 <th>出行人数</th>
@@ -95,7 +98,14 @@
                 <td>${orderList.orderTime}</td>
                 <td>${orderList.orderStatus}</td>
                 <td><input type="button" value="评论"/></td>
-                <td><input type="button" onclick="returnMoney(this,'${orderList.orderId}')" value="退款"/></td>
+                <td>
+                    <c:if test="${!'已退团'.equals(orderList.orderStatus)}">
+                        <input type="button" onclick="returnMoney(this,'${orderList.orderId}')" value="退款"/>
+                    </c:if>
+                    <c:if test="${'已退团'.equals(orderList.orderStatus)}">...
+<%--                        <input type="button" onclick="returnMoney(this,'${orderList.orderId}')" disabled value="退款"/>--%>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

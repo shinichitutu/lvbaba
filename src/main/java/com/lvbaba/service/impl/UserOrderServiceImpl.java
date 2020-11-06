@@ -110,6 +110,10 @@ public class UserOrderServiceImpl implements UserOrderService{
         Userorder userorder = userorderDao.queryOne(new Userorder(orderId));
         boolean flag1 = tourDao.updateBookNum(new Tour(userorder.getTourId(),-userorder.getRoomNum()));
         boolean flag2 = roomDetailDao.updateRoomDetailRdNumber(new Roomdetail(userorder.getRoomId(), -userorder.getRoomNum()));
+        Userorder userorder1 = new Userorder();
+        userorder1.setOrderId(orderId);
+        userorder1.setOrderStatus("已退团");
+        boolean flag5 = userorderDao.updateUserorder(userorder1);
         Tour tour = tourDao.query(new Tour(userorder.getTourId()));
         boolean flag3 =false;
         boolean flag4 =false;
@@ -118,6 +122,7 @@ public class UserOrderServiceImpl implements UserOrderService{
         }else if("2".equals(tour.getTransType())) {
             flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), userorder.getRoomNum()));
         }
-        return flag1&&flag2&&flag3&&flag4?true:false;
+        System.out.println(flag1+"-----"+flag2+"-----"+flag3+"--------"+flag4);
+        return flag1&&flag2&&flag5&&(flag3||flag4)?true:false;
     }
 }
