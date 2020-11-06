@@ -248,8 +248,8 @@
                 <td><a href="closeBooking.do?tourId=${tour.tourId}">关闭预定</a></td>
                 <td><a href="startTour.do?tourId=${tour.tourId}">发团</a></td>
                 <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
-                <td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
-
+                <%--<td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
+--%>
             </tr>
         </c:forEach>
         </tbody>
@@ -285,7 +285,7 @@
         <%--增加产品--%>
         <input type="button" value="添加新旅行团（飞机）" id="d1">
             <input type="button" value="添加新旅行团（火车）" id="d2">
-
+<br/>
         <c:if test="${requestScope.page>1}">
             <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
         </c:if>

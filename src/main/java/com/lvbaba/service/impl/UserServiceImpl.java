@@ -109,6 +109,16 @@ public class UserServiceImpl implements UserService {
         }
         return adminDao.updateAdmin(admin);
     }
-    
+
+    @Override
+    public boolean isBalanceEnough(User user, Double money) {
+        if(user.getBalance()>=money){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
 
 }

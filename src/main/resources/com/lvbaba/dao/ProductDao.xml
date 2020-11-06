@@ -45,9 +45,10 @@
 
     <select id="query" resultMap="productMap" parameterType="Product">
         SELECT <include refid="all"/> from product
-        <where>
+        WHERE p_id =#{productId}
+       <!-- <where>
             <include refid="condition"></include>
-        </where>
+        </where>-->
     </select>
 
     <select id="queryAll" resultMap="productMap" parameterType="Product">

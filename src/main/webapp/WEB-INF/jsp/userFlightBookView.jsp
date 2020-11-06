@@ -89,6 +89,7 @@
     </script>
 </head>
 <body style="width: 1000px;margin: 30px auto 0 auto;background-color:#eef1f1">
+
     <form action="searchFlightInfo.do" method="post">
         出发地：<select name="d_country">
             <option value="0">--请选择--</option>

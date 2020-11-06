@@ -222,6 +222,8 @@ public class OperateTransportController {
         model.addAttribute("flightDetailInfoList",flightdetailList);
         return "forward:toUserFlightBookView.do";
     }
+
+
     @GetMapping(value = "toTicketOrderView",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
     @UserbLocker
     @RequestMapping("/toTicketOrderView.do")
