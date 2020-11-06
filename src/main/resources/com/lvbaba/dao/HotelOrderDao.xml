@@ -4,10 +4,12 @@
     <sql id="all">
         ho_id,u_id, r_id, in_date, out_date, hotel_booking_date, room_num, ho_price
     </sql>
+
     <insert id="insertHotelOrder">
         INSERT INTO hotelorder(u_id, r_id, in_date, out_date, hotel_booking_date, room_num, ho_price)
         VALUE (#{userId},#{roomId},#{inDate},#{outDate},#{hotelBookingDate},#{roomNum},#{hoPrice})
     </insert>
+
     <update id="updateHotelOrder">
         UPDATE hotelorder
         <set>

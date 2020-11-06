@@ -183,9 +183,13 @@ public class Product {
             ", days=" + days +
             ", hotelId=" + hotelId +
             ", productName='" + productName + '\'' +
-            ", productFee='" + productFee + '\'' +
+            ", productFee=" + productFee +
             ", productScore=" + productScore +
             ", productIntroduction='" + productIntroduction + '\'' +
+            ", d_area=" + d_area +
+            ", a_area=" + a_area +
+            ", hotel=" + hotel +
+            ", files=" + files +
             '}';
   }
 }

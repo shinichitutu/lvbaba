@@ -41,13 +41,12 @@ public class OrderController {
     public ModelAndView showConfirmOrder(HttpSession session) {
         User user = (User) session.getAttribute("user");
         ModelAndView mv = new ModelAndView("confirmOrderView");
+
      if (user!=null) {
          List<Userinfo> userinfoList = userService.queryAllByUid(new Userinfo(user.getuId()));
-/*        Userinfo userinfo = new Userinfo();
-        userinfo.setuId(1);
-        List<Userinfo> userinfoList = userService.queryAllByUid(userinfo);*/
         mv.addObject("userinfoList", userinfoList);
     }
+
         return mv;
     }
 
@@ -69,45 +68,66 @@ public class OrderController {
 
 
     @RequestMapping("/returnUserOrder.do")
-    public String returnUserOrder(Long orderId,Model model) {
+
+
+    public String returnUserOrder(Long orderId, Model model) {
+
         boolean flag = userOrderService.returnOrder(orderId);
         if (flag) {
+            Integer tourId = (int) userOrderService.queryOne(new Userorder(orderId)).getTourId();
+            tourService.updateTourStatus(tourId);
             model.addAttribute("returnUserOrderInfo", "退款成功");
         } else {
             model.addAttribute("returnUserOrderInfo", "退款失败");
         }
+
         return "forward:toUserOrderRecordView.do";
     }
+
     @RequestMapping("/createOrder.do")
-    public String createNewOrder(String userIds,Model model,String tourId,String total,String person,String roomNum,String roomId,HttpSession session){
+    public String createNewOrder(String userIds, Model model, String tourId, String total, String person, String roomNum, String roomId, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        String time =Util.getCurrentTime();
-        Userorder userorder =new Userorder(user.getuId(),Long.valueOf(tourId),Double.valueOf(total),"待成团",time,time,Long.valueOf(roomId),Long.valueOf(roomNum),Long.valueOf(person));
-        userOrderService.insertUserorder(userorder);
-        Userorder userorder1 =new Userorder();
-        userorder1.setOrderTime(time);
+        /*判断余额是否充足*/
+        boolean flag = userService.isBalanceEnough(user, Double.valueOf(total));
 
-        Userorder userorder2 = userOrderService.query(userorder1).get(0);
-        long oId = userorder2.getOrderId();
+        if (flag) {
+            /*扣款*/
+            user.setBalance(Double.valueOf(total) * (-1));
+            userService.updateUser(user);
+            /*获取时间，生成订单*/
+            String time = Util.getCurrentTime();
+            Userorder userorder = new Userorder(user.getuId(), Long.valueOf(tourId), Double.valueOf(total), "待成团", time, time, Long.valueOf(roomId), Long.valueOf(roomNum), Long.valueOf(person));
+            userOrderService.insertUserorder(userorder);
+            Userorder userorder1 = new Userorder();
+            userorder1.setOrderTime(time);
 
-        String[] str = userIds.split(",");
-        ArrayList<Long> list = new ArrayList<>();
-        for (int i = 0; i < str.length; i++) {
-            list.add(Long.valueOf(str[i]));
-        }
+            Userorder userorder2 = userOrderService.query(userorder1).get(0);
+            long oId = userorder2.getOrderId();
 
-        Orderdetail orderdetail =new Orderdetail();
-        Userinfo userinfo =new Userinfo();
+            String[] str = userIds.split(",");
+            ArrayList<Long> list = new ArrayList<>();
+            for (int i = 0; i < str.length; i++) {
+                list.add(Long.valueOf(str[i]));
+            }
 
-        for (Long l: list) {
-            userinfo = userService.queryUserInfoByUiId(l);
-           orderdetail.setOrderId(oId);
-           orderdetail.setOdIdcard(userinfo.getIdcard());
-           orderdetail.setOdPerson(userinfo.getPerson());
-           orderdetail.setOdPhone(userinfo.getPhone());
-           orderDetailService.insertOrderDetail(orderdetail);
+            Orderdetail orderdetail = new Orderdetail();
+            Userinfo userinfo = new Userinfo();
+
+            for (Long l : list) {
+                userinfo = userService.queryUserInfoByUiId(l);
+                orderdetail.setOrderId(oId);
+                orderdetail.setOdIdcard(userinfo.getIdcard());
+                orderdetail.setOdPerson(userinfo.getPerson());
+                orderdetail.setOdPhone(userinfo.getPhone());
+                orderDetailService.insertOrderDetail(orderdetail);
+            }
+            /*进行后台票务数据的更改*/
+            userOrderService.addOrder(oId);
+            tourService.updateTourStatus(Integer.valueOf(tourId));
+            model.addAttribute("success", "支付成功");
+        } else {
+            model.addAttribute("error", "余额不足");
         }
         return "payResult";
-
     }
 }

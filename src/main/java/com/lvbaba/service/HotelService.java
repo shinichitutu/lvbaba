@@ -45,6 +45,4 @@ public interface HotelService {
 
     Double calculate(List<Roomdetail> list);
 
-
-
 }

@@ -47,7 +47,6 @@
                     var str ="";
                     console.log(obj)
                     $.each(obj,function (index,item) {
-                        console.log(item.city);
                         str += "<option value='"+item.country+"'>"+item.country+"</option>";
                     })
                     $("#a_country").append(str);
@@ -81,7 +80,7 @@
             })
 
             //飞机的选择地点与火车的地点公用
-            $("#a_country,tr_a_country").change(function () {
+            $("#a_country,#tr_a_country").change(function () {
                 $("#a_city option:gt(0)").remove();
                 $("#tr_a_city option:gt(0)").remove();
                 var country = $(this).val();
@@ -112,7 +111,7 @@
                 var flightCompany = $("input[name = 'flightCompany']").val();
                 var flightDTime = $("input[name = 'flightDTime']").val();
                 var flightATime = $("input[name = 'flightATime']").val();
-                var dareaId = $("#d_city").find("option:selected").val();
+                var daId = $("#d_city").find("option:selected").val();
                 var arrAreaId = $("#a_city").find("option:selected").val();
                 var flightCapacity = $(".f_capacity").val();
                 var flightPrice = $(".f_price").val();
@@ -127,6 +126,7 @@
                             alert("添加失败,航班号相同了，请检查");
                         }else{
                             alert("添加成功");
+                            location.href="showFlightAndTrain.do";
                         }
                     }
                 })
@@ -151,6 +151,7 @@
                             alert("添加失败，火车班次相同了，请检查");
                         }else{
                             alert("添加成功");
+                            location.href="showFlightAndTrain.do";
                         }
                     }
                 })

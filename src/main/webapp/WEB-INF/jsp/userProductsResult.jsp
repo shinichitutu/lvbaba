@@ -121,7 +121,7 @@
 
             <div class="row list-bunch">
 
-<c:forEach items="${requestScope.product}" var="product" varStatus="status">
+                <c:forEach items="${requestScope.product}" var="product" varStatus="status">
 
                 <div class="col-lg-6 list-bunch-item">
                     <div class="listing-card list-view">
@@ -132,7 +132,7 @@
                                 <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
 
                             </div>
-                            <a href="productDetail.do?productId=${product.productId}"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
+                            <a href="productDetail.do?productId=${product.productId}"><img src="${product.files.filePath}" alt="" /></a>
                         </div>
 
                         <div class="listing-content">

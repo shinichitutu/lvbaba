@@ -40,4 +40,5 @@ public class OrderDetailServiceImpl implements OrderDetailService{
     public List<Orderdetail> query() {
         return orderdetailDao.query();
     }
+
 }

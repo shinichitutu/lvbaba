@@ -17,8 +17,9 @@ public class Userorder {
   private long person;
 
 
-
-  public Userorder(long orderId) {}
+  public Userorder(long orderId) {
+    this.orderId = orderId;
+  }
 
   public Userorder(long uId, long tourId, double orderPrice, String orderStatus, String orderTime, String payTime, long roomId, long roomNum, long person) {
     this.uId = uId;
@@ -144,12 +145,11 @@ public class Userorder {
             ", orderStatus='" + orderStatus + '\'' +
             ", orderTime='" + orderTime + '\'' +
             ", payTime='" + payTime + '\'' +
-            ", roomId=" + roomId +
             ", tour=" + tour +
             ", product=" + product +
+            ", roomId=" + roomId +
             ", roomNum=" + roomNum +
             ", person=" + person +
-
             '}';
   }
 }

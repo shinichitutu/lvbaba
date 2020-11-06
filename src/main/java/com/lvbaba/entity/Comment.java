@@ -8,6 +8,7 @@ public class Comment {
   private long productId;
   private String content;
   private double score;
+  private User user;
 
   public long getCommentId() {
     return commentId;
@@ -47,6 +48,14 @@ public class Comment {
 
   public void setScore(double score) {
     this.score = score;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
   @Override

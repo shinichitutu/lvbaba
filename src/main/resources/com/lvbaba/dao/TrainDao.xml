@@ -3,7 +3,7 @@
 <mapper namespace="com.lvbaba.dao.TrainDao">
     <insert id="insertTrain" parameterType="Train">
         insert into train(tr_number,tr_d_time,tr_a_time,d_a_id,a_area_id,tr_capacity,tr_price)
-        values(#{trNumber},#{trDTime},#{daId},#{arrAreaId},#{trCapacity},#{trPrice})
+        values(#{trNumber},#{trDTime},#{trATime},#{daId},#{arrAreaId},#{trCapacity},#{trPrice})
     </insert>
 
 

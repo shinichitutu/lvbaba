@@ -515,11 +515,17 @@
                 <ul class="nav-sub-menu">
                     <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
                     <li><a href="toBookingRecordView.do">机票订单</a></li>
+
                     <li><a href="#">个人信息</a></li>
                     <li><a href="userRecharge.do">充值</a></li>
                     <li><a href="loginOut.do">退出登录</a></li>
                 </ul>
             </li>
+
+                    <li><a href="userCenter.do">个人中心</a></li>
+                </ul></li>
+
+
         </ul>
     </nav>
 </aside>

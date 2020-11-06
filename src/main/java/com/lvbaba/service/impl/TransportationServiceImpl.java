@@ -179,10 +179,13 @@ public class TransportationServiceImpl implements TransportationService {
     public List<Train> queryAllTrain() {
         List<Train> trainList = trainDao.queryAllTrain();
         List<Train> list = new ArrayList<>();
-        if (null != trainList && !trainList.isEmpty()) {
+        System.out.println("1111111111111111111");
+        if (null != trainList && trainList.size()>0) {
             for (Train t : trainList) {
-                t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
-                t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
+                if (t.getdaId()>0 && t.getarrAreaId()>0) {
+                    t.setD_area(areaDao.queryOne(new Area(t.getdaId())));
+                    t.setA_area(areaDao.queryOne(new Area(t.getarrAreaId())));
+                }
                 list.add(t);
             }
         }

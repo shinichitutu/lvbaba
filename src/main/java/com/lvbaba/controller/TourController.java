@@ -145,6 +145,8 @@ public class TourController {
             model.addAttribute("error", "已发团，不可开放预定！");
         } else if (res == 4) {
             model.addAttribute("error", "已取消，不可开放预定！");
+        } else if (res == 5) {
+            model.addAttribute("error", "已满员，不可开放预定！");
         } else {
             model.addAttribute("error", "操作失败");
         }
@@ -195,13 +197,16 @@ public class TourController {
 
     @RequestMapping("/cancelTour.do")
     public String cancelTour(Model model, String tourId) {
+
         int res = tourService.cancelTour(Integer.valueOf(tourId));
         Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
         model.addAttribute("productId", pId);
         if (res == 1) {
+            Tour tour1 = new Tour();
+            userOrderService.cancelOrders(Long.valueOf(tourId));
             model.addAttribute("success", "取消成功");
         } else if (res == 2) {
-            model.addAttribute("choice", "已有人预定，请确认是否要取消该团！");
+            model.addAttribute("error", "已有人预定，不可取消！");
         } else if (res == 3) {
             model.addAttribute("error", "已成团，不可取消！");
         } else if (res == 4) {
@@ -261,6 +266,10 @@ public class TourController {
             model.addAttribute("error", "很抱歉，名额不足，预定失败！");
             return "forward:productDetail.do";
         }
+        if (tourService.isTourNumEnough(tour.getTourId(), numberOfTrips)) {
+            model.addAttribute("error", "很抱歉，名额不足，预定失败！");
+            return "forward:productDetail.do";
+        }
 
         List<Roomdetail> roomdetailList = hotelService.searchSuitableRooms(tour.getdDate(), tour.getRoomDate(), sRoom, hotel.getHotelId());
 
@@ -272,10 +281,10 @@ public class TourController {
         model.addAttribute("roomId", roomdetailList.get(0).getRoomId());
 
         Double hotelFee = hotelService.calculate(roomdetailList);
-        Room room =new Room();
+        Room room = new Room();
         room.setRoomId(roomdetailList.get(0).getRoomId());
-        room =roomService.queryOne(room);
-        model.addAttribute("roomType",room.getPersonLimit());
+        room = roomService.queryOne(room);
+        model.addAttribute("roomType", room.getPersonLimit());
 
         Double transFee = 0.0;
         Double transFee2 = 0.0;
@@ -284,8 +293,8 @@ public class TourController {
         /*判断用户选择的出行工具*/
         if (tour.getTransType().equals("2")) {
              /*火车*/
-            boolean flag =transportationService.isTrainTicketEnough(tour.getTourId(),numberOfTrips);
-            if(flag==false){
+            boolean flag = transportationService.isTrainTicketEnough(tour.getTourId(), numberOfTrips);
+            if (flag == false) {
                 model.addAttribute("error", "很抱歉，经系统查询，因火车票余票不足，请选择其他出发日！");
                 return "forward:productDetail.do";
             }
@@ -316,8 +325,8 @@ public class TourController {
 
         if (tour.getTransType().equals("1")) {
             /*飞机*/
-            boolean flag =transportationService.isFlightTicketEnough(tour.getTourId(),numberOfTrips);
-            if(flag==false){
+            boolean flag = transportationService.isFlightTicketEnough(tour.getTourId(), numberOfTrips);
+            if (flag == false) {
                 model.addAttribute("error", "很抱歉，经系统查询，因机票余票不足，请选择其他出发日！");
                 return "forward:productDetail.do";
             }
@@ -424,5 +433,36 @@ public class TourController {
         return "test";
     }
 
+
+    /*退货*/
+    @RequestMapping("/refund.do")
+    public String refund(Userorder userorder, Model model) throws ParseException {
+        userorder = userOrderService.queryOne(userorder);
+        /*查询用户*/
+        User user = new User();
+        user.setuId(userorder.getuId());
+        /*查询旅行团*/
+        Tour tour = new Tour();
+        tour.setTourId(userorder.getTourId());
+        tour = tourService.query(tour);
+        user.setBalance(userorder.getOrderPrice() * Util.refund(tour.getdDate()));
+        if (userService.updateUser(user)) {
+            model.addAttribute("success", "退款成功");
+        } else {
+            model.addAttribute("error", "退款失败");
+        }
+        return "test";
+    }
+
+    /*recharge*/
+    @RequestMapping("recharge.do")
+    public String recharge(User user, Model model) {
+        if (userService.updateUser(user)) {
+            model.addAttribute("sucess", "充值成功");
+        } else {
+            model.addAttribute("error", "充值失败");
+        }
+        return "test";
+    }
 
 }

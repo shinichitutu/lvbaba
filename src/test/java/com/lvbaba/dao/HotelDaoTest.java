@@ -2,6 +2,7 @@ package com.lvbaba.dao;
 
 import com.lvbaba.entity.Hotel;
 import com.lvbaba.entity.Roomdetail;
+import com.lvbaba.service.HotelService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,6 +24,9 @@ public class HotelDaoTest {
 
     @Resource
     private RoomDetailDao roomDetailDao;
+
+    @Resource
+    private HotelService hotelService;
 
 
 
@@ -50,5 +54,7 @@ public class HotelDaoTest {
         System.out.println(roomDetailDao.query(roomdetail));
 
     }
+
+
 
 }

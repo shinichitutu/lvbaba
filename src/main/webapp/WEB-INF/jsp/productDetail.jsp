@@ -124,7 +124,10 @@
                 <div class="col-xl-6 col-lg-7">
                     <div id="listing_content">
                         <div class="listing-video">
-                            <img src="assets/images/listing/details/beijin.jfif" alt=""/>
+
+                        
+                            <img src="${product.files.filePath}" alt=""/>
+
                             <div class="d-inline-block">
                                 <!-- <a href="javascript:void(0);" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-play"></i> <span>Play video</span></a> -->
                             </div>
@@ -199,7 +202,7 @@
                                     </div>
                                     <div class="media-body">
                                         <div class="commenter-name d-sm-flex align-items-center">
-                                            用户名
+                                                ${requestScope.comments.user.uName}
                                             <span class="text-muted pl-1">钻石会员</span>
                                             <div class="stars ml-auto">
 

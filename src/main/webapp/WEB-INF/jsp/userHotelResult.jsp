@@ -110,7 +110,7 @@
                                 <div class="listing-image-head">
 
                                 </div>
-                                <a href="list-details.html"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
+                                <a href="#"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
                             </div>
 
                             <div class="listing-content">
@@ -125,7 +125,7 @@
                                         </div>
 
                                         <div class="listing-desc">
-                                            <a href="list-details.html" class="listing-title text-truncate"></a>
+                                            <a href="#" class="listing-title text-truncate"></a>
                                             <p></p>
                                         </div>
 

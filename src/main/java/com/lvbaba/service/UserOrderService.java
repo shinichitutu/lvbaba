@@ -1,5 +1,6 @@
 package com.lvbaba.service;
 
+import com.lvbaba.entity.Roomdetail;
 import com.lvbaba.entity.Userorder;
 
 import java.util.List;
@@ -63,10 +64,22 @@ public interface UserOrderService {
      */
     boolean returnOrder(Long orderId);
 
+
     /**
      * 根据用户订单退款
      * @param userorder
      * @return
      */
     boolean refund(Userorder userorder);
+
+    boolean addOrder(Long orderId);
+
+    List<Roomdetail> queryByDateAndRid(String inDate, String outDate, long rid);
+
+    boolean updateRoomBookingNumber(Long orderId,int type);
+
+    boolean cancelOrders(Long tourId);
+
+
+
 }

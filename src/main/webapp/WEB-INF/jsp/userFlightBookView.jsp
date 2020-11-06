@@ -108,95 +108,23 @@
     </script>
 </head>
 <body style="width: 1000px;margin: 30px auto 0 auto;background-color:#eef1f1">
-<div id="wrapper">
-    <div id="loading">
-        <div id="loader"></div>
-    </div>
 
-    <header id="header" class="colored-header fixed-top">
-        <nav class="navbar navbar-expand-sm">
-            <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <div class="media align-items-center">
-                            <div class="avatar avatar-sm">
-                                <img src="assets/images/user/32/user-1.jpg" class="retina" alt="" />
-                            </div>
-                            <div class="media-body pl-2 avatar-name d-none d-md-block">
-                                欢迎登录！
-                            </div>
-                        </div></li>
-                    <!--   <li class="nav-item"><a href="add-listing.html" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-add"></i> <span>Add Listing</span></a></li> -->
-                </ul>
-                <a href="javascript:void(0);" id="hamburger"><span></span></a>
-            </div>
-        </nav>
-    </header>
-    <br/>
-
-    <div class="container" style="padding-top: 50px;height: 400px">
-
-        <div style="width: 1000px;float: left;font-size: 20px">
-            <form action="searchFlightInfo.do" method="post">
-                出发地：<select name="d_country" style="margin-top: 50px;font-size: 20px">
-                            <option value="0">--请选择--</option>
-                        </select>
-                        <select name="d_city"style="margin-top: 50px;font-size: 20px">
-                            <option value="0">--请选择--</option>
-                        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                目的地：<select name="a_country"style="margin-top: 50px;font-size: 20px">
-                            <option value="0">--请选择--</option>
-                        </select>
-                        <select name="a_city"style="margin-top: 50px;font-size: 20px">
-                            <option value="0">--请选择--</option>
-                        </select><br/>
-                出发日期：<input type="date" name="date"style="margin-top: 50px;font-size: 20px"/><br/>
-                        <input type="submit" value="查询"style="margin-top: 50px;font-size: 20px"/>
-            </form>
-        </div>
-    </div>
-
-    <footer id="footer">
-        <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
-        </div>
-
-    </footer>
-
-    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
-
-        </div>
-        <nav id="nav">
-            <ul>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="userMain.do">旅游首页</a></li>
-                        <li><a href="userMain.do">推荐路线</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserFlightBookView.do">预订机票</a></li>
-                        <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="#">个人信息</a></li>
-                        <li><a href="userRecharge.do">充值</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </aside>
-</div>
-<script src="assets/js/vendors.bundle.js"></script>
-<script src="assets/js/scripts.bundle.js"></script>
+    <form action="searchFlightInfo.do" method="post">
+        出发地：<select name="d_country">
+            <option value="0">--请选择--</option>
+        </select>
+        <select name="d_city">
+            <option value="0">--请选择--</option>
+        </select>
+        目的地：<select name="a_country">
+            <option value="0">--请选择--</option>
+        </select>
+        <select name="a_city">
+            <option value="0">--请选择--</option>
+        </select>
+        出发日期：<input type="date" name="date"/>
+        <input type="submit" value="查询"/>
+    </form>
 
 <br/>
 <div class="searchResult">
