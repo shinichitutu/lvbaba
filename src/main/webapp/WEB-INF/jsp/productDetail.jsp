@@ -285,12 +285,12 @@
 
                                     <div class="form-group">
                                         出行人数
-                                        <input type="number" max="10" min="1" step="1" name="numberOfTrips" id="numberOfTrips" style="height: 50px;width: 80%">
+                                        <input required type="number" max="10" min="1" step="1" name="numberOfTrips" id="numberOfTrips" style="height: 50px;width: 80%">
                                     </div>
 
                                     <div class="form-group">
                                         标间/大床房（间）
-                                        <input type="number" max="5" step="1" name="sRoom" style="height: 50px;width: 80%" id="sRoom">
+                                        <input required type="number" max="5" step="1" name="sRoom" style="height: 50px;width: 80%" id="sRoom">
                                     </div>
 
                                         <input name="productId" type="hidden" value="${product.productId}" id="pId">

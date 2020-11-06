@@ -279,7 +279,10 @@
             &copy; 2020 杜炳友|陆垚|陆金易. All rights reserved.
         </div>
 
+
+
 </footer>
+
 <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
 <aside id="sidebar">
     <div class="sidebar-header">
@@ -293,6 +296,7 @@
                     <li><a href="showProduct.do">旅游产品管理</a></li>
                     <li><a href="showFlightAndTrain.do">交通管理</a></li>
                     <li><a href="showHotels.do">酒店管理</a></li>
+                    <li><a href="index.do">退出登录</a></li>
                     <li><a href="#">订单管理</a></li>
                 </ul></li>
 

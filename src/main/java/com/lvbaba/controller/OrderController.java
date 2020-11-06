@@ -69,6 +69,7 @@ public class OrderController {
 
     @RequestMapping("/returnUserOrder.do")
 
+
     public String returnUserOrder(Long orderId, Model model) {
 
         boolean flag = userOrderService.returnOrder(orderId);
@@ -82,7 +83,6 @@ public class OrderController {
 
         return "forward:toUserOrderRecordView.do";
     }
-
 
     @RequestMapping("/createOrder.do")
     public String createNewOrder(String userIds, Model model, String tourId, String total, String person, String roomNum, String roomId, HttpSession session) {

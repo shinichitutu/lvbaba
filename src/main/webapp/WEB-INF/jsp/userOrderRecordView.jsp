@@ -15,6 +15,7 @@
     <base href="<%=basePath%>"/>
     <title>用户旅行订单</title>
     <meta charset="utf-8"/>
+
     <script src="js/jquery-3.1.0.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -33,6 +34,7 @@
           rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
           rel="stylesheet"/>
+
     <style>
         table {
             width: 1500px;
@@ -130,8 +132,11 @@
 <%--        };--%>
 <%--    </script>--%>
 </head>
+
 <body>
+
 <h3>购票记录</h3>
+<br/><br/><br/>
 <h4 style="color: red"> ! 退票需付手续费，出发当天不能退团，出发前3天内退团需付50%手续费，前4-10天内退团需付30%的手续费，前11-30天退团需付20%的手续费，提前一个月退团需付10%的手续费</h4>
 <div>
     <table>
@@ -193,6 +198,7 @@
         </tbody>
     </table>
 </div>
+
 <br/>
 <div class="addCommentInfo">
 <%--    <input type='hidden' name='orderId' value='"+orderId+"'/>" +--%>
@@ -214,5 +220,6 @@
 <%--              placeholder='请输入评论内容'/><br/>" +--%>
 <%--    <input type='submit' value='点击评论'/>" +--%>
 </div>
+
 </body>
 </html>

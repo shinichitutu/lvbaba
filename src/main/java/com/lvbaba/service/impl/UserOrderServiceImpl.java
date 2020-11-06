@@ -41,7 +41,6 @@ public class UserOrderServiceImpl implements UserOrderService {
     @Resource
     private UserDao userDao;
 
-
     @Override
     public Userorder queryOne(Userorder userorder) {
         return userorderDao.queryOne(userorder);
@@ -144,6 +143,7 @@ public class UserOrderServiceImpl implements UserOrderService {
         Userorder userorder1 = new Userorder();
         userorder1.setOrderId(orderId);
         Tour tour = tourDao.query(new Tour(userorder.getTourId()));
+
         String status = tour.getTourStatus();
         if (status.equals("1")) {
             userorder1.setOrderStatus("待成团");
@@ -166,8 +166,22 @@ public class UserOrderServiceImpl implements UserOrderService {
             flag4 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getGoId(), userorder.getRoomNum()));
             flag7 = traindetailDao.updateTraindetailTickets(new Traindetail(tour.getReturnId(), userorder.getRoomNum()));
         }
-        System.out.println(flag1 + "-----" + flag2 + "-----" + flag3 + "--------" + flag4);
-        return flag1 && flag2 && flag5 && ((flag3 && flag6) || (flag4 && flag7)) ? true : false;
+      
+      return flag1 && flag2 && flag5 && ((flag3 && flag6) || (flag4 && flag7)) ? true : false;
+
+    }
+
+    @Override
+    public boolean refund(Userorder userorder) {
+        /*查询用户*/
+        User user = new User();
+        user.setuId(userorder.getuId());
+        /*查询旅行团*/
+        Tour tour = new Tour();
+        tour.setTourId(userorder.getTourId());
+        tour = tourDao.query(tour);
+        user.setBalance(-userorder.getOrderPrice() * Util.refund(tour.getdDate()));
+        return userDao.updateUser(user);
     }
 
     @Override

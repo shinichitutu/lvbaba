@@ -136,9 +136,9 @@
 
             $("#btn").click(function () {
                 var str1 = "<form action='addHotel.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hotelName'/><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hotelLevel' min='1' max='5'/><br/>"+
+                    "酒店名称：<input required type='text' name='hotelName'/><br/>"+
+                    "酒店地址：<select required id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店等级：<input required type='number' name='hotelLevel' min='1' max='5'/><br/>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
                 $("#addHotel").html(str1);
@@ -147,9 +147,9 @@
 
             $(".update").click(function () {
                 var str = "<form action='updateHotel.do' method='post'>"+
-                    "酒店名称：<input type='text' name='hotelName' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
-                    "酒店地址：<select id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
-                    "酒店等级：<input type='number' name='hotelLevel' min='1' max='5' value="+$(this).parent().parent().find("td").eq(5).text()+"><br/>"+
+                    "酒店名称：<input required type='text' name='hotelName' value="+$(this).parent().parent().find("td").eq(2).text()+"><br/>"+
+                    "酒店地址：<select required id='country'><option value='0'>--请选择国家--</option></select><select id='city' name='areaId'><option value='0'>--请选择城市--</option></select><br/>"+
+                    "酒店等级：<input required type='number' name='hotelLevel' min='1' max='5' value="+$(this).parent().parent().find("td").eq(5).text()+"><br/>"+
                         "<input type='hidden' name='hotelId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";

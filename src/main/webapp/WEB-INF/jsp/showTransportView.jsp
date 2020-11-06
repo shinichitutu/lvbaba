@@ -79,19 +79,19 @@
              $(obj).parent().parent().after(str);*/
 
             var str = "<form action='#' method='post' id='updateFlightInfo'>" +
-                "<p>航班号：<input type='text' name='flightNumber' value='"+flightNumber+"'/></p>" +
-                "<p>所属航空公司：<input type='text' name='flightCompany' value='"+flightCompany+"'/></p>" +
-                "<p>出发地：<select id='d_country'><option value='"+d_country+"'>"+d_country+"</option></select>" +
+                "<p>航班号：<input required type='text' name='flightNumber' value='"+flightNumber+"'/></p>" +
+                "<p>所属航空公司：<input required type='text' name='flightCompany' value='"+flightCompany+"'/></p>" +
+                "<p>出发地：<select required id='d_country'><option value='"+d_country+"'>"+d_country+"</option></select>" +
                 "<select id='d_city'><option value='"+daId+"'>"+d_city+"</option></select></p>" +
-                "<p>目的地：<select id='a_country'><option value='"+a_country+"'>"+a_country+"</option></select>" +
-                "<select id='a_city'><option value='"+arrAreaId+"'>"+a_city+"</option></select></p>" +
-                "<p>出发时间：<input type='datetime-local' name='flightDTime' class='d_time'/></p>" +
-                "<p>到达时间：<input type='datetime-local' name='flightATime' class='a_time'/></p>" +
-                "<p>容量：<input type='number' name='flightCapacity' class='f_capacity' min='1' max='1000' value='"+flightCapacity+"'/></p>" +
-                "<p>票价：<input type='text' name='flightPrice' class='f_price' value='"+flightPrice+"'/></p>" +
-                "<p><input type='hidden' name='flightId' value='"+flightId+"'/></p>" +
-                "<p><input type='button' id='modifyFlight' value='提交'/>" +
-                "<input type='reset' value='重置'/></p></form>";
+                "<p>目的地：<select required id='a_country'><option value='"+a_country+"'>"+a_country+"</option></select>" +
+                "<select required id='a_city'><option value='"+arrAreaId+"'>"+a_city+"</option></select></p>" +
+                "<p>出发时间：<input required type='datetime-local' name='flightDTime' class='d_time'/></p>" +
+                "<p>到达时间：<input required type='datetime-local' name='flightATime' class='a_time'/></p>" +
+                "<p>容量：<input required type='number' name='flightCapacity' class='f_capacity' min='1' max='1000' value='"+flightCapacity+"'/></p>" +
+                "<p>票价：<input required type='text' name='flightPrice' class='f_price' value='"+flightPrice+"'/></p>" +
+                "<p><input required type='hidden' name='flightId' value='"+flightId+"'/></p>" +
+                "<p><input required type='button' id='modifyFlight' value='提交'/>" +
+                "<input required type='reset' value='重置'/></p></form>";
             $(".modifyFlightInfo").html("");
             $(".modifyFlightInfo").html(str);
 
@@ -261,15 +261,15 @@
          */
         function modifyTrain(obj,trId,trNumber,d_country,d_city,a_country,a_city,trDTime,trATime,trCapacity,trPrice,daId,arrAreaId) {
             var str = "<form action='#' method='post' id='updateFlightInfo'>" +
-                "<p>列车号：<input type='text' name='trNumber' value='"+trNumber+"'/></p>" +
-                "<p>出发地：<select id='d_country'><option value='"+d_country+"'>"+d_country+"</option></select>" +
+                "<p>列车号：<input required type='text' name='trNumber' value='"+trNumber+"'/></p>" +
+                "<p>出发地：<select required id='d_country'><option value='"+d_country+"'>"+d_country+"</option></select>" +
                 "<select id='d_city'><option value='"+daId+"'>"+d_city+"</option></select></p>" +
-                "<p>目的地：<select id='a_country'><option value='"+a_country+"'>"+a_country+"</option></select>" +
+                "<p>目的地：<select required id='a_country'><option value='"+a_country+"'>"+a_country+"</option></select>" +
                 "<select id='a_city'><option value='"+arrAreaId+"'>"+a_city+"</option></select></p>" +
-                "<p>出发时间：<input type='datetime-local' name='trDTime' class='d_time'/></p>" +
-                "<p>到达时间：<input type='datetime-local' name='trATime' class='a_time'/></p>" +
-                "<p>容量：<input type='number' name='trCapacity' class='f_capacity' min='1' max='1000' value='"+trCapacity+"'/></p>" +
-                "<p>票价：<input type='text' name='trPrice' class='f_price' value='"+trPrice+"'/></p>" +
+                "<p>出发时间：<input required type='datetime-local' name='trDTime' class='d_time'/></p>" +
+                "<p>到达时间：<input required type='datetime-local' name='trATime' class='a_time'/></p>" +
+                "<p>容量：<input required type='number' name='trCapacity' class='f_capacity' min='1' max='1000' value='"+trCapacity+"'/></p>" +
+                "<p>票价：<input required type='text' name='trPrice' class='f_price' value='"+trPrice+"'/></p>" +
                 "<p><input type='hidden' name='trId' value='"+trId+"'/></p>" +
                 "<p><input type='button' id='modifyTrain' value='提交'/>" +
                 "<input type='reset' value='重置'/></p></form>";
@@ -443,10 +443,10 @@
          */
         function addFlightDetail(obj,flightId,flightNumber) {
             var str ="<form action='#' method='post'>" +
-                "<p><input type='hidden' class='f_id' value='"+flightId+"'/></p>"+
+                "<p><input required type='hidden' class='f_id' value='"+flightId+"'/></p>"+
                 "<p>航班号："+flightNumber+"</p>"+
-                "<p>日期：<input type='date' class='fdDate'/></p>"+
-                "<p>票价系数：<input type='number' placeholder='数值在0-1之间' min='0' max='1' step='0.1' class='ratio' style='width: 150px;'/></p>"+
+                "<p>日期：<input required type='date' class='fdDate'/></p>"+
+                "<p>票价系数：<input required type='number' placeholder='数值在0-1之间' min='0' max='1' step='0.1' class='ratio' style='width: 150px;'/></p>"+
                 "<p><input type='button' id='addFDInfo' value='提交'/>"+
                 "</form>";
             $(".modifyFlightInfo").html("");
@@ -460,7 +460,7 @@
             var str ="<form action='#' method='post'>" +
                 "<p><input type='hidden' class='trId' value='"+trId+"'/></p>"+
                 "<p>列车号："+trNumber+"</p>"+
-                "<p>日期：<input type='date' class='tdDate'/></p>"+
+                "<p>日期：<input required type='date' class='tdDate'/></p>"+
                 "<p><input type='button' id='addTDInfo' value='提交'/>"+
                 "</form>";
             $(".modifyTrainInfo").html("");
@@ -703,11 +703,12 @@
                     <td><input type="button" onclick="addTrainDetail('${train.trId}','${train.trNumber}')" class="addTrainDetail" value="增加详情"></td>
                     <td><input type="button" onclick="location.href='showTrainDetailView.do?trId=${train.trId}'" value="查看详情"></td>
                     <td><input type="button" onclick="location.href='deleteTrain.do?trId=${train.trId}'" value="删除"></td>
-                </c:forEach>
+                    </c:forEach>
                 </tr>
                 </tbody>
             </table>
             <p style="height: 3px;margin-top: 15px;background-color: black;"></p>
+
             <div class="modifyTrainInfo" style="margin-top: 30px;"></div>
         </div>
     </div>

@@ -5,8 +5,11 @@ import com.lvbaba.entity.User;
 import com.lvbaba.entity.Userinfo;
 import com.lvbaba.service.UserService;
 import com.lvbaba.utli.CookieUtil;
+import com.lvbaba.utli.UserbLocker;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -110,10 +113,32 @@ public class UserController {
 return "";
     }
 
-    @RequestMapping("/testAuto.do")
-    public String testAuto(String auto){
-        System.out.println("自动登录s");
-        System.out.println(auto);
-        return "test";
+    @UserbLocker
+    @RequestMapping("userRecharge.do")
+    public String userRecharge(){
+        return "recharge";
     }
+    /*recharge 充值*/
+    @UserbLocker
+    @RequestMapping("recharge.do")
+    public String recharge(Model model,Integer balance,HttpSession session){
+        User user= (User) session.getAttribute("user");
+        user.setBalance(balance);
+        if (userService.updateUser(user)){
+            model.addAttribute("success","充值成功");
+        }else {
+            model.addAttribute("error","充值失败");
+        }
+        user=userService.queryByUserName(user);
+        session.setAttribute("user",user);
+        return "recharge";
+    }
+    /*退出登录*/
+    @UserbLocker
+    @RequestMapping("/loginOut.do")
+    public String loginOut(HttpServletRequest request){
+        HttpSession session=request.getSession(false);
+        session.removeAttribute("user");
+        return "../../index";
+}
 }

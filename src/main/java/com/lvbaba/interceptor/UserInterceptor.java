@@ -26,14 +26,16 @@ public class UserInterceptor extends HandlerInterceptorAdapter{
                 HttpSession session=request.getSession();
                 User user= (User) session.getAttribute("user");
                 if (user==null){
-                    response.sendRedirect("index.jsp");
+                    request.setAttribute("error","请先登录");
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
                     return false;
                 }
             }else if(method.isAnnotationPresent(UserbLocker.class)){
                 HttpSession session=request.getSession();
                 User user= (User) session.getAttribute("user");
                 if (user==null){
-                    response.sendRedirect("index.jsp");
+                    request.setAttribute("error","请先登录");
+                    request.getRequestDispatcher("index.jsp").forward(request,response);
                     return false;
                 }
             }
