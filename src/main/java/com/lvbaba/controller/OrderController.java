@@ -69,14 +69,16 @@ public class OrderController {
 
 
     @RequestMapping("/returnUserOrder.do")
-    public String returnUserOrder(Long orderId,Model model){
+    public String returnUserOrder(Long orderId,Model model) {
+        System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhh---------------"+orderId);
         boolean flag = userOrderService.returnOrder(orderId);
-        if (flag){
-            model.addAttribute("returnUserOrderInfo","退款成功");
-        }else{
-            model.addAttribute("returnUserOrderInfo","退款失败");
+        if (flag) {
+            model.addAttribute("returnUserOrderInfo", "退款成功");
+        } else {
+            model.addAttribute("returnUserOrderInfo", "退款失败");
         }
         return "forward:toUserOrderRecordView.do";
+    }
 
     @RequestMapping("/createOrder.do")
     public String createNewOrder(String userIds,Model model,String tourId,String total,String person,String roomNum,String roomId,HttpSession session){
