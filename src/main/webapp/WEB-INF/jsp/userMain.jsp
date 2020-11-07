@@ -32,6 +32,18 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 80%;
+        }
+    </style>
 </head>
 <body>
 
@@ -54,12 +66,12 @@
     <section id="intro_section" class="section under-header mb-0">
         <div class="container">
             <h2 class="mb-3">旅游首页</h2>
-            <nav aria-label="breadcrumb">
+      <%--      <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-5">
                     <li class="breadcrumb-item"><a href="index.do">首页</a></li>
                     <li class="breadcrumb-item active" aria-current="page">旅游首页</li>
                 </ol>
-            </nav>
+            </nav>--%>
             <form action="searchProductMain.do" method="post">
             <div class="search-wrapper search-wrapper-light mb-5">
                 <div class="search-form">
@@ -103,67 +115,46 @@
             </div>
             </form>
 
-            <div class="listing-header">
-                <span class="result-text">热门推荐</span>
-                <ul class="listing-options">
-                    <!-- <li class="listing-options-item"><a href="list-full-width.html" class="active"><i class="ion-md-list"></i></a></li>
-                    <li class="listing-options-item"><a href="grid-full-width.html"><i class="ion-md-grid"></i></a></li> -->
-                    <%--<li class="listing-options-item"><select name="filter" id="filter" class="custom-select"><option value="0">Popularity</option><option value="1">High Rated</option><option value="2">Most Reviewed</option><option value="3">Newest Listing</option><option value="4">Oldest Listing</option></select></li>--%>
-                </ul>
-            </div>
-            <div class="row list-bunch">
-                <div class="col-lg-6 list-bunch-item">
-                    <div class="listing-card list-view">
-
-                        <div class="listing-image">
-                            <div class="listing-image-head">
-                                <!-- <span class="listing-tag">Close now</span>
-                                <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
-
-                            </div>
-                            <a href="list-details.html"><img src="assets/images/listing/cafe.jpg" alt="" /></a>
-                        </div>
-
-                        <div class="listing-content">
-                            <div class="listing-content-body">
-
-                                <div class="listing-content-head mb-3">
-
-                                    <!-- 评分 -->
-                                    <div class="listing-rating">
-                                        <span class="listing-rating-number">4.5</span>
-                                        <i class="ion-md-star"></i>
-                                    </div>
-
-                                    <div class="listing-desc">
-                                        <a href="list-details.html" class="listing-title text-truncate">北京秋日赏枫五日游</a>
-                                        <p>五星级酒店<br />航班直飞</p>
-                                    </div>
-
-                                </div>
-
-                                <p style="font-size: 26px">￥1550.0元起</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-<%--            <nav class="mt-5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#"><i class="ion-ios-arrow-back"></i> <span>Previous</span></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><span>Next</span> <i class="ion-ios-arrow-forward"></i></a></li>
-                </ul>
-            </nav>--%>
-
-
         </div>
     </section>
+
+</div>
+
+
+<div class="container">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- 指示符 -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- 轮播图片 -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/shouye1.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="img/shouye2.jfif">
+            </div>
+            <div class="carousel-item">
+                <img src="img/shouye3.jfif">
+            </div>
+        </div>
+
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+
+</div>
 
     <footer id="footer">
         <div class="last-footer text-muted">
@@ -200,7 +191,7 @@
         </ul>
     </nav>
 </aside>
-</div>
+
 
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
