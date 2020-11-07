@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
     <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <title>驴爸爸旅行</title>
+    <title>脚印网 行走天下</title>
     <link href="assets/images/logos/favicon.png" rel="icon" />
     <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
@@ -394,7 +394,7 @@
                         <div class="col-lg-4 text-center list-bunch-item wow fade-in-up" data-wow-delay=".6s">
                             <img src="assets/images/works/mark.svg" alt="" />
                             <h4 class="mt-3 mb-2">预订全球酒店</h4>
-                            <p>我们有数十万家合作酒店遍布全球多个国家和地区，还提供无与伦比的价格保证。</p>
+                            <p>我们有数十万家合作酒店遍布全球多个国家和地区，还提供无与伦比的价格保证。(开发中，敬请期待！)</p>
                         </div>
                     </div>
                 </div>
@@ -422,7 +422,7 @@
                                         <i class="ion-md-star"></i>
                                         <i class="ion-md-star-half"></i>
                                     </div>
-                                    <span class="test-name">北京香山赏枫钻石游</span>
+                                    <span class="test-name"><a href="productDetail.do?productId=1">北京秋日赏枫五日游</a> </span>
                                     <p class="tech-designation"><span>上海出发</span>, 航班直飞</p>
                                 </div>
                                 <p> 一次出游畅游皇城精华景点，帝都风貌一览到底不留遗憾！精选高端商务型酒店，品地道京味餐菜，升级一顿全聚德，便宜坊烤鸭。服务至上，精选优秀导游带团！</p>
@@ -438,10 +438,12 @@
                                         <i class="ion-md-star"></i>
                                         <i class="ion-md-star-half"></i>
                                     </div>
-                                    <span class="test-name">日本北海道7日6晚私家团</span>
+                                    <span class="test-name"><a href="productDetail.do?productId=5">日本东京+迪士尼（Disney）5日4晚私家团</a></span>
                                     <p class="tech-designation"><span>上海出发</span>, 航班直飞</p>
                                 </div>
-                                <p>入住星野度假村，充足亲子时间；浪漫小樽+白色恋人工厂，北海道热销！登别&洞爷湖双百选拉面体验，体验露天私汤；札幌市内自由行，私属时光！</p>
+                                <p>【度假首选】臻选东京五星酒店，丰富酒店房型可选，所见即所得！东京1日自由活动
+                                    【缤纷景点】ABCD线，不同玩法可选！亲子推荐：三丽欧彩虹乐园/富士山or镰仓一日游~
+                                    【服务保障】优选丰田阿尔法/海狮；司导景点陪同讲解+门票体验费用全包~</p>
                             </div>
                         </div>
                         <div class="item">
@@ -454,10 +456,10 @@
                                         <i class="ion-md-star"></i>
                                         <i class="ion-md-star-half"></i>
                                     </div>
-                                    <span class="test-name">九寨沟黄龙风景名胜区精品团</span>
-                                    <p class="tech-designation"><span>北京出发</span>, 航班直飞</p>
+                                    <span class="test-name"><a href="productDetail.do?productId=2">北京5日4晚经典游(5钻)</a></span>
+                                    <p class="tech-designation"><span>多地出发</span>, 航班直飞</p>
                                 </div>
-                                <p>专业导游暖心服务，安全保障放心游。蜀中奇景九寨归来，限流入园，赏景洗肺好去处。行程安排一目了然，享特色美食，住精选舒适酒店。</p>
+                                <p>秋韵京城 早订多人立减 2环5星璞邸 20人小团 故宫错峰3H深度游 长城不早起 晚出发【24小时专车接送】 赠香山公园赏枫，可选独立成团</p>
                             </div>
                         </div>
 
@@ -495,14 +497,17 @@
                   <li><a href="toUserFlightBookView.do">预订机票</a></li>
                   <li><a href="hotelView.do">预订酒店</a></li>
                 </ul></li>
-            <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                <ul class="nav-sub-menu">
-                    <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                    <li><a href="toBookingRecordView.do">机票订单</a></li>
-                    <li><a href="userCenter.do">个人信息</a></li>
-                    <li><a href="loginOut.do">退出登录</a></li>
-                </ul>
-            </li>
+            <c:if test="${not empty sessionScope.user}">
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                        <li><a href="toBookingRecordView.do">机票订单</a></li>
+                        <li><a href="userCenter.do">个人信息</a></li>
+                        <li><a href="loginOut.do">退出登录</a></li>
+                    </ul>
+                </li>
+            </c:if>
+
 
         </ul>
     </nav>

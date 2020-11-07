@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: YY
@@ -65,7 +66,7 @@
             </div>
         </nav>
     </header>
-
+<br/><br/><br/><br/>
 <div class="pay">
     <!--主内容开始编辑-->
     <div class="tr_recharge">
@@ -122,6 +123,7 @@
                         <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
                     </ul></li>
+<c:if test="${not empty sessionScope.user}">
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                     <ul class="nav-sub-menu">
                         <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
@@ -130,6 +132,7 @@
                         <li><a href="loginOut.do">退出登录</a></li>
                     </ul>
                 </li>
+</c:if>
             </ul>
         </nav>
     </aside>

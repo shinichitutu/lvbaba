@@ -15,19 +15,22 @@
 <head>
     <base href="<%=basePath%>"/>
     <title>旅行团</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
-    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <link href="assets/images/logos/favicon.png" rel="icon" />
-    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
-    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template"/>
+    <meta name="keywords"
+          content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5"/>
+    <link href="assets/images/logos/favicon.png" rel="icon"/>
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png"/>
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png"/>
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -41,14 +44,14 @@
         $(function () {
             $("#d1").click(function () {
                 console.log("飞机测试");
-                $("#d4").css("display","none");
-                $("#d3").css("display","block");
+                $("#d4").css("display", "none");
+                $("#d3").css("display", "block");
             });
 
             $("#d2").click(function () {
                 console.log("火车测试");
-                $("#d3").css("display","none");
-                $("#d4").css("display","block");
+                $("#d3").css("display", "none");
+                $("#d4").css("display", "block");
             });
 
 
@@ -57,20 +60,20 @@
                 var deDate = $(this).val();
                 var daId = ${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
-                if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
+                if (deDate != '') {
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate() +${requestScope.product.days-1})));
                 }
                 $("#reDateF").val(date);
 
                 $.ajax({
-                    type:"post",
-                    url:"searchFlight.do",
-                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
-                    dataType:"json",
-                    success:function (obj) {
-                        var str ="";
-                        $.each(obj,function (index,item) {
-                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                    type: "post",
+                    url: "searchFlight.do",
+                    data: {date: date, daId: arrAreaId, arrAreaId: daId},
+                    dataType: "json",
+                    success: function (obj) {
+                        var str = "";
+                        $.each(obj, function (index, item) {
+                            str += " <option value='" + item.fdId + "'>" + item.flight.flightNumber + "</option>";
                         });
                         $("#flightId2").append(str);
 
@@ -83,21 +86,21 @@
                 var deDate = $(this).val();
                 var daId =${requestScope.product.daId};
                 var arrAreaId =${requestScope.product.arrAreaId};
-                if(deDate!=''){
-                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate()+${requestScope.product.days-1})));
+                if (deDate != '') {
+                    var date = timeStampString(new Date(new Date(deDate).setDate(new Date(deDate).getDate() +${requestScope.product.days-1})));
                 }
                 $("#reDateT").val(date);
 
 
                 $.ajax({
-                    type:"post",
-                    url:"searchTrain.do",
-                    data:{date:date,daId:arrAreaId,arrAreaId:daId},
-                    dataType:"json",
-                    success:function (obj) {
-                        var str ="";
-                        $.each(obj,function (index,item) {
-                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
+                    type: "post",
+                    url: "searchTrain.do",
+                    data: {date: date, daId: arrAreaId, arrAreaId: daId},
+                    dataType: "json",
+                    success: function (obj) {
+                        var str = "";
+                        $.each(obj, function (index, item) {
+                            str += " <option value='" + item.tdId + "'>" + item.train.trNumber + "</option>";
                         });
                         $("#trainId2").append(str);
                     }
@@ -106,7 +109,7 @@
             });
 
 
-            function timeStampString(time){
+            function timeStampString(time) {
                 var datetime = new Date();
                 datetime.setTime(time);
                 var year = datetime.getFullYear();
@@ -120,19 +123,20 @@
                 $("#flightId option:gt(0)").remove();
                 $("#flightId2 option:gt(0)").remove();
                 var date = $(this).val()
-                var daId = ${requestScope.product.daId}
-                var arrAreaId =${requestScope.product.arrAreaId}
-                console.log("去程"+date);
+                var daId =
+                ${requestScope.product.daId}
+                var arrAreaId = ${requestScope.product.arrAreaId}
+                    console.log("去程" + date);
 
                 $.ajax({
-                    type:"post",
-                    url:"searchFlight.do",
-                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
-                    dataType:"json",
-                    success:function (obj) {
-                        var str ="";
-                        $.each(obj,function (index,item) {
-                            str += " <option value='"+item.fdId+"'>"+item.flight.flightNumber+"</option>";
+                    type: "post",
+                    url: "searchFlight.do",
+                    data: {date: date, daId: daId, arrAreaId: arrAreaId},
+                    dataType: "json",
+                    success: function (obj) {
+                        var str = "";
+                        $.each(obj, function (index, item) {
+                            str += " <option value='" + item.fdId + "'>" + item.flight.flightNumber + "</option>";
                         });
                         $("#flightId").append(str);
                     }
@@ -143,22 +147,23 @@
                 $("#trainId option:gt(0)").remove();
                 $("#trainId2 option:gt(0)").remove();
                 var date = $(this).val()
-                var daId = ${requestScope.product.daId}
-                var arrAreaId =${requestScope.product.arrAreaId}
+                var daId =
+                ${requestScope.product.daId}
+                var arrAreaId = ${requestScope.product.arrAreaId}
 
-                $.ajax({
-                    type:"post",
-                    url:"searchTrain.do",
-                    data:{date:date,daId:daId,arrAreaId:arrAreaId},
-                    dataType:"json",
-                    success:function (obj) {
-                        var str ="";
-                        $.each(obj,function (index,item) {
-                            str += " <option value='"+item.tdId+"'>"+item.train.trNumber+"</option>";
-                        });
-                        $("#trainId").append(str);
-                    }
-                })
+                    $.ajax({
+                        type: "post",
+                        url: "searchTrain.do",
+                        data: {date: date, daId: daId, arrAreaId: arrAreaId},
+                        dataType: "json",
+                        success: function (obj) {
+                            var str = "";
+                            $.each(obj, function (index, item) {
+                                str += " <option value='" + item.tdId + "'>" + item.train.trNumber + "</option>";
+                            });
+                            $("#trainId").append(str);
+                        }
+                    })
 
             });
         })
@@ -176,17 +181,26 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
+                                                             class="default light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img src="img/mainlogo.png"
+                                                                  style="height: 100px;width: 100px;border-radius: 20%"
+                                                                  class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="media align-items-center">
                             <div class="avatar avatar-sm">
-                                <img src="assets/images/user/32/user-1.jpg" alt="" />
+                                <img src="assets/images/user/32/user-1.jpg" alt=""/>
                             </div>
                             <div class="media-body pl-2 avatar-name d-none d-md-block">
                                 欢迎${sessionScope.admin.adName}登录！
                             </div>
-                        </div></li>
+                        </div>
+                    </li>
                     <!--   <li class="nav-item"><a href="add-listing.html" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-add"></i> <span>Add Listing</span></a></li> -->
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
@@ -196,116 +210,123 @@
     <br/>
 
     <div class="container" style="padding-top: 100px">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>旅行团id</th>
-            <th>产品id</th>
-            <th>出发日期</th>
-            <th>返回日期</th>
-            <th>交通类型</th>
-            <th>去程交通id</th>
-            <th>返回交通id</th>
-            <th>已预订人数</th>
-            <th>状态</th>
-            <th colspan="5">操作</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${requestScope.tours}" var="tour" varStatus="i">
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td>${i.index+1}</td>
-                <td>${tour.productId}</td>
-                <td>${tour.dDate}</td>
-                <td>${tour.roomDate}</td>
-                <td>${tour.transType}</td>
-                <td>${tour.goId}</td>
-                <td>${tour.returnId}</td>
-                <td>${tour.bookNum}</td>
-                <td>
-                    <c:if test="${tour.tourStatus eq 1}">
-                        待成团，预定开放
-                    </c:if>
-                    <c:if test="${tour.tourStatus eq 2}">
-                        待成团，预定关闭
-                    </c:if>
-                    <c:if test="${tour.tourStatus eq 3}">
-                        已成团，预定开放
-                    </c:if>
-                    <c:if test="${tour.tourStatus eq 4}">
-                        已成团，预定开放
-                    </c:if>
-                    <c:if test="${tour.tourStatus eq 5}">
-                        已发团
-                    </c:if>
-                    <c:if test="${tour.tourStatus eq 6}">
-                        已取消
-                    </c:if>
-                </td>
+                <th>旅行团id</th>
+                <th>产品id</th>
+                <th>出发日期</th>
+                <th>返回日期</th>
+                <th>交通类型</th>
+                <th>去程交通id</th>
+                <th>返回交通id</th>
+                <th>已预订人数</th>
+                <th>状态</th>
+                <th colspan="5">操作</th>
 
-                <td><a href="openBooking.do?tourId=${tour.tourId}">开放预定</a></td>
-                <td><a href="closeBooking.do?tourId=${tour.tourId}">关闭预定</a></td>
-                <td><a href="startTour.do?tourId=${tour.tourId}">确认发团</a></td>
-                <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
-                <%--<td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
---%>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <c:forEach items="${requestScope.tours}" var="tour" varStatus="i">
+                <tr>
+                    <td>${i.index+1}</td>
+                    <td>${tour.productId}</td>
+                    <td>${tour.dDate}</td>
+                    <td>${tour.roomDate}</td>
+                    <td>${tour.transType}</td>
+                    <td>${tour.goId}</td>
+                    <td>${tour.returnId}</td>
+                    <td>${tour.bookNum}</td>
+                    <td>
+                        <c:if test="${tour.tourStatus eq 1}">
+                            待成团，预定开放
+                        </c:if>
+                        <c:if test="${tour.tourStatus eq 2}">
+                            待成团，预定关闭
+                        </c:if>
+                        <c:if test="${tour.tourStatus eq 3}">
+                            已成团，预定开放
+                        </c:if>
+                        <c:if test="${tour.tourStatus eq 4}">
+                            已成团，预定关闭
+                        </c:if>
+                        <c:if test="${tour.tourStatus eq 5}">
+                            已发团
+                        </c:if>
+                        <c:if test="${tour.tourStatus eq 6}">
+                            已取消
+                        </c:if>
+                    </td>
 
-    <div style="display:none" id="d3">
-        <form action="insertTour.do" method="post">
-            <input type="hidden" name="productId" value="${requestScope.product.productId}">
-            <input type="hidden" name="transType" value="1">
-            出发日期<input type="date" name="dDate" id="deDateF" required><br/>
-            返回日期<input type="date" name="roomDate" id="reDateF" required><br/>
-            航班选择：<br/>
-            选择去程航班<select name='goId' id="flightId" required><option value='0'>--请选择去程航班--</option></select>
-            选择返程航班<select name='returnId' id="flightId2" required><option value='0'>--请选择返程航班--</option></select>
-            <input type="submit" value="点击添加">
-        </form>
+                    <td><a href="openBooking.do?tourId=${tour.tourId}">开放预定</a></td>
+                    <td><a href="closeBooking.do?tourId=${tour.tourId}">关闭预定</a></td>
+                    <td><a href="startTour.do?tourId=${tour.tourId}">确认发团</a></td>
+                    <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
+                        <%--<td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
+        --%>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+
+        <div style="display:none" id="d3">
+            <form action="insertTour.do" method="post">
+                <input type="hidden" name="productId" value="${requestScope.product.productId}">
+                <input type="hidden" name="transType" value="1">
+                出发日期<input type="date" name="dDate" id="deDateF" required><br/>
+                返回日期<input type="date" name="roomDate" id="reDateF" required><br/>
+                航班选择：<br/>
+                选择去程航班<select name='goId' id="flightId" required>
+                <option value='0'>--请选择去程航班--</option>
+            </select>
+                选择返程航班<select name='returnId' id="flightId2" required>
+                <option value='0'>--请选择返程航班--</option>
+            </select>
+                <input type="submit" value="点击添加">
+            </form>
+        </div>
+
+        <div style="display: none" id="d4">
+            <form action="insertTour.do" method="post">
+                <input type="hidden" name="productId" value="${requestScope.product.productId}">
+                <input type="hidden" name="transType" value="2">
+                出发日期<input type="date" name="dDate" id="deDateT" required><br/>
+                返回日期<input type="date" name="roomDate" id="reDateT" required><br/>
+                航班选择：<br/>
+                选择去程航班<select name='goId' id="trainId" required>
+                <option value='0'>--请选择去程火车--</option>
+            </select>
+                选择返程航班<select name='returnId' id="trainId2" required>
+                <option value='0'>--请选择返程高铁--</option>
+            </select>
+                <input type="submit" value="点击添加">
+            </form>
+        </div>
+
+        <div style="text-align: center">
+            <%--增加产品--%>
+            <input type="button" value="添加新旅行团（飞机）" id="d1" class="btn btn-primary">
+            <input type="button" value="添加新旅行团（火车）" id="d2" class="btn btn-primary">
+            <br/>
+            <c:if test="${requestScope.page>1}">
+                <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
+            </c:if>
+            <c:forEach begin="1" end="${requestScope.pages}" step="1" var="i">
+                <a href="showTour.do?page=${i}">${i}</a>
+            </c:forEach>
+            <c:if test="${requestScope.page < requestScope.pages}">
+                <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
+            </c:if>
+        </div>
+
+        <div id="update">
+        </div>
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>${requestScope.success}${requestScope.error}</strong>
+        </div>
+
     </div>
-
-    <div style="display: none" id="d4">
-        <form action="insertTour.do" method="post">
-            <input type="hidden" name="productId" value="${requestScope.product.productId}">
-            <input type="hidden" name="transType" value="2">
-            出发日期<input type="date" name="dDate" id="deDateT" required><br/>
-            返回日期<input type="date" name="roomDate" id="reDateT" required><br/>
-            航班选择：<br/>
-            选择去程航班<select name='goId' id="trainId" required><option value='0'>--请选择去程火车--</option></select>
-            选择返程航班<select name='returnId' id="trainId2" required><option value='0'>--请选择返程高铁--</option></select>
-            <input type="submit" value="点击添加">
-        </form>
-    </div>
-
-    <div style="text-align: center">
-        <%--增加产品--%>
-        <input type="button" value="添加新旅行团（飞机）" id="d1">
-            <input type="button" value="添加新旅行团（火车）" id="d2">
-<br/>
-        <c:if test="${requestScope.page>1}">
-            <a href="showTour.do?page=${requestScope.page-1}"><input type="button" value="上一页"></a>
-        </c:if>
-        <c:forEach begin="1" end="${requestScope.pages}" step="1" var="i">
-            <a href="showTour.do?page=${i}">${i}</a>
-        </c:forEach>
-        <c:if test="${requestScope.page < requestScope.pages}">
-            <a href="showTour.do?page=${requestScope.page+1}"><input type="button" value="下一页"></a>
-        </c:if>
-    </div>
-
-    <div id="update">
-    </div>
-
-
-    <p style="color: green">${requestScope.success}</p>
-    <p style="color: red">${requestScope.error}</p>
-
-
-</div>
     <footer id="footer">
 
         <div class="last-footer text-muted">
@@ -326,8 +347,9 @@
                         <li><a href="showProduct.do">旅游产品管理</a></li>
                         <li><a href="showFlightAndTrain.do">交通管理</a></li>
                         <li><a href="showHotels.do">酒店管理</a></li>
-                        <li><a href="#">订单管理</a></li>
-                    </ul></li>
+                        <li><a href="index.do">退出登录</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </nav>

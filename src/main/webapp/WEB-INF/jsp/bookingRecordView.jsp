@@ -15,19 +15,22 @@
     <base href="<%=basePath%>"/>
     <title>购票记录</title>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
-    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <link href="assets/images/logos/favicon.png" rel="icon" />
-    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
-    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template"/>
+    <meta name="keywords"
+          content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5"/>
+    <link href="assets/images/logos/favicon.png" rel="icon"/>
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png"/>
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png"/>
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -41,7 +44,7 @@
             border-top: 1px solid #aaaaaa;
         }
 
-        th,td {
+        th, td {
             border-bottom: 1px solid #c1b0b0;
             text-align: center;
             padding: 10px 0;
@@ -49,15 +52,15 @@
     </style>
     <script>
         $(function () {
-            if (${not empty requestScope.returnTicketInfo}){
+            if (${not empty requestScope.returnTicketInfo}) {
                 alert("${requestScope.returnTicketInfo}");
             }
         })
-        function returnTicket(obj,fdrId) {
+        function returnTicket(obj, fdrId) {
             var res = confirm("退票需付手续费，详情参照上面，确认退款吗？")
-            if (res){
-                location.href="returnTicket.do?fdrId="+fdrId;
-            }else{
+            if (res) {
+                location.href = "returnTicket.do?fdrId=" + fdrId;
+            } else {
                 return;
             }
         }
@@ -65,7 +68,7 @@
 
     <script>
         $(function () {
-            if (${not empty sessionScope.user}){
+            if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
         })
@@ -80,9 +83,18 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
+                                                             class="default light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img src="img/mainlogo.png"
+                                                                  style="height: 100px;width: 100px;border-radius: 20%"
+                                                                  class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo"></a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in"
+                                            id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
@@ -93,65 +105,66 @@
     <div class="container" style="padding-top: 100px">
 
 
-<h3>购票记录</h3>
-<br/>
-<br/>
-<br/>
-<h4 style="color: red"> ! 退票需付手续费，出发当天不能退票，出发前3天内50%手续费，前4-10天内30%的手续费，前11-30天20%的手续费，提前一个月退票10%的手续费</h4>
-<div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>序号</th>
-            <th>航班号</th>
-            <th>航空公司</th>
-            <th>出发地</th>
-            <th>目的地</th>
-            <th>出发日期</th>
-            <th>到达日期</th>
-            <th>购买人姓名</th>
-            <th>证件类型</th>
-            <th>证件号码</th>
-            <th>联系电话</th>
-            <th>价格</th>
-            <th>状态</th>
-            <th>退票</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:if test="${empty requestScope.ticketrecords}">
-            <tr>
-                <td colspan="13">暂时没有任何订单信息</td>
-            </tr>
-        </c:if>
-        <c:forEach items="${requestScope.ticketrecords}" var="tkrecord" varStatus="i">
-            <tr>
-                <td>${i.count}</td>
-                <td>${tkrecord.flightName}</td>
-                <td>${tkrecord.flightCanpany}</td>
-                <td>${tkrecord.departureArea}</td>
-                <td>${tkrecord.destinationArea}</td>
-                <td>${tkrecord.departureTime}</td>
-                <td>${tkrecord.arrivalTime}</td>
-                <td>${tkrecord.userName}</td>
-                <td>身份证</td>
-                <td>${tkrecord.userIdcard}</td>
-                <td>${tkrecord.userPhone}</td>
-                <td style="color: red;font-weight: bold;font-size: 20px;">${tkrecord.flightPrice}</td>
-                <td>${tkrecord.recordStatus}</td>
-                <td>
-                    <c:if test="${'已支付'.equals(tkrecord.recordStatus)}">
-                    <a style="cursor: pointer" onclick="returnTicket(this,'${tkrecord.fdrId}')">退票</a></c:if>
-                    <c:if test="${'已退票'.equals(tkrecord.recordStatus)}"><a>...</a></c:if>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</div>
+        <h3>购票记录</h3>
+        <br/>
+        <br/>
+        <br/>
+        <h4 style="color: red"> ! 退票需付手续费，出发当天不能退票，出发前3天内50%手续费，前4-10天内30%的手续费，前11-30天20%的手续费，提前一个月退票10%的手续费</h4>
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>航班号</th>
+                    <th>航空公司</th>
+                    <th>出发地</th>
+                    <th>目的地</th>
+                    <th>出发日期</th>
+                    <th>到达日期</th>
+                    <th>购买人姓名</th>
+                    <th>证件类型</th>
+                    <th>证件号码</th>
+                    <th>联系电话</th>
+                    <th>价格</th>
+                    <th>状态</th>
+                    <th>退票</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:if test="${empty requestScope.ticketrecords}">
+                    <tr>
+                        <td colspan="13">暂时没有任何订单信息</td>
+                    </tr>
+                </c:if>
+                <c:forEach items="${requestScope.ticketrecords}" var="tkrecord" varStatus="i">
+                    <tr>
+                        <td>${i.count}</td>
+                        <td>${tkrecord.flightName}</td>
+                        <td>${tkrecord.flightCanpany}</td>
+                        <td>${tkrecord.departureArea}</td>
+                        <td>${tkrecord.destinationArea}</td>
+                        <td>${tkrecord.departureTime}</td>
+                        <td>${tkrecord.arrivalTime}</td>
+                        <td>${tkrecord.userName}</td>
+                        <td>身份证</td>
+                        <td>${tkrecord.userIdcard}</td>
+                        <td>${tkrecord.userPhone}</td>
+                        <td style="color: red;font-weight: bold;font-size: 20px;">${tkrecord.flightPrice}</td>
+                        <td>${tkrecord.recordStatus}</td>
+                        <td>
+                            <c:if test="${'已支付'.equals(tkrecord.recordStatus)}">
+                                <a style="cursor: pointer"
+                                   onclick="returnTicket(this,'${tkrecord.fdrId}')">退票</a></c:if>
+                            <c:if test="${'已退票'.equals(tkrecord.recordStatus)}"><a>...</a></c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
 
 
-</div>
+    </div>
 
     <footer id="footer">
         <div class="last-footer text-muted">
@@ -170,21 +183,24 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                    </ul></li>
+                    </ul>
+                </li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                     <ul class="nav-sub-menu">
                         <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="userCenter.do">个人信息</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
                     </ul>
                 </li>
-
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                            <li><a href="toBookingRecordView.do">机票订单</a></li>
+                            <li><a href="userCenter.do">个人信息</a></li>
+                            <li><a href="loginOut.do">退出登录</a></li>
+                        </ul>
+                    </li>
+                </c:if>
             </ul>
         </nav>
     </aside>
