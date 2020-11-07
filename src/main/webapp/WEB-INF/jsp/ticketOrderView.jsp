@@ -16,49 +16,56 @@
     <title>机票支付</title>
     <meta charset="utf-8"/>
     <script src="js/jquery-3.1.0.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
-    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <link href="assets/images/logos/favicon.png" rel="icon" />
-    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
-    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template"/>
+    <meta name="keywords"
+          content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5"/>
+    <link href="assets/images/logos/favicon.png" rel="icon"/>
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png"/>
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png"/>
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        .searchResult div{
+        .searchResult div {
             display: inline-block;
             text-align: center;
         }
-        .searchResult{
+
+        .searchResult {
             width: 1000px;
             height: 175px;
         }
+
         #addUser {
             width: 850px;
             display: block;
             text-align: right;
             padding-right: 100px;
         }
+
         #addUser, .modify_UserInfo {
             text-decoration: underline;
             cursor: pointer;
             color: #0099ff;
         }
+
         table {
             width: 800px;
             border-top: 1px solid #aaaaaa;
         }
 
-        th,td {
+        th, td {
             border-bottom: 1px solid #c1b0b0;
             text-align: center;
             padding: 10px 0;
@@ -146,8 +153,8 @@
                         } else {
                             alert("添加旅客信息成功");
 
-                          /*  location.href="toTicketOrderView.do"*/
-                          window.location.reload();
+                            /*  location.href="toTicketOrderView.do"*/
+                            window.location.reload();
 
                         }
                     }
@@ -160,11 +167,11 @@
             })
 
             $(".payFlightMoney").click(function () {
-                var str ="";
+                var str = "";
                 $(".choiseUser:checked").each(function () {
-                    str +=$(this).val()+","
+                    str += $(this).val() + ","
                 })
-                var userIds = "<input type='hidden' name='userIds' value='"+str+"'/>";
+                var userIds = "<input type='hidden' name='userIds' value='" + str + "'/>";
                 $(".payFlightMoney").prepend(userIds)
                 $("#hiddenForm").submit();
             })
@@ -173,7 +180,7 @@
 
     <script>
         $(function () {
-            if (${not empty sessionScope.user}){
+            if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
         })
@@ -189,105 +196,118 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
+                                                             class="default light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img src="img/mainlogo.png"
+                                                                  style="height: 100px;width: 100px;border-radius: 20%"
+                                                                  class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in"
+                                            id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
         </nav>
     </header>
     <div class="container" style="padding-top: 50px">
-<div class="searchResult">
-    <div style="background-color: white;margin: 5px 0;width: 1000px;border-radius: 5px;">
-        <div style="width: 200px;height: 110px;text-align: center;">
-            <p><span>${sessionScope.ticketrecord.flightName}</span></p>
-            <p><span>${sessionScope.ticketrecord.flightCanpany}</span></p>
+        <div class="searchResult">
+            <div style="background-color: white;margin: 5px 0;width: 1000px;border-radius: 5px;">
+                <div style="width: 200px;height: 110px;text-align: center;">
+                    <p><span>${sessionScope.ticketrecord.flightName}</span></p>
+                    <p><span>${sessionScope.ticketrecord.flightCanpany}</span></p>
+                </div>
+                <div style="width: 540px;height: 110px;">
+                    <div style="width: 120px;height: 110px;">
+                        <p><span>${sessionScope.ticketrecord.departureTime}</span></p>
+                        <p><span>${sessionScope.ticketrecord.departureArea}</span</p>
+                    </div>
+                    <div style="width: 200px;height: 110px;text-align: center;line-height: 110px;">
+                        ============》
+                    </div>
+                    <div style="width: 120px;height: 110px;">
+                        <p><span>${sessionScope.ticketrecord.arrivalTime}</span></p>
+                        <p><span>${sessionScope.ticketrecord.destinationArea}</span></p>
+                    </div>
+                </div>
+                <div style="width: 200px;height: 110px;">
+                    <div style="text-align: center">
+                        <p>￥<span
+                                style="color: firebrick;font-weight: bold;font-size: 30px;">${sessionScope.ticketrecord.flightPrice}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="width: 540px;height: 110px;">
-            <div style="width: 120px;height: 110px;">
-                <p><span>${sessionScope.ticketrecord.departureTime}</span></p>
-                <p><span>${sessionScope.ticketrecord.departureArea}</span</p>
-            </div>
-            <div style="width: 200px;height: 110px;text-align: center;line-height: 110px;">
-                ============》
-            </div>
-            <div style="width: 120px;height: 110px;">
-                <p><span>${sessionScope.ticketrecord.arrivalTime}</span></p>
-                <p><span>${sessionScope.ticketrecord.destinationArea}</span></p>
+        <div class="userDetails" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
+            <p>
+            <h2 style="display: inline-block;">旅客信息</h2><span id="addUser"><span
+                style="color: black;font-size: 20px;"></span> <button type="button"
+                                                                      class="btn btn-primary">新增旅客信息</button></span></p>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>选择</th>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>证件类型</th>
+                    <th>证件号码</th>
+                    <th>联系电话</th>
+                    <th>编辑</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:if test="${empty requestScope.userinfos}">
+                    <tr>
+                        <td colspan="8">暂时没有任何旅客信息</td>
+                    </tr>
+                </c:if>
+                <c:forEach items="${requestScope.userinfos}" var="userInfo" varStatus="i">
+                    <tr>
+                        <td><input type="checkbox" class="choiseUser" value="${userInfo.uiId}"></td>
+                        <td>${i.count}</td>
+                        <td>${userInfo.person}</td>
+                        <td>身份证</td>
+                        <td>${userInfo.idcard}</td>
+                        <td>${userInfo.phone}</td>
+                        <td><span class="modify_UserInfo"
+                                  onclick="modifyUserInfo('${userInfo.uiId}','${userInfo.person}','${userInfo.idcard}','${userInfo.phone}')">编辑</span>
+                        </td>
+                        <td><a href="#">删除</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <br/>
+            <div id="updateUserInfo"></div>
+            <div class="add_UserInfo" style="display: none;">
+                <p>旅客姓名：<input type="text" name="person"/></p>
+                <p>身份证号码：<input type="text" name="idcard"/></p>
+                <p>联系电话：<input type="text" name="phone"/></p>
+                <p><input type="button" class="addUserInfo" value="新增"/></p>
             </div>
         </div>
-        <div style="width: 200px;height: 110px;">
-            <div style="text-align: center">
-                <p>￥<span style="color: firebrick;font-weight: bold;font-size: 30px;">${sessionScope.ticketrecord.flightPrice}</span></p>
-            </div>
+        <div>
+            <form id="hiddenForm" action="payFlightTicket.do" method="post">
+                <input type="hidden" name="flightName" value="${sessionScope.ticketrecord.flightName}"/>
+                <input type="hidden" name="flightCanpany" value="${sessionScope.ticketrecord.flightCanpany}"/>
+                <input type="hidden" name="departureArea" value="${sessionScope.ticketrecord.departureArea}"/>
+                <input type="hidden" name="destinationArea" value="${sessionScope.ticketrecord.destinationArea}"/>
+                <input type="hidden" name="departureTime" value="${sessionScope.ticketrecord.departureTime}"/>
+                <input type="hidden" name="arrivalTime" value="${sessionScope.ticketrecord.arrivalTime}"/>
+                <input type="hidden" name="flightPrice" value="${sessionScope.ticketrecord.flightPrice}"/>
+                <input type="hidden" name="fdId" value="${sessionScope.ticketrecord.fdId}"/>
+                <input type="button" class="payFlightMoney" value="支付" style="width: 120px;height: 60px;"/>
+            </form>
         </div>
-    </div>
-</div>
-<div class="userDetails" style="margin-top: 20px;background-color: white;padding: 10px;border-radius: 10px;">
-    <p>
-    <h2 style="display: inline-block;">旅客信息</h2><span id="addUser"><span style="color: black;font-size: 20px;"></span> <button type="button" class="btn btn-primary">新增旅客信息</button></span></p>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>选择</th>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>证件类型</th>
-            <th>证件号码</th>
-            <th>联系电话</th>
-            <th>编辑</th>
-            <th>删除</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:if test="${empty requestScope.userinfos}">
-            <tr>
-                <td colspan="8">暂时没有任何旅客信息</td>
-            </tr>
-        </c:if>
-        <c:forEach items="${requestScope.userinfos}" var="userInfo" varStatus="i">
-            <tr>
-                <td><input type="checkbox" class="choiseUser" value="${userInfo.uiId}"></td>
-                <td>${i.count}</td>
-                <td>${userInfo.person}</td>
-                <td>身份证</td>
-                <td>${userInfo.idcard}</td>
-                <td>${userInfo.phone}</td>
-                <td><span class="modify_UserInfo"
-                          onclick="modifyUserInfo('${userInfo.uiId}','${userInfo.person}','${userInfo.idcard}','${userInfo.phone}')">编辑</span>
-                </td>
-                <td><a href="#">删除</a></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <br/>
-    <div id="updateUserInfo"></div>
-    <div class="add_UserInfo" style="display: none;">
-        <p>旅客姓名：<input type="text" name="person"/></p>
-        <p>身份证号码：<input type="text" name="idcard"/></p>
-        <p>联系电话：<input type="text" name="phone"/></p>
-        <p><input type="button" class="addUserInfo" value="新增"/></p>
-    </div>
-</div>
-<div>
-    <form id="hiddenForm" action="payFlightTicket.do" method="post">
-        <input type="hidden" name="flightName" value="${sessionScope.ticketrecord.flightName}"/>
-        <input type="hidden" name="flightCanpany" value="${sessionScope.ticketrecord.flightCanpany}"/>
-        <input type="hidden" name="departureArea" value="${sessionScope.ticketrecord.departureArea}"/>
-        <input type="hidden" name="destinationArea" value="${sessionScope.ticketrecord.destinationArea}"/>
-        <input type="hidden" name="departureTime" value="${sessionScope.ticketrecord.departureTime}"/>
-        <input type="hidden" name="arrivalTime" value="${sessionScope.ticketrecord.arrivalTime}"/>
-        <input type="hidden" name="flightPrice" value="${sessionScope.ticketrecord.flightPrice}"/>
-        <input type="hidden" name="fdId" value="${sessionScope.ticketrecord.fdId}"/>
-        <input type="button" class="payFlightMoney" value="支付" style="width: 120px;height: 60px;"/>
-    </form>
-</div>
     </div>
     <footer id="footer">
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
     </footer>
 
@@ -302,21 +322,24 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                    </ul></li>
+                    </ul>
+                </li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                     <ul class="nav-sub-menu">
                         <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="userCenter.do">个人信息</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
                     </ul>
                 </li>
-
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                            <li><a href="toBookingRecordView.do">机票订单</a></li>
+                            <li><a href="userCenter.do">个人信息</a></li>
+                            <li><a href="loginOut.do">退出登录</a></li>
+                        </ul>
+                    </li>
+                </c:if>
             </ul>
         </nav>
     </aside>

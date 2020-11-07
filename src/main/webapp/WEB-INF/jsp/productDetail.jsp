@@ -13,7 +13,7 @@
 %>
 <html>
 <head>
-    <title>Title</title>
+    <title>脚印网 行走天下</title>
     <base href="<%=basePath%>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -42,27 +42,27 @@
         $(function () {
 
             $("#numberOfTrips").change(function () {
-                var num=$(this).val();
-                $("#sRoom").attr("min",parseInt((parseInt(num)+1)/2));
-                $("#sRoom").attr("max",parseInt(num));
+                var num = $(this).val();
+                $("#sRoom").attr("min", parseInt((parseInt(num) + 1) / 2));
+                $("#sRoom").attr("max", parseInt(num));
             });
 
             $(".dDate").change(function () {
                 $("#trans option:gt(0)").remove();
-                var pId=$("#pId").val()
-                var dDate=$(this).val()
+                var pId = $("#pId").val()
+                var dDate = $(this).val()
                 $.ajax({
-                    type:"post",
-                    url:"queryTransPort.do",
-                    data:{productId:pId,dDate:dDate},
-                    dataType:"json",
-                    success:function (obj) {
-                        var str=""
-                        $.each(obj,function (index,item) {
-                            if (item.transType==1){
-                                str += "<option value='"+item.transType+"'>飞机</option>";
-                            }else {
-                                str += "<option value='"+item.transType+"'>火车</option>";
+                    type: "post",
+                    url: "queryTransPort.do",
+                    data: {productId: pId, dDate: dDate},
+                    dataType: "json",
+                    success: function (obj) {
+                        var str = ""
+                        $.each(obj, function (index, item) {
+                            if (item.transType == 1) {
+                                str += "<option value='" + item.transType + "'>飞机</option>";
+                            } else {
+                                str += "<option value='" + item.transType + "'>火车</option>";
                             }
                         });
                         $("#trans").append(str);
@@ -74,7 +74,7 @@
 
     <script>
         $(function () {
-            if (${not empty sessionScope.user}){
+            if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
         })
@@ -92,20 +92,25 @@
 
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg"
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
                                                              class="default light" alt="Listigo"/> <img
-                        src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo"/> <img
-                        src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo"/> <img
-                        src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo"/></a>
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in"
+                                            id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
         </nav>
 
     </header>
-
+    <br/><br/>
     <section id="intro_section">
         <div id="images_list" class="owl-carousel owl-theme">
             <div class="item">
@@ -132,7 +137,7 @@
                     <div id="listing_content">
                         <div class="listing-video">
 
-                        
+
                             <img src="${product.files.filePath}" alt=""/>
 
                             <div class="d-inline-block">
@@ -198,34 +203,34 @@
                             </div>
                         </div>
                         <div id="reviews" class="mt-5">
-                            <h3>产品评价 <span class="font-weight-light">(40)</span></h3>
+                            <h3>产品评价 <span class="font-weight-light">(${requestScope.count})</span></h3>
                             <div class="comments mt-0">
 
-                            <c:forEach items="${requestScope.comments}" var="comments" varStatus="status">
+                                <c:forEach items="${requestScope.comments}" var="comments" varStatus="status">
 
-                                <div class="comment media">
-                                    <div class="avatar avatar-sm">
-                        <img src="assets/images/user/32/user-2.jpg" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <div class="commenter-name d-sm-flex align-items-center">
-                                                ${comments.user.uName}
-                                            <span class="text-muted pl-1">钻石会员</span>
-                                            <div class="stars ml-auto">
-
-                                            <c:forEach begin="1"
-                                                       end="${comments.score}"
-                                                       step="1">
-                                                <i class="ion-md-star"></i>
-                                            </c:forEach>
-
-                                            </div>
+                                    <div class="comment media">
+                                        <div class="avatar avatar-sm">
+                                            <img src="assets/images/user/32/user-2.jpg" alt=""/>
                                         </div>
-                                        <p>${comments.content}</p>
+                                        <div class="media-body">
+                                            <div class="commenter-name d-sm-flex align-items-center">
+                                                    ${comments.user.uName}
+                                                <span class="text-muted pl-1">钻石会员</span>
+                                                <div class="stars ml-auto">
 
+                                                    <c:forEach begin="1"
+                                                               end="${comments.score}"
+                                                               step="1">
+                                                        <i class="ion-md-star"></i>
+                                                    </c:forEach>
+
+                                                </div>
+                                            </div>
+                                            <p>${comments.content}</p>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
 
                             </div>
 
@@ -275,11 +280,11 @@
                                     <div class="form-group">
                                         出发日期
                                         <select style="height: 50px;width: 80%" name="dDate" class="dDate">
-                                        <option value="0">请选择</option>
-                                        <c:forEach items="${tours}" var="tour" varStatus="i">
-                                            <option >${tour.dDate}</option>
-                                        </c:forEach>
-                                    </select>
+                                            <option value="0">请选择</option>
+                                            <c:forEach items="${tours}" var="tour" varStatus="i">
+                                                <option>${tour.dDate}</option>
+                                            </c:forEach>
+                                        </select>
 
                                     </div>
 
@@ -292,24 +297,26 @@
 
                                     <div class="form-group">
                                         出行人数
-                                        <input required type="number" max="10" min="1" step="1" name="numberOfTrips" id="numberOfTrips" style="height: 50px;width: 80%">
+                                        <input required type="number" max="10" min="1" step="1" name="numberOfTrips"
+                                               id="numberOfTrips" style="height: 50px;width: 80%">
                                     </div>
 
                                     <div class="form-group">
                                         标间/大床房（间）
-                                        <input required type="number" max="5" step="1" name="sRoom" style="height: 50px;width: 80%" id="sRoom">
+                                        <input required type="number" max="5" step="1" name="sRoom"
+                                               style="height: 50px;width: 80%" id="sRoom">
                                     </div>
 
-                                        <input name="productId" type="hidden" value="${product.productId}" id="pId">
-                                        <input name="daId" type="hidden" value="${product.daId}">
-                                        <input name="arrAreaId" type="hidden" value="${product.arrAreaId}">
-                                        <input name="limLow" type="hidden" value="${product.limLow}">
-                                        <input name="limUp" type="hidden" value="${product.limUp}">
-                                        <input name="days" type="hidden" value="${product.days}">
-                                        <input name="hotelId" type="hidden" value="${product.hotelId}">
-                                        <input name="productName" type="hidden" value="${product.productName}">
-                                        <input name="productFee" type="hidden" value="${product.productFee}">
-                                        <input name="productScore" type="hidden" value="${product.productScore}">
+                                    <input name="productId" type="hidden" value="${product.productId}" id="pId">
+                                    <input name="daId" type="hidden" value="${product.daId}">
+                                    <input name="arrAreaId" type="hidden" value="${product.arrAreaId}">
+                                    <input name="limLow" type="hidden" value="${product.limLow}">
+                                    <input name="limUp" type="hidden" value="${product.limUp}">
+                                    <input name="days" type="hidden" value="${product.days}">
+                                    <input name="hotelId" type="hidden" value="${product.hotelId}">
+                                    <input name="productName" type="hidden" value="${product.productName}">
+                                    <input name="productFee" type="hidden" value="${product.productFee}">
+                                    <input name="productScore" type="hidden" value="${product.productScore}">
                                     <button type="submit" class="btn btn-danger btn-block">立即预定</button>
                                 </form>
                             </div>
@@ -325,9 +332,22 @@
         </div>
     </div>
 
+    <div class="alert alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>
+            <c:if test="${null != requestScope.error}">
+                <span style="color: red">${requestScope.error}</span>
+            </c:if>
+
+            <c:if test="${null != requestScope.success}">
+                <span style="color: red">${requestScope.success}</span>
+            </c:if>
+        </strong>
+    </div>
+
     <footer id="footer">
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
     </footer>
 
@@ -342,7 +362,6 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                        <li><a href="#">推荐路线</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
@@ -351,21 +370,19 @@
                         <li><a href="hotelView.do">预订酒店</a></li>
                     </ul>
                 </li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="#">旅行订单</a></li>
-                        <li><a href="toUserFlightBookView.do">机票订单</a></li>
-                        <li><a href="#">酒店订单</a></li>
-                        <li><a href="#">个人信息</a></li>
-
-                    </ul>
-                </li>
-
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                            <li><a href="toBookingRecordView.do">机票订单</a></li>
+                            <li><a href="userCenter.do">个人信息</a></li>
+                            <li><a href="loginOut.do">退出登录</a></li>
+                        </ul>
+                    </li>
+                </c:if>
             </ul>
         </nav>
     </aside>
-
-    ${requestScope.error}
 
 </div>
 <script src="assets/js/vendors.bundle.js"></script>

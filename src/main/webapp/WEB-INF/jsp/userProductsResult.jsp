@@ -14,22 +14,24 @@
 
 <html>
 <head>
-    <title>用户</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
-    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <title>Listigo | Directory Bootstrap 4 Template</title>
-    <link href="assets/images/logos/favicon.png" rel="icon" />
-    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
-    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <title>脚印网 行走天下</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template"/>
+    <meta name="keywords"
+          content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5"/>
+    <link href="assets/images/logos/favicon.png" rel="icon"/>
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png"/>
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png"/>
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,10 +39,10 @@
 
     <script>
         $(function () {
-            if (${not empty sessionScope.user}){
+            if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
-            })
+        })
     </script>
 </head>
 <body>
@@ -54,9 +56,18 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
+                                                             class="default light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img src="img/mainlogo.png"
+                                                                  style="height: 100px;width: 100px;border-radius: 20%"
+                                                                  class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in"
+                                            id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
@@ -67,12 +78,12 @@
         <div class="container">
             <h2 class="mb-3">旅游首页</h2>
 
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-5">
-                    <li class="breadcrumb-item"><a href="index.do">首页</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">旅游首页</li>
-                </ol>
-            </nav>
+            <%--         <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb mb-5">
+                             <li class="breadcrumb-item"><a href="index.do">首页</a></li>
+                             <li class="breadcrumb-item active" aria-current="page">旅游首页</li>
+                         </ol>
+                     </nav>--%>
 
             <form action="searchProductMain.do" method="post">
                 <div class="search-wrapper search-wrapper-light mb-5">
@@ -81,8 +92,11 @@
                         <div class="search-input">
                             <label for="what" class="form-control-label mb-0">出发地</label>
                             <div class="input-group align-items-center dropdown">
-                                <input required type="text" id="what" name="deArea" class="form-control" autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown" value="${requestScope.deArea}"/>
-                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
+                                <input required type="text" id="what" name="deArea" class="form-control"
+                                       autocomplete="off" placeholder="仅支持中国大陆城市出发" data-toggle="dropdown"
+                                       value="${requestScope.deArea}"/>
+                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i
+                                        class="ion-ios-arrow-down"></i></a>
                                 <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                     <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
                                     <a href="javascript:void(0);" class="dropdown-item">上海</a>
@@ -98,8 +112,11 @@
                         <div class="search-input">
                             <label for="where" class="form-control-label mb-0">目的地</label>
                             <div class="input-group align-items-center dropdown">
-                                <input required type="text" id="where" name="aimArea" class="form-control" autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown" value="${requestScope.aimArea}"/>
-                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i class="ion-ios-arrow-down"></i></a>
+                                <input required type="text" id="where" name="aimArea" class="form-control"
+                                       autocomplete="off" placeholder="支持全球目的地" data-toggle="dropdown"
+                                       value="${requestScope.aimArea}"/>
+                                <a href="javascript:void(0);" class="input-group-append" data-toggle="dropdown"><i
+                                        class="ion-ios-arrow-down"></i></a>
                                 <div class="dropdown-menu" data-scrollable="true" data-height="200">
                                     <a href="javascript:void(0);" class="dropdown-item" style="color: red;">热门推荐</a>
                                     <a href="javascript:void(0);" class="dropdown-item">北京</a>
@@ -130,46 +147,47 @@
 
                 <c:forEach items="${requestScope.product}" var="product" varStatus="status">
 
-                <div class="col-lg-6 list-bunch-item">
-                    <div class="listing-card list-view">
+                    <div class="col-lg-6 list-bunch-item">
+                        <div class="listing-card list-view">
 
-                        <div class="listing-image">
-                            <div class="listing-image-head">
-                                <!-- <span class="listing-tag">Close now</span>
-                                <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
-
-                            </div>
-                            <a href="productDetail.do?productId=${product.productId}"><img src="${product.files.filePath}" alt="" /></a>
-                        </div>
-
-                        <div class="listing-content">
-                            <div class="listing-content-body">
-
-                                <div class="listing-content-head mb-3">
-
-                                    <!-- 评分 -->
-                                    <div class="listing-rating">
-                                        <span class="listing-rating-number">${product.productScore}</span>
-                                        <i class="ion-md-star"></i>
-                                    </div>
-
-                                    <div class="listing-desc">
-                                        <a href="productDetail.do?productId=${product.productId}" class="listing-title text-truncate">${product.productName}</a>
-                                        <p>${product.hotel.hotelName}<br />行程天数：${product.days}天</p>
-                                    </div>
+                            <div class="listing-image">
+                                <div class="listing-image-head">
+                                    <!-- <span class="listing-tag">Close now</span>
+                                    <button type="button" class="ml-auto btn btn-danger btn-only-icon btn-pill"><i class="ion-md-heart-empty"></i></button> -->
 
                                 </div>
-
-                                <p style="font-size: 26px">￥${product.productFee}元起</p>
+                                <a href="productDetail.do?productId=${product.productId}"><img
+                                        src="${product.files.filePath}" alt=""/></a>
                             </div>
 
+                            <div class="listing-content">
+                                <div class="listing-content-body">
+
+                                    <div class="listing-content-head mb-3">
+
+                                        <!-- 评分 -->
+                                        <div class="listing-rating">
+                                            <span class="listing-rating-number">${product.productScore}</span>
+                                            <i class="ion-md-star"></i>
+                                        </div>
+
+                                        <div class="listing-desc">
+                                            <a href="productDetail.do?productId=${product.productId}"
+                                               class="listing-title text-truncate">${product.productName}</a>
+                                            <p>${product.hotel.hotelName}<br/>行程天数：${product.days}天</p>
+                                        </div>
+
+                                    </div>
+
+                                    <p style="font-size: 26px">￥${product.productFee}元起</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-</c:forEach>
+                </c:forEach>
 
             </div>
-
 
 
         </div>
@@ -178,7 +196,7 @@
     <footer id="footer">
 
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
 
     </footer>
@@ -193,21 +211,26 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                    </ul></li>
+                    </ul>
+                </li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                     <ul class="nav-sub-menu">
                         <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="userCenter.do">个人信息</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
                     </ul>
                 </li>
 
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                            <li><a href="toBookingRecordView.do">机票订单</a></li>
+                            <li><a href="userCenter.do">个人信息</a></li>
+                            <li><a href="loginOut.do">退出登录</a></li>
+                        </ul>
+                    </li>
+
+                </c:if>
             </ul>
         </nav>
     </aside>

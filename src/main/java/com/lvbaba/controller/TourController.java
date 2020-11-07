@@ -70,6 +70,8 @@ public class TourController {
         model.addAttribute("page", Integer.valueOf(page));
         model.addAttribute("pages", tourPageInfo.getPages());
         model.addAttribute("tours", tours1);
+        System.out.println("测试测试测试=======");
+        System.out.println(tours1);
         Product product = new Product();
         product.setProductId(tour1.getProductId());
         Product product1 = productService.query(product);
@@ -91,6 +93,8 @@ public class TourController {
 
         PageHelper.startPage(Integer.valueOf(page), 5);
         List<Tour> tours1 = tourService.queryByPid(tour);
+        System.out.println("测试测试测试=======");
+        System.out.println(tours1);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page", Integer.valueOf(page));
         model.addAttribute("pages", tourPageInfo.getPages());

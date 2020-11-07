@@ -27,4 +27,5 @@
         <result property="odIdcard" column="od_idcard"/>
         <result property="odPhone" column="od_phone"/>
     </resultMap>
+
 </mapper>

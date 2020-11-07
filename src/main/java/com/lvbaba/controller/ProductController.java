@@ -123,8 +123,10 @@ public class ProductController {
         tour.setProductId(product.getProductId());
         List<Tour> tours=tourService.queryByPid(tour);
         List<Tour> tourList= Util.duplicate(tours);
+        int count = comments.size();
         model.addAttribute("tours",tourList);
         model.addAttribute("comments",comments);
+        model.addAttribute("count",count);
         return "productDetail";
     }
 

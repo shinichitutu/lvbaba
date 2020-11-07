@@ -15,19 +15,22 @@
     <base href="<%=basePath%>"/>
     <title>机票预订</title>
     <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
-    <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <link href="assets/images/logos/favicon.png" rel="icon" />
-    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png" />
-    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content="Listigo | Directory Bootstrap 4 Template"/>
+    <meta name="keywords"
+          content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5"/>
+    <link href="assets/images/logos/favicon.png" rel="icon"/>
+    <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/touch-icon-iphone-retina.png"/>
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/logos/touch-icon-ipad-retina.png"/>
+    <link rel="stylesheet" href="assets/css/vendors.bundle.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/styles.bundle.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+          rel="stylesheet"/>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -36,11 +39,12 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
     <style>
-        .searchResult div{
+        .searchResult div {
             display: inline-block;
             text-align: center;
         }
-        .searchResult{
+
+        .searchResult {
             width: 1000px;
             height: 120px;
         }
@@ -48,13 +52,13 @@
     <script>
         $(function () {
             $.ajax({
-                type:"post",
-                url:"showCountry.do",
-                dataType:"json",
-                success:function (data) {
-                    var str  = "";
-                    $.each(data,function (k,v) {
-                        str+="<option value='"+v.country+"'>"+v.country+"</option>";
+                type: "post",
+                url: "showCountry.do",
+                dataType: "json",
+                success: function (data) {
+                    var str = "";
+                    $.each(data, function (k, v) {
+                        str += "<option value='" + v.country + "'>" + v.country + "</option>";
                     })
                     $("[name='d_country']").append(str);
                     $("[name='a_country']").append(str);
@@ -66,13 +70,13 @@
                 var country = $("[name='d_country'] option:selected").val();
                 $.ajax({
                     type: "post",
-                    data:{country:country},
-                    url:"showCity.do",
+                    data: {country: country},
+                    url: "showCity.do",
                     dataType: "json",
-                    success:function (data) {
-                        var str  = "";
-                        $.each(data,function (k,v) {
-                            str+="<option value='"+v.areaId+"'>"+v.city+"</option>";
+                    success: function (data) {
+                        var str = "";
+                        $.each(data, function (k, v) {
+                            str += "<option value='" + v.areaId + "'>" + v.city + "</option>";
                         })
                         $("[name='d_city']").append(str);
                     }
@@ -84,32 +88,32 @@
                 var country = $("[name='a_country'] option:selected").val();
                 $.ajax({
                     type: "post",
-                    data:{country:country},
-                    url:"showCity.do",
+                    data: {country: country},
+                    url: "showCity.do",
                     dataType: "json",
-                    success:function (data) {
-                        var str  = "";
-                        $.each(data,function (k,v) {
-                            str+="<option value='"+v.areaId+"'>"+v.city+"</option>";
+                    success: function (data) {
+                        var str = "";
+                        $.each(data, function (k, v) {
+                            str += "<option value='" + v.areaId + "'>" + v.city + "</option>";
                         })
                         $("[name='a_city']").append(str);
                     }
                 })
             })
 
-            if ($(".remainVotes").text()=='已售完'){
-                $("#bookingTicket").attr("disabled",true);
+            if ($(".remainVotes").text() == '已售完') {
+                $("#bookingTicket").attr("disabled", true);
             }
 
-            if (${not empty requestScope.insertTicketRecord}){
-            alert("${requestScope.insertTicketRecord}");
+            if (${not empty requestScope.insertTicketRecord}) {
+                alert("${requestScope.insertTicketRecord}");
             }
         })
     </script>
 
     <script>
         $(function () {
-            if (${not empty sessionScope.user}){
+            if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
         })
@@ -125,16 +129,25 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png"
+                                                             style="height: 100px;width: 100px;border-radius: 20%"
+                                                             class="default light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="default dark" alt="Listigo"/> <img src="img/mainlogo.png"
+                                                                  style="height: 100px;width: 100px;border-radius: 20%"
+                                                                  class="compact light" alt="Listigo"/> <img
+                        src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%"
+                        class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in"
+                                            id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
         </nav>
     </header>
 
-    <div class="container" style="padding-top: 100px">
+    <div class="container" style="padding-top: 150px">
 
         <div id="demo" class="carousel slide" data-ride="carousel" style="width: 100%">
 
@@ -171,87 +184,96 @@
         <br/>
 
 
-
         <form action="searchFlightInfo.do" method="post">
-        <span style="font-weight: bold;float: left;font-size: 120%">出发地：</span>
-        <select name="d_country" class="form-control" style="width: 150px;float: left">
-            <option value="0">--请选择国家--</option>
-        </select>
+            <span style="font-weight: bold;float: left;font-size: 120%">出发地：</span>
+            <select name="d_country" class="form-control" style="width: 150px;float: left">
+                <option value="0">--请选择国家--</option>
+            </select>
 
-        <select name="d_city" class="form-control" style="width: 150px">
-            <option value="0">--请选择城市--</option>
-        </select>
+            <select name="d_city" class="form-control" style="width: 150px">
+                <option value="0">--请选择城市--</option>
+            </select>
             <br/>
 
-        <span style="font-weight: bold;float:left;font-size: 120%">目的地：</span><select name="a_country" class="form-control" style="width: 150px;float:left;">
+            <span style="font-weight: bold;float:left;font-size: 120%">目的地：</span><select name="a_country"
+                                                                                          class="form-control"
+                                                                                          style="width: 150px;float:left;">
             <option value="0">--请选择国家--</option>
         </select>
 
-        <select name="a_city" class="form-control" style="width: 150px">
-            <option value="0">--请选择城市--</option>
-        </select>
+            <select name="a_city" class="form-control" style="width: 150px">
+                <option value="0">--请选择城市--</option>
+            </select>
+            <br/>
+            <span style="font-weight: bold;float:left;font-size: 120%">出发日期：</span><input type="date" name="date"
+                                                                                          class="form-control"
+                                                                                          style="width: 150px"/><br/>
+            <input type="submit" value="查询" class="btn btn-primary"/>
+        </form>
+
         <br/>
-        <span style="font-weight: bold;float:left;font-size: 120%">出发日期：</span><input type="date" name="date" class="form-control" style="width: 150px"/><br/>
-        <input type="submit" value="查询" class="btn btn-primary"/>
-         </form>
 
-<br/>
-
-<div class="searchResult">
-    <c:if test="${empty requestScope.flightDetailInfoList}"><p>暂时没有任何信息</p></c:if>
-    <c:forEach items="${requestScope.flightDetailInfoList}" var="fd" varStatus="i">
-    <div style="background-color: white;margin: 5px;width: 1000px;border-radius: 5px;">
-       <div style="width: 200px;height: 110px;text-align: center;">
-            <p><span>${fd.flight.flightNumber}</span></p>
-            <p><span>${fd.flight.flightCompany}</span></p>
-       </div>
-       <div style="width: 540px;height: 110px;">
-          <div style="width: 120px;height: 110px;">
-              <p><span>${fd.flight.flightDTime}</span></p>
-              <p><span>${fd.flight.d_area.country}-${fd.flight.d_area.city}</span</p>
-          </div>
-           <div style="width: 200px;height: 110px;text-align: center;line-height: 110px;">
-                ============》
-           </div>
-           <div style="width: 120px;height: 110px;">
-               <p><span>${fd.flight.flightATime}</span></p>
-               <p><span>${fd.flight.a_area.country}-${fd.flight.a_area.city}</span></p>
-           </div>
-       </div>
-       <div style="width: 220px;height: 110px;">
-            <div>
-                <p>￥<span style="color: rgba(239,26,26,0.76);font-weight: bold;font-size: 30px;">${fd.flight.flightPrice}</span></p>
-                <p>经济舱${fd.ratio}折</p>
-            </div>
-            <div style="margin: 0 auto;height: 110px;">
-               <p class="remainVotes" style="color: red;">
-                   <c:if test="${fd.fdTickets==0}">已售完</c:if>
-                   <c:if test="${fd.fdTickets<=10}">仅剩${fd.fdTickets}</c:if>
-               </p>
-               <p>
-                    <form action="toTicketOrderView.do" method="post">
-                        <input type="hidden" name="flightName" value="${fd.flight.flightNumber}"/>
-                        <input type="hidden" name="fdId" value="${fd.fdId}"/>
-                        <input type="hidden" name="flightCanpany" value="${fd.flight.flightCompany}"/>
-                        <input type="hidden" name="departureArea" value="${fd.flight.d_area.country}-${fd.flight.d_area.city}"/>
-                        <input type="hidden" name="destinationArea" value="${fd.flight.a_area.country}-${fd.flight.a_area.city}"/>
-                        <input type="hidden" name="departureTime" value="${fd.fdDate} ${fd.flight.flightDTime}"/>
-                        <input type="hidden" name="arrivalTime" value="${fd.fdDate} ${fd.flight.flightATime}"/>
-                        <input type="hidden" name="flightPrice" value="${fd.flight.flightPrice}"/>
-                       <input type="submit" id="bookingTicket" value="订票" style="width: 80px;font-size: 20px;height: 40px;border-radius: 15px;background-color: orange;color: white;font-weight: bold;"/>
-                    </form>
-               </p>
-           </div>
-       </div>
-    </div>
-    </c:forEach>
-</div>
+        <div class="searchResult">
+            <c:if test="${empty requestScope.flightDetailInfoList}"><p>暂时没有任何信息</p></c:if>
+            <c:forEach items="${requestScope.flightDetailInfoList}" var="fd" varStatus="i">
+                <div style="background-color: white;margin: 5px;width: 1000px;border-radius: 5px;">
+                    <div style="width: 200px;height: 110px;text-align: center;">
+                        <p><span>${fd.flight.flightNumber}</span></p>
+                        <p><span>${fd.flight.flightCompany}</span></p>
+                    </div>
+                    <div style="width: 540px;height: 110px;">
+                        <div style="width: 120px;height: 110px;">
+                            <p><span>${fd.flight.flightDTime}</span></p>
+                            <p><span>${fd.flight.d_area.country}-${fd.flight.d_area.city}</span</p>
+                        </div>
+                        <div style="width: 200px;height: 110px;text-align: center;line-height: 110px;">
+                            ============》
+                        </div>
+                        <div style="width: 120px;height: 110px;">
+                            <p><span>${fd.flight.flightATime}</span></p>
+                            <p><span>${fd.flight.a_area.country}-${fd.flight.a_area.city}</span></p>
+                        </div>
+                    </div>
+                    <div style="width: 220px;height: 110px;">
+                        <div>
+                            <p>￥<span
+                                    style="color: rgba(239,26,26,0.76);font-weight: bold;font-size: 30px;">${fd.flight.flightPrice}</span>
+                            </p>
+                            <p>经济舱${fd.ratio}折</p>
+                        </div>
+                        <div style="margin: 0 auto;height: 110px;">
+                            <p class="remainVotes" style="color: red;">
+                                <c:if test="${fd.fdTickets==0}">已售完</c:if>
+                                <c:if test="${fd.fdTickets<=10}">仅剩${fd.fdTickets}</c:if>
+                            </p>
+                            <p>
+                            <form action="toTicketOrderView.do" method="post">
+                                <input type="hidden" name="flightName" value="${fd.flight.flightNumber}"/>
+                                <input type="hidden" name="fdId" value="${fd.fdId}"/>
+                                <input type="hidden" name="flightCanpany" value="${fd.flight.flightCompany}"/>
+                                <input type="hidden" name="departureArea"
+                                       value="${fd.flight.d_area.country}-${fd.flight.d_area.city}"/>
+                                <input type="hidden" name="destinationArea"
+                                       value="${fd.flight.a_area.country}-${fd.flight.a_area.city}"/>
+                                <input type="hidden" name="departureTime"
+                                       value="${fd.fdDate} ${fd.flight.flightDTime}"/>
+                                <input type="hidden" name="arrivalTime" value="${fd.fdDate} ${fd.flight.flightATime}"/>
+                                <input type="hidden" name="flightPrice" value="${fd.flight.flightPrice}"/>
+                                <input type="submit" id="bookingTicket" value="订票"
+                                       style="width: 80px;font-size: 20px;height: 40px;border-radius: 15px;background-color: orange;color: white;font-weight: bold;"/>
+                            </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 
     <br/><br/><br/><br/>
     <footer id="footer">
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
     </footer>
 
@@ -266,21 +288,24 @@
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                     <ul class="nav-sub-menu">
                         <li><a href="userMain.do">旅游首页</a></li>
-                    </ul></li>
+                    </ul>
+                </li>
                 <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                     <ul class="nav-sub-menu">
                         <li><a href="toUserFlightBookView.do">预订机票</a></li>
                         <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="userCenter.do">个人信息</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
                     </ul>
                 </li>
-
+                <c:if test="${not empty sessionScope.user}">
+                    <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                            <li><a href="toBookingRecordView.do">机票订单</a></li>
+                            <li><a href="userCenter.do">个人信息</a></li>
+                            <li><a href="loginOut.do">退出登录</a></li>
+                        </ul>
+                    </li>
+                </c:if>
             </ul>
         </nav>
     </aside>
