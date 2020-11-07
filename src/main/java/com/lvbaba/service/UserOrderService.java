@@ -80,6 +80,8 @@ public interface UserOrderService {
 
     boolean cancelOrders(Long tourId);
 
+    double calculateScore(Long productId);
+
 
 
 }

@@ -40,6 +40,8 @@ public class UserOrderServiceImpl implements UserOrderService {
     private RoomDetailDao roomDetailDao;
     @Resource
     private UserDao userDao;
+    @Resource
+    private CommentDao commentDao;
 
     @Override
     public Userorder queryOne(Userorder userorder) {
@@ -222,18 +224,33 @@ public class UserOrderServiceImpl implements UserOrderService {
 
     }
 
+    /*管理员取消的订单，退款*/
     @Override
     public boolean cancelOrders(Long tourId) {
         Userorder userorder = new Userorder();
         userorder.setTourId(tourId);
         List<Userorder> userorderList = userorderDao.query(userorder);
         for (Userorder u:userorderList) {
+            u.setOrderStatus("已退款");
+            userorderDao.updateUserorder(u);/*更改用户订单状态*/
             User user =userDao.queryByUid(u.getuId());
             Double balanceNew = user.getBalance()+u.getOrderPrice();
             user.setBalance(balanceNew);
             userDao.updateUser(user);
         }
         return true;
+    }
+
+    @Override
+    public double calculateScore(Long productId) {
+        List<Comment> commentList = commentDao.queryByPid(productId);
+        Double total =0.0;
+        for (Comment c:commentList) {
+            total+=c.getScore();
+        }
+        Double score = total / (commentList.size());
+
+        return score;
     }
 
 

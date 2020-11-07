@@ -202,7 +202,7 @@
                                     </div>
                                     <div class="media-body">
                                         <div class="commenter-name d-sm-flex align-items-center">
-                                                ${requestScope.comments.user.uName}
+                                                ${comments.user.uName}
                                             <span class="text-muted pl-1">钻石会员</span>
                                             <div class="stars ml-auto">
 

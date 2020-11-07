@@ -246,7 +246,7 @@
 
                 <td><a href="openBooking.do?tourId=${tour.tourId}">开放预定</a></td>
                 <td><a href="closeBooking.do?tourId=${tour.tourId}">关闭预定</a></td>
-                <td><a href="startTour.do?tourId=${tour.tourId}">发团</a></td>
+                <td><a href="startTour.do?tourId=${tour.tourId}">确认发团</a></td>
                 <td><a href="cancelTour.do?tourId=${tour.tourId}">取消</a></td>
                 <%--<td><a href=deleteTour.do?tourId=${tour.tourId}">删除</a></td>
 --%>

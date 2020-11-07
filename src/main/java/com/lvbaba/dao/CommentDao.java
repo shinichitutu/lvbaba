@@ -35,4 +35,6 @@ public interface CommentDao {
      * @return
      */
     List<Comment> queryCommentByUidAndPid(Comment comment);
+
+    List<Comment> queryByPid(Long pId);
 }
