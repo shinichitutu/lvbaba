@@ -5,8 +5,10 @@ import com.lvbaba.entity.User;
 import com.lvbaba.entity.Userinfo;
 import com.lvbaba.service.UserService;
 import com.lvbaba.utli.UserbLocker;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -36,6 +38,9 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping(value = "userCenter",produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+
+    @UserbLocker
     @RequestMapping("/userCenter.do")
     public String userCenter(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
