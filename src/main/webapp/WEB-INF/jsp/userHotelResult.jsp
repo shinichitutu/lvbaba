@@ -41,6 +41,14 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/jquery-3.1.0.js"></script>
 
+    <script>
+        $(function () {
+            if (${not empty sessionScope.user}){
+                $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+            }
+        })
+    </script>
+
 </head>
 <body>
 
@@ -52,12 +60,12 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="media align-items-center">
                             <div class="avatar avatar-sm">
-                                <img src="assets/images/user/32/user-1.jpg" class="retina" alt="" />
+                                <img src="assets/images/user/32/user-1.jpg" alt="" />
                             </div>
                             <div class="media-body pl-2 avatar-name d-none d-md-block">
                                 欢迎登录！
