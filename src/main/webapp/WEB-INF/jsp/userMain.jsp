@@ -19,7 +19,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="Listigo | Directory Bootstrap 4 Template" />
     <meta name="keywords" content="listing dashboard, directory panel, listing, responsive directory, directory template, themeforest, listing template, css3, html5" />
-    <title>Listigo | Directory Bootstrap 4 Template</title>
     <link href="assets/images/logos/favicon.png" rel="icon" />
     <link rel="apple-touch-icon" href="assets/images/logos/touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/logos/touch-icon-ipad.png" />
@@ -183,22 +182,21 @@
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                 <ul class="nav-sub-menu">
                     <li><a href="userMain.do">旅游首页</a></li>
-                    <li><a href="#">推荐路线</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
-
-                    <li><a href="#">预订机票</a></li>
+                    <li><a href="toUserFlightBookView.do">预订机票</a></li>
                     <li><a href="hotelView.do">预订酒店</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
                 <ul class="nav-sub-menu">
-                    <li><a href="#">旅行订单</a></li>
-                    <li><a href="#">机票订单</a></li>
-                    <li><a href="#">酒店订单</a></li>
-                    <li><a href="#">个人信息</a></li>
+                    <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                    <li><a href="toBookingRecordView.do">机票订单</a></li>
+                    <li><a href="userCenter.do">个人信息</a></li>
+                    <li><a href="loginOut.do">退出登录</a></li>
+                </ul>
+            </li>
 
-                </ul></li>
         </ul>
     </nav>
 </aside>
