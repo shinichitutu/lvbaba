@@ -91,38 +91,8 @@
     </header>
     <br/>
 
+    <div class="container" style="padding-top: 100px">
 
-    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
-    <aside id="sidebar">
-        <div class="sidebar-header">
-            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
-
-        </div>
-        <nav id="nav">
-            <ul>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="userMain.do">旅游首页</a></li>
-                        <li><a href="userMain.do">推荐路线</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserFlightBookView.do">预订机票</a></li>
-                        <li><a href="hotelView.do">预订酒店</a></li>
-                    </ul></li>
-                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
-                    <ul class="nav-sub-menu">
-                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
-                        <li><a href="toBookingRecordView.do">机票订单</a></li>
-                        <li><a href="#">个人信息</a></li>
-                        <li><a href="userRecharge.do">充值</a></li>
-                        <li><a href="loginOut.do">退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </aside>
-</div>
 
 <h3>购票记录</h3>
 <br/>
@@ -130,7 +100,7 @@
 <br/>
 <h4 style="color: red"> ! 退票需付手续费，出发当天不能退票，出发前3天内50%手续费，前4-10天内30%的手续费，前11-30天20%的手续费，提前一个月退票10%的手续费</h4>
 <div>
-    <table>
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>序号</th>
@@ -181,12 +151,46 @@
     </table>
 </div>
 
-<footer id="footer">
-    <div class="last-footer text-muted">
-        &copy; 2020 Kri8thm. All rights reserved.
-    </div>
 
-</footer>
+</div>
+
+    <footer id="footer">
+        <div class="last-footer text-muted">
+            &copy; 2020 Kri8thm. All rights reserved.
+        </div>
+    </footer>
+
+    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
+
+        </div>
+        <nav id="nav">
+            <ul>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="userMain.do">旅游首页</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="toUserFlightBookView.do">预订机票</a></li>
+                        <li><a href="hotelView.do">预订酒店</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                        <li><a href="toBookingRecordView.do">机票订单</a></li>
+                        <li><a href="userCenter.do">个人信息</a></li>
+                        <li><a href="loginOut.do">退出登录</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </aside>
+</div>
+
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
 

@@ -51,7 +51,7 @@ public class TourController {
 
         Tour tour1 = new Tour();
 
-        if(tour.getProductId()==0){
+        if(tour.getProductId()==0&&tour.getTourId()!=0){
             Tour tour5 =new Tour();
             tour5.setTourId(tour.getTourId());
             Tour tour2 =tourService.query(tour5);
@@ -438,9 +438,11 @@ public class TourController {
         Tour tour = new Tour();
         tour.setTourId(userorder.getTourId());
         tour = tourService.query(tour);
+
         /**
          * 向评论插入产品id 用户id
          */
+
         comment.setProductId(tour.getProductId());
         comment.setuId(userorder.getuId());
         if (commentService.insertCommentByUid(comment)) {
@@ -449,12 +451,13 @@ public class TourController {
             product.setProductId(tour.getProductId());
             product.setProductScore(userOrderService.calculateScore(tour.getProductId()));
             productService.updateProduct(product);
+            userorder.setOrderStatus("已完成");
+            userOrderService.updateUserorder(userorder);
             model.addAttribute("success", "评论成功");
         } else {
             model.addAttribute("error", "评论失败");
         }
-        return "test";
+        return "payResult";
     }
-
 
 }

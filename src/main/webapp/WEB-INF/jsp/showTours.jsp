@@ -259,11 +259,11 @@
         <form action="insertTour.do" method="post">
             <input type="hidden" name="productId" value="${requestScope.product.productId}">
             <input type="hidden" name="transType" value="1">
-            出发日期<input type="date" name="dDate" id="deDateF"><br/>
-            返回日期<input type="date" name="roomDate" id="reDateF"><br/>
+            出发日期<input type="date" name="dDate" id="deDateF" required><br/>
+            返回日期<input type="date" name="roomDate" id="reDateF" required><br/>
             航班选择：<br/>
-            选择去程航班<select name='goId' id="flightId"><option value='0'>--请选择去程航班--</option></select>
-            选择返程航班<select name='returnId' id="flightId2"><option value='0'>--请选择返程航班--</option></select>
+            选择去程航班<select name='goId' id="flightId" required><option value='0'>--请选择去程航班--</option></select>
+            选择返程航班<select name='returnId' id="flightId2" required><option value='0'>--请选择返程航班--</option></select>
             <input type="submit" value="点击添加">
         </form>
     </div>
@@ -272,11 +272,11 @@
         <form action="insertTour.do" method="post">
             <input type="hidden" name="productId" value="${requestScope.product.productId}">
             <input type="hidden" name="transType" value="2">
-            出发日期<input type="date" name="dDate" id="deDateT"><br/>
-            返回日期<input type="date" name="roomDate" id="reDateT"><br/>
+            出发日期<input type="date" name="dDate" id="deDateT" required><br/>
+            返回日期<input type="date" name="roomDate" id="reDateT" required><br/>
             航班选择：<br/>
-            选择去程航班<select name='goId' id="trainId"><option value='0'>--请选择去程火车--</option></select>
-            选择返程航班<select name='returnId' id="trainId2"><option value='0'>--请选择返程高铁--</option></select>
+            选择去程航班<select name='goId' id="trainId" required><option value='0'>--请选择去程火车--</option></select>
+            选择返程航班<select name='returnId' id="trainId2" required><option value='0'>--请选择返程高铁--</option></select>
             <input type="submit" value="点击添加">
         </form>
     </div>

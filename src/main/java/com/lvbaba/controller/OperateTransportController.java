@@ -277,10 +277,10 @@ public class OperateTransportController {
             }
         }
         if (flag) {
-            model.addAttribute("insertTicketRecord", "支付完成，等待出票");
+            model.addAttribute("success", "支付完成，等待出票");
             return "forward:toBookingRecordView.do";
         } else {
-            model.addAttribute("insertTicketRecord", "支付失败！！");
+            model.addAttribute("error", "支付失败！！");
             return "forward:toTicketOrderView.do";
         }
     }

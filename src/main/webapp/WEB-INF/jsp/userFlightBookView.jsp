@@ -109,24 +109,85 @@
 </head>
 <body style="width: 1000px;margin: 30px auto 0 auto;background-color:#eef1f1">
 
-    <form action="searchFlightInfo.do" method="post">
-        出发地：<select name="d_country">
-            <option value="0">--请选择--</option>
+<div id="wrapper">
+    <div id="loading">
+        <div id="loader"></div>
+    </div>
+
+    <header id="header" class="colored-header fixed-top">
+        <nav class="navbar navbar-expand-sm">
+            <div class="container">
+                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <ul class="navbar-nav ml-auto">
+                </ul>
+                <a href="javascript:void(0);" id="hamburger"><span></span></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="padding-top: 100px">
+
+        <div id="demo" class="carousel slide" data-ride="carousel" style="width: 100%">
+
+            <!-- 指示符 -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- 轮播图片 -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://static.runoob.com/images/mix/img_nature_wide.jpg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
+                </div>
+            </div>
+
+            <!-- 左右切换按钮 -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div>
+        <br/>
+        <br/>
+
+
+
+        <form action="searchFlightInfo.do" method="post">
+        <span style="font-weight: bold;float: left;font-size: 120%">出发地：</span>
+        <select name="d_country" class="form-control" style="width: 150px;float: left">
+            <option value="0">--请选择国家--</option>
         </select>
-        <select name="d_city">
-            <option value="0">--请选择--</option>
+
+        <select name="d_city" class="form-control" style="width: 150px">
+            <option value="0">--请选择城市--</option>
         </select>
-        目的地：<select name="a_country">
-            <option value="0">--请选择--</option>
+            <br/>
+
+        <span style="font-weight: bold;float:left;font-size: 120%">目的地：</span><select name="a_country" class="form-control" style="width: 150px;float:left;">
+            <option value="0">--请选择国家--</option>
         </select>
-        <select name="a_city">
-            <option value="0">--请选择--</option>
+
+        <select name="a_city" class="form-control" style="width: 150px">
+            <option value="0">--请选择城市--</option>
         </select>
-        出发日期：<input type="date" name="date"/>
-        <input type="submit" value="查询"/>
-    </form>
+        <br/>
+        <span style="font-weight: bold;float:left;font-size: 120%">出发日期：</span><input type="date" name="date" class="form-control" style="width: 150px"/><br/>
+        <input type="submit" value="查询" class="btn btn-primary"/>
+         </form>
 
 <br/>
+
 <div class="searchResult">
     <c:if test="${empty requestScope.flightDetailInfoList}"><p>暂时没有任何信息</p></c:if>
     <c:forEach items="${requestScope.flightDetailInfoList}" var="fd" varStatus="i">
@@ -176,5 +237,50 @@
     </div>
     </c:forEach>
 </div>
+    </div>
+
+    <br/><br/><br/><br/>
+    <footer id="footer">
+        <div class="last-footer text-muted">
+            &copy; 2020 Kri8thm. All rights reserved.
+        </div>
+    </footer>
+
+    <a href="#intro_section" class="btn btn-danger btn-only-icon target scroll-top"><i class="ion-md-arrow-up"></i></a>
+    <!-- 侧边导航栏 -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <a href="javascript:void(0);" id="close_sidebar">&times;</a>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="userMain.do">旅游首页</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="toUserFlightBookView.do">预订机票</a></li>
+                        <li><a href="hotelView.do">预订酒店</a></li>
+                    </ul></li>
+                <li class="nav-item nav-has-sub"><a href="javascript:void(0);">个人中心</a>
+                    <ul class="nav-sub-menu">
+                        <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
+                        <li><a href="toBookingRecordView.do">机票订单</a></li>
+                        <li><a href="userCenter.do">个人信息</a></li>
+                        <li><a href="loginOut.do">退出登录</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </aside>
+
+</div>
+
+
+<script src="assets/js/vendors.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+
 </body>
 </html>

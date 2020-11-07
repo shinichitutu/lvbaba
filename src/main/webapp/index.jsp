@@ -504,7 +504,6 @@
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">旅游</a>
                 <ul class="nav-sub-menu">
                     <li><a href="userMain.do">旅游首页</a></li>
-                    <li><a href="userMain.do">推荐路线</a></li>
                 </ul></li>
             <li class="nav-item nav-has-sub"><a href="javascript:void(0);">机票酒店</a>
                 <ul class="nav-sub-menu">
@@ -515,28 +514,23 @@
                 <ul class="nav-sub-menu">
                     <li><a href="toUserOrderRecordView.do">旅行订单</a></li>
                     <li><a href="toBookingRecordView.do">机票订单</a></li>
-
                     <li><a href="userCenter.do">个人信息</a></li>
-                    <li><a href="userRecharge.do">充值</a></li>
                     <li><a href="loginOut.do">退出登录</a></li>
                 </ul>
             </li>
-
 
         </ul>
     </nav>
 </aside>
 
 </div>
+
+
+<script src="assets/js/vendors.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
 <%--原主页入口--%>
 <div>
     <a href="home.do" style="font-size: 100px">旧版主页</a>
 </div>
-<%--<div>
-    <a href="test.do"style="font-size: 100px">测试页面</a>
-</div>--%>
-
-<script src="assets/js/vendors.bundle.js"></script>
-<script src="assets/js/scripts.bundle.js"></script>
 </body>
 </html>
