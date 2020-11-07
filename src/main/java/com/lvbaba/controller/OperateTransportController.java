@@ -295,7 +295,7 @@ public class OperateTransportController {
     }
 
     @RequestMapping("/returnTicket.do")
-    public String returnTicket(String fdrId, Model model) {
+    public String returnTicket(String fdrId, Model model,HttpSession session) {
         Ticketrecord ticketrecord = new Ticketrecord();
         ticketrecord.setFdrId(Long.parseLong(fdrId));
         ticketrecord.setModifyDate(Util.getCurrentDate());
@@ -306,6 +306,9 @@ public class OperateTransportController {
         } else {
             model.addAttribute("returnTicketInfo", "退票失败");
         }
+        User user = (User) session.getAttribute("user");
+        user.setBalance(userService.queryByUserName(user).getBalance());
+        session.setAttribute("user",user);
         return "forward:toBookingRecordView.do";
     }
 }

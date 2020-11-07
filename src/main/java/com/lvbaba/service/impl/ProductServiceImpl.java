@@ -85,8 +85,10 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
         Product product1 = productDao.query(product);
-        Files files = filesDao.queryByProductId(product1.getProductId());
-        product1.setFiles(files);
+        if(null!=product1){
+            Files files = filesDao.queryByProductId(product1.getProductId());
+            product1.setFiles(files);
+        }
         return product1;
     }
 

@@ -32,7 +32,16 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public boolean insertTour(Tour tour) {
-        return tourDao.insertTour(tour);
+        Tour tour1 =new Tour();
+        tour1.setdDate(tour.getdDate());
+        tour1.setTransType(tour.getTransType());
+        List<Tour> list =tourDao.queryTours(tour1);
+        if(list.size()==0 || list==null){
+            return tourDao.insertTour(tour);
+
+        }else {
+            return false;
+        }
     }
 
     @Override

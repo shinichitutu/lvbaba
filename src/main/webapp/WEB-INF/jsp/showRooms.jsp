@@ -43,23 +43,23 @@
             $("#btn").click(function () {
                 var str1 = "<form action='addRoom.do' method='post'>"+
                     "客房数量：<input type='number' name='number' min=1/><br/>"+
-                    "人数限制：<input type='number' name='limit' min='1' max='10'/><br/>"+
+                    "客房等级：(1-标间/2-大床/3-豪华)<input type='number' name='limit' min='1' max='3'/><br/>"+
                         "<input type='hidden' name='hotelId' value='${requestScope.hotelId}'>"+
                     "<input type='submit' value='添加'/>"+
                     "</form>";
                 $("#addRoom").html(str1);
-            })
+            });
 
             $(".update").click(function () {
                 var str1 = "<form action='updateRoom.do' method='post'>"+
-                    "客房数量：<input type='number' name='number' min=1 value='"+$(this).parent().parent().find("td").eq(3).text()+"'><br/>"+
-                    "人数限制：<input type='number' name='limit' min='1' max='10' value='"+$(this).parent().parent().find("td").eq(2).text()+"'><br/>"+
+                    "客房数量：<input type='number' name='number' min=1 value='"+$(this).parent().parent().find("td").eq(4).text()+"'><br/>"+
+                    "客房等级：(1-标间/2-大床/3-豪华)<input type='number' name='limit' min='1' max='3' value='"+$(this).parent().parent().find("td").eq(2).text()+"'><br/>"+
                     "<input type='hidden' name='roomId' value="+$(this).parent().parent().find("td").eq(1).text()+">"+
                     "<input type='hidden' name='hotelId' value='${requestScope.hotelId}'>"+
                     "<input type='submit' value='确认修改'/>"+
                     "</form>";
                 $("#updateRoom").html(str1);
-            })
+            });
         })
     </script>
 
@@ -98,11 +98,11 @@
     <tr>
         <th>序号</th>
         <th>客房编号</th>
-        <th>人数限制</th>
+        <th colspan="2">客房类型(编号-名称)</th>
         <th>客房数量</th>
         <th>查看详情</th>
         <th>编辑</th>
-        <th>删除</th>
+<%--        <th>删除(待开发)</th>--%>
     </tr>
 
     </thead>
@@ -112,10 +112,20 @@
           <td>${status.count}</td>
           <td>${room.roomId}</td>
           <td>${room.personLimit}</td>
+          <td><c:if test="${room.personLimit eq 1}">
+              标间
+          </c:if>
+              <c:if test="${room.personLimit eq 2}">
+                  大床房
+              </c:if>
+              <c:if test="${room.personLimit eq 3}">
+                  豪华房
+              </c:if>
+                  </td>
           <td>${room.roomNumber}</td>
           <td><a href="showRoomDetail.do?roomId=${room.roomId}">查看详情</a></td>
           <td><input type="button" value="编辑" class="update"></td>
-          <td><a href="deleteRoom.do?roomId=${room.roomId}&hotelId=${room.hotelId}"><input type="button" value="删除" class="remove"></a></td>
+          <%--<td><a href="deleteRoom.do?roomId=${room.roomId}&hotelId=${room.hotelId}"><input type="button" value="删除" class="remove"></a></td>--%>
       </tr>
 
     </c:forEach>

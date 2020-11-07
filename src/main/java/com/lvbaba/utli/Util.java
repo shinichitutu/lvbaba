@@ -138,7 +138,7 @@ public class Util {
         return longList;
     }
 
-
+    /*获取当前时间*/
     public static String getCurrentDate() {
         return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
     }
@@ -154,7 +154,7 @@ public class Util {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        double d = ((date.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24)) * 100;
+        double d = ((date.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24));
         if (d >= 0 && d <= 3) {
             return 0.5;
         } else if (d > 3 && d <= 10) {

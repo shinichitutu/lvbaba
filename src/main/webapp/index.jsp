@@ -26,6 +26,9 @@
         $(function () {
             if (${not empty sessionScope.user}){
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+ /*               $("#loginUserInfo").removeProp("href");
+                $("#loginUserInfo").removeAttr("data-target");
+                $("#loginUserInfo").attr("href","userCenter.do")*/
             }
 
             $("#serch").click(function () {
@@ -47,13 +50,12 @@
             $("#username2").blur(function () {
                 var reg = /^[a-zA-Z].{5,17}$/;
                 var username = $(this).val();
-                console.log(username);
                 if (null == username) {
                     $(this).css("border", "1px solid red");
                     alert("账号不能为空");
                 } else if (reg.test(username) == false) {
                     $(this).css("border", "1px solid red");
-                    $(".showUserNameInfo").html("密码的长度为6-18为，不能以数字开头，不能重复");
+                    $(".showUserNameInfo").html("账号的长度为6-18位，不能以数字开头，不能重复");
                     $(".showUserNameInfo").css("color", "red")
                 } else {
                     $(this).css("border", "");
@@ -87,7 +89,7 @@
                     alert("密码不能为空");
                 } else if (reg.test(mm) == false) {
                     $(this).css("border", "1px solid red");
-                    $(".showPasswordInfo").html("密码的长度为6-18为，不能以数字开头，不能重复");
+                    $(".showPasswordInfo").html("密码的长度为6-20位");
                     $(".showPasswordInfo").css("color", "red")
                 } else {
                     $(this).css("border", "");
@@ -316,7 +318,7 @@
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact light" alt="Listigo" />
                     <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录/注册</a></li>
                 </ul>
 
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>

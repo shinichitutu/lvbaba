@@ -51,7 +51,7 @@ public class TourController {
 
         Tour tour1 = new Tour();
 
-        if(tour.getProductId()==0){
+        if(tour.getProductId()==0&&tour.getTourId()!=0){
             Tour tour5 =new Tour();
             tour5.setTourId(tour.getTourId());
             Tour tour2 =tourService.query(tour5);

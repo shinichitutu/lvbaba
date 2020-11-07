@@ -56,4 +56,6 @@ public interface TourDao {
      * @return
      */
     boolean updateBookNum(Tour tour);
+
+    List<Tour> queryTours(Tour tour);
 }
