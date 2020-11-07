@@ -70,7 +70,7 @@
         </nav>
     </header>
 
-    <div id="intro_section" class="section under-header mb-0">
+   <%-- <div id="intro_section" class="section under-header mb-0">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
@@ -325,7 +325,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <footer id="footer">
 
         <div class="last-footer text-muted">
