@@ -462,23 +462,6 @@
 
                     </div>
                     <div id="testimonial_thumb" class="owl-carousel owl-theme mt-4">
-       <%--                 <div class="item">
-                            <div &lt;%&ndash;class="testimonial-user avatar avatar-sm"&ndash;%&gt;>
-                                <img src="assets/images/user/32/homeshow1.jfif" &lt;%&ndash;class="retina"&ndash;%&gt; alt="" />
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div &lt;%&ndash;class="testimonial-user avatar avatar-sm"&ndash;%&gt;>
-                                <img src="assets/images/user/32/homeshow2.jfif" &lt;%&ndash;class="retina"&ndash;%&gt; alt="" />
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div &lt;%&ndash;class="testimonial-user avatar avatar-sm"&ndash;%&gt;>
-                                <img src="assets/images/user/32/homeshow3.jfif" &lt;%&ndash;class="retina"&ndash;%&gt; alt="" />
-                            </div>
-                        </div>--%>
-
-
                     </div>
                 </div>
             </div>

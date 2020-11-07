@@ -33,6 +33,14 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+        $(function () {
+            if (${not empty sessionScope.user}){
+                $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+            }
+        })
+    </script>
 </head>
 <body>
 <div id="wrapper">
@@ -45,16 +53,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <div class="media align-items-center">
-                            <div class="avatar avatar-sm">
-                                <img src="assets/images/user/32/user-1.jpg" class="retina" alt="" />
-                            </div>
-                            <div class="media-body pl-2 avatar-name d-none d-md-block">
-                                欢迎登录！
-                            </div>
-                        </div></li>
-                    <!--   <li class="nav-item"><a href="add-listing.html" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-add"></i> <span>Add Listing</span></a></li> -->
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>

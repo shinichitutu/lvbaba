@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <%--  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>--%>
 
     <style>
         /* Make the image fully responsive */
@@ -44,6 +44,14 @@
             height: 80%;
         }
     </style>
+
+    <script>
+        $(function () {
+            if (${not empty sessionScope.user}){
+                $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+            }
+        })
+    </script>
 </head>
 <body>
 
@@ -57,6 +65,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
@@ -66,7 +75,7 @@
     <section id="intro_section" class="section under-header mb-0">
         <div class="container">
             <h2 class="mb-3">旅游首页</h2>
-      <%--      <nav aria-label="breadcrumb">
+   <%--         <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-5">
                     <li class="breadcrumb-item"><a href="index.do">首页</a></li>
                     <li class="breadcrumb-item active" aria-current="page">旅游首页</li>

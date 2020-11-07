@@ -72,6 +72,14 @@
         })
     </script>
 
+    <script>
+        $(function () {
+            if (${not empty sessionScope.user}){
+                $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
+            }
+        })
+    </script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -90,8 +98,7 @@
                         src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo"/> <img
                         src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo"/></a>
                 <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in">Login</a></li>
-                    <li class="nav-item"><a href="add-listing.html" class="btn btn-pill btn-danger btn-icon"><i class="ion-md-add"></i> <span>Add Listing</span></a></li> -->
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
