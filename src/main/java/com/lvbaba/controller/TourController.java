@@ -48,21 +48,30 @@ public class TourController {
 
     @RequestMapping("/showTour.do")
     public String showTour(Model model, Tour tour, String page) {
+
         Tour tour1 = new Tour();
-        tour1.setProductId(tour.getProductId());
+
+        if(tour.getProductId()==0){
+            Tour tour5 =new Tour();
+            tour5.setTourId(tour.getTourId());
+            Tour tour2 =tourService.query(tour5);
+            tour1.setProductId(tour2.getProductId());
+        }else {
+            tour1.setProductId(tour.getProductId());
+        }
 
         if (page == null) {
             page = "1";
         }
 
         PageHelper.startPage(Integer.valueOf(page), 5);
-        List<Tour> tours1 = tourService.queryByPid(tour1);
+        List<Tour> tours1 = tourService.queryAllToursByPiD(tour1);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
         model.addAttribute("page", Integer.valueOf(page));
         model.addAttribute("pages", tourPageInfo.getPages());
         model.addAttribute("tours", tours1);
         Product product = new Product();
-        product.setProductId(tour.getProductId());
+        product.setProductId(tour1.getProductId());
         Product product1 = productService.query(product);
         model.addAttribute("product", product1);
         return "showTours";
@@ -70,13 +79,16 @@ public class TourController {
 
     @RequestMapping("/userShowTour.do")
     public String userShowTour(Model model, Tour tour, String page) {
+
         if (tour == null) {
             tour = new Tour();
             tour.setProductId(1);
         }
+
         if (page == null) {
             page = "1";
         }
+
         PageHelper.startPage(Integer.valueOf(page), 5);
         List<Tour> tours1 = tourService.queryByPid(tour);
         PageInfo<Tour> tourPageInfo = new PageInfo<>(tours1);
@@ -89,6 +101,7 @@ public class TourController {
     @RequestMapping("/insertTour.do")
     public String insertTour(Tour tour, Model model) {
         tour.setTourStatus("2");//默认状态为2-待成团，关闭预定
+
         if (tourService.insertTour(tour)) {
             model.addAttribute("success", "增加成功");
         } else {
@@ -134,8 +147,10 @@ public class TourController {
 
     @RequestMapping("/openBooking.do")
     public String openBooking(Model model, String tourId) {
+
         int res = tourService.openBooking(Integer.valueOf(tourId));
         Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
+
         model.addAttribute("productId", pId);
         if (res == 1) {
             model.addAttribute("success", "开放预定成功");
@@ -177,7 +192,10 @@ public class TourController {
     public String startTour(Model model, String tourId) {
         int res = tourService.startTour(Integer.valueOf(tourId));
         Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
-        model.addAttribute("productId", pId);
+        System.out.println("测试3");
+        System.out.println(pId);
+        String productId = pId + "";
+        model.addAttribute("productId", productId);
         if (res == 1) {
             model.addAttribute("success", "发团成功");
         } else if (res == 2) {
@@ -200,9 +218,9 @@ public class TourController {
 
         int res = tourService.cancelTour(Integer.valueOf(tourId));
         Long pId = tourService.queryPIdByTourId(Integer.valueOf(tourId));
-        model.addAttribute("productId", pId);
+        String productId = pId + "";
+        model.addAttribute("productId", productId);
         if (res == 1) {
-            Tour tour1 = new Tour();
             userOrderService.cancelOrders(Long.valueOf(tourId));
             model.addAttribute("success", "取消成功");
         } else if (res == 2) {
@@ -263,7 +281,7 @@ public class TourController {
 
         model.addAttribute("productId", product.getProductId());
         if (tour == null) {
-            model.addAttribute("error", "很抱歉，名额不足，预定失败！");
+            model.addAttribute("error", "报错！");
             return "forward:productDetail.do";
         }
         if (tourService.isTourNumEnough(tour.getTourId(), numberOfTrips)) {
@@ -426,6 +444,11 @@ public class TourController {
         comment.setProductId(tour.getProductId());
         comment.setuId(userorder.getuId());
         if (commentService.insertCommentByUid(comment)) {
+            /*更新产品总评分*/
+            Product product = new Product();
+            product.setProductId(tour.getProductId());
+            product.setProductScore(userOrderService.calculateScore(tour.getProductId()));
+            productService.updateProduct(product);
             model.addAttribute("success", "评论成功");
         } else {
             model.addAttribute("error", "评论失败");
@@ -433,36 +456,5 @@ public class TourController {
         return "test";
     }
 
-
-    /*退货*/
-    @RequestMapping("/refund.do")
-    public String refund(Userorder userorder, Model model) throws ParseException {
-        userorder = userOrderService.queryOne(userorder);
-        /*查询用户*/
-        User user = new User();
-        user.setuId(userorder.getuId());
-        /*查询旅行团*/
-        Tour tour = new Tour();
-        tour.setTourId(userorder.getTourId());
-        tour = tourService.query(tour);
-        user.setBalance(userorder.getOrderPrice() * Util.refund(tour.getdDate()));
-        if (userService.updateUser(user)) {
-            model.addAttribute("success", "退款成功");
-        } else {
-            model.addAttribute("error", "退款失败");
-        }
-        return "test";
-    }
-
-    /*recharge*/
-    @RequestMapping("recharge.do")
-    public String recharge(User user, Model model) {
-        if (userService.updateUser(user)) {
-            model.addAttribute("sucess", "充值成功");
-        } else {
-            model.addAttribute("error", "充值失败");
-        }
-        return "test";
-    }
 
 }

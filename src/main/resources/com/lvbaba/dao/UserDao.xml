@@ -28,6 +28,7 @@
 
     <select id="queryByUserId" parameterType="Long" resultMap="userMap">
         select u_id,<include refid="all_field"/> from user where u_id = #{userId}
+    </select>
 
     <select id="queryByUid" resultMap="userMap" parameterType="long">
         select u_id,

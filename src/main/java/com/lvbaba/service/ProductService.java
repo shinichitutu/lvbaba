@@ -70,4 +70,7 @@ public interface ProductService {
 
     List<Product> queryByAreaName(String deArea,String aimArea);
 
+    boolean updateProduct(Product product);
+
+
 }

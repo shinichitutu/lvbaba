@@ -48,12 +48,15 @@ public interface TourService {
     List<Tour> queryAll();
 
     /**
-     * 根据产品查询旅行团
+     * 根据产品查询旅行团 用户
      *
      * @param tour
      * @return
      */
     List<Tour> queryByPid(Tour tour);
+
+    /*管理员查询所有旅行团*/
+    List<Tour> queryAllToursByPiD(Tour tour);
 
     /**
      * 开放预订
@@ -70,7 +73,7 @@ public interface TourService {
     int closeBooking(int tourId);
 
     /**
-     *发团
+     *确认发团
      * @param tourId
      * @return
      */

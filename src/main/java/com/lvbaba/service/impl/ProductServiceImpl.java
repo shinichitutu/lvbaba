@@ -165,4 +165,12 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    @Override
+    public boolean updateProduct(Product product) {
+        if(product==null){
+            return false;
+        }
+        return productDao.updateProduct(product);
+    }
+
 }

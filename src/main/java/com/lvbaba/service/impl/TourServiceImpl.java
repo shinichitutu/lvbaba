@@ -76,6 +76,15 @@ public class TourServiceImpl implements TourService {
         return list;
     }
 
+    @Override
+    public List<Tour> queryAllToursByPiD(Tour tour) {
+        if (null==tour){
+            return null;
+        }
+        return tourDao.queryByPid(tour);
+
+    }
+
 
     /*    1-待成团，开放预定
         2-待成团，关闭预定
@@ -278,10 +287,15 @@ public class TourServiceImpl implements TourService {
         Product product =new Product();
         product.setProductId(tour.getProductId());
         product =productDao.query(product);
+        System.out.println("测试------------------");
+        System.out.println(product.getLimUp());
+        System.out.println("测试********************");
+        System.out.println(tour.getBookNum()+num);
+
         if(product.getLimUp()>=(tour.getBookNum()+num)){
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

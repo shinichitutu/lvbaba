@@ -137,7 +137,7 @@
 
 <h3>购票记录</h3>
 <br/><br/><br/>
-<h4 style="color: red"> ! 退票需付手续费，出发当天不能退团，出发前3天内退团需付50%手续费，前4-10天内退团需付30%的手续费，前11-30天退团需付20%的手续费，提前一个月退团需付10%的手续费</h4>
+<h4 style="color: red"> ! 退票需付手续费，已发团不能退团，出发前3天内退团需付50%手续费，前4-10天内退团需付30%的手续费，前11-30天退团需付20%的手续费，提前一个月退团需付10%的手续费</h4>
 <div>
     <table>
         <thead>
@@ -186,7 +186,11 @@
                 <td>${orderList.roomNum}</td>
                 <td>${orderList.orderTime}</td>
                 <td>${orderList.orderStatus}</td>
-                <td><input type="button" onclick="addComment(this,'${orderList.orderId}')" value="评论"/></td>
+                <td>
+                    <c:if test="${'已确认发团'.equals(orderList.orderStatus)}">
+                        <input type="button" onclick="addComment(this,'${orderList.orderId}')" value="评论"/>
+                    </c:if>
+                </td>
                 <td>
                     <c:if test="${!'已成团'.equals(orderList.orderStatus) && !'待成团'.equals(orderList.orderStatus) || '5'.equals(orderList.tour.tourStatus) || '6'.equals(orderList.tour.tourStatus)}">...</c:if>
                     <c:if test="${('待成团'.equals(orderList.orderStatus) || '已成团'.equals(orderList.orderStatus)) && !'5'.equals(orderList.tour.tourStatus) && !'6'.equals(orderList.tour.tourStatus)}">

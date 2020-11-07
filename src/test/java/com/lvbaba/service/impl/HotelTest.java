@@ -39,6 +39,9 @@ public class HotelTest {
     @Resource
     private UserOrderService userOrderService;
 
+    @Resource
+    private TourService tourService;
+
 
     @Test
     public void testHotel(){
@@ -95,6 +98,11 @@ public class HotelTest {
         Userorder userorder =new Userorder();
         userorder.setOrderId(1);
         userOrderService.queryOne(userorder);
+    }
+
+    @Test
+    public void testnew4(){
+        System.out.println(tourService.isTourNumEnough(2,2));
     }
 
 
