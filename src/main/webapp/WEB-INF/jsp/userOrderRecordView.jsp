@@ -99,9 +99,9 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录</a></li>
+                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo"></a></li>
                 </ul>
                 <a href="javascript:void(0);" id="hamburger"><span></span></a>
             </div>
@@ -182,7 +182,7 @@
     </div>
     <footer id="footer">
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
     </footer>
 

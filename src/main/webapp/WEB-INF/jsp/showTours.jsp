@@ -176,7 +176,7 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="media align-items-center">
@@ -195,20 +195,20 @@
     </header>
     <br/>
 
-    <div class="container" style="padding-top: 50px">
+    <div class="container" style="padding-top: 100px">
     <table class="table table-hover">
         <thead>
         <tr>
-            <td>旅行团id</td>
-            <td>产品id</td>
-            <td>出发日期</td>
-            <td>返回日期</td>
-            <td>交通类型</td>
-            <td>去程交通id</td>
-            <td>返回交通id</td>
-            <td>已预订人数</td>
-            <td>状态</td>
-            <td colspan="5">操作</td>
+            <th>旅行团id</th>
+            <th>产品id</th>
+            <th>出发日期</th>
+            <th>返回日期</th>
+            <th>交通类型</th>
+            <th>去程交通id</th>
+            <th>返回交通id</th>
+            <th>已预订人数</th>
+            <th>状态</th>
+            <th colspan="5">操作</th>
 
         </tr>
         </thead>

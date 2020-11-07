@@ -303,7 +303,7 @@
     <header id="header" class="colored-header fixed-top">
         <nav class="navbar navbar-expand-sm">
             <div class="container">
-                <a class="navbar-brand" href="index.do"><img src="assets/images/logos/logo_light.svg" class="default light" alt="Listigo" /> <img src="assets/images/logos/logo_dark.svg" class="default dark" alt="Listigo" /> <img src="assets/images/logos/compact_logo_light.svg" class="compact light" alt="Listigo" /> <img src="assets/images/logos/compact_logo_dark.svg" class="compact dark" alt="Listigo" /></a>
+                <a class="navbar-brand" href="index.do"><img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" /> <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="media align-items-center">
@@ -322,24 +322,24 @@
     </header>
     <br/>
 
-    <div class="container" style="padding-top: 50px">
+    <div class="container" style="padding-top: 100px">
         <table class="table table-hover">
             <thead>
             <tr>
-                <td>序号</td>
-                <td>产品图片</td>
-                <td>产品名称</td>
-                <td>出发地</td>
-                <td>目的地</td>
-                <td>人数下限</td>
-                <td>人数上限</td>
-                <td>行程天数</td>
-                <td>入住酒店</td>
-                <td>基本团费</td>
-                <td>评分</td>
-                <td>查询旅行团</td>
-                <td>删除产品</td>
-                <td>修改产品</td>
+                <th>序号</th>
+                <th>产品图片</th>
+                <th>产品名称</th>
+                <th>出发地</th>
+                <th>目的地</th>
+                <th>人数下限</th>
+                <th>人数上限</th>
+                <th>行程天数</th>
+                <th>入住酒店</th>
+                <th>基本团费</th>
+                <th>评分</th>
+                <th>查询旅行团</th>
+                <th>删除产品</th>
+                <th>修改产品</th>
             </tr>
             </thead>
             <tbody>

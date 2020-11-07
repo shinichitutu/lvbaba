@@ -313,10 +313,10 @@
         <nav class="navbar navbar-expand-sm">
             <div class="container">
                 <a class="navbar-brand" href="index.do">
-                    <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" />
-                    <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="default dark" alt="Listigo" />
-                    <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact light" alt="Listigo" />
-                    <img src="img/驴.jpg" style="height: 100px;width: 100px;border-radius: 20%"class="compact dark" alt="Listigo" /></a>
+                    <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default light" alt="Listigo" />
+                    <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="default dark" alt="Listigo" />
+                    <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact light" alt="Listigo" />
+                    <img src="img/mainlogo.png" style="height: 100px;width: 100px;border-radius: 20%" class="compact dark" alt="Listigo" /></a>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="modal" data-target="#sign_in" id="loginUserInfo">登录/注册</a></li>
                 </ul>
@@ -472,7 +472,7 @@
 
     <footer id="footer">
         <div class="last-footer text-muted">
-            &copy; 2020 Kri8thm. All rights reserved.
+            &copy; 2020 杜炳友/陆垚/陆金易. All rights reserved.
         </div>
 
 
@@ -513,9 +513,6 @@
 
 <script src="assets/js/vendors.bundle.js"></script>
 <script src="assets/js/scripts.bundle.js"></script>
-<%--原主页入口--%>
-<div>
-    <a href="home.do" style="font-size: 100px">旧版主页</a>
-</div>
+
 </body>
 </html>
