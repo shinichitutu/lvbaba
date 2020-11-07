@@ -30,6 +30,7 @@ public class AreaDaoTest extends TestCase {
     }
     @Test
     public void testDate() throws ParseException {
-        System.out.println(DateUtil.compareDate("2020-12-13","2020-12-12"));
+//        System.out.println(DateUtil.compareDate("2020-12-13","2020-12-12"));
+        System.out.println(String.format("%.2f",1.25445));
     }
 }
