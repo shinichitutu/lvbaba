@@ -51,6 +51,14 @@
     </style>
     <script>
         $(function () {
+            $("#bookingTicket").click(function () {
+                if (${empty sessionScope.user}){
+                    alert("请先登录，才能订票");
+                    location.href="index.do";
+                }else{
+                    $(".bookingForm").submit();
+                }
+            })
             $.ajax({
                 type: "post",
                 url: "showCountry.do",

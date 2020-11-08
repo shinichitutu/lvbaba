@@ -112,7 +112,9 @@
             <tbody>
             <c:if test="${empty requestScope.trainDetailInfo}">
                 <tr>
-                    <td colspan="12">暂时还没有列车信息</td>
+
+                    <td colspan="12">暂时还没有火车班次信息</td>
+
                 </tr>
             </c:if>
             <c:forEach items="${requestScope.trainDetailInfo.traindetailList}" var="traindetail" varStatus="i">
