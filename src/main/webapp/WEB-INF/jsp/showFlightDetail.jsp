@@ -90,7 +90,7 @@
     </header>
     <br/>
 
-    <div class="container" style="padding-top: 50px">
+    <div class="container" style="padding-top: 120px">
         <table class="tb">
             <thead>
             <tr>
@@ -106,8 +106,8 @@
                 <th>出发日期</th>
                 <th>已售票数</th>
                 <th>票价系数</th>
-                <th>编辑</th>
-                <th>删除</th>
+               <%-- <th>编辑</th>
+                <th>删除</th>--%>
             </tr>
             </thead>
             <tbody>
@@ -132,8 +132,8 @@
                         <td>${flightDetail.fdTickets}</td>
                         <td>${flightDetail.ratio}</td>
 
-                        <td><input type="button" value="编辑"></td>
-                        <td><input type="button" value="删除"></td>
+            <%--            <td><input type="button" value="编辑"></td>
+                        <td><input type="button" value="删除"></td>--%>
                     </tr>
                 </c:forEach>
             </c:forEach>

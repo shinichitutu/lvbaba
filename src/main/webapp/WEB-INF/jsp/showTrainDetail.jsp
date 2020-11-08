@@ -91,7 +91,7 @@
     </header>
     <br/>
 
-    <div class="container" style="padding-top: 50px">
+    <div class="container" style="padding-top: 120px">
 
         <table class="tb">
             <thead>
@@ -113,7 +113,7 @@
             <tbody>
             <c:if test="${empty requestScope.trainDetailList}">
                 <tr>
-                    <td colspan="12">暂时还没有航班信息</td>
+                    <td colspan="12">暂时还没有火车班次信息</td>
                 </tr>
             </c:if>
             <c:forEach items="${requestScope.trainDetailList}" var="train">

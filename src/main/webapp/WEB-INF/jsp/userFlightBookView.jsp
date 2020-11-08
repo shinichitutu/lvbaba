@@ -51,6 +51,14 @@
     </style>
     <script>
         $(function () {
+            $("#bookingTicket").click(function () {
+                if (${empty sessionScope.user}){
+                    alert("请先登录，才能订票");
+                    location.href="index.do";
+                }else{
+                    $(".bookingForm").submit();
+                }
+            })
             $.ajax({
                 type: "post",
                 url: "showCountry.do",
@@ -247,7 +255,7 @@
                                 <c:if test="${fd.fdTickets<=10}">仅剩${fd.fdTickets}</c:if>
                             </p>
                             <p>
-                            <form action="toTicketOrderView.do" method="post">
+                            <form action="toTicketOrderView.do" class="bookingForm" method="post">
                                 <input type="hidden" name="flightName" value="${fd.flight.flightNumber}"/>
                                 <input type="hidden" name="fdId" value="${fd.fdId}"/>
                                 <input type="hidden" name="flightCanpany" value="${fd.flight.flightCompany}"/>
@@ -259,7 +267,7 @@
                                        value="${fd.fdDate} ${fd.flight.flightDTime}"/>
                                 <input type="hidden" name="arrivalTime" value="${fd.fdDate} ${fd.flight.flightATime}"/>
                                 <input type="hidden" name="flightPrice" value="${fd.flight.flightPrice}"/>
-                                <input type="submit" id="bookingTicket" value="订票"
+                                <input type="button" id="bookingTicket" value="订票"
                                        style="width: 80px;font-size: 20px;height: 40px;border-radius: 15px;background-color: orange;color: white;font-weight: bold;"/>
                             </form>
                             </p>
