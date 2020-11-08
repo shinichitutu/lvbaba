@@ -100,6 +100,8 @@ public interface TransportationService {
      */
     List<Train> queryTrainAndDatailBydaIdAndarrAreaId(Train train);
 
+    Train queTrainAndDeatilByTrainId(Long trainId);
+
     /**
      * 管理员查看所有的火车班次信息
      * @param

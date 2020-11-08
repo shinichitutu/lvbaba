@@ -230,7 +230,7 @@
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <div class="checkbox">
                                     <input id="remember" type="checkbox" value="true" name="auto"/>
-                                    <label for="remember">自动登录</label>
+<%--                                    <label for="remember">自动登录</label>--%>
                                 </div>
                                 <a href="#" class="link" data-dismiss="modal" data-toggle="modal" data-target="#forgot">管理员登录</a>
                             </div>

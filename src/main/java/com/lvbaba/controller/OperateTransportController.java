@@ -158,11 +158,10 @@ public class OperateTransportController {
 
     @RequestMapping("/showTrainDetailView.do")
     public ModelAndView showTrainDetailView(String trId) {
-        Train train = new Train();
-        train.setTrId(Long.parseLong(trId));
-        List<Train> trainList = transportationService.queryTrainAndDatailBydaIdAndarrAreaId(train);
+        System.out.println("Train++++++++++++++++++++++++++++++++++++"+trId);
+        Train train = transportationService.queTrainAndDeatilByTrainId(Long.parseLong(trId));
         ModelAndView mv = new ModelAndView("showTrainDetail");
-        mv.addObject("trainDetailList", trainList);
+        mv.addObject("trainDetailInfo", train);
         return mv;
     }
 

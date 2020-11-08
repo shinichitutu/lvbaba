@@ -34,7 +34,7 @@
                 td_id =#{tdId}
             </if>
             <if test="trId!=null and trId!=''">
-                and tr_id = #{tdId}
+                and tr_id = #{trId}
             </if>
             <if test="tdDate!=null and tdDate!=''">
                 and td_date = #{tdDate}
