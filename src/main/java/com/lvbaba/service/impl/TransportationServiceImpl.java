@@ -176,6 +176,27 @@ public class TransportationServiceImpl implements TransportationService {
     }
 
     @Override
+    public Train queTrainAndDeatilByTrainId(Long trainId) {
+        Train train = new Train();
+        train.setTrId(trainId);
+        Train train1 = trainDao.queryOne(train);
+
+        Traindetail traindetail = new Traindetail();
+        traindetail.setTrId(train1.getTrId());
+
+        List<Traindetail> traindetails = trainDetailDao.query(traindetail);
+        Area d_area = areaDao.queryOne(new Area(train1.getdaId()));
+        Area a_area = areaDao.queryOne(new Area(train1.getarrAreaId()));
+        train1.setD_area(d_area);
+        train1.setA_area(a_area);
+        if (null!=traindetails) {
+            train1.setTraindetailList(traindetails);
+        }
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++"+train1);
+        return train1;
+    }
+
+    @Override
     public List<Train> queryAllTrain() {
         List<Train> trainList = trainDao.queryAllTrain();
         List<Train> list = new ArrayList<>();

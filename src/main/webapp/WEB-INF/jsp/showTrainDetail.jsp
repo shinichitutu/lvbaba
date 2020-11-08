@@ -55,7 +55,6 @@
 
 </head>
 <body>
-
 <div id="wrapper">
     <div id="loading">
         <div id="loader"></div>
@@ -106,35 +105,34 @@
                 <th>车票价格</th>
                 <th>出发日期</th>
                 <th>已售票数</th>
-                <th>编辑</th>
-                <th>删除</th>
+<%--                <th>编辑</th>--%>
+<%--                <th>删除</th>--%>
             </tr>
             </thead>
             <tbody>
-            <c:if test="${empty requestScope.trainDetailList}">
+            <c:if test="${empty requestScope.trainDetailInfo}">
                 <tr>
+
                     <td colspan="12">暂时还没有火车班次信息</td>
+
                 </tr>
             </c:if>
-            <c:forEach items="${requestScope.trainDetailList}" var="train">
-                <c:forEach items="${train.traindetailList}" var="traindetail" varStatus="i">
-                    <tr>
-                        <td style='width: 30px;'>${i.count}</td>
-                        <td>${train.flightNumber}</td>
-                        <td>${train.flightCompany}</td>
-                        <td>${train.d_area.country}-${train.d_area.city}</td>
-                        <td>${train.a_area.country}-${train.a_area.city}</td>
-                        <td>${train.flightDTime}</td>
-                        <td>${train.flightATime}</td>
-                        <td>${train.flightCapacity}</td>
-                        <td>${train.flightPrice}</td>
-                        <td>${traindetail.tdDate}</td>
-                        <td>${traindetail.tdTickets}</td>
+            <c:forEach items="${requestScope.trainDetailInfo.traindetailList}" var="traindetail" varStatus="i">
+                <tr>
+                    <td style='width: 30px;'>${i.count}</td>
+                    <td>${requestScope.trainDetailInfo.trNumber}</td>
+                    <td>${requestScope.trainDetailInfo.d_area.country}-${requestScope.trainDetailInfo.d_area.city}</td>
+                    <td>${requestScope.trainDetailInfo.a_area.country}-${requestScope.trainDetailInfo.a_area.city}</td>
+                    <td>${requestScope.trainDetailInfo.trDTime}</td>
+                    <td>${requestScope.trainDetailInfo.trATime}</td>
+                    <td>${requestScope.trainDetailInfo.trCapacity}</td>
+                    <td>${requestScope.trainDetailInfo.trPrice}</td>
+                    <td>${traindetail.tdDate}</td>
+                    <td>${traindetail.tdTickets}</td>
 
-                        <td><input type="button" value="编辑"></td>
-                        <td><input type="button" value="删除"></td>
-                    </tr>
-                </c:forEach>
+<%--                    <td><input type="button" value="编辑"></td>--%>
+<%--                    <td><input type="button" value="删除"></td>--%>
+                </tr>
             </c:forEach>
             </tbody>
         </table>

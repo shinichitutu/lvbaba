@@ -407,7 +407,7 @@
                 }
             });
 
-            //放我们点击提交按钮是，触发点击事件，当我们的出发时间和到达时间其中为空的话，就直接返回不提交。
+            //当我们点击提交按钮是，触发点击事件，当我们的出发时间和到达时间其中为空的话，就直接返回不提交。
             $(".modifyTrainInfo").on("click", "#modifyTrain", function () {
                 var trDTime = $("input[name='trDTime']").val();
                 var trATime = $("input[name='trATime']").val();

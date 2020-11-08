@@ -108,6 +108,30 @@
                 }
             })
 
+            $(".f_price").blur(function () {
+                var reg = /^\+?[1-9][0-9]*$/;
+                var flightPrice = $(".f_price").val();
+                if(!reg.test(flightPrice)){
+                    alert("请输入数字");
+                    $(".f_price").css("border","1px solid red");
+                    return;
+                }else{
+                    $(".f_price").css("border","");
+                }
+            })
+
+            $(".tr_price").blur(function () {
+                var reg = /^\+?[1-9][0-9]*$/;
+                var trPrice = $(".tr_price").val();
+                if(!reg.test(trPrice)){
+                    alert("请输入数字");
+                    $(".tr_price").css("border","1px solid red");
+                    return;
+                }else{
+                    $(".tr_price").css("border","");
+                }
+            })
+
             //添加航班信息
             $(".addFlight").click(function () {
                 var flightNumber = $("input[name = 'flightNumber']").val();
@@ -118,6 +142,7 @@
                 var arrAreaId = $("#a_city").find("option:selected").val();
                 var flightCapacity = $(".f_capacity").val();
                 var flightPrice = $(".f_price").val();
+
                 // console.log(flightNumber+"--"+flightCompany+"---"+flightDTime+"---"+flightATime+"--"+daId+"---"+arrAreaId+"--"+flightCapacity+"---"+f_price);
                 $.ajax({
                     type: "post",
@@ -126,7 +151,7 @@
                         flightCompany: flightCompany,
                         flightDTime: flightDTime,
                         flightATime: flightATime,
-                        daId: dareaId,
+                        daId: daId,
                         arrAreaId: arrAreaId,
                         flightCapacity: flightCapacity,
                         flightPrice: flightPrice
@@ -149,18 +174,24 @@
                 var trNumber = $("input[name = 'trNumber']").val();
                 var trDTime = $("input[name = 'trDTime']").val();
                 var trATime = $("input[name = 'trATime']").val();
-                var traId = $("#tr_d_city").find("option:selected").val();
-                var trAreaId = $("#tr_a_city").find("option:selected").val();
+                var daId = $("#tr_d_city").find("option:selected").val();
+                var arrAreaId = $("#tr_a_city").find("option:selected").val();
                 var trCapacity = $(".tr_capacity").val();
                 var trPrice = $(".tr_price").val();
+
+                var reg = /^[1-9][0-9].{10}%/;
+                if(!reg.test(trPrice)){
+                    alert("请输入数字");
+                    return;
+                }
                 $.ajax({
                     type: "post",
                     data: {
                         trNumber: trNumber,
                         trDTime: trDTime,
                         trATime: trATime,
-                        traId: traId,
-                        trAreaId: trAreaId,
+                        daId: daId,
+                        arrAreaId: arrAreaId,
                         trCapacity: trCapacity,
                         trPrice: trPrice
                     },

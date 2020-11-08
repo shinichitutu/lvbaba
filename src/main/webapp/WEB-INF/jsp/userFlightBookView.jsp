@@ -124,6 +124,14 @@
             if (${not empty sessionScope.user}) {
                 $("#loginUserInfo").html("欢迎${sessionScope.user.uName}登录");
             }
+            $("#bookingTicket").click(function () {
+                if (${empty sessionScope.user}){
+                    alert("请先登录，才能订票");
+                    location.href="index.do";
+                }else{
+                    $(".bookingForm").submit();
+                }
+            })
         })
     </script>
 </head>
