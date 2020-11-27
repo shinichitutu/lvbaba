@@ -172,7 +172,5 @@ public class Util {
         Date date = new Date();
         String str_date = sdf.format(date);
         return str_date;
-
     }
-
 }

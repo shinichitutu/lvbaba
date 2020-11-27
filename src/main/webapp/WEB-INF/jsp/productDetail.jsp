@@ -202,7 +202,7 @@
                                     </div>
                                     <div class="media-body">
                                         <div class="commenter-name d-sm-flex align-items-center">
-                                                ${requestScope.comments.user.uName}
+                                                ${comments.user.uName}
                                             <span class="text-muted pl-1">钻石会员</span>
                                             <div class="stars ml-auto">
 
@@ -263,8 +263,7 @@
                         <div class="mb-5">
                             <div class="listing-sidebar-card p-4">
                                 <h5>立即订票</h5>
-                                <form action="createOne.do">
-
+                                <form action="createOne.do" method="post">
                                     <div class="form-group">
                                         出发日期
                                         <select style="height: 50px;width: 80%" name="dDate" class="dDate">

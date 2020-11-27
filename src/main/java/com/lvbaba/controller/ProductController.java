@@ -74,6 +74,8 @@ public class ProductController {
     public String searchProductMain(String aimArea,String deArea,Model model){
         Area area=new Area();
         area.setCity(aimArea);
+        System.out.println("a");
+        System.out.println(aimArea+":"+deArea);
         if (areaService.queryOne(area)==null){
             model.addAttribute("count",0);
             return "userProductsResult";

@@ -7,10 +7,8 @@ import com.lvbaba.entity.*;
 import com.lvbaba.service.*;
 import com.lvbaba.utli.UserbLocker;
 import com.lvbaba.utli.Util;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -432,37 +430,4 @@ public class TourController {
         }
         return "test";
     }
-
-
-    /*退货*/
-    @RequestMapping("/refund.do")
-    public String refund(Userorder userorder, Model model) throws ParseException {
-        userorder = userOrderService.queryOne(userorder);
-        /*查询用户*/
-        User user = new User();
-        user.setuId(userorder.getuId());
-        /*查询旅行团*/
-        Tour tour = new Tour();
-        tour.setTourId(userorder.getTourId());
-        tour = tourService.query(tour);
-        user.setBalance(userorder.getOrderPrice() * Util.refund(tour.getdDate()));
-        if (userService.updateUser(user)) {
-            model.addAttribute("success", "退款成功");
-        } else {
-            model.addAttribute("error", "退款失败");
-        }
-        return "test";
-    }
-
-    /*recharge*/
-    @RequestMapping("recharge.do")
-    public String recharge(User user, Model model) {
-        if (userService.updateUser(user)) {
-            model.addAttribute("sucess", "充值成功");
-        } else {
-            model.addAttribute("error", "充值失败");
-        }
-        return "test";
-    }
-
 }
